@@ -26,6 +26,10 @@ ESE::ResourceManager* Application::getResourceManager(){
 	return resourceManager;
 }
 
+ESE::SceneManager * Application::getSceneManager(){
+	return this->sceneManager;
+}
+
 void Application::run(){
 	ESE::SceneManager::instance()->manage();
 }

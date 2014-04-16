@@ -11,7 +11,9 @@
 
 namespace ESE
 {
-
+/**
+ * @brief Es un contenedor de texturas que hereda de ResourceContainer.
+ * */
 class TextureContainer:public ResourceContainer<sf::Texture>
 {
 public:

@@ -19,7 +19,7 @@ class Scene
 	friend class SceneManager;
 	
 	public:
-	enum State{ACTIVE, BACKGROUND, INACTIVE};
+	enum State{ACTIVE, PAUSED, INACTIVE};
 	
 		/**
 	 * @brief Construye una escena <b>inactiva</b>.
@@ -49,17 +49,17 @@ class Scene
 	sf::Event events;
 	
 	/**
-	 * @brief Activa la escena si no lo está.
+	 * @brief Método que es llamado cuando la escena es activada.
 	 * */
-	virtual void start();
+	virtual void onActivate();
 	/**
-	 * @brief Para la escena (estado INACTIVE) si no lo está.
+	 * @brief Método que es llamado cuando la escena es desactivada.
 	 * */
-	virtual void stop();
+	virtual void onDeactivate();
 	/**
-	 * @brief Pausa la escena si no lo está (el estado será BACKGROUND)..
+	 * @brief Método que es llamado cuando la escena es pausada.
 	 * */
-	virtual void pause();
+	virtual void onPause();
 	/**
 	 * @brief Cambia el estado actual.
 	 * @param state Nuevo estado.
@@ -72,13 +72,12 @@ class Scene
 	 * @param deltaTime Segundos que han transcurrido desde la última vez que llamamos
 	 * a esta función. Se e
 	 * Este método <b>no es un bucle</b>, sino que está hecho para ser llamado desde
-	 * un bucle (el verdadero bucle de juego), que está en el método manageEvents() del
+	 * un bucle (el verdadero bucle de juego), que está en el método manage() del
 	 * gestor de estados, que a su vez debería ser llamado por el método run() de Application.
 	 * <br><br>
 	 * Los métodos manageEvents() y logic() <b>sólo son llamados</b> si la escena está activa.El
 	 * método render() es llamado también cuando está en pausa.
-	 * <br>Si la escena está inactiva, el SceneManager se encarga de <b>no</b> llamar a ninguno
-	 * de los tres métodos.
+	 * <br>Si la escena está inactiva ninguno de los métodos es llamado.
 	 * <br><br>
 	 * Si el programador quiere <b>otro comportamiento</b>, puede reimplementar este método a su gusto.
 	 * */
@@ -86,15 +85,18 @@ class Scene
 	/**
 	 * @brief Método pensado para ser reimplementado. Aquí iría todo lo relacionado con la gestión de eventos.
 	 * */
-	virtual void manageEvents();
+	virtual void manageEvents(float deltaTime);
 	/**
 	 * @brief Lógica del juego (IA, colisiones, etc).
 	 * */
-	virtual void logic();
+	virtual void logic(float deltaTime) = 0;
 	/**
-	 * @brief En ella se dibujará lo que sea necesario.
+	 * @brief En ella se dibujará la escena.
+	 * El programador <b>no</b> necesita llamar a los métodos
+	 * window->clear() ni window->display() porque estos son llamados en el instante apropiado por el
+	 * SceneManager.
 	 * */
-	virtual void render();
+	virtual void render() = 0;
 	
 	/**
 	 * @brief Un método rápido para finalizar la escena si el botón de cerrar ha sido pulsado.

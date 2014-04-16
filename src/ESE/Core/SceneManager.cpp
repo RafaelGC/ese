@@ -32,19 +32,15 @@ void SceneManager::addScene(std::string name, ESE::Scene* scene, bool dontAddIfE
 void SceneManager::manage(){
 	deltaTime.restart();
 	
-	bool thereIsAnActiveScene;
-	/*En la variable booleana almacena si hay alguna escena activa, si no la hay, se termina con el bucle
-	* porque no tiene sentido seguir manteniéndolo si no hay nada activo. No se le da ningún valor inicial
-	* porque es lo primero que se hace al entrar en el bucle.
-	* */
+	bool canIFinishTheLoop;
+	/*Esta variable booleana comienza valiendo true (es decir, suponemos que no hay ninguna escena
+	 * activa), pero en el momento en el que encontramos una escena activa o pausada lo ponemos a
+	 * false. Si cuando hemos revisado todas las escenas esta variable sigue a true significa que todas
+	 * las escenas están vacías y, por tanto, podemos terminar con la ejecución del programa.*/
+
 	while (true){
-		thereIsAnActiveScene = false;
-		/*Por defecto se le pone a false y, en el caso de que encontremos alguna escena activa (o en segundo plano)
-		 * en el bucle que viene a continuación, la ponemos a true para que todo esto siga ejecutándose. En el momento
-		 * en el que no haya ninguna escena activa, esta variable quedará con su valor por defecto: flase, y se terminará
-		 * el bucle.
-		 * */
-		 
+		canIFinishTheLoop = true;
+
 		 startRender();
 		
 		for (auto it = scenes.begin(); it!=scenes.end(); ++it){
@@ -53,22 +49,17 @@ void SceneManager::manage(){
 			
 			ESE::Scene *scene = it->second;
 			
+			scene->gameloop(deltaTime.getElapsedTime().asSeconds());
+			
 			if (scene->getState()!=ESE::Scene::INACTIVE){
-				//Si no está inactiva, llamamos a los métodos correspondientes.
-				
-				scene->gameloop(deltaTime.getElapsedTime().asSeconds());
-				
-				thereIsAnActiveScene = true;
-				/*Ponemos la variable a true porque hemos encontrado una escena que no está inactiva,
-				 * entonces tiene sentido seguir en la aplicación.
-				 * */
+				canIFinishTheLoop = false;
 			}
 			
 		}
 		
 		stopRender();
 		
-		if (!thereIsAnActiveScene){
+		if (canIFinishTheLoop){
 			///Si no hay ninguna activa, salimos del bucle.
 			break;
 		}
@@ -86,29 +77,29 @@ void SceneManager::stopRender(){
 void SceneManager::activateScene(std::string name){
 	ESE::Scene *scene;
 	scene = lookForScene(name);
-	if (scene){scene->start();}
+	if (scene){scene->onActivate();}
 }
 void SceneManager::activateSceneAndDeactivateTheRest(std::string name){
 	for (auto it = scenes.begin();it!=scenes.end(); ++it){
-		it->second->stop();
+		it->second->onDeactivate();
 	}
 	activateScene(name);
 }
 void SceneManager::deactivateScene(std::string name){
 	ESE::Scene *scene = lookForScene(name);
-	if (scene){scene->stop();}
+	if (scene){scene->onActivate();}
 }
-void SceneManager::sentSceneToBackground(std::string name){
+void SceneManager::pauseScene(std::string name){
 	ESE::Scene *scene = lookForScene(name);
-	if (scene) {scene->pause();}
+	if (scene) {scene->onPause();}
 }
 
 void SceneManager::deactivateAllScenes(){
-	/*Pone en stop() todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
+	/*Parar todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
 	 */
 	for (auto it = scenes.begin(); it!=scenes.end(); ++it){
 		ESE::Scene *scene = it->second;
-		scene->stop();
+		scene->onDeactivate();
 	}
 }
 

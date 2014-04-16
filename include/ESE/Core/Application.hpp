@@ -34,7 +34,12 @@ public:
 	 * */
 	virtual ESE::ResourceManager *getResourceManager();
 	/**
-	 * @brief Este método es un bucle encargado de gestionar las escenas.
+	 * @brief Devuelve un puntero al gestor de escenas.
+	 * */
+	 virtual ESE::SceneManager *getSceneManager();
+	/**
+	 * @brief Este método llama al método manage() del SceneManager que es el bucle
+	 * principal.
 	 * */
 	virtual void run();
 
