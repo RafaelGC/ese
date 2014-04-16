@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>ESE: Fichero Fuente include/ESE/Core/Log.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ESE
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('_log_8hpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Funciones</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Log.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOG_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LOG_HPP</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;ESE/Core/Config.hpp&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifdef ESE_DEBUG</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_OPEN(MODE) ESE::Log::open(MODE);</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_WARNING(MESSAGE) ESE::Log::warning(MESSAGE);</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_INFORMATION(MESSAGE) ESE::Log::information(MESSAGE);</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_ERROR(MESSAGE) ESE::Log::error(MESSAGE);</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_CLOSE()</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_PRINT(MESSAGE) std::cout &lt;&lt; MESSAGE &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_OPEN(MODE)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_WARNING(MESSAGE)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_INFORMATION(MESSAGE)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_ERROR(MESSAGE)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_LOG_CLOSE()</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">    #define ESE_PRINT(MESSAGE)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="comment">/*Con el script anterior se consigue optimizar el programa. Si el usuario establece el</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * modo de depuración definiendo la constante ESE_DEBUG y hace uso de algunos de esos</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * métodos, efectivamente, llamará a los métodos correspondientes. Sin embargo, si no</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * está definida la constante ESE_DEBUG, las llamadas a los métodos LOG_XXX serán</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * ignoradas. La ventaja de esto es que se hace al momento de compilar y no en tiempo</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * de ejecución.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>ESE{</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_e_s_e_1_1_log.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_e_s_e_1_1_log.html">Log</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> std::ofstream outputFile;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//outputFile nos permite escribir en el archivo de log.</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">enum</span> {KEEP_PREVIOUS_LOG, REMOVE_PREVIOUS_LOG};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//A la hora de crear un nuevo log, podemos eliminar el anterior o mantenerlo y</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">//escribir después de éste, con estas dos constantes especificamos el modo. Son</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//el argumento que recibe el método open()</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_e_s_e_1_1_log.html#a1c99ca7fcbbe1dc7c3452a23c424e702">open</a>(<span class="keywordtype">int</span> mode = KEEP_PREVIOUS_LOG);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_s_e_1_1_log.html#a604725d638e15ebc07d67b433671d9ae">close</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_s_e_1_1_log.html#a9383493aa4fe986699af44f933ae0b1b">post</a>(std::string tag, std::string message);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_s_e_1_1_log.html#a7a97f99bd8fb2425cf82641c470f2914">error</a>(std::string message);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_s_e_1_1_log.html#abbd0b1b08fc6dc5a331a402b25aa3c01">warning</a>(std::string message);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_e_s_e_1_1_log.html#a06a6956c153b3add127b76b4a9fa86c2">information</a>(std::string message);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif // LOG_HPP</span></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_a1c99ca7fcbbe1dc7c3452a23c424e702"><div class="ttname"><a href="class_e_s_e_1_1_log.html#a1c99ca7fcbbe1dc7c3452a23c424e702">ESE::Log::open</a></div><div class="ttdeci">static bool open(int mode=KEEP_PREVIOUS_LOG)</div><div class="ttdoc">Abre el archivo de log para ser escrito. </div><div class="ttdef"><b>Definition:</b> Log.cpp:6</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_a7a97f99bd8fb2425cf82641c470f2914"><div class="ttname"><a href="class_e_s_e_1_1_log.html#a7a97f99bd8fb2425cf82641c470f2914">ESE::Log::error</a></div><div class="ttdeci">static void error(std::string message)</div><div class="ttdoc">Escribe una entrada con el tag ERR (error). </div><div class="ttdef"><b>Definition:</b> Log.cpp:27</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_a06a6956c153b3add127b76b4a9fa86c2"><div class="ttname"><a href="class_e_s_e_1_1_log.html#a06a6956c153b3add127b76b4a9fa86c2">ESE::Log::information</a></div><div class="ttdeci">static void information(std::string message)</div><div class="ttdoc">Escribe una entrada con el tag INF (información). </div><div class="ttdef"><b>Definition:</b> Log.cpp:35</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_a604725d638e15ebc07d67b433671d9ae"><div class="ttname"><a href="class_e_s_e_1_1_log.html#a604725d638e15ebc07d67b433671d9ae">ESE::Log::close</a></div><div class="ttdeci">static void close()</div><div class="ttdoc">Cierra el archivo, no se podrá escribir en él después de liberarlo. </div><div class="ttdef"><b>Definition:</b> Log.cpp:19</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_abbd0b1b08fc6dc5a331a402b25aa3c01"><div class="ttname"><a href="class_e_s_e_1_1_log.html#abbd0b1b08fc6dc5a331a402b25aa3c01">ESE::Log::warning</a></div><div class="ttdeci">static void warning(std::string message)</div><div class="ttdoc">Escribe una entrada con el tag WAR (warning). </div><div class="ttdef"><b>Definition:</b> Log.cpp:31</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html"><div class="ttname"><a href="class_e_s_e_1_1_log.html">ESE::Log</a></div><div class="ttdef"><b>Definition:</b> Log.hpp:32</div></div>
+<div class="ttc" id="class_e_s_e_1_1_log_html_a9383493aa4fe986699af44f933ae0b1b"><div class="ttname"><a href="class_e_s_e_1_1_log.html#a9383493aa4fe986699af44f933ae0b1b">ESE::Log::post</a></div><div class="ttdeci">static void post(std::string tag, std::string message)</div><div class="ttdoc">Escribe una entrada en el archivo de log. </div><div class="ttdef"><b>Definition:</b> Log.cpp:23</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c7e6d16afa72ad47df591c88599d166a.html">ESE</a></li><li class="navelem"><a class="el" href="dir_8aa15ec58f4da1b3c895aed642ff8493.html">Core</a></li><li class="navelem"><b>Log.hpp</b></li>
+    <li class="footer">Generado el Miércoles, 16 de Abril de 2014 09:08:56 para ESE por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>
