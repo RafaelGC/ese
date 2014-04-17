@@ -18,6 +18,22 @@ namespace ESE{
 		rects[number] = rect;
 	}
 	
+	void Tilemap::detectTilesetCoords(int tileWidth, int tileHeight){
+		//No haremos nada si no hay un tileset establecido.
+		if (tileset){
+			//Vamos a calcular cuántos tiles tiene de ancho.
+			unsigned int w = tileset->getSize().x/tileWidth;
+			unsigned int h = tileset->getSize().y/tileHeight;
+			
+			for (unsigned int itY=0; itY<h; itY++){
+				for (unsigned int itX=0; itX<w; itX++){
+					setTilesetCoords(itY*w+itX+1,sf::IntRect(itX*tileWidth,itY*tileHeight,tileWidth,tileHeight));
+				}
+			}
+			
+		}
+	}
+	
 	void Tilemap::load(std::string file){
 		//Limpiamos los tiles.
 		tiles.resize(0);
@@ -80,13 +96,29 @@ namespace ESE{
 	}
 	
 	void Tilemap::setOriginOfMap(float originX, float originY){
-
-		
 		//Desplazamos todos los tiles.
 		for (unsigned int i=0; i<tiles.size(); i++){
 			ESE::Tile t = tiles[i]; //Hacemos una copia para acceder más rápido a la posición x e y.
-			tiles[i].setPosition((originX-this->originX)+t.getPosition().x, (originY-this->originY)+t.getPosition().y); //Pero modificamos el
+			float newPositionX = (originX-this->originX)+t.getPosition().x;
+			float newPositionY = (originY-this->originY)+t.getPosition().y;
+			tiles[i].setPosition(newPositionX,newPositionY); //Pero modificamos el
 			//tile original del vector.
+			
+			if (newPositionX<renderingLimits.left){
+				tiles[i].setVisibleInTilemap(false);
+			}
+			else if (newPositionY<renderingLimits.top){
+				tiles[i].setVisibleInTilemap(false);
+			}
+			else if (newPositionX>renderingLimits.left+renderingLimits.width){
+				tiles[i].setVisibleInTilemap(false);
+			}
+			else if (newPositionY>renderingLimits.top+renderingLimits.height){
+				tiles[i].setVisibleInTilemap(false);
+			}
+			else{
+				tiles[i].setVisibleInTilemap(true);
+			}
 		}
 		
 		this->originX = originX;
@@ -98,4 +130,11 @@ namespace ESE{
 		return sf::Vector2f(originX,originY);
 	}
 	
+	void Tilemap::setRenderingLimits(float x, float y, float width, float height){
+		renderingLimits.top = y-tileHeight;
+		renderingLimits.left = x-tileWidth;
+		renderingLimits.width = width+tileWidth;
+		renderingLimits.height = height+tileHeight;
+		
+	}
 }
