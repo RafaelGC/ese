@@ -49,7 +49,7 @@ void SceneManager::manage(){
 			
 			ESE::Scene *scene = it->second;
 			
-			scene->gameloop(deltaTime.getElapsedTime().asSeconds());
+			scene->gameloop(deltaTime.restart().asSeconds());
 			
 			if (scene->getState()!=ESE::Scene::INACTIVE){
 				canIFinishTheLoop = false;

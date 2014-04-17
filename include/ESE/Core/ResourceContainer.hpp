@@ -24,7 +24,7 @@ template <class T>
 class ResourceContainer{
 	protected:
 	std::map <std::string, T> resources;
-	virtual void loadFromFile(std::string name, std::string path)=0;
+	virtual void loadFromFile(std::string name, std::string file)=0;
 public:
 	ResourceContainer(){
 		
@@ -34,7 +34,7 @@ public:
 	}
 	virtual T* getResource(std::string name, bool testIfExists=true){
 		if (testIfExists){
-			if (resources.find(name)!=resources.end()){
+			if (resources.find(name)==resources.end()){
 				return nullptr;
 			}
 		}
