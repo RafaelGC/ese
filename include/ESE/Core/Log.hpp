@@ -3,7 +3,6 @@
 
 #include <fstream>
 #include <iostream>
-#include <ESE/Core/Config.hpp>
 
 #ifdef ESE_DEBUG
 	#define ESE_LOG_OPEN(MODE) ESE::Log::open(MODE);

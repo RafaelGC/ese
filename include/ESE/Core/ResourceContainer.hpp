@@ -6,8 +6,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <ESE/Core/Config.hpp>
-
 namespace ESE
 {
 template <class T>

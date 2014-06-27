@@ -5,7 +5,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <ESE/Core/Config.hpp>
 #include <ESE/Core/Log.hpp>
 #include <ESE/Core/SceneManager.hpp>
 

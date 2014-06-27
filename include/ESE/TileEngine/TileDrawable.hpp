@@ -2,8 +2,12 @@
 #define TILE_HPP
 
 #include <SFML/Graphics.hpp>
+/**
+ * @brief Es la representación gráfica de un tile. Su utilidad es la de ser dibujado en la
+ * pantalla.
+ * */
 namespace ESE{
-class Tile:public sf::Sprite{
+class TileDrawable:public sf::Sprite{
 	private:
 	/**
 	 * @brief Si el Tile está fuera de los límites de dibujo del Tilemap establecidos por el
@@ -12,7 +16,7 @@ class Tile:public sf::Sprite{
 	bool visibleInTilemap;
 	
 	public:
-	Tile();
+	TileDrawable();
 	void setVisibleInTilemap(bool visibleInTilemap);
 	bool getVisibleInTilemap();
 	
