@@ -13,7 +13,9 @@ namespace ESE{
 	
 	void TilemapLoader::loadFromFile(std::string file){
 		pugi::xml_document doc;
-		doc.load_file(file.c_str());
+		if (!doc.load_file(file.c_str())){
+			std::cout << "Tilemap could not be loaded." << std::endl;
+		}
 		
 		//El primer y único nodo es el mapa, que contiene otros nodos.
 		pugi::xml_node map = doc.first_child();

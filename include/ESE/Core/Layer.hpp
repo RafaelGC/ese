@@ -1,6 +1,8 @@
 #ifndef LAYER_HPP
 #define LAYER_HPP
 
+#include <vector>
+
 #include <SFML/Graphics/Drawable.hpp> // Base class: sf::Drawable
 #include <SFML/Graphics/RenderTarget.hpp>
 

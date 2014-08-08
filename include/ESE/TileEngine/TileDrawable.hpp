@@ -2,11 +2,11 @@
 #define TILE_HPP
 
 #include <SFML/Graphics.hpp>
+namespace ESE{
 /**
  * @brief Es la representación gráfica de un tile. Su utilidad es la de ser dibujado en la
  * pantalla.
  * */
-namespace ESE{
 class TileDrawable:public sf::Sprite{
 	private:
 	/**

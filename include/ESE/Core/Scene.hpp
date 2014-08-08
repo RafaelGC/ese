@@ -114,6 +114,10 @@ class Scene
 	 * */
 	virtual void checkIfWindowClosed();
 	
+	/**
+	 * @brief Método para dibujar de manera más ágil en la ventana, para no tener que hacer:
+	 * window->draw(something), hacemos sólo: draw(something).
+	 * */
 	virtual void draw(sf::Drawable &drawable);
 };
 

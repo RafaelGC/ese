@@ -6,6 +6,8 @@
 #include <ESE/TileEngine/TileLoadedListener.hpp>
 #include <ESE/External/pugixml.hpp>
 
+#include <iostream>
+
 namespace ESE
 {
 /**

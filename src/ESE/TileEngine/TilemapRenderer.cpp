@@ -19,6 +19,9 @@ namespace ESE{
 	}
 	
 	void TilemapRenderer::detectTilesetCoords(int tileWidth, int tileHeight){
+		this->tileWidth = tileWidth;
+		this->tileHeight = tileHeight;
+		
 		rects.clear();
 		//No haremos nada si no hay un tileset establecido.
 		if (tileset){
@@ -84,13 +87,13 @@ namespace ESE{
 		
 	}
 	
-	int TilemapRenderer::addTile(int type, int colX, int rowY){
+	std::pair<int, ESE::TileDrawable*> TilemapRenderer::addTile(int type, int colX, int rowY){
 		tiles.push_back(ESE::TileDrawable());
 		ESE::TileDrawable* tile = &tiles.back();
 		tile->setTexture(*tileset);
 		tile->setTextureRect(rects[type]);
 		tile->setPosition(originX+colX*tileWidth,originY+rowY*tileHeight);
-		return tiles.size()-1;
+		return std::make_pair(tiles.size()-1,&tiles.back());
 	}
 	
 	ESE::TileDrawable* TilemapRenderer::tileAt(int index){
