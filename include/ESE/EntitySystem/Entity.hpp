@@ -46,12 +46,17 @@ namespace ESE{
 		 * @return True si esta entidad está vinculada al sistema que se indica.
 		 * */
 		bool is(System<T>& system){
-			/*for (unsigned int i=0; i<systemsId.size(); i++){
-				std::cout << systemsId[i];
-			}
-			std::cout << std::endl;*/
 			return is(system.getId());
 		}
+
+		template <class T>
+		/**
+		 * @brief Alias de is()
+		 */
+		bool has(System<T>&system){
+			return is(system);
+		}
+
 		template <class T>
 		//Declaramos la clase System como amiga para que pueda acceder al método addSystem()
 		friend class System;
@@ -70,8 +75,15 @@ namespace ESE{
 		 * @param system Sistema del que se desvinculará la entidad.
 		 * */
 		void deattach(System<T> &system){
-			system.deattachOf(*this);
+                    system.deattachOf(*this);
 		}
+                
+                void printComponentsId(){
+                    std::cout << systemsId.size() << std::endl;
+                    /*for (unsigned int i = 0; systemsId.size(); i++){
+                        std::cout << systemsId[i] << std::endl;
+                    }*/
+                }
 	};
 
 	namespace EntityGenerator{

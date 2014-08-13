@@ -64,12 +64,15 @@ class TilemapRenderer:public sf::Drawable{
 	 * */
 	void setTileDimensions(int tileWidth, int tileHeight);
 	/**
-	 * @brief Permite añadir un tile de cierto tipo y en cierta posición.
+	 * @brief Permite añadir un tile de cierto tipo y en cierta posición. Es imprescindible
+         * haber llamado antes al método reserve() si queremos que el puntero que devuelve el método
+         * sea un puntero válido.
+         * @see reserve()
 	 * @param type Tipo de tile.
 	 * @param colX Posición horizontal, <b>en casillas</b> (no en píxeles), del tile.
 	 * @param colY Posición vertical, <b>en casillas</b> (no en píxeles), del tile.
-	 * @return Posición del tile insertado dentro del array de tiles. Puede ser útil para acceder
-	 * a él más tarde. Puntero a dicho tile.
+	 * @return El métdoo devuelve un std::pair cuyo primer elemento es la posición
+         * en el vector del tile que acabamos de añadir y un puntero a dicho tile.
 	 * */
 	std::pair<int, ESE::TileDrawable*> addTile(int type, int colX, int rowY);
 	/**
@@ -79,6 +82,15 @@ class TilemapRenderer:public sf::Drawable{
 	 * */
 	ESE::TileDrawable* tileAt(int index);
 	sf::Vector2f getOriginOfMap();
+        /**
+         * @brief Reserva espacio para el mapa en el vector que lo contiene. Es imprescindible
+         * llamarlo si pretendemos obtener un puntero válido al elemento del vector al llamar a
+         * addTile().
+         * @see addTile()
+         * @param tilemapWidth Ancho, en casillas, del mapa.
+         * @param tilemapHeight Alto, en casillas, del mapa.
+         */
+        void reserve(int tilemapWidth, int tilemapHeight);
 	
 };
 

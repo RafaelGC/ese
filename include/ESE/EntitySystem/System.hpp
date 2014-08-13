@@ -124,6 +124,11 @@ namespace ESE{
 		int getAmountOfEntities(){
 			return components.size();
 		}
+                void printEntitiesId(){
+                    for (unsigned int i = 0; i<components.size(); i++){
+                        std::cout << components[i].first << std::endl;
+                    }
+                }
 	};
 	namespace SystemGenerator{
 		/**

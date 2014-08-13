@@ -1,7 +1,9 @@
-#ifndef TILE_HPP
-#define TILE_HPP
+#ifndef TILEDRAWABLE_HPP
+#define TILEDRAWABLE_HPP
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
 namespace ESE{
 /**
  * @brief Es la representación gráfica de un tile. Su utilidad es la de ser dibujado en la
@@ -17,6 +19,9 @@ class TileDrawable:public sf::Sprite{
 	
 	public:
 	TileDrawable();
+	/*virtual ~TileDrawable(){
+
+	}*/
 	void setVisibleInTilemap(bool visibleInTilemap);
 	bool getVisibleInTilemap();
 	

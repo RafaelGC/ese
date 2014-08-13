@@ -104,4 +104,8 @@ namespace ESE{
 		this->tileWidth = tileWidth;
 		this->tileHeight = tileHeight;
 	}
+        
+        void TilemapRenderer::reserve(int tilemapWidth, int tilemapHeight){
+            tiles.reserve(tilemapWidth*tilemapHeight);
+        }
 }

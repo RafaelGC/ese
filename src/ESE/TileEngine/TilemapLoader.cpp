@@ -27,7 +27,7 @@ namespace ESE{
 		tileHeight = map.attribute("tileheight").as_int();
 		
 		if (listener){
-			listener->infoLoaded(tileWidth,tileHeight,width,height);
+			listener->onInfoLoaded(tileWidth,tileHeight,width,height);
 		}
 		
 		//Ahora recorreremos los nodos del mapa en busca de los que nos interesan.
@@ -45,7 +45,7 @@ namespace ESE{
 						int type = nodoTiles.attribute("gid").as_int();
 						if (type!=0){
 							if (listener){
-								listener->tileLoaded(type,auxX,auxY);
+								listener->onTileLoaded(type,auxX,auxY);
 							}
 						}
 						
