@@ -1,6 +1,7 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
+#include <utility>
 #include <vector>
 #include <iostream>
 

@@ -17,7 +17,6 @@ namespace ESE{
 		return systemsId.size();
 	}
 	void Entity::addSystem(int systemId){
-            std::cout << "Add system: " << systemId << std::endl;
 		systemsId.push_back(systemId);
 	}
 	void Entity::removeSystem(int systemId){

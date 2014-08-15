@@ -95,6 +95,9 @@ namespace ESE{
 		T* entity(Entity &entity){
 			return this->entity(entity.getId());
 		}
+                T* operator()(Entity &entity){
+                    return this->entity(entity);
+                }
 		/**
 		 * @param id Identificador de la entidad que quieres estudiar.
 		 * @return true: Si la entidad pertenece a este sistema. false: La entidad
