@@ -25,7 +25,7 @@ namespace ESE{
          * */
         int tileWidth, tileHeight;
         sf::FloatRect renderingLimits;
-        std::vector<T*>tiles;
+        std::vector<T>tiles;
 
         public:
         TilemapRenderer(){
@@ -35,11 +35,11 @@ namespace ESE{
             tileWidth=tileHeight=0;
         }
         ~TilemapRenderer(){
-            for (unsigned int i=0; i<tiles.size(); i++){
+            /*for (unsigned int i=0; i<tiles.size(); i++){
                 if (tiles[i]){
                     delete tiles[i];
                 }
-            }
+            }*/
         }
         /**
          * @brief Permite seleccionar el tileset que se utilizará para renderizar los tiles.
@@ -83,10 +83,10 @@ namespace ESE{
             }
         }
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const{
-            for (T* tile:tiles){
-                if (tile!=nullptr){
-                    target.draw(*tile,states);
-                }
+            for (T tile:tiles){
+                //if (tile!=nullptr){
+                    target.draw(tile,states);
+                //}
             }
         }
         /**
@@ -95,19 +95,19 @@ namespace ESE{
         void setOriginOfMap(float x, float y){
             //Desplazamos todos los tiles.
             for (unsigned int i=0; i<tiles.size(); i++){
-                if (!tiles[i]){
+                /*if (!tiles[i]){
                     continue;
-                }
+                }*/
 
-                T *t = tiles[i]; //Hacemos una copia para acceder más rápido a la posición x e y.
-                float newPositionX = (originX-this->originX)+t->getPosition().x;
-                float newPositionY = (originY-this->originY)+t->getPosition().y;
-                tiles[i]->setPosition(newPositionX,newPositionY); //Pero modificamos el
+                T t = tiles[i]; //Hacemos una copia para acceder más rápido a la posición x e y.
+                float newPositionX = (originX-this->originX)+t.getPosition().x;
+                float newPositionY = (originY-this->originY)+t.getPosition().y;
+                tiles[i].setPosition(newPositionX,newPositionY); //Pero modificamos el
                 //tile original del vector.
-                tiles[i]->setVisibleInTilemap(false);
+                tiles[i].setVisibleInTilemap(false);
                 if (newPositionX>renderingLimits.left && newPositionX<renderingLimits.left+renderingLimits.width){
                     if (newPositionY>renderingLimits.top && newPositionY<renderingLimits.top+renderingLimits.height){
-                        tiles[i]->setVisibleInTilemap(true);
+                        tiles[i].setVisibleInTilemap(true);
                     }
                 }
             }
@@ -147,14 +147,15 @@ namespace ESE{
          * en el vector del tile que acabamos de añadir y un puntero a dicho tile.
          * */
         std::pair<int, T*> addTile(int type, int colX, int rowY){
-            int index = colRowToIndex(colX,rowY);
-            std::cout << width << " -->" << colX << ", " << rowY << ": " << index << std::endl;
-            T *tmpTile = new T();
-            tmpTile->setTexture(*tileset);
-            tmpTile->setTextureRect(rects[type]);
-            tmpTile->setPosition(originX+colX*tileWidth,originY+rowY*tileHeight);
-            tiles[index] = tmpTile;
-            return std::make_pair(tiles.size()-1,tmpTile);
+            //int index = colRowToIndex(colX,rowY);
+            //std::cout << width << " -->" << colX << ", " << rowY << ": " << index << std::endl;
+            T tmpTile;
+            tmpTile.setTexture(*tileset);
+            tmpTile.setTextureRect(rects[type]);
+            tmpTile.setPosition(originX+colX*tileWidth,originY+rowY*tileHeight);
+            tiles.push_back(tmpTile);
+            //tiles[index] = tmpTile;
+            return std::make_pair(tiles.size()-1,&tiles.back());
         }
         /**
          * Este método sirve para obtener un cierto tile.
@@ -162,7 +163,7 @@ namespace ESE{
          * @return Puntero al tile que hay en la posición especificada.
          * */
         T* tileAt(int index){
-            return (tiles[index]);
+            return (&tiles[index]);
         }
         sf::Vector2f getOriginOfMap(){
             return sf::Vector2f(originX,originY);
@@ -176,7 +177,7 @@ namespace ESE{
          */
         void reserve(int tilemapWidth, int tilemapHeight){
             tiles.reserve(tilemapWidth*tilemapHeight);
-            tiles.resize(tilemapWidth*tilemapHeight,nullptr);
+            //tiles.resize(tilemapWidth*tilemapHeight);
         }
         /**
          * @param x Posición horizontal.
@@ -211,6 +212,13 @@ namespace ESE{
             this->width = width;
             this->height = height;
         }
+        
+        std::vector<T*>* getTiles(){
+            return &tiles;
+        }
+        /*std::vector<T*>& getTiles(){
+            return tiles;
+        }*/
 
     };
 

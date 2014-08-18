@@ -2,10 +2,10 @@
 
 namespace ESE{
 	Entity::Entity(){
-		id = 0;
+		setId(ESE::EntityGenerator::registerId());
 	}
 	Entity::Entity(int id){
-		this->id = id;
+		setId(id);
 	}
 	void Entity::setId(int id){
 		this->id = id;
