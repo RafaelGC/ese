@@ -1,0 +1,4 @@
+-Renombrar deattach a detach.
+-Modificar el ResourceManager para hacerlo más flexible.
+-Hacer que ResourceManager y SceneManager no sea singletons.
+-Que TilemapRenderer y TilemapLoader soporte más de una capa.
