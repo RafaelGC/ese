@@ -1,147 +1,105 @@
+/* 
+ * File:   System.hpp
+ * Author: Rafa
+ *
+ * Created on 31 de agosto de 2014, 12:40
+ */
+
 #ifndef SYSTEM_HPP
-#define SYSTEM_HPP
+#define	SYSTEM_HPP
 
 #include <vector>
 #include <iostream>
 
 namespace ESE{
+    /*************GENERADOR DE IDENTIFICADORES*************/
+    namespace SystemIdGenerator{
+        unsigned int generateId(){
+            static unsigned int nextId = 0;
+            return ++nextId;
+        }
+    }
     
-        namespace SystemGenerator{
-            /**
-             * @brief Devuelve un identificador único para un sistema.
-             * */
-            int registerId();
-	}
+    class Entity;//Forward declaration.
     
-	template <class T>
-	/**
-	 * @brief System es el nexo entre las entidades (Entity) y los componentes. Un sistema no es más
-	 * que un contenedor de componentes que están relacionados con cierta entidad. A través del sistema
-	 * seremos capaces de acceder al componente de una entidad.
-	 * */
-	class System{
-            private:
-            int id;
-            std::vector<std::pair<int,T>> components;
-
+    template <class T>
+    /**
+     * @brief Un sistema es la unión entre componentes y entidades. A un cierto tipo de componente,
+     * que es definido por el usuario, le corresponde un sistema. Dicho sistema enlaza la entidad
+     * con el componente.
+     */
+    class System {
+        private:
+            std::vector<std::pair<unsigned int,T>> components;
+            //El puntero a Entity es usado como identificador, T es el componente. Inicialmente
+            //se utilizaba un entero como identificador único de entidades y sistemas, sin embargo,
+            //utilizando las direcciones (que son únicas), se logra el mismo fenómeno. No obstante,
+            //quizá haga falta cambiarlo en el futuro. Podría no lograrse el efecto deseado si, por
+            //cualquier motivo, la dirección de la entidad cambia.
+            
+            unsigned int id;
+            
             /**
-             * @brief Con este método relacionamos cierta entidad (la especificada en el id) con el componente
-             * del sistema.
-             * @param id Identificador de la entidad.
-             * @see entity()
-             * */
-             /* Este método es privado porque es imprescindible obligar al usuario a utilizar el otro método
-              * attachTo(Entity) porque es ese método el encargado de notificar a la entidad de que ha sido
-              * vinculada a cierto sistema.*/
-            void attachTo(int id){
-                    if (id){
-                            components.push_back(std::make_pair(id,T()));
+             * @brief Método usado por Entity para enlazar dicha Entity con este sistema.
+             * @param entity Entidad que se quiere enlazar con este sistema.
+             */
+            void attachTo(unsigned int entityId){
+                components.push_back(std::make_pair(entityId,T()));
+            }
+            /**
+             * @brief Rompe el vínculo sistema-entidad. Desde ese momento, la entidad no tendrá
+             * disponible el componente del sistema.
+             * @param entity Entidad que se quiere desvincular del sistema.
+             */
+            void detachOf(const unsigned int entityId){
+                for (auto it = components.begin(); it!=components.end(); it++){
+                    if (entityId==it->first){
+                        components.erase(it);
+                        break;
                     }
-            }
-            /**
-             * @brief Desvincula una entidad de este sistema.
-             * @param id Identificador de la entidad que se quiere desvincular.
-             * */
-             /*Este método es privado por las mismas razones que attachTo(int)*/
-            void deattachOf(int id){
-                    for (unsigned int i = 0; i<components.size(); i++){
-                            if (components[i].first==id){
-                                    components.erase(components.begin()+i);
-                                    return;
-                            }
-                    }
-            }
-            public:
-            /**
-             * @brief Crea un System con un id nulo (=0). Será un sistema inutilizable, para que el sistema
-             * tenga alguna utilidad, su identificador debe ser distinto de cero.
-             * */
-            System(){
-                setId(SystemGenerator::registerId());
-            }
-            /**
-             * @brief Crea un System con un id especificado. Un id nulo inutilizará el sistema. Para obtener
-             * un identificador usa SystemGenerator::registerId() .
-             * @see SystemGenerator::registerId()
-             * */
-            System(int id){
-                setId(id);
-            }
-            /**
-             * @brief Con este método relacionamos una cierta entidad (la que se pasa como parámetro) con el
-             * componente del sistema.
-             * @param entity Entidad que quieres relacionar con el componente de este sistema.
-             * */
-            void attachTo(Entity& entity){
-                    entity.addSystem(this->id);
-                    attachTo(entity.getId());
-            }
-            /**
-             * @brief Desvincula la entidad de este sistema.
-             * @param entity Entidad que se quiere desvincular.
-             * */
-            void deattachOf(Entity& entity){
-                    entity.removeSystem(this->id);
-                    deattachOf(entity.getId());
-            }
-            /**
-             * @brief Con este método obtenemos el componente de cierta entidad.
-             * @param id Identificador de la entidad de la que quieres obtener el componente.
-             * */
-            T* entity(int id){
-                    for (unsigned int i=0; i<components.size(); i++){
-                            if (components[i].first==id){
-                                    return &(components[i].second);
-                            }
-                    }
-                    return nullptr;
-            }
-            /**
-             * @brief Con este método obtenemos el componente de cierta entidad.
-             * @param entity Entidad de la que quieres obtener el componente.
-             * */
-            T* entity(Entity &entity){
-                    return this->entity(entity.getId());
-            }
-            T* operator()(Entity &entity){
-                return this->entity(entity);
-            }
-            /**
-             * @param id Identificador de la entidad que quieres estudiar.
-             * @return true: Si la entidad pertenece a este sistema. false: La entidad
-             * no pertenece a este sistema.
-             * */
-            bool isOwnerOf(int id){
-                    if (entity(id)==nullptr){
-                            return false;
-                    }
-                    return true;
-            }
-            /**
-             * @param entity La entidad que quieres estudiar.
-             * @return true: Si la entidad pertenece a este sistema. false: La entidad
-             * no pertenece a este sistema.
-             * */
-            bool isOwnerOf(Entity &entity){
-                    return isOwnerOf(entity.getId());
-            }
-
-            void setId(int id){
-                    this->id = id;
-            }
-            int getId(){
-                    return id;
-            }
-            int getAmountOfEntities(){
-                    return components.size();
-            }
-            void printEntitiesId(){
-                for (unsigned int i = 0; i<components.size(); i++){
-                    std::cout << components[i].first << std::endl;
                 }
             }
-	};
+            /**
+             * @brief Devuelve el componente vinculado a cierta entidad.
+             * @param entity Entidad de la que se quiere obtener el componente.
+             * @return Componente vinculado a la entidad.
+             */
+            T* getComponentOf(const unsigned int entityId){
+                for (auto it = components.begin(); it!=components.end(); it++){
+                    if (it->first==entityId){
+                        return &(it->second);
+                    }
+                }
+                return nullptr;
+            }
+        public:
 
+            System(){
+                id = SystemIdGenerator::generateId();
+                std::cout << "Sistema creado con id= " << id << std::endl;
+            }
+            virtual ~System(){
+
+            }
+            void printEntities(){
+                std::cout << "My system id is " << id << std::endl; 
+                std::cout << "Entities attached to this system:" << std::endl;
+                for (auto it = components.begin(); it!=components.end(); it++){
+                    std::cout << it->first << std::endl;
+                }
+            }
+            
+            inline unsigned int getId() const{
+                return id;
+            }
+            
+            
+        private:
+            //NOPE System(const System& orig); //Suprimo el constructor copia, por el momento.
+            friend class Entity; //Para que Entity tenga acceso a los métodos attachTo y detachOf.
+
+    };
+    
 }
+#endif	/* SYSTEM_HPP */
 
-#endif

@@ -6,13 +6,13 @@
 
 #include <ESE/Core/ResourceContainer.hpp>
 
-namespace ESE{
+namespace ESE {
 
-	class SoundContainer:public ResourceContainer<sf::SoundBuffer>{
-	public:
-		SoundContainer();
-		void loadFromFile(std::string name, std::string path);
-	};
+    class SoundContainer : public ResourceContainer<sf::SoundBuffer> {
+    public:
+        SoundContainer();
+        void loadFromFile(std::string name, std::string path);
+    };
 
 }
 #endif

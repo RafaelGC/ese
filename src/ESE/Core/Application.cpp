@@ -1,38 +1,37 @@
 #include <ESE/Core/Application.hpp>
 
-namespace ESE
-{
+namespace ESE {
 
-Application::Application(){
+    Application::Application() {
 
-	sceneManager = ESE::SceneManager::instance(getWindow());
-	resourceManager = ESE::ResourceManager::instance();
-	
-}
+        sceneManager = ESE::SceneManager::instance(getWindow());
+        resourceManager = ESE::ResourceManager::instance();
 
-Application::~Application(){
-	
-	ESE::SceneManager::release();
-	ESE::ResourceManager::release();
-	
-}
+    }
 
-sf::RenderWindow * Application::getWindow(){
-	
-	return &window;
-}
+    Application::~Application() {
 
-ESE::ResourceManager* Application::getResourceManager(){
-	return resourceManager;
-}
+        ESE::SceneManager::release();
+        ESE::ResourceManager::release();
 
-ESE::SceneManager * Application::getSceneManager(){
-	return this->sceneManager;
-}
+    }
 
-void Application::run(){
-	ESE::SceneManager::instance()->manage();
-}
+    sf::RenderWindow * Application::getWindow() {
+
+        return &window;
+    }
+
+    ESE::ResourceManager* Application::getResourceManager() {
+        return resourceManager;
+    }
+
+    ESE::SceneManager * Application::getSceneManager() {
+        return this->sceneManager;
+    }
+
+    void Application::run() {
+        ESE::SceneManager::instance()->manage();
+    }
 
 }
 
