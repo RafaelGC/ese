@@ -1,5 +1,5 @@
-#ifndef SCENE_HPP
-#define SCENE_HPP
+#ifndef ESE_SCENE_HPP
+#define ESE_SCENE_HPP
 
 #include <map>
 
@@ -27,7 +27,7 @@ namespace ESE {
         /**
          * @brief Estados que puede tener una escena.
          * */
-        enum State {
+        enum class State {
             ACTIVE, PAUSED, INACTIVE
         };
 
@@ -127,7 +127,7 @@ namespace ESE {
          * @brief Método para dibujar de manera más ágil en la ventana, para no tener que hacer:
          * window->draw(something), hacemos sólo: draw(something).
          * */
-        virtual void draw(sf::Drawable &drawable);
+        virtual void draw(const sf::Drawable &drawable) const;
     };
 
 }

@@ -40,12 +40,12 @@ namespace ESE {
     }
 
     void Scene::advanceTime(float deltaTime) {
-        if (getState() == INACTIVE) {
+        if (getState() == State::INACTIVE) {
             //Si la escena está inactiva, salimos directamente.
             return;
         }
 
-        if (getState() == ACTIVE) {
+        if (getState() == State::ACTIVE) {
             /*Sólo cuando la escena está activa llamamos a los métodos encargados
              de gestionar los eventos y la lógica del juego.*/
             manageEvents(deltaTime);
@@ -71,7 +71,7 @@ namespace ESE {
         }
     }
 
-    void Scene::draw(sf::Drawable &drawable) {
+    void Scene::draw(const sf::Drawable &drawable) const{
         window->draw(drawable);
     }
 

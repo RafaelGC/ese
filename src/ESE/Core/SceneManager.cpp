@@ -49,7 +49,7 @@ namespace ESE {
 
                 (*it)->advanceTime(dt);
 
-                if ((*it)->getState() != ESE::Scene::INACTIVE) {
+                if ((*it)->getState() != ESE::Scene::State::INACTIVE) {
                     canIFinishTheLoop = false;
                 }
 
@@ -115,7 +115,6 @@ namespace ESE {
         si no existe devuelve NULL.*/
 
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-            std::cout << (*it)->getName() << ", " << name << std::endl;
             if ((*it)->getName() == name) {
                 return *it;
             }
