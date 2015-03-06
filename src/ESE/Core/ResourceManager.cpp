@@ -8,8 +8,12 @@ namespace ESE {
     ResourceManager::~ResourceManager() {
     }
 
-    TextureContainer* ResourceManager::getTextureContainer() {
+    TextureContainer* ResourceManager::textures() {
         return &this->textureContainer;
+    }
+    
+    FontContainer* ResourceManager::fonts(){
+        return &this->fontContainer;
     }
 
     ResourceManager* ResourceManager::instance() {

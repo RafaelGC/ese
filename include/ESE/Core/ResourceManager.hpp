@@ -2,6 +2,7 @@
 #define RESOURCES_HPP
 
 #include "TextureContainer.hpp"
+#include "FontContainer.hpp"
 namespace ESE {
 
     /**
@@ -12,11 +13,13 @@ namespace ESE {
         static ResourceManager* resourceManagerInstance;
     protected:
         ESE::TextureContainer textureContainer;
+        ESE::FontContainer fontContainer;
     public:
         static ResourceManager* instance();
         static void release();
 
-        ESE::TextureContainer *getTextureContainer();
+        ESE::TextureContainer *textures();
+        ESE::FontContainer *fonts();
 
     private:
         ResourceManager();
