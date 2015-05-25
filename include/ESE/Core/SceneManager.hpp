@@ -114,6 +114,11 @@ namespace ESE {
          * @param name Nombre de la escena.
          * */
         void pauseScene(std::string name);
+        
+        /**
+         * @return True si TODAS las escenas están inactivas.
+         */
+        bool allScenesInactive() const;
 
     private:
         SceneManager(sf::RenderWindow *window);

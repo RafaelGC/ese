@@ -36,9 +36,7 @@ namespace ESE {
          * false. Si cuando hemos revisado todas las escenas esta variable sigue a true significa que todas
          * las escenas están vacías y, por tanto, podemos terminar con la ejecución del programa.*/
 
-        while (true) {
-            canIFinishTheLoop = true;
-
+        while (!allScenesInactive()) {
             startRender();
 
             float dt = deltaTime.restart().asSeconds();
@@ -46,21 +44,12 @@ namespace ESE {
             for (auto it = scenes.begin(); it != scenes.end(); ++it) {
                 //Llamaremos al gameloop siempre que no esté la escena inactiva. Es decir, será llamado
                 //cuando la escena esté en segundo plano o esté activa.
-
+                
                 (*it)->advanceTime(dt);
-
-                if ((*it)->getState() != ESE::Scene::State::INACTIVE) {
-                    canIFinishTheLoop = false;
-                }
 
             }
 
             stopRender();
-
-            if (canIFinishTheLoop) {
-                ///Si no hay ninguna activa, salimos del bucle.
-                break;
-            }
         }
     }
 
@@ -121,7 +110,16 @@ namespace ESE {
         }
         return nullptr;
     }
-
+    
+    bool SceneManager::allScenesInactive() const{
+        for (auto it = scenes.begin(); it!=scenes.end(); ++it){
+            if ((*it)->getState()!=ESE::Scene::State::INACTIVE){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     SceneManager* SceneManager::instance(sf::RenderWindow *window) {
         if (sceneManagerInstance == nullptr) {
             sceneManagerInstance = new SceneManager(window);
