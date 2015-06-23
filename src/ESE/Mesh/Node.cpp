@@ -7,81 +7,85 @@
 
 #include <vector>
 
-#include "Node.hpp"
-#include "NodeDistance.hpp"
+#include <ESE/Mesh/Node.hpp>
 
-Node::Node(float x, float y, std::string name):
-x(x), y(y), name(name){
-}
+namespace ESE {
 
-Node::~Node() {
-}
-
-void Node::addConnection(Node * destination){    
-    connections.push_back(
-            NodeDistance(
-            destination,
-            NodeDistance::distanceBetween(this,destination)
-            )
-            );
-}
-
-void Node::addConnection(NodeDistance nodeDistance){
-    connections.push_back(nodeDistance);
-}
-
-void Node::addMutualConnection(Node* destination){
-    addConnection(destination);
-    destination->addConnection(this);
-}
-
-void Node::addMutualConnection(NodeDistance nodeDistance){
-    addConnection(nodeDistance);
-    nodeDistance.getNode()->addConnection(NodeDistance(this,nodeDistance.getDistance()));
-}
-
-bool Node::isConnectedTo(Node* node){
-    for (NodeDistance &n : connections){
-        if (n.getNode()==node){
-            return true;
-        }
+    Node::Node(float x, float y, std::string name) :
+    x(x), y(y), name(name) {
     }
-    return false;
-}
 
-float Node::distanceToConnectedNode(Node* node){
-    for (NodeDistance &n : connections){
-        if (n.getNode()==node){
-            return n.getDistance();
-        }
+    Node::~Node() {
     }
-    return -1;
-}
 
-float Node::getX() const{
-    return x;
-}
+    void Node::addConnection(Node * destination) {
+        connections.push_back(
+                NodeDistance(
+                destination,
+                NodeDistance::distanceBetween(this, destination)
+                )
+                );
+    }
 
-float Node::getY() const{
-    return y;
-}
+    void Node::addConnection(NodeDistance nodeDistance) {
+        connections.push_back(nodeDistance);
+    }
 
-std::string Node::getName() const{
-    return name;
-}
+    void Node::addMutualConnection(Node* destination) {
+        addConnection(destination);
+        destination->addConnection(this);
+    }
 
-NodeDistance & Node::operator [](int index){
-    return connections[index];
-}
+    void Node::addMutualConnection(NodeDistance nodeDistance) {
+        addConnection(nodeDistance);
+        nodeDistance.getNode()->addConnection(NodeDistance(this, nodeDistance.getDistance()));
+    }
 
-unsigned int Node::countConnectedNodes() const{
-    return connections.size();
-}
+    bool Node::isConnectedTo(Node* node) {
+        for (NodeDistance &n : connections) {
+            if (n.getNode() == node) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-/*Compatibilidad con el bucle for de rango*/
-NodeDistance * begin(Node &node){
-    return &node[0];
-}
-NodeDistance * end(Node &node){
-    return &node[0]+node.countConnectedNodes();
+    float Node::distanceToConnectedNode(Node* node) {
+        for (NodeDistance &n : connections) {
+            if (n.getNode() == node) {
+                return n.getDistance();
+            }
+        }
+        return -1;
+    }
+
+    float Node::getX() const {
+        return x;
+    }
+
+    float Node::getY() const {
+        return y;
+    }
+
+    std::string Node::getName() const {
+        return name;
+    }
+
+    NodeDistance & Node::operator[](int index) {
+        return connections[index];
+    }
+
+    unsigned int Node::countConnectedNodes() const {
+        return connections.size();
+    }
+    
+    /*Compatibilidad con el bucle for de rango*/
+    NodeDistance * begin(Node &node) {
+        return &node[0];
+    }
+
+    NodeDistance * end(Node &node) {
+        return &node[0] + node.countConnectedNodes();
+    }
+
 }

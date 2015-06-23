@@ -50,6 +50,7 @@ namespace ESE {
             }
 
             stopRender();
+            
         }
     }
 
@@ -71,7 +72,9 @@ namespace ESE {
 
     void SceneManager::activateSceneAndDeactivateTheRest(std::string name) {
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-            (*it)->onDeactivate();
+            if ((*it)->getName()!=name){
+                (*it)->onDeactivate();
+            }
         }
         activateScene(name);
     }

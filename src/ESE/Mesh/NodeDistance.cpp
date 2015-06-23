@@ -5,34 +5,38 @@
  * Created on 17 de marzo de 2015, 14:58
  */
 
-#include "NodeDistance.hpp"
-#include "Node.hpp"
+#include <ESE/Mesh/NodeDistance.hpp>
+#include <ESE/Mesh/Node.hpp>
 
-NodeDistance::NodeDistance(Node *node, float distance):
-node(node),distance(distance){
-}
+namespace ESE {
 
-NodeDistance::~NodeDistance() {
-}
+    NodeDistance::NodeDistance(Node *node, float distance) :
+    node(node), distance(distance) {
+    }
 
-float NodeDistance::getDistance() const{
-    return distance;
-}
+    NodeDistance::~NodeDistance() {
+    }
 
-Node * NodeDistance::getNode(){
-    return node;
-}
+    float NodeDistance::getDistance() const {
+        return distance;
+    }
 
-void NodeDistance::setDistance(float distance){
-    this->distance = distance;
-}
+    Node * NodeDistance::getNode() {
+        return node;
+    }
 
-void NodeDistance::setNode(Node* node){
-    this->node = node;
-}
+    void NodeDistance::setDistance(float distance) {
+        this->distance = distance;
+    }
 
-float NodeDistance::distanceBetween(Node* node1, Node* node2){
-    float difX = fabs(node1->getX()-node2->getX());
-    float difY = fabs(node1->getY()-node2->getY());
-    return sqrt(difX*difX + difY*difY);
+    void NodeDistance::setNode(Node* node) {
+        this->node = node;
+    }
+
+    float NodeDistance::distanceBetween(Node* node1, Node* node2) {
+        float difX = fabs(node1->getX() - node2->getX());
+        float difY = fabs(node1->getY() - node2->getY());
+        return sqrt(difX * difX + difY * difY);
+    }
+
 }

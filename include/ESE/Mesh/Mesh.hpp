@@ -10,32 +10,35 @@
 
 #include <vector>
 
-#include "Node.h"
+#include <ESE/Mesh/Node.hpp>
 
 /**
  * Representa un conjunto de nodos. La clase contiene un vector de punteros.
  * La propia clase se encargará de eliminarlos.
  */
-class Mesh {
-private:
-    std::vector<Node*> nodes;
-    bool deleteNodesInDestructor;
-public:
-    Mesh();
-    virtual ~Mesh();
-    
-    void addNode(Node * node);
-    unsigned int countNodes();
-    
-    Node * &operator[](int index);
-    
-};
+namespace ESE{
+    class Mesh {
+    private:
+        std::vector<Node*> nodes;
+        bool deleteNodesInDestructor;
+    public:
+        Mesh();
+        virtual ~Mesh();
 
-/*
- * Compatibilidad con el for de rango.
- */
-Node ** begin(Mesh & mesh);
-Node ** end(Mesh & mesh);
+        void addNode(Node * node);
+        unsigned int countNodes();
+
+        Node * &operator[](int index);
+
+    };
+    
+    /*
+    * Compatibilidad con el for de rango.
+    */
+   Node ** begin(Mesh & mesh);
+   Node ** end(Mesh & mesh);
+
+}
 
 #endif	/* MESH_H */
 
