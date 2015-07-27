@@ -83,6 +83,9 @@ namespace ESE {
 
         float getX() const;
         float getY() const;
+        
+        void setPosition(float x, float y);
+        void move(float dX, float dY);
 
         std::string getName() const;
 

@@ -66,6 +66,16 @@ namespace ESE {
     float Node::getY() const {
         return y;
     }
+    
+    void Node::setPosition(float x, float y) {
+        this->x = x;
+        this->y = y;
+    }
+    
+    void Node::move(float dX, float dY) {
+        x+=dX;
+        y+=dY;
+    }
 
     std::string Node::getName() const {
         return name;

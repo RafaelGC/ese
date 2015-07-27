@@ -34,7 +34,7 @@ namespace ESE {
          * origin hasta destination, ambos inclusive.
          */
         std::deque<Node*> pathTo(Node * origin, Node *destination);
-
+    protected:
         /**
          * @return Devuelve un vector de NodeLinks de los nodos adyacentes al nodo
          * actual (atributo de la clase). 

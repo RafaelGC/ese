@@ -29,6 +29,9 @@ namespace ESE{
         unsigned int countNodes();
 
         Node * &operator[](int index);
+        Node * closestNodeTo(float x, float y);
+        
+        void move(float dX, float dY);
 
     };
     
