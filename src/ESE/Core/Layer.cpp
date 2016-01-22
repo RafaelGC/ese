@@ -6,6 +6,11 @@ namespace ESE {
         visible = true;
     }
 
+    Layer::Layer(int z, bool visible) {
+        this->z = z;
+        this->visible = true;
+    }
+
     Layer::~Layer() {
     }
 
@@ -20,12 +25,51 @@ namespace ESE {
         }
     }
 
-    void Layer::addDrawable(sf::Drawable*item) {
-        drawableItems.push_back(item);
+    void Layer::addDrawable(sf::Drawable &item) {
+
+        for (auto i : drawableItems) {
+            if (i == &item) return;
+        }
+
+        drawableItems.push_back(&item);
+    }
+
+    bool Layer::removeDrawable(sf::Drawable& item) {
+        for (auto it = drawableItems.begin(); it != drawableItems.end(); ++it) {
+            if (*it == &item) {
+                drawableItems.erase(it);
+                return true;
+            }
+        }
+        return false;
     }
 
     void Layer::setVisible(bool visible) {
         this->visible = visible;
+    }
+
+    bool Layer::isVisible() const {
+        return visible;
+    }
+
+    int Layer::getZ() const {
+        return z;
+    }
+
+    void Layer::setZ(int z) {
+        this->z = z;
+    }
+    
+    unsigned int Layer::count() const {
+        return drawableItems.size();
+    }
+    
+    bool Layer::isEmpty() const {
+        return count()==0;
+    }
+
+    bool Layer::operator<(ESE::Layer& other) const {
+        return getZ() < other.getZ();
     }
 
 }

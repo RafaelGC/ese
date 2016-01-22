@@ -2,13 +2,16 @@
 
 namespace ESE {
 
-    SceneManager* SceneManager::sceneManagerInstance = 0;
+    //SceneManager* SceneManager::sceneManagerInstance = 0;
 
-    SceneManager::SceneManager(sf::RenderWindow *window) {
-        this->window = window;
+    SceneManager::SceneManager() {
     }
 
     SceneManager::~SceneManager() {
+    }
+    
+    void SceneManager::setRenderWindow(sf::RenderWindow& renderWindow) {
+        this->renderWindow = &renderWindow;
     }
 
     void SceneManager::addScene(ESE::Scene &scene, bool dontAddIfExists) {
@@ -24,17 +27,11 @@ namespace ESE {
         }
 
         scenes.push_back(&scene);
-
+        
     }
 
     void SceneManager::manage() {
         deltaTime.restart();
-
-        bool canIFinishTheLoop;
-        /*Esta variable booleana comienza valiendo true (es decir, suponemos que no hay ninguna escena
-         * activa), pero en el momento en el que encontramos una escena activa o pausada lo ponemos a
-         * false. Si cuando hemos revisado todas las escenas esta variable sigue a true significa que todas
-         * las escenas están vacías y, por tanto, podemos terminar con la ejecución del programa.*/
 
         while (!allScenesInactive()) {
             startRender();
@@ -42,8 +39,6 @@ namespace ESE {
             float dt = deltaTime.restart().asSeconds();
 
             for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-                //Llamaremos al gameloop siempre que no esté la escena inactiva. Es decir, será llamado
-                //cuando la escena esté en segundo plano o esté activa.
                 
                 (*it)->advanceTime(dt);
 
@@ -55,11 +50,11 @@ namespace ESE {
     }
 
     void SceneManager::startRender() {
-        window->clear(sf::Color::Black);
+        renderWindow->clear(sf::Color::Black);
     }
 
     void SceneManager::stopRender() {
-        window->display();
+        renderWindow->display();
     }
 
     void SceneManager::activateScene(std::string name) {
@@ -92,6 +87,18 @@ namespace ESE {
             scene->onPause();
         }
     }
+    
+    void SceneManager::removeScene(std::string name) {
+        deactivateScene(name);
+        
+        ESE::Scene* scene = lookForScene(name);
+        for (auto it = scenes.begin(); it!=scenes.end(); ++it) {
+            if ((*it)==scene) {
+                scenes.erase(it);
+                break;
+            }
+        }
+    }
 
     void SceneManager::deactivateAllScenes() {
         /*Parar todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
@@ -122,21 +129,6 @@ namespace ESE {
         }
         return true;
     }
-    
-    SceneManager* SceneManager::instance(sf::RenderWindow *window) {
-        if (sceneManagerInstance == nullptr) {
-            sceneManagerInstance = new SceneManager(window);
-        }
-        return sceneManagerInstance;
-    }
-
-    void SceneManager::release() {
-        if (sceneManagerInstance) {
-            delete sceneManagerInstance;
-        }
-        sceneManagerInstance = nullptr;
-    }
-
 
 }
 

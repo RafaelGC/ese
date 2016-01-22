@@ -61,6 +61,13 @@ namespace ESE{
         }
     }
     
+    Node * Mesh::getNodeByName(const std::wstring& name) {
+        for (auto i : *this) {
+            if (i->getName()==name) return i;
+        }
+        return nullptr;
+    }
+    
     Node ** begin(Mesh & mesh){
         return &mesh[0];
     }
@@ -68,6 +75,7 @@ namespace ESE{
     Node ** end(Mesh & mesh){
         return &mesh[0]+mesh.countNodes();
     }
+    
 
 }
 

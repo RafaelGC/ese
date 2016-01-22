@@ -12,11 +12,11 @@ namespace ESE {
     protected:
         /**
          * @brief Clave-valor*/
-        std::map<std::string, std::string>content;
+        std::map<std::wstring, std::wstring>content;
         /**
          *@brief Idioma que se ha elegido al cargar el texto.
          * */
-        std::string currentLanguage;
+        std::wstring currentLanguage;
     public:
         Text();
         /**
@@ -24,23 +24,23 @@ namespace ESE {
          * @param file Archivo XML
          * @param language Lenguaje para ser cargado.
          * */
-        Text(std::string file, std::string language);
+        Text(std::string file, std::wstring language);
         /**
          * @brief Carga e interpreta el archivo XML.
          * @param file Archivo XML
          * @param language Lenguaje para ser cargado.
          * */
-        void load(std::string file, std::string language);
+        void load(std::string file, std::wstring language);
         /**
          * @brief Obtenemos el valor de la clase que enviamos como parámetro.
          * @param name Clave que buscaremos.
          * @return Valor relacionado con la clave que puede depender del idioma elegido.
          * */
-        std::string getString(std::string name);
+        std::wstring getString(std::wstring name);
         /**
          * @return Devuelve el lenguaje actual.
          * */
-        std::string getCurrentLanguage();
+        std::wstring getCurrentLanguage();
     };
 
 }

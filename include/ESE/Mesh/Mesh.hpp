@@ -30,6 +30,7 @@ namespace ESE{
 
         Node * &operator[](int index);
         Node * closestNodeTo(float x, float y);
+        Node * getNodeByName(const std::wstring & name);
         
         void move(float dX, float dY);
 

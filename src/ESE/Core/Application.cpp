@@ -4,21 +4,20 @@ namespace ESE {
 
     Application::Application() {
 
-        sceneManager = ESE::SceneManager::instance(getWindow());
+        sceneManager = &ESE::SceneManager::instance();
+        sceneManager->setRenderWindow(getWindow());
         resourceManager = ESE::ResourceManager::instance();
 
     }
 
     Application::~Application() {
-
-        ESE::SceneManager::release();
         ESE::ResourceManager::release();
 
     }
 
-    sf::RenderWindow * Application::getWindow() {
+    sf::RenderWindow & Application::getWindow() {
 
-        return &window;
+        return window;
     }
 
     ESE::ResourceManager* Application::getResourceManager() {
@@ -30,7 +29,7 @@ namespace ESE {
     }
 
     void Application::run() {
-        ESE::SceneManager::instance()->manage();
+        ESE::SceneManager::instance().manage();
     }
 
 }

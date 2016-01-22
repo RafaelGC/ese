@@ -11,7 +11,7 @@
 
 namespace ESE {
 
-    Node::Node(float x, float y, std::string name) :
+    Node::Node(float x, float y, std::wstring name) :
     x(x), y(y), name(name) {
     }
 
@@ -77,7 +77,7 @@ namespace ESE {
         y+=dY;
     }
 
-    std::string Node::getName() const {
+    std::wstring Node::getName() const {
         return name;
     }
 

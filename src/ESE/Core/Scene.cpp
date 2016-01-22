@@ -67,7 +67,7 @@ namespace ESE {
         if (events.type == sf::Event::Closed) {
             /*Si se ha presionado el botón de cerrar la ventana, llamamos a un método que desactiva
              * todas las escenas, es decir, probablemente se acabe con la aplicación.*/
-            ESE::SceneManager::instance()->deactivateAllScenes();
+            ESE::SceneManager::instance().deactivateAllScenes();
         }
     }
 

@@ -21,10 +21,10 @@ namespace ESE {
         pugi::xml_node map = doc.first_child();
         //Este nodo tiene información útil como el tamaño del mapa en tiles así como el ancho y alto
         //de cada tile.
-        width = map.attribute("width").as_int();
-        height = map.attribute("height").as_int();
-        tileWidth = map.attribute("tilewidth").as_int();
-        tileHeight = map.attribute("tileheight").as_int();
+        width = map.attribute(L"width").as_int();
+        height = map.attribute(L"height").as_int();
+        tileWidth = map.attribute(L"tilewidth").as_int();
+        tileHeight = map.attribute(L"tileheight").as_int();
 
         if (listener) {
             listener->onInfoLoaded(tileWidth, tileHeight, width, height);
@@ -33,16 +33,16 @@ namespace ESE {
         //Ahora recorreremos los nodos del mapa en busca de los que nos interesan.
         for (pugi::xml_node node = map.first_child(); node; node = node.next_sibling()) {
             //La capa es el elemento más importante, por ahora sólo soportamos una.
-            if (strcmp(node.name(), "layer") == 0) {
+            if (wcscmp(node.name(), L"layer") == 0) {
                 //Dentro de la capa hay un elemento "data" que a su vez contiene un motón de
                 //nodos "tile" cuyos valores son los que nos interesan.
                 pugi::xml_node nodoData = node.first_child();
-                if (strcmp(nodoData.name(), "data") == 0) {
+                if (wcscmp(nodoData.name(), L"data") == 0) {
 
                     int auxX = 0, auxY = 0;
                     //Ahora recorremos, dentro de data, todos los tiles.
                     for (pugi::xml_node nodoTiles = nodoData.first_child(); nodoTiles; nodoTiles = nodoTiles.next_sibling()) {
-                        int type = nodoTiles.attribute("gid").as_int();
+                        int type = nodoTiles.attribute(L"gid").as_int();
                         if (type != 0) {
                             if (listener) {
                                 listener->onTileLoaded(type, auxX, auxY);
@@ -58,19 +58,19 @@ namespace ESE {
 
                 }
 
-            } else if (strcmp(node.name(), "objectgroup") == 0) {
+            } else if (wcscmp(node.name(), L"objectgroup") == 0) {
                 //Dentro del nodo objectgroup hay un montón de objetos que nos interesan.
                 for (pugi::xml_node nodeObjects = node.first_child(); nodeObjects; nodeObjects = nodeObjects.next_sibling()) {
                     //std::cout << "Tipo: " << nodeObjects.attribute("type").as_string("ESE::Error") << std::endl;
                     if (listener) {
-                        listener->onObjectLoaded(nodeObjects.attribute("x").as_float(0), nodeObjects.attribute("y").as_float(0),
-                                nodeObjects.attribute("type").as_string("ESE::Error"), nodeObjects.attribute("name").as_string("ESE::Error"));
+                        listener->onObjectLoaded(nodeObjects.attribute(L"x").as_float(0), nodeObjects.attribute(L"y").as_float(0),
+                                nodeObjects.attribute(L"type").as_string(L"ESE::Error"), nodeObjects.attribute(L"name").as_string(L"ESE::Error"));
                     }
                 }
-            } else if (strcmp(node.name(), "properties") == 0) {
+            } else if (wcscmp(node.name(), L"properties") == 0) {
                 for (pugi::xml_node nodeProperty = node.first_child(); nodeProperty; nodeProperty = nodeProperty.next_sibling()) {
                     if (listener) {
-                        listener->onPropertyLoaded(nodeProperty.attribute("name").as_string("ESE::Error"), nodeProperty.attribute("value").as_string("ESE::Error"));
+                        listener->onPropertyLoaded(nodeProperty.attribute(L"name").as_string(L"ESE::Error"), nodeProperty.attribute(L"value").as_string(L"ESE::Error"));
                     }
                 }
             }

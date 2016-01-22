@@ -29,7 +29,7 @@ namespace ESE {
         /**
         @return Devuelve un puntero de la ventana de la aplicación
          */
-        virtual sf::RenderWindow * getWindow();
+        virtual sf::RenderWindow & getWindow();
         /**
          * @return Devuelve un puntero del gestor de recursos.
          * */

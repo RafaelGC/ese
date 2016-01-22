@@ -24,7 +24,7 @@ namespace ESE {
     class Node {
     private:
         float x, y;
-        std::string name;
+        std::wstring name;
         /*
          * La conexión a otros nodos se puede representar con NodeDistances.
          */
@@ -39,7 +39,7 @@ namespace ESE {
          * @param y Posición vertical del nodo.
          * @param name Nombre del nodo.
          */
-        Node(float x, float y, std::string name);
+        Node(float x, float y, std::wstring name);
         virtual ~Node();
 
         /**
@@ -87,7 +87,7 @@ namespace ESE {
         void setPosition(float x, float y);
         void move(float dX, float dY);
 
-        std::string getName() const;
+        std::wstring getName() const;
 
         unsigned int countConnectedNodes() const;
 

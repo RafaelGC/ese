@@ -3,9 +3,11 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 #include <SFML/System.hpp>
 
+#include <ESE/Core/Singleton.hpp>
 #include <ESE/Core/Scene.hpp>
 #include <ESE/Core/Log.hpp>
 
@@ -15,16 +17,16 @@ namespace ESE {
     class Scene;
     //Forward declaration.
 
-    class SceneManager {
+    class SceneManager : public Singleton<SceneManager>{
+        friend class Singleton;
     protected:
-        static SceneManager* sceneManagerInstance;
         /**
          * @brief Referencia a la ventana sobre la que se dibuja.
          * El SceneManager libera al programador de tener que llamar a los métodos window->clear()
          * y window->display() desde sus escenas. SceneManager se encarga de hacerlo las veces
          * necesarias, por eso necesita una referencia a la ventana.
          * */
-        sf::RenderWindow *window;
+        sf::RenderWindow *renderWindow;
         /*Imprescindible guardar una referencia a la ventana para llamar a los métodos de limpieza
          * y actualización tan sólo una vez por iteración del bucle de gestión. Si esas dos llamadas
          * se hicieran en el gameloop de la escena, estariamos actualizando  la ventana más de una vez
@@ -42,14 +44,10 @@ namespace ESE {
         void stopRender();
 
         /**
-         * @brief Almacena el nombre y un puntero a las escenas de las que se encarga el SceneManager.
-         * Aquí es donde se guardan referencias a todas la escenas disponibles. Cada escena está
-         * relacionada con un string, que es su nombre.
-         * He optado por un simple vector de pares en vez de por un std::map porque debería ser más rápido
-         * iterar en un vector que en un map.
-         * Fuente: http://stackoverflow.com/questions/730498/iterator-access-performance-for-stl-map-vs-vector
+         * @brief Almacena un puntero a las escenas de las que se encarga el SceneManager.
+         * Aquí es donde se guardan referencias a todas la escenas disponibles.
          * */
-        std::vector<ESE::Scene*> scenes;
+        std::list<ESE::Scene*> scenes;
 
         /**
          * @brief Para contar los segundos que hay entre dos iteraciones del bucle de juego.
@@ -66,12 +64,11 @@ namespace ESE {
          * */
         Scene* lookForScene(std::string name);
     public:
+        
         /**
-         * @param window Ventana sobre la que se renderiza. Una vez ya ha sido establecida, podemos
-         * no pasar nada como argumento
-         * */
-        static SceneManager* instance(sf::RenderWindow *window = NULL);
-        static void release();
+         * @param renderWindow Ventana donde se renderizarán las escenas.
+         */
+        void setRenderWindow(sf::RenderWindow & renderWindow);
 
         /**
          * @brief Añade una escena al vector, con el nombre que se le especifica.
@@ -116,12 +113,18 @@ namespace ESE {
         void pauseScene(std::string name);
         
         /**
+         * @brief Elimina una escena.
+         * 
+         */
+        void removeScene(std::string name);
+        
+        /**
          * @return True si TODAS las escenas están inactivas.
          */
         bool allScenesInactive() const;
 
     private:
-        SceneManager(sf::RenderWindow *window);
+        SceneManager();
         virtual ~SceneManager();
 
     };
