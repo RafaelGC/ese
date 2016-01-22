@@ -20,7 +20,6 @@ namespace ESE {
     protected:
         sf::RenderWindow window;
         ESE::SceneManager *sceneManager;
-        ESE::ResourceManager *resourceManager;
 
     public:
         Application();
@@ -30,10 +29,7 @@ namespace ESE {
         @return Devuelve un puntero de la ventana de la aplicación
          */
         virtual sf::RenderWindow & getWindow();
-        /**
-         * @return Devuelve un puntero del gestor de recursos.
-         * */
-        virtual ESE::ResourceManager *getResourceManager();
+        
         /**
          * @brief Devuelve un puntero al gestor de escenas.
          * */

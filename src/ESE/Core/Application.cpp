@@ -6,12 +6,10 @@ namespace ESE {
 
         sceneManager = &ESE::SceneManager::instance();
         sceneManager->setRenderWindow(getWindow());
-        resourceManager = ESE::ResourceManager::instance();
 
     }
 
     Application::~Application() {
-        ESE::ResourceManager::release();
 
     }
 
@@ -19,11 +17,7 @@ namespace ESE {
 
         return window;
     }
-
-    ESE::ResourceManager* Application::getResourceManager() {
-        return resourceManager;
-    }
-
+    
     ESE::SceneManager * Application::getSceneManager() {
         return this->sceneManager;
     }

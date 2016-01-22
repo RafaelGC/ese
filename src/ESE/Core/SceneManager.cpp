@@ -2,8 +2,6 @@
 
 namespace ESE {
 
-    //SceneManager* SceneManager::sceneManagerInstance = 0;
-
     SceneManager::SceneManager() {
     }
 

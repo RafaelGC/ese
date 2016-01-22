@@ -1,29 +1,31 @@
 #ifndef RESOURCES_HPP
 #define RESOURCES_HPP
 
-#include "TextureContainer.hpp"
-#include "FontContainer.hpp"
+#include <ESE/Core/Singleton.hpp>
+#include <map>
+
 namespace ESE {
 
-    /**
-     * @brief Gestor de recursos simple (imágenes, sonidos, fuentes...). Si el programador quiere algo más
-     * avanzado puede implementar su propio gestor de recursos así como sus propios contenedores.
-     * */
+    template <class X>
     class ResourceManager {
-        static ResourceManager* resourceManagerInstance;
-    protected:
-        ESE::TextureContainer textureContainer;
-        ESE::FontContainer fontContainer;
-    public:
-        static ResourceManager* instance();
-        static void release();
+        friend class Singleton<ResourceManager>;
+        
+        protected:
+        std::map <std::string, X> resources;
+        ResourceManager() {}
+        
+        public:
 
-        ESE::TextureContainer *textures();
-        ESE::FontContainer *fonts();
+        virtual void loadFromFile(const std::string & name, const std::string & path) = 0;
 
-    private:
-        ResourceManager();
-        virtual ~ResourceManager();
+        X* getResource(const std::string & name) {
+
+            if (resources.find(name) == resources.end()) {
+                return nullptr;
+            }
+
+            return &resources[name];
+        }
 
     };
 }
