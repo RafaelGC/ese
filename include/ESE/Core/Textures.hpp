@@ -11,7 +11,8 @@ namespace ESE {
     /**
      * @brief Es un contenedor de texturas que hereda de ResourceManager.
      * */
-    class Textures : public ESE::ResourceManager<sf::Texture> {
+    class Textures : public ESE::ResourceManager<sf::Texture>, public Singleton<Textures> {
+        friend class Singleton<Textures>;
     private:
         Textures() {}
     public:
@@ -24,7 +25,5 @@ namespace ESE {
     };
 
 }
-
-#include <ESE/Core/TextureContainer.cpp>
 
 #endif // TEXTURECONTAINER_HPP

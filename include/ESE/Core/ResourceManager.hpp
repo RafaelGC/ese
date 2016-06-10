@@ -8,8 +8,6 @@ namespace ESE {
 
     template <class X>
     class ResourceManager {
-        friend class Singleton<ResourceManager>;
-        
         protected:
         std::map <std::string, X> resources;
         ResourceManager() {}
