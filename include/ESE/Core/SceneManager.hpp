@@ -77,7 +77,7 @@ namespace ESE {
          * hay alguna con ese nombre, si hay alguna con ese nombre, no la añadiremos. Si es <b>false</b> 
          * (valor por defecto), no se buscará y el programa será más eficiente.
          * */
-        void addScene(ESE::Scene&scene, bool dontAddIfExists = false);
+        void addScene(ESE::Scene&scene, bool dontAddIfExists = true);
 
         /**
          * @brief Bucle que termina cuando todas las escenas están <b>inactivas</b>.
@@ -93,7 +93,7 @@ namespace ESE {
          * @brief Activa la escena especificada y desactiva todas las demás.
          * @param name Nombre de la escena.
          * */
-        void activateSceneAndDeactivateTheRest(std::string name);
+        void switchTo(std::string name);
 
         /**
          * @brief Desactiva la escena especificada en el nombre, si existe.

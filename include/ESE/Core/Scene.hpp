@@ -79,6 +79,11 @@ namespace ESE {
          * @note Al reimplementar este método se debe llamar al método onPause() de la clase padre.
          * */
         virtual void onPause();
+        
+        virtual bool isActive() const;
+        virtual bool isInactive() const;
+        virtual bool isPaused() const;
+        
         /**
          * @brief Cambia el estado actual.
          * @param state Nuevo estado.

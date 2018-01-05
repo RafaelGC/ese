@@ -58,14 +58,14 @@ namespace ESE {
     void SceneManager::activateScene(std::string name) {
         ESE::Scene *scene;
         scene = lookForScene(name);
-        if (scene) {
+        if (scene && scene->getState() != Scene::State::ACTIVE) {
             scene->onActivate();
         }
     }
 
-    void SceneManager::activateSceneAndDeactivateTheRest(std::string name) {
+    void SceneManager::switchTo(std::string name) {
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-            if ((*it)->getName()!=name){
+            if ((*it)->getName()!=name && (*it)->getState() != Scene::State::INACTIVE){
                 (*it)->onDeactivate();
             }
         }
@@ -74,14 +74,14 @@ namespace ESE {
 
     void SceneManager::deactivateScene(std::string name) {
         ESE::Scene *scene = lookForScene(name);
-        if (scene) {
+        if (scene && scene->getState() != Scene::State::INACTIVE) {
             scene->onDeactivate();
         }
     }
 
     void SceneManager::pauseScene(std::string name) {
         ESE::Scene *scene = lookForScene(name);
-        if (scene) {
+        if (scene && scene->getState() != Scene::State::PAUSED) {
             scene->onPause();
         }
     }
@@ -102,8 +102,9 @@ namespace ESE {
         /*Parar todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
          */
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-            
-            (*it)->onDeactivate();
+            if (it->getState() != Scene::State::INACTIVE) {
+                (*it)->onDeactivate();
+            }
         }
     }
 
@@ -119,9 +120,9 @@ namespace ESE {
         return nullptr;
     }
     
-    bool SceneManager::allScenesInactive() const{
+    bool SceneManager::allScenesInactive() const {
         for (auto it = scenes.begin(); it!=scenes.end(); ++it){
-            if ((*it)->getState()!=ESE::Scene::State::INACTIVE){
+            if ((*it)->getState() != ESE::Scene::State::INACTIVE){
                 return false;
             }
         }

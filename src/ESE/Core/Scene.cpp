@@ -38,6 +38,18 @@ namespace ESE {
     void Scene::onPause() {
         setState(State::PAUSED);
     }
+    
+    bool Scene::isActive() const {
+        return state == State::ACTIVE;
+    }
+    
+    bool Scene::isInactive() const {
+        return state == State::INACTIVE;
+    }
+    
+    bool Scene::isPaused() const {
+        return state == State::PAUSED;
+    }
 
     void Scene::advanceTime(float deltaTime) {
         if (getState() == State::INACTIVE) {
