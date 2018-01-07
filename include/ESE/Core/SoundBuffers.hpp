@@ -8,7 +8,8 @@
 
 namespace ESE {
 
-    class SoundBuffers : public ResourceManager<sf::SoundBuffer> {
+    class SoundBuffers : public ResourceManager<sf::SoundBuffer>, public Singleton<SoundBuffers> {
+        friend class Singleton<SoundBuffers>;
     private:
         SoundBuffers() {}
     public:

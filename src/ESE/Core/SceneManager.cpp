@@ -102,7 +102,7 @@ namespace ESE {
         /*Parar todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
          */
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-            if (it->getState() != Scene::State::INACTIVE) {
+            if ((*it)->getState() != Scene::State::INACTIVE) {
                 (*it)->onDeactivate();
             }
         }
