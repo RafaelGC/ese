@@ -44,6 +44,7 @@ namespace ESE {
                     for (pugi::xml_node nodoTiles = nodoData.first_child(); nodoTiles; nodoTiles = nodoTiles.next_sibling()) {
                         int type = nodoTiles.attribute(L"gid").as_int();
                         if (type != 0) {
+                            
                             if (listener) {
                                 listener->onTileLoaded(type, auxX, auxY);
                             }

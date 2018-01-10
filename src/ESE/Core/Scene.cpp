@@ -2,7 +2,7 @@
 
 namespace ESE {
 
-    Scene::Scene(std::string name, sf::RenderWindow *window) {
+    Scene::Scene(std::string name, sf::RenderWindow& window) {
         setState(State::INACTIVE);
         setWindow(window);
         this->name = name;
@@ -11,8 +11,12 @@ namespace ESE {
     Scene::~Scene() {
     }
 
-    void Scene::setWindow(sf::RenderWindow *window) {
-        this->window = window;
+    void Scene::setWindow(sf::RenderWindow& window) {
+        this->window = &window;
+    }
+    
+    sf::RenderWindow& Scene::getWindow() {
+        return *this->window;
     }
 
     Scene::State Scene::getState() const{

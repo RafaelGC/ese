@@ -8,6 +8,7 @@
 
 #include <ESE/External/pugixml.hpp>
 #include <ESE/TileEngine/TileDrawable.hpp>
+#include <iostream>
 
 namespace ESE {
 
@@ -16,7 +17,6 @@ namespace ESE {
     protected:
         sf::Texture *tileset;
         std::map<int, sf::IntRect>rects;
-        float originX, originY;
         /**
          * @brief Ancho y alto en tiles del mapa.
          * */
@@ -25,14 +25,14 @@ namespace ESE {
          * @brief Ancho y alto de cata tile.
          * */
         int tileWidth, tileHeight;
-        sf::FloatRect renderingLimits;
         std::vector<T>tiles;
+        
+        sf::View view;
 
     public:
 
         TilemapRenderer() {
             tileset = nullptr;
-            originX = originY = 0;
             width = height = 0;
             tileWidth = tileHeight = 0;
         }
@@ -91,43 +91,14 @@ namespace ESE {
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
-            for (T tile : tiles) {
+            for (const T& tile : tiles) {
+                if (tile.getPosition().x + tile.getSize().x < view.getCenter().x - view.getSize().x / 2) { continue; }
+                if (tile.getPosition().x > view.getCenter().x + view.getSize().x / 2) { continue; }
+                if (tile.getPosition().y + tile.getSize().y < view.getCenter().y - view.getSize().y / 2) { continue; }
+                if (tile.getPosition().y > view.getCenter().y + view.getSize().y / 2) { continue; }
+                
                 target.draw(tile, states);
             }
-        }
-
-        /**
-         * @brief Permite elegir a partir de dónde se comenzará a dibujar el mapa.
-         * */
-        void setOriginOfMap(float x, float y) {
-            //Desplazamos todos los tiles.
-            for (unsigned int i = 0; i < tiles.size(); i++) {
-
-                T t = tiles[i]; //Hacemos una copia para acceder más rápido a la posición x e y.
-                float newPositionX = (originX - this->originX) + t.getPosition().x;
-                float newPositionY = (originY - this->originY) + t.getPosition().y;
-                tiles[i].setPosition(newPositionX, newPositionY); //Pero modificamos el
-                //tile original del vector.
-                tiles[i].setVisibleInTilemap(false);
-                if (newPositionX > renderingLimits.left && newPositionX < renderingLimits.left + renderingLimits.width) {
-                    if (newPositionY > renderingLimits.top && newPositionY < renderingLimits.top + renderingLimits.height) {
-                        tiles[i].setVisibleInTilemap(true);
-                    }
-                }
-            }
-
-            this->originX = originX;
-            this->originY = originY;
-        }
-
-        /**
-         * @brief Permite establecer los límites de dibujo para optimizar el rendimiento.
-         * */
-        void setRenderingLimits(float x, float y, float width, float height) {
-            renderingLimits.top = y;
-            renderingLimits.left = x;
-            renderingLimits.width = width;
-            renderingLimits.height = height;
         }
 
         /**
@@ -155,11 +126,11 @@ namespace ESE {
          * */
         std::pair<int, T*> addTile(int type, int colX, int rowY) {
             //int index = colRowToIndex(colX,rowY);
-            //std::cout << width << " -->" << colX << ", " << rowY << ": " << index << std::endl;
+            //std::cout << width << " -->" << colX << ", " << rowY << ": " << std::endl;
             T tmpTile;
             tmpTile.setTexture(*tileset);
             tmpTile.setTextureRect(rects[type]);
-            tmpTile.setPosition(originX + colX*tileWidth, originY + rowY * tileHeight);
+            tmpTile.setPosition(colX*tileWidth, rowY * tileHeight);
             tiles.push_back(tmpTile);
             return std::make_pair(tiles.size() - 1, &tiles.back());
         }
@@ -171,10 +142,6 @@ namespace ESE {
          * */
         T* tileAt(int index) {
             return (&tiles[index]);
-        }
-
-        sf::Vector2f getOriginOfMap() {
-            return sf::Vector2f(originX, originY);
         }
 
         /**
@@ -231,6 +198,10 @@ namespace ESE {
             tiles.clear();
             tiles.resize(0);
 
+        }
+        
+        void updateView(const sf::View& view) {
+            this->view = view;
         }
 
     };

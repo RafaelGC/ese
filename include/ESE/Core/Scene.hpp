@@ -35,7 +35,7 @@ namespace ESE {
          * @brief Construye una escena <b>inactiva</b>.
          * @param window Referencia a la ventana donde se dibujarán los elementos de la escena.
          * */
-        Scene(std::string name, sf::RenderWindow*window);
+        Scene(std::string name, sf::RenderWindow& window);
         virtual ~Scene();
         /**
          * @return Estado actual de la escena. @see State
@@ -47,7 +47,8 @@ namespace ESE {
          * @brief Permite seleccionar la ventana sobre la que se dibujará la escena.
          * @param window Ventana objetivo.
          * */
-        virtual void setWindow(sf::RenderWindow*window);
+        virtual void setWindow(sf::RenderWindow& window);
+        virtual sf::RenderWindow& getWindow();
 
     protected:
         /**
