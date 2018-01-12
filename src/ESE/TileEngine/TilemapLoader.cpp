@@ -1,5 +1,7 @@
 #include <ESE/TileEngine/TilemapLoader.hpp>
 
+#include "ESE/TileEngine/TilemapRenderer.hpp"
+
 namespace ESE {
 
     TilemapLoader::TilemapLoader() {
@@ -17,7 +19,7 @@ namespace ESE {
             std::cout << "Tilemap could not be loaded." << std::endl;
         }
 
-        //El primer y único nodo es el mapa, que contiene otros nodos.
+        //El primer nodo es el mapa, que contiene otros nodos.
         pugi::xml_node map = doc.first_child();
         //Este nodo tiene información útil como el tamaño del mapa en tiles así como el ancho y alto
         //de cada tile.
@@ -26,6 +28,9 @@ namespace ESE {
         tileWidth = map.attribute(L"tilewidth").as_int();
         tileHeight = map.attribute(L"tileheight").as_int();
 
+        //tilemapRenderer.setSize(sf::Vector2u(width, height));
+        this->sizeLoaded(sf::Vector2u(width, height), sf::Vector2u(tileWidth, tileHeight));
+        
         if (listener) {
             listener->onInfoLoaded(tileWidth, tileHeight, width, height);
         }
@@ -36,6 +41,10 @@ namespace ESE {
             if (wcscmp(node.name(), L"layer") == 0) {
                 //Dentro de la capa hay un elemento "data" que a su vez contiene un motón de
                 //nodos "tile" cuyos valores son los que nos interesan.
+                
+                
+                this->layerLoaded(node.attribute(L"name").as_string());
+                
                 pugi::xml_node nodoData = node.first_child();
                 if (wcscmp(nodoData.name(), L"data") == 0) {
 
@@ -43,13 +52,12 @@ namespace ESE {
                     //Ahora recorremos, dentro de data, todos los tiles.
                     for (pugi::xml_node nodoTiles = nodoData.first_child(); nodoTiles; nodoTiles = nodoTiles.next_sibling()) {
                         int type = nodoTiles.attribute(L"gid").as_int();
+                        
+                        
                         if (type != 0) {
-                            
-                            if (listener) {
-                                listener->onTileLoaded(type, auxX, auxY);
-                            }
+                            this->tileLoaded(type, sf::Vector2u(auxX, auxY));
                         }
-
+                        //std::cout << auxX << ", " << auxY << std::endl;
                         auxX++;
                         if (auxX > width - 1) {
                             auxX = 0;
@@ -58,6 +66,8 @@ namespace ESE {
                     }
 
                 }
+                
+                this->layerFinished();
 
             } else if (wcscmp(node.name(), L"objectgroup") == 0) {
                 //Dentro del nodo objectgroup hay un montón de objetos que nos interesan.

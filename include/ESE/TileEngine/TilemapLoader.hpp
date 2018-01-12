@@ -7,6 +7,7 @@
 #include <ESE/External/pugixml.hpp>
 
 #include <iostream>
+#include <SFML/System/Vector2.hpp>
 
 namespace ESE {
 
@@ -39,16 +40,17 @@ namespace ESE {
         void setTileLoadedListener(TileLoadedListener*listener);
         /**
          * @brief Carga el mapa desde un fichero XML.
-         * El método infoLoaded() del listener es
-         * ejecutado cuando se encuentra información útil como el tamaño del mapa y el de
-         * los  tiles. Esto puede ser útil porque el programador necesitará de estos datos antes
-         * de añadir nada al TilemapRenderer.
-         * También se llama desde aquí al método tileLoaded() cada vez que se encuentra un
-         * tile, pasándole como parámetro la posición x e y (en casillas) del tile que se ha encontrado
-         * así como el número que lo identifica.
+         * En este punto el tileset <b>debería tener ya una textura y un tamaño
+         * de tile válido</b>.
          * */
         void loadFromFile(std::string file);
 
+        virtual void sizeLoaded(sf::Vector2u mapSize, const sf::Vector2u& tileSize) = 0;
+        virtual void layerLoaded(const std::wstring& name) = 0;
+        virtual void layerFinished() = 0;
+        virtual void tileLoaded(int gid, const sf::Vector2u& position) = 0;
+        
+        
         int getHeight();
         int getTileHeight();
         int getTileWidth();
