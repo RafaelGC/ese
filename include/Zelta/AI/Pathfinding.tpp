@@ -55,7 +55,6 @@ namespace zt {
 
         std::vector<NodeType> path;
         if (success) {
-            //std::cout << "Reconstructing..." << std::endl;
 
             DiscoveredNode<NodeType>& f = closedList.back();
 
