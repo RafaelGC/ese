@@ -17,7 +17,7 @@ namespace ESE {
     class Fonts : public ESE::ResourceManager<sf::Font>, public ESE::Singleton<Fonts> {
         friend class Singleton;
     private:
-        Fonts() {}
+        Fonts() : ESE::ResourceManager<sf::Font>("font") {}
     public:
         virtual void loadFromFile(const std::string & name,const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {

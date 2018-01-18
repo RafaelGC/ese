@@ -2,19 +2,22 @@
 #define RESOURCES_HPP
 
 #include <ESE/Core/Singleton.hpp>
+#include <ESE/Core/Loadable.hpp>
+#include <ESE/Core/ResourceLoader.hpp>
 #include <map>
 
 namespace ESE {
 
     template <class X>
-    class ResourceManager {
+    class ResourceManager : public Loadable {
         protected:
         std::map <std::string, X> resources;
-        ResourceManager() {}
+        std::string name;
+        ResourceManager(const std::string& name) : name(name) {
+            ResourceLoader::registerResourceManager(name, *this);
+        }
         
         public:
-
-        virtual void loadFromFile(const std::string & name, const std::string & path) = 0;
 
         X* getResource(const std::string & name) {
 
@@ -23,6 +26,10 @@ namespace ESE {
             }
 
             return &resources[name];
+        }
+        
+        const std::string& getName() const {
+            return name;
         }
 
     };
