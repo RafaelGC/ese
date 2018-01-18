@@ -11,7 +11,7 @@ namespace ESE {
     class SoundBuffers : public ResourceManager<sf::SoundBuffer>, public Singleton<SoundBuffers> {
         friend class Singleton<SoundBuffers>;
     private:
-        SoundBuffers() {}
+        SoundBuffers() : ESE::ResourceManager<sf::SoundBuffer>("sound") {}
     public:
         virtual void loadFromFile(const std::string & name,const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {
