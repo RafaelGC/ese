@@ -6,6 +6,7 @@
 #include <Zelta/Core/Log.hpp>
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/ResourceManager.hpp>
+#include <Zelta/Core/Arguments.hpp>
 
 namespace zt {
 
@@ -19,10 +20,12 @@ namespace zt {
     class Application {
     protected:
         sf::RenderWindow window;
-        zt::SceneManager *sceneManager;
-
+        SceneManager *sceneManager;
+        Arguments arguments;
+        
     public:
         Application();
+        Application(int argc, char** argv);
         virtual ~Application();
 
         /**
@@ -39,6 +42,8 @@ namespace zt {
          * principal.
          * */
         virtual void run();
+        
+        virtual const Arguments& getArguments() const;
 
     };
 
