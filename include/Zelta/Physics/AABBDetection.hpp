@@ -1,5 +1,5 @@
-#ifndef AABBDETECTION_HPP
-#define AABBDETECTION_HPP
+#ifndef ZELTALIB_AABBDETECTION_HPP
+#define ZELTALIB_AABBDETECTION_HPP
 
 #include <SFML/Graphics/Rect.hpp>
 

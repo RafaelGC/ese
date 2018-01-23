@@ -31,6 +31,7 @@ namespace zt {
         const sf::Texture& getTextureForTile(unsigned int i) const;
         
         void create(sf::Texture& texture, const sf::Vector2u& size);
+        void create(sf::Texture& texture, const sf::Vector2u& tiles, sf::Vector2f padding, sf::Vector2f margin);
         
     private:
         std::vector<sf::Texture> textures;
