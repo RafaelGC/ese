@@ -56,6 +56,8 @@ namespace zt {
         Vector2f mult(float x, float y) const;
 
         Vector2f rotated(float angle) const;
+        
+        float getAngle() const;
 
         sf::Vector2f toSfml() const;
 

@@ -111,6 +111,10 @@ namespace zt {
         return Vector2f(cos(angle) * x - sin(angle) * y, sin(angle) * x + cos(angle) * y);
     }
 
+    float Vector2f::getAngle() const {
+        return std::atan2(-x, y) * (180 / M_PI);
+    }
+    
     sf::Vector2f Vector2f::toSfml() const {
         return sf::Vector2f(x, y);
     }

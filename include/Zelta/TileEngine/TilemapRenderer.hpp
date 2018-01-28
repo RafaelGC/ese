@@ -7,7 +7,6 @@
 #include <SFML/Graphics/Drawable.hpp>
 
 #include <Zelta/External/pugixml.hpp>
-#include <Zelta/TileEngine/TileSprite.hpp>
 #include <Zelta/TileEngine/TilemapLayer.hpp>
 #include <iostream>
 
@@ -21,13 +20,7 @@ namespace zt {
          * @brief Ancho y alto en tiles del mapa.
          * */
         sf::Vector2u size;
-        /**
-         * @brief Ancho y alto de cata tile.
-         * */
-        sf::Vector2u tileSize;
-        
-        Tileset* tileset;
-        
+
         std::vector<TilemapLayer<T>> layers;
         
         sf::View view;
@@ -35,7 +28,6 @@ namespace zt {
     public:
 
         TilemapRenderer() {
-            tileset = nullptr;
         }
 
         ~TilemapRenderer() {
@@ -49,12 +41,6 @@ namespace zt {
             return size;
         }
         
-        /**
-         * @brief Permite seleccionar el tileset que se utilizará para renderizar los tiles.
-         * */
-        void setTileset(Tileset& tileset) {
-            this->tileset = &tileset;
-        }
         
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
             for (const TilemapLayer<T>& layer : layers) {
