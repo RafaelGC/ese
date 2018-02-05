@@ -34,6 +34,11 @@ namespace zt {
         void setY(float y);
         void set(float x, float y);
 
+        /**
+         * Normaliza el vector. Para obtener este vector normalizado pero
+         * manteniendo este intacto usa normalized().
+         * @see normalized()
+         */
         void normalize();
 
         Vector2f& add(const Vector2f& other);
@@ -43,6 +48,12 @@ namespace zt {
         Vector2f& rotate(float angle);
 
         /// NO MODIFICADORES ///
+        /**
+         * Devuelve el vector normalizado.
+         * @warning Este método no modifica el objeto en el que se llama sino
+         * que devuelve uno nuevo.
+         * @return Vector normalizado.
+         */
         Vector2f normalized() const;
 
         Vector3f cross(const Vector2f& other) const;
@@ -58,7 +69,15 @@ namespace zt {
         Vector2f rotated(float angle) const;
         
         float getAngle() const;
-
+        
+        /**
+         * Calcula el vector que va desde this hasta other.
+         * Este método es azúcar sintáctico para: other.minus(*this).
+         * @param Vector destino.
+         * @return Vector que tiene origen en this y termina en other.
+         */
+        Vector2f to(const Vector2f& other) const;
+        
         sf::Vector2f toSfml() const;
 
         private:

@@ -115,6 +115,10 @@ namespace zt {
         return std::atan2(-x, y) * (180 / M_PI);
     }
     
+    Vector2f Vector2f::to(const Vector2f& other) const {
+        return other.minus(*this);
+    }
+    
     sf::Vector2f Vector2f::toSfml() const {
         return sf::Vector2f(x, y);
     }
