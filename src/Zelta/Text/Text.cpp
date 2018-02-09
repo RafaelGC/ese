@@ -16,7 +16,6 @@ namespace zt {
         pugi::xml_document doc;
 
         if (!doc.load_file(file.c_str())) {
-            ZELTALIB_LOG_ERROR("A file could not be loaded.");
             return;
         }
 

@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 
 #include <Zelta/Core/ResourceManager.hpp>
-#include <Zelta/Core/Log.hpp>
 
 namespace zt {
 

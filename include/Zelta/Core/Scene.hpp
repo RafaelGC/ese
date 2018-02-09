@@ -5,7 +5,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <Zelta/Core/Log.hpp>
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/Animatable.hpp>
 

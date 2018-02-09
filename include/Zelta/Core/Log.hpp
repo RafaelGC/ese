@@ -1,25 +1,28 @@
-#ifndef LOG_HPP
-#define LOG_HPP
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-#include <fstream>
-#include <iostream>
+/* 
+ * File:   Log.hpp
+ * Author: rafa
+ *
+ * Created on February 9, 2018, 8:35 PM
+ */
 
 #ifdef ZELTALIB_DEBUG
-#define ZELTALIB_LOG_OPEN(MODE) zt::Log::open(MODE);
-#define ZELTALIB_LOG_WARNING(MESSAGE) zt::Log::warning(MESSAGE);
-#define ZELTALIB_LOG_INFORMATION(MESSAGE) zt::Log::information(MESSAGE);
-#define ZELTALIB_LOG_ERROR(MESSAGE) zt::Log::error(MESSAGE);
-#define ZELTALIB_LOG_CLOSE()
-#define ZELTALIB_PRINT(MESSAGE) std::cout << MESSAGE << std::endl;
+#define ZELTALIB_LOG_WARNING(LOG, MESSAGE) LOG.log(zt::Log::Type::WARNING, MESSAGE);
+#define ZELTALIB_LOG_INFO(LOG, MESSAGE) LOG.log(zt::Log::Type::INFO, MESSAGE);
+#define ZELTALIB_LOG_ERROR(LOG, MESSAGE) LOG.log(zt::Log::Type::ERROR, MESSAGE);
+#define ZELTALIB_LOG_SUCCESS(LOG, MESSAGE) LOG.log(zt::Log::Type::SUCCESS, MESSAGE);
 #else
-#define ZELTALIB_LOG_OPEN(MODE)
-#define ZELTALIB_LOG_WARNING(MESSAGE)
-#define ZELTALIB_LOG_INFORMATION(MESSAGE)
-#define ZELTALIB_LOG_ERROR(MESSAGE)
-#define ZELTALIB_LOG_CLOSE()
-#define ZELTALIB_PRINT(MESSAGE)
+#define ZELTALIB_LOG_WARNING(LOG, MESSAGE)
+#define ZELTALIB_LOG_INFO(LOG, MESSAGE)
+#define ZELTALIB_LOG_ERROR(LOG, MESSAGE)
+#define ZELTALIB_LOG_SUCCESS(LOG, MESSAGE)
 #endif
-/*Con el script anterior se consigue optimizar el programa. Si el usuario establece el
+/*Con las definiciones anteriores se consigue optimizar el programa. Si el usuario establece el
  * modo de depuración definiendo la constante ZELTALIB_DEBUG y hace uso de algunos de esos
  * métodos, efectivamente, llamará a los métodos correspondientes. Sin embargo, si no
  * está definida la constante ZELTALIB_DEBUG, las llamadas a los métodos LOG_XXX serán
@@ -27,62 +30,21 @@
  * de ejecución.
  */
 
+
+#ifndef ZELTALIB_LOG_HPP
+#define ZELTALIB_LOG_HPP
+
+#include <string>
+
 namespace zt {
-
     class Log {
-        static std::ofstream outputFile;
-        //outputFile nos permite escribir en el archivo de log.
     public:
-
-        enum {
-            KEEP_PREVIOUS_LOG, REMOVE_PREVIOUS_LOG
+        enum class Type {
+            ERROR, WARNING, INFO, SUCCESS
         };
-        //A la hora de crear un nuevo log, podemos eliminar el anterior o mantenerlo y
-        //escribir después de éste, con estas dos constantes especificamos el modo. Son
-        //el argumento que recibe el método open()
-
-        /**
-         * @brief Abre el archivo de log para ser escrito.
-         * @param MODE Modo de apertura. Si es KEEP_PREVIOUS_LOG no se perderá
-         * el log anterior. Si es REMOVE_PREVIOUS_LOG se sobreescribirá.
-         * @return TRUE si el archivo está abierto y se puede escribir, si no, FALSE.
-         * */
-        static bool open(int mode = KEEP_PREVIOUS_LOG);
-
-        /**
-         * @brief Cierra el archivo, no se podrá escribir en él después de liberarlo.
-         * */
-        static void close();
-
-        /**
-         * @brief Escribe una entrada en el archivo de log.
-         * @param tag La etiqueta que tendrá el mensaje.
-         * @param message El mensaje que queremos escribir después de la etiqueta.
-         * Cuando llamamos a esta función, escribiremos una línea en el archivo de así:<br>
-         * <em>TAG		MENSAJE</em><br>
-         * Entre ambos hay una tabulación.
-         * */
-        static void post(std::string tag, std::string message);
-
-        /**
-         * @brief Escribe una entrada con el tag ERR (error).
-         * @param message Mensaje de error.
-         * Este método hace uso de post() al que envía como etiqueta "ERR".
-         * */
-        static void error(std::string message);
-        /**
-         * @brief Escribe una entrada con el tag WAR (warning).
-         * @param message Mensaje de warning.
-         * Este método hace uso de post() al que envía como etiqueta "WAR".
-         * */
-        static void warning(std::string message);
-        /**
-         * @brief Escribe una entrada con el tag INF (información).
-         * @param message Mensaje informativo.
-         * Este método hace uso de post() al que envía como etiqueta "INF".
-         * */
-        static void information(std::string message);
+        
+        virtual void log(Log::Type type, const std::string& message) = 0;
     };
-
 }
-#endif // LOG_HPP
+#endif /* LOG_HPP */
+

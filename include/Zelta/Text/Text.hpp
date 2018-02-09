@@ -5,7 +5,7 @@
 #include <map>
 
 #include <Zelta/External/pugixml.hpp>
-#include <Zelta/Core/Log.hpp>
+
 namespace zt {
 
     class Text {

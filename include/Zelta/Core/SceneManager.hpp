@@ -9,7 +9,6 @@
 
 #include <Zelta/Core/Singleton.hpp>
 #include <Zelta/Core/Scene.hpp>
-#include <Zelta/Core/Log.hpp>
 
 #include <iostream>
 
