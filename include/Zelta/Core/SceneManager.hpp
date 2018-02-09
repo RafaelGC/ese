@@ -18,7 +18,7 @@ namespace zt {
     //Forward declaration.
 
     class SceneManager : public Singleton<SceneManager>{
-        friend class Singleton;
+        friend class Singleton<SceneManager>;
     protected:
         /**
          * @brief Referencia a la ventana sobre la que se dibuja.
