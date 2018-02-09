@@ -1,6 +1,6 @@
 ZeltaLib es una **librería** orientada al **desarrollo de videojuegos** en C++. Se apoya sobre la librería [SFML](http://www.sfml-dev.org/) para trabajar con elementos multimedia. A esto, ZeltaLib añade ciertas utilidades para el desarrollo de juegos, como la gestión de escenas, gestión de recursos, etc.
 
-ZeltaLib está compuesto de varios módulos:
+ZeltaLib está compuesta de varios módulos:
 
 -**Core**: es el núcleo de la librería, tiene clases para crear y gestionar escenas (Scene y SceneManager), para gestionar recursos (ResourceManager), entre otras cosas.
 
@@ -12,10 +12,6 @@ ZeltaLib está compuesto de varios módulos:
 
 ZeltaLib incluye otros módulos que deben ser revisados:
 
--**EntitySystem**: para el desarrollo orientado a entidades y componentes.
-
 -**Text**: intento de soporte de internacionalización.
 
--**Mesh**: para crear grafos y encontrar el camino más corto entre sus nodos. Este módulo fue desarrollado antes que AI y el algoritmo de búsqueda es el de Dijkstra.
-
--**Physics**: contiene algunas utilidades para detectar colisiones.
+-**Mesh**: para crear grafos.
