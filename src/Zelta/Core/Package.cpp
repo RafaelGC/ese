@@ -33,14 +33,11 @@ namespace zt {
         // El índice relaciona el nombre del fichero que se quiere recuperar
         // con su posición y tamaño.
         
-        ZELTALIB_LOG_SUCCESS(zt::ConsoleLog(), "Open");
-        
         
         unsigned long position = 12; // 4 (MAGIC) + 4 (VERSION) + 4 (COMPRESSION)
         file.seekg(position);
         
         while (!file.eof()) {
-            ZELTALIB_LOG_SUCCESS(zt::ConsoleLog(), "Reading file...");
             
             unsigned long size;
 
@@ -49,15 +46,12 @@ namespace zt {
             file.read((char *)&size, SIZE_BYTES);
             if (file.eof()) break;
             
-            ZELTALIB_LOG_SUCCESS(zt::ConsoleLog(), "Size: " + std::to_string(size));
-            
             char name[NAME_BYTES];
 
             // Lectura del nombre del fichero.
             file.read(name, NAME_BYTES);
             if (file.eof()) break;
             
-            ZELTALIB_LOG_SUCCESS(zt::ConsoleLog(), name);
             
             // El cursor ahora mismo está en <<position>>, apuntando al inicio
             // del archivo empaquetado.
@@ -65,7 +59,6 @@ namespace zt {
             
             // La próxima cabecera de fichero estará en position + size.
             position += size + SIZE_BYTES + NAME_BYTES + 1;
-            ZELTALIB_LOG_WARNING(zt::ConsoleLog(), "Curr. position: " + std::to_string(position));
             file.seekg(position);
             
         }
@@ -84,7 +77,7 @@ namespace zt {
     void Package::addFile(const std::string& input, const std::string& target) {
         // Por ahora no se acepta la modificación de ficheros.
         // Si se trata de añadir un archivo que ya existe, ignora.
-        if (fileIndex.count(target) > 0 || file.is_open()) {
+        if (fileIndex.count(target) > 0 || !file.is_open()) {
             return;
         }
         
@@ -93,7 +86,7 @@ namespace zt {
         // Se abre el fichero en modo lectura y binario. Además el cursor
         // se sitúa al final del archivo.
         newFile.open(input, std::ios_base::in | std::ios_base::binary | std::ios_base::ate);
-        if (!newFile.is_open()) throw zt::FileNotFoundException(newFile);
+        if (!newFile.is_open()) throw FileNotFoundException(input);
         
         // Como el cursor está al final, tellg() indica el tamaño del fichero.
         unsigned long size = newFile.tellg();
@@ -146,9 +139,7 @@ namespace zt {
         
         // Se reserva espacio suficiente desde el principio
         // para evitar que se tenga que hacer durante la copia.
-        //outputFile.reserve(inf.size);
-        
-        zt::ConsoleLog().log(zt::Log::Type::SUCCESS, std::to_string(inf.position));
+        outputFile.reserve(inf.size);
         
         for (unsigned long currByte = inf.position; currByte < inf.position + inf.size; currByte++) {
             
