@@ -75,6 +75,14 @@ namespace zt {
         void addFile(const std::string& input, const std::string& target);
         
         /**
+         * Elimina un fichero del paquete.
+         * @param file Nombre del fichero en el paquete.
+         */
+        void removeFile(const std::string& file);
+        
+        std::vector<std::string> getNames() const;
+        
+        /**
          * Devuelve el contenido (bytes) de un fichero que esté en el paquete.
          * @param file Nombre del fichero en el paquete.
          * @return Vector de bytes.
@@ -84,6 +92,7 @@ namespace zt {
         
     protected:
         std::fstream file;
+        std::string packageName;
         std::map<std::string, PackageFileInfo> fileIndex;
         
         // Bytes destinados a almacenar el nombre del fichero.

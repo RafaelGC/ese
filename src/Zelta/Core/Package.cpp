@@ -15,6 +15,8 @@ namespace zt {
     Package::Package() {}
     
     void Package::create(const std::string& fileName, unsigned int compression) {
+        packageName = fileName;
+        
         file.open(fileName, std::ios_base::in | std::ios_base::out | std::ios_base::binary | std::ios_base::trunc);
         if (!file.is_open()) throw FileNotFoundException(fileName);
         
@@ -24,6 +26,8 @@ namespace zt {
     }
     
     void Package::open(const std::string& fileName) {
+        packageName = fileName;
+        
         // Abrir fichero para lectura/escritura y en modo binario.
         file.open(fileName, std::ios_base::in | std::ios_base::out | std::ios_base::binary | std::ios_base::app);
         if (!file.is_open()) throw FileNotFoundException(fileName);
@@ -58,7 +62,7 @@ namespace zt {
             fileIndex[std::string(name)] = PackageFileInfo(position + NAME_BYTES + SIZE_BYTES, size);
             
             // La próxima cabecera de fichero estará en position + size.
-            position += size + SIZE_BYTES + NAME_BYTES + 1;
+            position += size + SIZE_BYTES + NAME_BYTES;
             file.seekg(position);
             
         }
@@ -122,12 +126,78 @@ namespace zt {
         // Se copia el contenido del fichero dentro del paquete.
         while (!newFile.eof()) {
             newFile.read(&byte, 1);
+            if (newFile.eof()) break;
             file.write((const char *)&byte, 1);
         }
         
         newFile.close();
         
         file.clear();
+    }
+    
+    void Package::removeFile(const std::string& fileName) {
+        if (!file.is_open()) return;
+        if (fileIndex.count(fileName) == 0) throw zt::FileNotFoundException();
+        
+        // Eliminar un fichero del paquete es una tarea compleja.
+        // Es algo que generalmente implicará reducir el tamaño del paquete.
+        // C++ no tiene ninguna utilidad estándar para reducir el tamaño del
+        // fichero así que la aproximación que haré será la siguiente:
+        // 1. Crear un nuevo fichero temporal vacío.
+        // 2. Escribir en el fichero todo el contenido del paquete excluyendo
+        // el archivo que se quiere eliminar.
+        // 3. Eliminar el viejo paquete.
+        // 4. Renombrar el fichero temporal para que tenga el nombre del paquete.
+        
+        std::ofstream tmpFile;
+        
+        tmpFile.open(packageName + ".tmp", std::ios_base::trunc | std::ios_base::binary);
+        if (!tmpFile.is_open()) throw zt::FileNotFoundException();
+        
+        // .position apunta al inicio del fichero, pero también se quiere
+        // eliminar el NOMBRE y el TAMAÑO.
+        unsigned long ignoreFrom = fileIndex[fileName].position - NAME_BYTES - SIZE_BYTES;
+        unsigned long ignoreTo = ignoreFrom + NAME_BYTES + SIZE_BYTES + fileIndex[fileName].size;
+        
+        // Copia de la parte anterior al fichero que se quiere eliminar.
+        file.seekg(0);
+        char byte;
+        for (unsigned long i = 0; i < ignoreFrom; i++) {
+            file.read(&byte, 1);
+            tmpFile.write(&byte, 1);
+        }
+        
+        // Copia de la parte posterior.
+        file.seekg(ignoreTo);
+        while (!file.eof()) { // Se copia hasta alcanzar el final.
+            file.read(&byte, 1);
+            if (file.eof()) break;
+            tmpFile.write(&byte, 1);
+        }
+        
+        tmpFile.close();
+        
+        file.clear();
+        
+        // Una vez generado completamente el archivo temporal se elimina el viejo.
+        file.close(); // Antes de eliminarlo se cierra.
+        std::remove(packageName.c_str());
+        
+        // Se renombra el temporal, que pasará a ser el definitivo.
+        std::rename(std::string(packageName + ".tmp").c_str(), packageName.c_str());
+        
+        // Y se reabre el fichero (se volverá a reconstruir el índice).
+        
+        open(packageName);
+    }
+    
+    std::vector<std::string> Package::getNames() const {
+        std::vector<std::string> res;
+        
+        for (auto it = fileIndex.cbegin(); it != fileIndex.cend(); ++it) {
+            res.push_back((*it).first);
+        }
+        return res;
     }
     
     unsigned long Package::getFileSize(const std::string& file) {

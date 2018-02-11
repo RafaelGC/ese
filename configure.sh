@@ -1,7 +1,4 @@
 mkdir "bin"
-mkdir "build"
-mkdir "build/Zelta"
-mkdir "build/Zelta/Core"
-mkdir "build/Zelta/CLI"
+mkdir "build" "build/Zelta" "build/Zelta/Core" "build/Zelta/CLI"
 
 echo "Done."

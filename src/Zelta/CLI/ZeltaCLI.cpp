@@ -95,15 +95,88 @@ public:
     }
 };
 
-class RemoveFile : public Command {
+class RemoveFileFromPackage : public Command {
 public:
     void run(const zt::Arguments &args) {
         zt::ConsoleLog log;
-        if (std::remove(args.get(2).toString().c_str()) == 0) {
+        try {
+            zt::Package package;
+            package.open(args.get(2).toString());
+            package.removeFile(args.get(3).toString());
+            
             log.success("File removed.");
         }
-        else {
+        catch (zt::FileNotFoundException ex) {
             log.error("File could not be removed.");
+        }
+    }
+    
+    int requiredParameters() const {
+        return 2;
+    }
+    
+    std::string shortDescription() const {
+        return "Removes a file from a package. Params: <PACKAGE> <FILENAME_IN_PACKAGE>.";
+    }    
+};
+
+class ExtractFileFromPackage : public Command {
+public:
+    void run(const zt::Arguments &args) {
+        zt::ConsoleLog log;
+        try {
+            zt::Package package;
+            package.open(args.get(2).toString());
+            
+            std::string extractName = args.size() > 4 ? args.get(4).toString() : args.get(3).toString();
+            
+            std::vector<uint8_t> res = package.getFileData(args.get(3).toString());
+            
+            std::ofstream outputFile;
+            outputFile.open(extractName, std::ios_base::trunc | std::ios_base::binary);
+            if (!outputFile.is_open()) throw zt::FileNotFoundException();
+            
+            for (uint8_t& b : res) {
+                outputFile.write((const char*)&b, 1);
+            }
+            outputFile.close();
+            
+            log.success("File extracted.");
+        }
+        catch (zt::FileNotFoundException ex) {
+            log.error("File could not be extracted.");
+        }
+    }
+    
+    int requiredParameters() const {
+        return 2;
+    }
+    
+    std::string shortDescription() const {
+        return "Extracts a file from a package. Params: <PACKAGE> <FILENAME_IN_PACKAGE> [OUTPUT_FILE].";
+    }      
+};
+
+class ListPackage : public Command {
+public:
+    void run(const zt::Arguments &args) {
+        zt::ConsoleLog log;
+        try {
+            zt::Package package;
+            package.open(args.get(2).toString());
+            
+            std::vector<std::string> files = package.getNames();
+            
+            if (files.size() == 0) {
+                log.warning("Empty package.");
+            }
+            
+            for (std::string& name : files) {
+                log.info(name);
+            }
+        }
+        catch (zt::FileNotFoundException ex) {
+            log.error("Package could not be listed.");
         }
     }
     
@@ -112,8 +185,8 @@ public:
     }
     
     std::string shortDescription() const {
-        return "Removes a file. Params: <FILENAME>.";
-    }
+        return "List all files in a package. Params: <PACKAGE>.";
+    }    
 };
 
 int main(int argc, char** argv) {
@@ -124,7 +197,9 @@ int main(int argc, char** argv) {
     
     commands["package:create"] = new CreatePackageCommand;
     commands["package:add"] = new AddFileToPackage;
-    commands["package:remove"] = new RemoveFile;
+    commands["package:remove"] = new RemoveFileFromPackage;
+    commands["package:extract"] = new ExtractFileFromPackage;
+    commands["package:list"] = new ListPackage;
     commands["help"] = new HelpCommand(commands);
     
     if (args.size() >= 2 && commands.count(args.get(1).toString()) > 0 && commands[args.get(1).toString()]->requiredParameters() <= args.size() - 2) {
