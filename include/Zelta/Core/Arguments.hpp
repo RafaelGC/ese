@@ -18,36 +18,37 @@
 
 #include <vector>
 
-class Arguments {
-public:
-    /**
-     * @brief Crea un conjunto de parámetros vacío.
-     */
-    Arguments();
-    
-    /**
-     * @brief Conjunto de parámetros a partir de un puntero de punteros.
-     * @param argc Número de parámetros.
-     * @param argv Puntero a cadenas de caracteres.
-     */
-    Arguments(int argc, char** argv);
-    
-    virtual void initialize(int argc, char** argv);
-    
-    /**
-     * @return Número de parámetros.
-     */
-    int size() const;
-    
-    /**
-     * @param i Índice del parámetro. El 0 debería ser el nombre del ejecutable.
-     * @return Parámetro.
-     */
-    const Argument& get(int i) const;
-    
-    private:
-    std::vector<Argument> args;
-};
+namespace zt {
+    class Arguments {
+    public:
+        /**
+         * @brief Crea un conjunto de parámetros vacío.
+         */
+        Arguments();
 
+        /**
+         * @brief Conjunto de parámetros a partir de un puntero de punteros.
+         * @param argc Número de parámetros.
+         * @param argv Puntero a cadenas de caracteres.
+         */
+        Arguments(int argc, char** argv);
+
+        virtual void initialize(int argc, char** argv);
+
+        /**
+         * @return Número de parámetros.
+         */
+        int size() const;
+
+        /**
+         * @param i Índice del parámetro. El 0 debería ser el nombre del ejecutable.
+         * @return Parámetro.
+         */
+        const Argument& get(int i) const;
+
+        private:
+        std::vector<Argument> args;
+    };
+}
 #endif
 

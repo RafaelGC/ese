@@ -112,9 +112,14 @@ namespace zt {
         // Nota: si pones file.write(target.c_str(), 512) y target tiene
         // una longitud menor que 512, el resto se puede rellenar con basura.
         
+        // La posición de escritura actual apunta a la posición
+        // donde se comienza a escribir el fichero dentro del paquete. Es un buen
+        // momento para meter el fichero en el índice.
+        fileIndex[std::string(target)] = PackageFileInfo(file.tellp(), size);
+        
         char byte;
         
-        // Se copia el contenido del fichero.
+        // Se copia el contenido del fichero dentro del paquete.
         while (!newFile.eof()) {
             newFile.read(&byte, 1);
             file.write((const char *)&byte, 1);
@@ -123,7 +128,6 @@ namespace zt {
         newFile.close();
         
         file.clear();
-        
     }
     
     unsigned long Package::getFileSize(const std::string& file) {

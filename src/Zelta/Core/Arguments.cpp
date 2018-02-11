@@ -6,23 +6,25 @@
 
 #include <Zelta/Core/Arguments.hpp>
 
-Arguments::Arguments() {}
+namespace zt {
+    Arguments::Arguments() {}
 
-Arguments::Arguments(int argc, char** argv) {
-    initialize(argc, argv);
-}
-
-void Arguments::initialize(int argc, char** argv) {
-    args.clear();
-    for (int i = 0; i < argc; i++) {
-        args.push_back(Argument(argv[i]));
+    Arguments::Arguments(int argc, char** argv) {
+        initialize(argc, argv);
     }
-}
 
-int Arguments::size() const {
-    return args.size();
-}
+    void Arguments::initialize(int argc, char** argv) {
+        args.clear();
+        for (int i = 0; i < argc; i++) {
+            args.push_back(Argument(argv[i]));
+        }
+    }
 
-const Argument& Arguments::get(int i) const {
-    return args[i];
+    int Arguments::size() const {
+        return args.size();
+    }
+
+    const Argument& Arguments::get(int i) const {
+        return args[i];
+    }
 }

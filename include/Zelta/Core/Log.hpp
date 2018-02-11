@@ -44,6 +44,10 @@ namespace zt {
         };
         
         virtual void log(Log::Type type, const std::string& message) = 0;
+        virtual void error(const std::string& message);
+        virtual void info(const std::string& message);
+        virtual void warning(const std::string& message);
+        virtual void success(const std::string& message);
     };
 }
 #endif /* LOG_HPP */
