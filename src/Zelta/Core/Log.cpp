@@ -9,16 +9,13 @@
 namespace zt {
     void Log::error(const std::string& message) {
         log(Type::ERROR, message);
-    }
-    
+    };
     void Log::info(const std::string& message) {
         log(Type::INFO, message);
     }
-    
     void Log::warning(const std::string& message) {
         log(Type::WARNING, message);
     }
-    
     void Log::success(const std::string& message) {
         log(Type::SUCCESS, message);
     }

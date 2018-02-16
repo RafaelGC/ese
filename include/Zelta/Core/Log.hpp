@@ -43,11 +43,19 @@ namespace zt {
             ERROR, WARNING, INFO, SUCCESS
         };
         
+        Log() {
+            lastMode = Type::INFO;
+        }
+        
         virtual void log(Log::Type type, const std::string& message) = 0;
+        
         virtual void error(const std::string& message);
         virtual void info(const std::string& message);
         virtual void warning(const std::string& message);
         virtual void success(const std::string& message);
+        
+    protected:
+        Type lastMode;
     };
 }
 #endif /* LOG_HPP */

@@ -18,10 +18,12 @@
 
 namespace zt {
 
-class ConsoleLog : public Log {
-public:
-    void log(Log::Type type, const std::string& message);
-};
+    class ConsoleLog : public Log {
+    public:
+        void log(Log::Type type, const std::string& message);
+        ConsoleLog& operator <<(const std::string& message);
+        ConsoleLog& operator <<(const Log::Type& type);
+    };
 
 }
 

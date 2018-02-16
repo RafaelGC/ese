@@ -34,6 +34,9 @@ namespace zt {
         void close();
         
         void log(Log::Type type, const std::string& message);
+        
+        FileLog& operator <<(const std::string& message);
+        FileLog& operator <<(const Log::Type& type);
 
     private:
         std::ofstream outputFile;

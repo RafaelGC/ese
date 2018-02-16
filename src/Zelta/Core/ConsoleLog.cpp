@@ -26,4 +26,13 @@ namespace zt {
         std::cout << "\033[0m";
     }
     
+    ConsoleLog& ConsoleLog::operator <<(const std::string& message) {
+        log(lastMode, message);
+        return *this;
+    }
+    
+    ConsoleLog& ConsoleLog::operator <<(const Log<ConsoleLog>::Type& type) {
+        lastMode = type;
+        return *this;
+    }
 }

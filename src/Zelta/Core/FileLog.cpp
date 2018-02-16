@@ -52,5 +52,14 @@ namespace zt {
             }
         }
     }
-
+    
+    FileLog& FileLog::operator <<(const std::string& message) {
+        log(lastMode, message);
+        return (*this);
+    }
+    
+    FileLog& FileLog::operator <<(const Log::Type& type) {
+        lastMode = type;
+        return *this;
+    }
 }
