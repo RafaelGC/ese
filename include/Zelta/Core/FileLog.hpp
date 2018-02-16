@@ -7,7 +7,7 @@
 namespace zt {
 
     /**
-     * Class for logging to a file.
+     * @brief Class for logging to a file.
      */
     class FileLog : public Log {
     public:

@@ -11,6 +11,11 @@
  * Created on February 9, 2018, 8:35 PM
  */
 
+#ifndef ZELTALIB_LOG_HPP
+#define ZELTALIB_LOG_HPP
+
+#include <string>
+
 #ifdef ZELTALIB_DEBUG
 #define ZELTALIB_LOG_WARNING(LOG, MESSAGE) LOG.log(zt::Log::Type::WARNING, MESSAGE);
 #define ZELTALIB_LOG_INFO(LOG, MESSAGE) LOG.log(zt::Log::Type::INFO, MESSAGE);
@@ -29,12 +34,6 @@
  * ignoradas. La ventaja de esto es que se hace al momento de compilar y no en tiempo
  * de ejecución.
  */
-
-
-#ifndef ZELTALIB_LOG_HPP
-#define ZELTALIB_LOG_HPP
-
-#include <string>
 
 namespace zt {
     /**

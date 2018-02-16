@@ -15,8 +15,8 @@
 
 namespace zt {
 
-    TaskPool::TaskPool() : uniqueLock(mtx) {
-        maxThreads = 2;
+    TaskPool::TaskPool(unsigned int threads) : uniqueLock(mtx) {
+        maxThreads = threads;
         stopped = false;
 
         threadManager = std::thread(&TaskPool::work, this);

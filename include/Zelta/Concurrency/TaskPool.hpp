@@ -25,17 +25,45 @@
 
 namespace zt {
 
+    /**
+     * @brief A TaskPool keeps a set of workers (threads represented by the Worker class). You
+     * can enqueue tasks in the TaskPool and they will be executed when a worker
+     * is free.
+     * 
+     * To create a task just inherit from Task and implement in the work() method 
+     * the code you want to execute in a different thread. The work() method must
+     * return true if it has finished the task so that the worker gets released.
+     * Then, instance the Task and add it to a TaskPool with addTask(). 
+     * The task will be executed as soon as a Worker is free.
+     * 
+     */
     class TaskPool {
     public:
-        TaskPool();
+        /**
+         * Creates a TaskPool with a certain amount of threads.
+         * @param threads 
+         */
+        TaskPool(unsigned int threads = 2);
         virtual ~TaskPool();
 
+        /**
+         * Adds a new task to the queue.
+         * @param task
+         */
         void addTask(Task& task);
 
-        void work();
+        /**
+         * Waits until the manager thread and the Worker threads are done.
+         */
         void join();
         void stop();
     protected:
+        /**
+         * Manages the queue. This method is executed in a different thread and
+         * keeps running until you call stop(). Workers notificates this thread
+         * when they are free so that it can send them new tasks.
+         */
+        void work();
     private:
         std::queue<Task*> pendantTasks;
 

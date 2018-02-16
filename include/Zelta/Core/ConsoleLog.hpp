@@ -19,7 +19,7 @@
 namespace zt {
 
     /**
-     * Class for logging to the console.
+     * @brief Class for logging to the console.
      */
     class ConsoleLog : public Log {
     public:

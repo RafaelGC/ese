@@ -19,6 +19,9 @@
 #include <vector>
 
 namespace zt {
+    /**
+     * @brief Represents a set of arguments (e.g.: the command line arguments).
+     */
     class Arguments {
     public:
         /**

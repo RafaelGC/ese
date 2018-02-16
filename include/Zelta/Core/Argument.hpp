@@ -16,6 +16,9 @@
 
 #include <string>
 
+/**
+ * @brief Represents an argument.
+ */
 class Argument {
 public:
     Argument(const std::string& argument);

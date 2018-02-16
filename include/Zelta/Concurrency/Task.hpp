@@ -16,12 +16,23 @@
 
 namespace zt {
 
+    /**
+     * @brief A Task is a unit of work.
+     * 
+     * If you need something to be executed in a different thread you can use
+     * Task and TaskPool classes.
+     * 
+     * @see TaskPool
+     */
     class Task {
     public:
         Task();
-        //Task(const Task& orig);
         virtual ~Task();
 
+        /**
+         * 
+         * @return True if the task is finished.
+         */
         virtual bool work() = 0;
     private:
 
