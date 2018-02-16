@@ -12,7 +12,7 @@
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Drawable.hpp>
-#include <Zelta/Core/Layer.hpp>
+#include <Zelta/Core/RenderLayer.hpp>
 
 namespace zt {
     /**
@@ -30,7 +30,7 @@ namespace zt {
 
         void draw(sf::RenderTarget & target, sf::RenderStates states) const;
     private:
-        std::vector<zt::Layer> layers;
+        std::vector<zt::RenderLayer> layers;
     };
 
 }

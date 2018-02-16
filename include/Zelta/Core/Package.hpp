@@ -76,10 +76,16 @@ namespace zt {
         
         /**
          * Elimina un fichero del paquete.
+         * Es una operación costosa porque requiere reescribir el paquete
+         * excluyendo el fichero eliminado.
          * @param file Nombre del fichero en el paquete.
          */
         void removeFile(const std::string& file);
         
+        /**
+         * Devuelve los nombres de los ficheros del paquete.
+         * @return 
+         */
         std::vector<std::string> getNames() const;
         
         /**

@@ -17,7 +17,7 @@ namespace zt {
 
     void RenderManager::addDrawable(sf::Drawable& drawable, int z) {
 
-        zt::Layer newLayer(z,true);
+        zt::RenderLayer newLayer(z,true);
         newLayer.addDrawable(drawable);
 
 

@@ -1,20 +1,20 @@
-#include <Zelta/Core/Layer.hpp>
+#include <Zelta/Core/RenderLayer.hpp>
 
 namespace zt {
 
-    Layer::Layer() {
+    RenderLayer::RenderLayer() {
         visible = true;
     }
 
-    Layer::Layer(int z, bool visible) {
+    RenderLayer::RenderLayer(int z, bool visible) {
         this->z = z;
         this->visible = true;
     }
 
-    Layer::~Layer() {
+    RenderLayer::~RenderLayer() {
     }
 
-    void Layer::draw(sf::RenderTarget & target, sf::RenderStates states) const {
+    void RenderLayer::draw(sf::RenderTarget & target, sf::RenderStates states) const {
         if (!visible) {
             return;
         }
@@ -25,7 +25,7 @@ namespace zt {
         }
     }
 
-    void Layer::addDrawable(sf::Drawable &item) {
+    void RenderLayer::addDrawable(sf::Drawable &item) {
 
         for (auto i : drawableItems) {
             if (i == &item) return;
@@ -34,7 +34,7 @@ namespace zt {
         drawableItems.push_back(&item);
     }
 
-    bool Layer::removeDrawable(sf::Drawable& item) {
+    bool RenderLayer::removeDrawable(sf::Drawable& item) {
         for (auto it = drawableItems.begin(); it != drawableItems.end(); ++it) {
             if (*it == &item) {
                 drawableItems.erase(it);
@@ -44,31 +44,31 @@ namespace zt {
         return false;
     }
 
-    void Layer::setVisible(bool visible) {
+    void RenderLayer::setVisible(bool visible) {
         this->visible = visible;
     }
 
-    bool Layer::isVisible() const {
+    bool RenderLayer::isVisible() const {
         return visible;
     }
 
-    int Layer::getZ() const {
+    int RenderLayer::getZ() const {
         return z;
     }
 
-    void Layer::setZ(int z) {
+    void RenderLayer::setZ(int z) {
         this->z = z;
     }
     
-    unsigned int Layer::count() const {
+    unsigned int RenderLayer::count() const {
         return drawableItems.size();
     }
     
-    bool Layer::isEmpty() const {
+    bool RenderLayer::isEmpty() const {
         return count()==0;
     }
 
-    bool Layer::operator<(zt::Layer& other) const {
+    bool RenderLayer::operator<(zt::RenderLayer& other) const {
         return getZ() < other.getZ();
     }
 

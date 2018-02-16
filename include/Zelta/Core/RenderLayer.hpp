@@ -1,5 +1,5 @@
-#ifndef LAYER_HPP
-#define LAYER_HPP
+#ifndef ZELTALIB_LAYER_HPP
+#define ZELTALIB_LAYER_HPP
 
 #include <vector>
 
@@ -13,7 +13,7 @@ namespace zt {
      * Esta clase permite agrupar ciertos elementos dibujables (sprites, textos, etc) para poder
      * hacerlos desaparecer al mismo tiempo.
      * */
-    class Layer : public sf::Drawable {
+    class RenderLayer : public sf::Drawable {
     protected:
         /**
          * @brief Sólo cuanto es true se dibujarán los elementos de la capa.
@@ -32,14 +32,14 @@ namespace zt {
         /**
          * @brief El constructor por defecto. Pone <b>visible = true</b> y <b>z = 0</b>
          * */
-        Layer();
+        RenderLayer();
         
         /**
          * @brief El constructor acepta como parámetro la profundidad y la visibilidad.
          */
-        Layer(int z, bool visible = true);
+        RenderLayer(int z, bool visible = true);
         
-        virtual ~Layer();
+        virtual ~RenderLayer();
         /**
          * @brief Método heredado que se encarga de dibujar todos los elementos de la capa
          * si esta está visible.
@@ -69,7 +69,7 @@ namespace zt {
         unsigned int count() const;
         bool isEmpty() const;
         
-        bool operator<(zt::Layer & other) const;
+        bool operator<(zt::RenderLayer & other) const;
 
     };
 
