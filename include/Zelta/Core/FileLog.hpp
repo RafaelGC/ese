@@ -6,6 +6,9 @@
 
 namespace zt {
 
+    /**
+     * Class for logging to a file.
+     */
     class FileLog : public Log {
     public:
 
@@ -13,23 +16,30 @@ namespace zt {
             KEEP_PREVIOUS_LOG, REMOVE_PREVIOUS_LOG
         };
         
+        /**
+         * Constructs a FileLog. You should open the file before logging using
+         * the open() method or using the second constructor instead.
+         */
         FileLog();
+        
+        /**
+         * @param filename Output file.
+         * @param mode If the file already exists you can either keep it or override it.
+         */
         FileLog(const std::string& filename, Mode mode = Mode::KEEP_PREVIOUS_LOG);
         ~FileLog();
         
         /**
-         * @brief Abre el archivo de log para ser escrito.
-         * @param Nombre del fichero de salida.
-         * @param MODE Modo de apertura. Si es KEEP_PREVIOUS_LOG no se perderá
-         * el log anterior. Si es REMOVE_PREVIOUS_LOG se sobreescribirá.
+         * @brief Open the log file.
+         * @param Filename.
+         * @param MODE If the file already exists you can keep it or you can override it.
          * @return TRUE si el archivo está abierto y se puede escribir, si no, FALSE.
          * */
         bool open(const std::string& filename, Mode mode = Mode::KEEP_PREVIOUS_LOG);
 
         /**
-         * @brief Cierra el archivo, no se podrá escribir en él después de liberarlo.
-         * El archivo, si no se ha cerrado, se cierra automáticamente desde el
-         * destructor.
+         * @brief Closes the log file. You won't be able to write after closing it.
+         * If you don't call it explicitly it will be called in the destructor.
          * */
         void close();
         

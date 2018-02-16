@@ -12,71 +12,96 @@ namespace zt {
 
     class SceneManager;
     //Forward declaration
-
     /**
-     * @brief Representa la escena de un juego, como el menú principal, la pantalla de créditos o la de juego..
-     * Esta clase está hecha para ser heredada. Es especialmente útil reimplementar los métodos manageEvents(),
-     * logic() y render(), pero  también onActivate(), onDeactivate() y onPause().
-     * */
+     * @brief Represents a game scene. It could be the main menu, the credits scene, etc.
+     * This class is made to be inherited from it. Scenes must have a unique name.
+     * 
+     * There are three methods you'll want/have to override:
+     * -manageEvents(): this is the place to manage the events. The current behaviour
+     * of this method is to finish the game when you click the X button.
+     * -logic(): you can place the logic here.
+     * -draw(): rendering stuff goes here.
+     * 
+     * The Scene class does not really care about where you put your logic or your
+     * event handling. That means that you can put your logic in the manageEvents()
+     * method and handle the events in the logic() one. Of course, you shouldn't.
+     * 
+     * 
+     * Both manageEvents() and logic() receive the deltaTime as argument to move 
+     * things accordingly with the frame rate, render() doesn't because you should
+     * not update anything there.
+     * 
+     * Sometimes the order in which these methods are called is important. By default,
+     * they are called like this: manageEvents() then logic() then render().
+     * You can change this behaviour by overriding the advanceTime() method.
+     * 
+     * Keep in mind that the advanceTime() method is called from the game loop, but
+     * this method <b>is not</b> the game loop. The game loop is in the scene manager.
+     */
     class Scene : public Animatable{
         friend class SceneManager;
 
     public:
 
         /**
-         * @brief Estados que puede tener una escena.
+         * @brief States of a scene.
          * */
         enum class State {
             ACTIVE, PAUSED, INACTIVE
         };
 
         /**
-         * @brief Construye una escena <b>inactiva</b>.
-         * @param window Referencia a la ventana donde se dibujarán los elementos de la escena.
+         * @brief Constructs an <b>inactive</b> scene.
+         * @param name Unique name for the scene.
+         * @param window Reference to the window where you'll draw your stuff.
          * */
         Scene(std::string name, sf::RenderWindow& window);
         virtual ~Scene();
         /**
-         * @return Estado actual de la escena. @see State
+         * @return Current state. @see State
          * */
         State getState() const;
         
         std::string getName() const;
+        
         /**
-         * @brief Permite seleccionar la ventana sobre la que se dibujará la escena.
-         * @param window Ventana objetivo.
+         * @brief Allows you to change the window where you'll be drawing.
+         * @param window Window.
          * */
         virtual void setWindow(sf::RenderWindow& window);
+        
         virtual sf::RenderWindow& getWindow();
 
     protected:
         /**
-         * @brief Estado actual.
+         * @brief Current state.
          * */
         State state;
         /**
-         * @brief Referencia a la ventana sobre la que se dibujará la escena.
+         * @brief Pointer to the current window.
          * */
         sf::RenderWindow *window;
         sf::Event events;
-        /**
-         * @brief Nombre de la escena. Debe ser único y elegido por el usuario.
-         */
         std::string name;
 
         /**
-         * @brief Método que es llamado cuando la escena es activada.
-         * @note Al reimplementar este método se debe llamar al método onActivate() de la clase padre.
+         * @brief This method gets called when the scene is activated.
+         * @note If you override this method do not forget to call the
+         * parent onActivate() method or it will not be activated.
          * */
         virtual void onActivate();
+        
         /**
-         * @brief Método que es llamado cuando la escena es desactivada.
-         * @note Al reimplementar este método se debe llamar al método onDeactivate() de la clase padre.
+         * @brief This method gets called when the scene is deactivated.
+         * @note If you override this method do not forget to call the
+         * parent onDeactivated() method or it will not be activated.
          * */
         virtual void onDeactivate();
+        
         /**
-         * @brief Método que es llamado cuando la escena es pausada.
-         * @note Al reimplementar este método se debe llamar al método onPause() de la clase padre.
+         * @brief This method gets called when the scene is paused.
+         * @note If you override this method do not forget to call the
+         * parent onPaused() method or it will not be activated.
          * */
         virtual void onPause();
         
@@ -85,52 +110,49 @@ namespace zt {
         virtual bool isPaused() const;
         
         /**
-         * @brief Cambia el estado actual.
-         * @param state Nuevo estado.
+         * @brief Changes the state of the scene. It's not public because
+         * you should change the state of the scene through the scene manager.
+         * @param state New state.
          * */
         virtual void setState(State state);
 
         /**
-         * @brief Se encarga de llamar a los métodos manageEvents(), logic() y render(). El programador
-         * <b>NO</b> llama a este método, de eso se encarga el SceneManager.
-         * @param deltaTime Segundos que han transcurrido desde la última vez que llamamos
-         * a esta función. Se e
-         * Este método <b>no es un bucle</b>, sino que está hecho para ser llamado desde
-         * un bucle (el verdadero bucle de juego), que está en el método manage() del
-         * gestor de estados, que a su vez debería ser llamado por el método run() de Application.
-         * <br><br>
-         * Los métodos manageEvents() y logic() <b>sólo son llamados</b> si la escena está activa.El
-         * método render() es llamado también cuando está en pausa.
-         * <br>Si la escena está inactiva ninguno de los métodos es llamado.
-         * <br><br>
-         * Si el programador quiere <b>otro comportamiento</b>, puede reimplementar este método a su gusto.
-         * */
+         * @brief This method calls the manageEvents(), logic() and render() methods. You don't call
+         * this method, it's called by the scene manager.
+         * 
+         * By default, manageEvents() and logic() are only called when the scene is active. The
+         * render() method is also called when the scene is paused. You may want to
+         * override this behaviour.
+         * @param deltaTime
+         */
         virtual void advanceTime(float deltaTime);
+        
         /**
-         * @brief Método pensado para ser reimplementado. Aquí iría todo lo relacionado con la gestión de eventos.
+         * @brief You should override this method and handle the events from here.
          * */
         virtual void manageEvents(float deltaTime);
+        
         /**
-         * @brief Lógica del juego (IA, colisiones, etc).
+         * @brief You must implement this method. You should handle the logic here.
          * */
         virtual void logic(float deltaTime) = 0;
+        
         /**
-         * @brief En ella se dibujará la escena.
-         * El programador <b>no</b> necesita llamar a los métodos
-         * window->clear() ni window->display() porque estos son llamados en el instante apropiado por el
-         * SceneManager.
+         * @brief The drawing stuff goes here. Note that you don't need to call
+         * window->clear() nor window->display(). The scene manager cares about
+         * that. 
          * */
         virtual void render() = 0;
 
         /**
-         * @brief Un método rápido para finalizar la escena si el botón de cerrar ha sido pulsado.
-         * Se debe utilizar dentro manageEvents(), dentro del bucle que analiza sf::Events.
+         * @brief If you call this method inside the poll event loop it will stop
+         * all scenes when the window X button is pressed.
          * */
         virtual void checkIfWindowClosed();
 
         /**
-         * @brief Método para dibujar de manera más ágil en la ventana, para no tener que hacer:
-         * window->draw(something), hacemos sólo: draw(something).
+         * @brief Helper method to draw things easily. Instead of calling window->draw(something)
+         * you just need to call draw(something).
          * */
         virtual void draw(const sf::Drawable &drawable) const;
     };

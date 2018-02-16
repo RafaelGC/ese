@@ -12,10 +12,12 @@ namespace zt {
 
     template <class T>
     /**
-     * @brief Clase base para otras clases singleton.
-     * Para usar esta clase: 1. hereda de la clase Singleton y pasa como argumento
-     * la clase base. 2. La clase base debe declararse como amiga (friend class)
-     * de la clase Singleton. 3. Haz que el constructor de la clase hija sea privado.
+     * @brief Base class for other singleton classes.
+     * 
+     * To use this class: 
+     * 1. Inherit from this class and use your child class as template parament.
+     * 2. Child class must declare this class as friend (friend class Singleton<YOUR CHILD CLASS>).
+     * 3. Make your child class constructor private.
      */
     class Singleton {
 

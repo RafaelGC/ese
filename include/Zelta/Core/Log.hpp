@@ -37,6 +37,9 @@
 #include <string>
 
 namespace zt {
+    /**
+     * Base class for logging.
+     */
     class Log {
     public:
         enum class Type {

@@ -18,6 +18,9 @@
 
 namespace zt {
 
+    /**
+     * Class for logging to the console.
+     */
     class ConsoleLog : public Log {
     public:
         void log(Log::Type type, const std::string& message);

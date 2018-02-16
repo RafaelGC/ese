@@ -9,6 +9,15 @@
 #define	ZELTALIB_SCREENDIMENSIONS_HPP
 namespace zt {
 
+    /**
+     * This class performs some calculations to keep aspect ratio.
+     * 
+     * Given a development width and a development height (this is, the
+     * resolution you used during the development) and the target width and target
+     * height (the real size of the window where your game is being executed),
+     * the class provides you with some useful methods to know where you can
+     * draw keeping in ming that you want to respect the aspect ratio.
+     */
     class ScreenDimensions {
     private:
         float devW, devH, targetW, targetH;
