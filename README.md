@@ -31,7 +31,7 @@ Building
 
 I've only built ZeltaLib in Debian. Keep in ming that it's written in C++11. It just depends on SFML and pugixml. pugixml is bundled with the library so you should not care about it but you will need SFML to be installed in your system before compiling.
 
-If you are in Linux just run `configure.sh`. The script just creates some folders, then run `make`. That will generate the file `zeltalib.a` in the `lib` directory. You can also run make -f Makefile.CLI to build the CLI (it will be generated in the `bin` directory). There is a Python script called generate_makefile.py, you should not need it.
+If you are in Linux just run `configure.sh`. The script just creates some folders, then run `make`. That will generate the file `zeltalib.a` in the `lib` directory. You can also run `make -f Makefile.CLI` to build the CLI (it will be generated in the `bin` directory). There is a Python script called `generate_makefile.py`, you should not need it.
 
 Configuring ZeltaLib in your project is as easy as configuring SFML. Just add the `include` directory and add the `zeltalib.a` to the linker.
 

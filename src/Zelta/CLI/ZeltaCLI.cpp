@@ -5,10 +5,16 @@
  */
 #include <iostream>
 #include <map>
+#include <regex>
+
 #include <Zelta/Core/Arguments.hpp>
 #include <Zelta/Core/Package.hpp>
 #include <Zelta/Core/FileNotFoundException.hpp>
 #include <Zelta/Core/ConsoleLog.hpp>
+
+#ifdef __linux__
+#include <sys/stat.h>
+#endif
 
 class Command {
 public:
@@ -41,6 +47,64 @@ public:
     
 private:
     const std::map<std::string, Command*>* commands;
+};
+
+class CreateProjectCommand : public Command {
+public:
+    void run(const zt::Arguments &args) {
+        zt::ConsoleLog log;
+        try {
+            zt::Package package;
+            
+#ifdef __linux__
+            // Create project folder.
+            const int dir_err = mkdir(args.get(2).toString().c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+            if (-1 == dir_err) {
+                log.error("Directory could not be created.");
+                return;
+            }
+            log.success("Project folder created");
+            
+            // Copy files to the project folder.
+            
+            // Set up the makefile.
+            std::ifstream  mk("ZeltaLib/cli-files/Makefile");
+            
+            std::string mkStr((std::istreambuf_iterator<char>(mk)),
+                 std::istreambuf_iterator<char>());
+
+            // Replace <<PROJECT_NAME>> with project name defined by the user.
+            std::regex e ("<<PROJECT_NAME>>");
+            mkStr = std::regex_replace (mkStr,e,args.get(2).toString());
+            
+            std::ofstream  mkDst(args.get(2).toString() + "/Makefile");
+            mkDst << mkStr;
+            mk.close();
+            mkDst.close();
+            
+            std::ifstream  mn("ZeltaLib/cli-files/main.cpp", std::ios::binary);
+            std::ofstream  mnDst(args.get(2).toString() + "/main.cpp",   std::ios::binary);
+            mnDst << mn.rdbuf();
+            mn.close();
+            mnDst.close();
+            
+            log.success("Files created.");
+#else
+            log.warning("Command not implemented for your system.");
+#endif
+        }
+        catch (zt::FileNotFoundException ex) {
+            log.error("File could not be created.");
+        }
+    }
+    
+    int requiredParameters() const {
+        return 1;
+    }
+    
+    std::string shortDescription() const {
+        return "Creates a new ZeltaLib project. Params: <PROJECT_NAME>.";
+    }
 };
 
 class CreatePackageCommand : public Command {
@@ -200,6 +264,7 @@ int main(int argc, char** argv) {
     commands["package:remove"] = new RemoveFileFromPackage;
     commands["package:extract"] = new ExtractFileFromPackage;
     commands["package:list"] = new ListPackage;
+    commands["project:create"] = new CreateProjectCommand;
     commands["help"] = new HelpCommand(commands);
     
     if (args.size() >= 2 && commands.count(args.get(1).toString()) > 0 && commands[args.get(1).toString()]->requiredParameters() <= args.size() - 2) {

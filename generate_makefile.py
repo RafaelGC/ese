@@ -39,7 +39,7 @@ CFLAGS = -Iinclude -ISFML -std=c++11 -lsfml-system -lsfml-window -lsfml-graphics
 
 OBJECTS = """ + ' '.join(buildObjects) + """
 
-bin/zeltalib.a: $(OBJECTS)
+bin/libzeltalib.a: $(OBJECTS)
 	ar rvs $@ """ + ' '.join(buildObjects) + """
 
 """ + '\n\n'.join(rules)) 
