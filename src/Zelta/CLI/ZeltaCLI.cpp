@@ -159,6 +159,32 @@ public:
     }
 };
 
+class AddDirectoryToPackage : public Command {
+public:
+    void run(const zt::Arguments &args) {
+        zt::ConsoleLog log;
+        try {
+            zt::Package package;
+            package.open(args.get(2).toString());
+            
+            package.addDirectory(args.get(3).toString());
+            
+            log.success("Directory added.");
+        }
+        catch (zt::FileNotFoundException ex) {
+            log.error("Directory could not be added.");
+        }
+    }
+    
+    int requiredParameters() const {
+        return 1;
+    }
+    
+    std::string shortDescription() const {
+        return "Adds a directory to an existing package. Params: <PACKAGE> <DIRECTORY>.";
+    }
+};
+
 class RemoveFileFromPackage : public Command {
 public:
     void run(const zt::Arguments &args) {
@@ -261,6 +287,7 @@ int main(int argc, char** argv) {
     
     commands["package:create"] = new CreatePackageCommand;
     commands["package:add"] = new AddFileToPackage;
+    commands["package:add-directory"] = new AddDirectoryToPackage;
     commands["package:remove"] = new RemoveFileFromPackage;
     commands["package:extract"] = new ExtractFileFromPackage;
     commands["package:list"] = new ListPackage;

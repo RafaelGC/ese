@@ -9,6 +9,13 @@
 #include <Zelta/Core/FileNotFoundException.hpp>
 #include <istream>
 #include <cstring>
+#ifdef __linux__
+#include <dirent.h>
+#include <sys/stat.h>
+#endif
+
+#include <iostream>
+#include <queue>
 
 namespace zt {
     
@@ -133,6 +140,61 @@ namespace zt {
         newFile.close();
         
         file.clear();
+    }
+    
+    
+    void Package::addDirectory(const std::string& directory) {
+#if __linux__
+        std::queue<std::string> pendantDirectories;
+        std::string currentDirectory;
+        std::string currentEntry;
+        std::vector<std::string> files;
+        
+        pendantDirectories.push(directory);
+        
+        while (!pendantDirectories.empty()) {
+            currentDirectory = pendantDirectories.front();
+            pendantDirectories.pop();
+            
+            // Listar las entradas del directorio actual.
+            DIR* dirp = opendir(currentDirectory.c_str());
+            dirent* dp;
+            while ((dp = readdir(dirp)) != NULL) {
+                // Listamos cada entrada. Si es un archivo
+                // habrá que añadirlo al paquete, si es un directorio
+                // habrá que añadirlo a la lista de directorios pendientes
+                // para seguir expandiendo.
+                currentEntry = std::string(dp->d_name);
+
+                // El directorio actual y el padre no interesan.
+                if (currentEntry == "." || currentEntry == "..") continue;
+
+                // Comprobación de si la entrada es un fichero o un directorio.
+                struct stat statbuf;
+                if (stat(std::string(currentDirectory + "/" + currentEntry).c_str(), &statbuf) != 0) {
+                    // Error con el archivo: ¿no existe? ¿permisos?
+                    continue;
+                }
+
+                if (S_ISDIR(statbuf.st_mode)) {
+                    pendantDirectories.push(currentDirectory + "/" + currentEntry);
+                }
+                else {
+                    files.push_back(currentDirectory + "/" + currentEntry);
+                }
+            }
+
+            closedir(dirp);
+        }
+        
+        for (const std::string& file : files) {
+            // Ignoramos el ./ del inicio del fichero.
+            addFile(file, (file[0] == '.' && file[1] == '/') ? file.substr(2) : file);
+        }
+        
+#else
+        throw std::exception("addDirectory() not implemented");
+#endif
     }
     
     void Package::removeFile(const std::string& fileName) {

@@ -75,6 +75,12 @@ namespace zt {
         void addFile(const std::string& input, const std::string& target);
         
         /**
+         * Añade el contenido del directorio "directory" al paquete.
+         * @param file
+         */
+        void addDirectory(const std::string& directory);
+        
+        /**
          * Elimina un fichero del paquete.
          * Es una operación costosa porque requiere reescribir el paquete
          * excluyendo el fichero eliminado.
