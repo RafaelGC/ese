@@ -10,7 +10,7 @@
 namespace zt {
 
     /**
-     * This class performs some calculations to keep aspect ratio.
+     * @brief This class performs some calculations to keep aspect ratio.
      * 
      * Given a development width and a development height (this is, the
      * resolution you used during the development) and the target width and target
