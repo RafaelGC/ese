@@ -18,7 +18,7 @@
 #include <Zelta/TileEngine/TiledLoader/Object.hpp>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         
         class ObjectLayer {
         public:

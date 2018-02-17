@@ -27,13 +27,6 @@
 #define ZELTALIB_LOG_ERROR(LOG, MESSAGE)
 #define ZELTALIB_LOG_SUCCESS(LOG, MESSAGE)
 #endif
-/*Con las definiciones anteriores se consigue optimizar el programa. Si el usuario establece el
- * modo de depuración definiendo la constante ZELTALIB_DEBUG y hace uso de algunos de esos
- * métodos, efectivamente, llamará a los métodos correspondientes. Sin embargo, si no
- * está definida la constante ZELTALIB_DEBUG, las llamadas a los métodos LOG_XXX serán
- * ignoradas. La ventaja de esto es que se hace al momento de compilar y no en tiempo
- * de ejecución.
- */
 
 namespace zt {
     /**

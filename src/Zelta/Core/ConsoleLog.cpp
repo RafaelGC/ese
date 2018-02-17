@@ -31,7 +31,7 @@ namespace zt {
         return *this;
     }
     
-    ConsoleLog& ConsoleLog::operator <<(const Log<ConsoleLog>::Type& type) {
+    ConsoleLog& ConsoleLog::operator <<(const Log::Type& type) {
         lastMode = type;
         return *this;
     }

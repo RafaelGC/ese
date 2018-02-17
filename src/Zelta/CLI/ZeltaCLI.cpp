@@ -17,7 +17,8 @@
 #endif
 
 namespace zt {
-
+namespace cli {
+    
     class Command {
     public:
         virtual void run(const zt::Arguments &args) = 0;
@@ -281,20 +282,21 @@ namespace zt {
         }    
     };
 }
+}
 int main(int argc, char** argv) {
     
     zt::Arguments args(argc, argv);
     zt::ConsoleLog log;
-    std::map<std::string, Command*> commands;
+    std::map<std::string, zt::cli::Command*> commands;
     
-    commands["package:create"] = new CreatePackageCommand;
-    commands["package:add"] = new AddFileToPackage;
-    commands["package:add-directory"] = new AddDirectoryToPackage;
-    commands["package:remove"] = new RemoveFileFromPackage;
-    commands["package:extract"] = new ExtractFileFromPackage;
-    commands["package:list"] = new ListPackage;
-    commands["project:create"] = new CreateProjectCommand;
-    commands["help"] = new HelpCommand(commands);
+    commands["package:create"] = new zt::cli::CreatePackageCommand;
+    commands["package:add"] = new zt::cli::AddFileToPackage;
+    commands["package:add-directory"] = new zt::cli::AddDirectoryToPackage;
+    commands["package:remove"] = new zt::cli::RemoveFileFromPackage;
+    commands["package:extract"] = new zt::cli::ExtractFileFromPackage;
+    commands["package:list"] = new zt::cli::ListPackage;
+    commands["project:create"] = new zt::cli::CreateProjectCommand;
+    commands["help"] = new zt::cli::HelpCommand(commands);
     
     if (args.size() >= 2 && commands.count(args.get(1).toString()) > 0 && commands[args.get(1).toString()]->requiredParameters() <= args.size() - 2) {
         commands[args.get(1).toString()]->run(args);

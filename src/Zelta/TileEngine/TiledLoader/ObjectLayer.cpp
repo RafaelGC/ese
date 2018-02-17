@@ -1,7 +1,7 @@
 #include <Zelta/TileEngine/TiledLoader/ObjectLayer.hpp>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         ObjectLayer::ObjectLayer(const std::wstring& name) : name(name) {
             
         }

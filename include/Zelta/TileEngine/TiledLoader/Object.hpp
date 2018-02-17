@@ -17,7 +17,7 @@
 #include <string>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         
         class Object {
         public:

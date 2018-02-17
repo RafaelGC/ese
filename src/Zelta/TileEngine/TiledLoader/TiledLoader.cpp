@@ -20,7 +20,7 @@
 #include <iostream>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         TiledLoader::TiledLoader() {
         }
 

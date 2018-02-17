@@ -8,7 +8,7 @@
 #include <vector>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         Map::Map() : width(0), height(0), tileWidth(0), tileHeight(0), orientation(Orientation::Orthogonal) {
             
         }

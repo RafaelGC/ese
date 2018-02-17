@@ -15,6 +15,7 @@
 #define ZELTALIB_RESOURCELOADER_HPP
 
 #include <Zelta/Core/LoadingTarget.hpp>
+#include <Zelta/Core/Package.hpp>
 #include <fstream>
 #include <map>
 #include <iostream>
@@ -109,14 +110,23 @@ namespace zt {
             return *this;
         }
         
-        ResourceLoader& fromPackage() {
+        ResourceLoader& fromPackage(const std::string& path) {
+            pkg.open(path);
             mFromFileSystem = false;
             return *this;
         }
         
         void into() {
             for (auto& file : pendantFiles) {
-                resourceManagers[std::get<0>(file)]->loadFromFile(std::get<1>(file), std::get<2>(file));
+                if (mFromFileSystem) {
+                    resourceManagers[std::get<0>(file)]
+                        ->loadFromFile(std::get<1>(file), std::get<2>(file));
+                }
+                else {
+                    std::vector<uint8_t> data = pkg.getFileData(std::get<2>(file));
+                    resourceManagers[std::get<0>(file)]
+                        ->loadFromMemory(std::get<1>(file), data.data(), data.size());
+                }
             }
         }
         
@@ -142,7 +152,7 @@ namespace zt {
         };
         std::map <std::string, LoadingTarget*> resourceManagers;
         std::vector<std::tuple<std::string, std::string, std::string>> pendantFiles;
-        
+        Package pkg;
         bool mFromFileSystem;
 
     };
