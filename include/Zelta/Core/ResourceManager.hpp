@@ -10,7 +10,7 @@
 namespace zt {
 
     /**
-     * @brief Base class for resources managers. A resource manager acts as a
+     * @brief Base class for resource managers. A resource manager acts as a
      * container for a specific resource type (e.g.: a sf::Texture, sf::SoundBuffer).
      * 
      * ResourceManager inherits from LoadingTarget. That means that ResourceManager

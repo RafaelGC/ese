@@ -1,21 +1,25 @@
 #include <Zelta/Core/Argument.hpp>
 
-Argument::Argument(const std::string& argument) {
-    arg = argument;
-}
+namespace zt {
 
-const std::string& Argument::toString() const {
-    return arg;
-}
+    Argument::Argument(const std::string& argument) {
+        arg = argument;
+    }
 
-int Argument::toInt() const {
-    return std::stoi(arg);
-}
+    const std::string& Argument::toString() const {
+        return arg;
+    }
 
-float Argument::toFloat() const {
-    return std::stof(arg);
-}
+    int Argument::toInt() const {
+        return std::stoi(arg);
+    }
 
-double Argument::toDouble() const {
-    return std::stod(arg);
+    float Argument::toFloat() const {
+        return std::stof(arg);
+    }
+
+    double Argument::toDouble() const {
+        return std::stod(arg);
+    }
+
 }

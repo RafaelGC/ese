@@ -8,11 +8,11 @@
 namespace zt {
 
     /**
-     * @brief Es un contenedor de texturas que hereda de ResourceManager.
+     * @brief Resource manager for sf::Texture.
      * */
-    class Textures : public zt::ResourceManager<sf::Texture> {
+    class TextureManager : public zt::ResourceManager<sf::Texture> {
     public:
-        Textures() : zt::ResourceManager<sf::Texture>("texture") {}
+        TextureManager() : zt::ResourceManager<sf::Texture>("texture") {}
         virtual void loadFromFile(const std::string & name, const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {
                 throw FileNotFoundException();

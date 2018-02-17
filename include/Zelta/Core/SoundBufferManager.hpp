@@ -1,22 +1,19 @@
-/* 
- * File:   FontContainer.hpp
- * Author: Rafa
- *
- * Created on 6 de marzo de 2015, 11:46
- */
+#ifndef SOUNDCONTAINER_HPP
+#define SOUNDCONTAINER_HPP
 
-#ifndef ZELTALIB_FONTCONTAINER_HPP
-#define	ZELTALIB_FONTCONTAINER_HPP
-
+#include <SFML/Audio/SoundBuffer.hpp>
 #include <iostream>
-#include <SFML/Graphics/Font.hpp>
 
 #include <Zelta/Core/ResourceManager.hpp>
+
 namespace zt {
 
-    class Fonts : public zt::ResourceManager<sf::Font> {
+    /**
+     * @brief Resource manager for sf::SoundBuffer.
+     * */
+    class SoundBufferManager : public ResourceManager<sf::SoundBuffer> {
     public:
-        Fonts() : zt::ResourceManager<sf::Font>("font") {}
+        SoundBufferManager() : zt::ResourceManager<sf::SoundBuffer>("sound") {}
         virtual void loadFromFile(const std::string & name,const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {
                 throw FileNotFoundException();
@@ -29,8 +26,6 @@ namespace zt {
             }
         }
     };
-    
+
 }
-
-#endif	/* FONTCONTAINER_HPP */
-
+#endif

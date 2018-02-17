@@ -33,7 +33,7 @@ namespace zt {
     
     /**
      * @brief The Package class allows you to store all your assets (images,
-     * sounds, fonts) in the same file. The class also let you load those
+     * sounds, fonts) in the same file. The class also lets you load those
      * files from the package easily.
      * 
      * The package use a custom format called ZPKG (ZeltaLib Package).
