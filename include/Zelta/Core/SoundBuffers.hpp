@@ -8,14 +8,18 @@
 
 namespace zt {
 
-    class SoundBuffers : public ResourceManager<sf::SoundBuffer>, public Singleton<SoundBuffers> {
-        friend class Singleton<SoundBuffers>;
-    private:
-        SoundBuffers() : zt::ResourceManager<sf::SoundBuffer>("sound") {}
+    class SoundBuffers : public ResourceManager<sf::SoundBuffer> {
     public:
+        SoundBuffers() : zt::ResourceManager<sf::SoundBuffer>("sound") {}
         virtual void loadFromFile(const std::string & name,const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {
-                std::cout << "Error" << std::endl;
+                throw FileNotFoundException();
+            }
+        }
+        
+        virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) {
+            if (resources[name].loadFromMemory(data, size) == false) {
+                throw FileNotFoundException();
             }
         }
     };

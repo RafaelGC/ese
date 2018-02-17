@@ -14,14 +14,18 @@
 #include <Zelta/Core/ResourceManager.hpp>
 namespace zt {
 
-    class Fonts : public zt::ResourceManager<sf::Font>, public zt::Singleton<Fonts> {
-        friend class Singleton;
-    private:
-        Fonts() : zt::ResourceManager<sf::Font>("font") {}
+    class Fonts : public zt::ResourceManager<sf::Font> {
     public:
+        Fonts() : zt::ResourceManager<sf::Font>("font") {}
         virtual void loadFromFile(const std::string & name,const std::string & file) {
             if (resources[name].loadFromFile(file) == false) {
-                std::cout << "Error" << std::endl;
+                throw FileNotFoundException();
+            }
+        }
+        
+        virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) {
+            if (resources[name].loadFromMemory(data, size) == false) {
+                throw FileNotFoundException();
             }
         }
     };

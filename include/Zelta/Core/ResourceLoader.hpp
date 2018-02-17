@@ -23,7 +23,7 @@
 namespace zt {
     class ResourceLoader {
     public:
-        static void load(const std::string& file) {
+        void load(const std::string& file) {
             std::ifstream input(file);
             std::string name, type, path;
             int rangeFrom, rangeTo;
@@ -53,8 +53,7 @@ namespace zt {
                     path = line;
                     
                     state = FIRST_TOKEN;
-                    ResourceLoader::resourceManagers[type]
-                    ->loadFromFile(name, path);
+                    resourceManagers[type]->loadFromFile(name, path);
                 }
                 else if (state == RANGE_FROM) {
                     rangeFrom = std::stoi(line);
@@ -89,8 +88,7 @@ namespace zt {
                             std::size_t p2 = cpath.find("%");
                             cpath.replace(p2, 1, std::to_string(i));
                             
-                            ResourceLoader::resourceManagers[type]
-                                ->loadFromFile(cname, cpath);
+                            resourceManagers[type]->loadFromFile(cname, cpath);
                         }
                     }
                 }
@@ -99,8 +97,8 @@ namespace zt {
             }
         }
         
-        static void registerResourceManager(const std::string& name, Loadable& loadable) {
-            ResourceLoader::resourceManagers[name] = &loadable;
+        void registerResourceManager(Loadable& loadable) {
+            ResourceLoader::resourceManagers[loadable.getName()] = &loadable;
         }
     private:
         enum State {
@@ -116,12 +114,8 @@ namespace zt {
             RANGE_TYPE,
             RANGE_PATH
         };
-        static std::map <std::string, Loadable*> resourceManagers;
-        
-        class PendantLoad {
-        public:
-            std::string type, name, path;
-        };
+        std::map <std::string, Loadable*> resourceManagers;
+
     };
 }
 

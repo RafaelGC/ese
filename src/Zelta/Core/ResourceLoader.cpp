@@ -3,5 +3,4 @@
 #include <map>
 
 namespace zt {
-    std::map <std::string, Loadable*> ResourceLoader::resourceManagers;
 }
