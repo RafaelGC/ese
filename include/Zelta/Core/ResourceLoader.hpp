@@ -14,7 +14,7 @@
 #ifndef ZELTALIB_RESOURCELOADER_HPP
 #define ZELTALIB_RESOURCELOADER_HPP
 
-#include <Zelta/Core/Loadable.hpp>
+#include <Zelta/Core/LoadingTarget.hpp>
 #include <fstream>
 #include <map>
 #include <iostream>
@@ -23,7 +23,12 @@
 namespace zt {
     class ResourceLoader {
     public:
-        void load(const std::string& file) {
+        
+        ResourceLoader() {
+            mFromFileSystem = true;
+        }
+        
+        ResourceLoader& load(const std::string& file) {
             std::ifstream input(file);
             std::string name, type, path;
             int rangeFrom, rangeTo;
@@ -53,7 +58,7 @@ namespace zt {
                     path = line;
                     
                     state = FIRST_TOKEN;
-                    resourceManagers[type]->loadFromFile(name, path);
+                    pendantFiles.push_back(std::make_tuple(type, name, path));
                 }
                 else if (state == RANGE_FROM) {
                     rangeFrom = std::stoi(line);
@@ -88,18 +93,39 @@ namespace zt {
                             std::size_t p2 = cpath.find("%");
                             cpath.replace(p2, 1, std::to_string(i));
                             
-                            resourceManagers[type]->loadFromFile(cname, cpath);
+                            pendantFiles.push_back(std::make_tuple(type, cname, cpath));
                         }
                     }
                 }
                 
                 if (input.eof()) break;
             }
+            
+            return *this;
         }
         
-        void registerResourceManager(Loadable& loadable) {
-            ResourceLoader::resourceManagers[loadable.getName()] = &loadable;
+        ResourceLoader& fromFileSystem() {
+            mFromFileSystem = true;
+            return *this;
         }
+        
+        ResourceLoader& fromPackage() {
+            mFromFileSystem = false;
+            return *this;
+        }
+        
+        void into() {
+            for (auto& file : pendantFiles) {
+                resourceManagers[std::get<0>(file)]->loadFromFile(std::get<1>(file), std::get<2>(file));
+            }
+        }
+        
+        template<class T, class... TS>
+        void into(T& t, TS&... ts) {
+            resourceManagers[t.getName()] = &t;
+            into(ts...);
+        }
+        
     private:
         enum State {
             FIRST_TOKEN,
@@ -114,7 +140,10 @@ namespace zt {
             RANGE_TYPE,
             RANGE_PATH
         };
-        std::map <std::string, Loadable*> resourceManagers;
+        std::map <std::string, LoadingTarget*> resourceManagers;
+        std::vector<std::tuple<std::string, std::string, std::string>> pendantFiles;
+        
+        bool mFromFileSystem;
 
     };
 }

@@ -37,7 +37,11 @@
 
 namespace zt {
     /**
-     * Base class for logging.
+     * @brief Base class for logging.
+     * 
+     * You may find useful the ZELTA_LOG_WARNING(...), ZELTA_LOG_INFO(...),
+     * ZELTA_LOG_ERROR(...) and ZELTA_LOG_SUCCESS(...) directives that
+     * only logs when the ZELTALIB_DEBUG directive si defined.
      */
     class Log {
     public:
