@@ -2,10 +2,13 @@
 
 namespace zt {
 
-    Scene::Scene(std::string name, sf::RenderWindow& window) {
-        setState(State::INACTIVE);
-        setWindow(window);
+    Scene::Scene(std::string name, SceneManager& sceneManager) {
         this->name = name;
+        this->sceneManager = &sceneManager;
+        this->window = &sceneManager.getRenderWindow();
+        
+        setState(State::INACTIVE);
+        setWindow(sceneManager.getRenderWindow());
     }
 
     Scene::~Scene() {
@@ -83,7 +86,7 @@ namespace zt {
         if (events.type == sf::Event::Closed) {
             /*Si se ha presionado el botón de cerrar la ventana, llamamos a un método que desactiva
              * todas las escenas, es decir, probablemente se acabe con la aplicación.*/
-            zt::SceneManager::instance().deactivateAllScenes();
+            sceneManager->deactivateAllScenes();
         }
     }
 

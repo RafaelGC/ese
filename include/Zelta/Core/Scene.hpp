@@ -42,7 +42,6 @@ namespace zt {
         friend class SceneManager;
 
     public:
-
         /**
          * @brief States of a scene.
          * */
@@ -55,7 +54,7 @@ namespace zt {
          * @param name Unique name for the scene.
          * @param window Reference to the window where you'll draw your stuff.
          * */
-        Scene(std::string name, sf::RenderWindow& window);
+        Scene(std::string name, SceneManager& sceneManager);
         virtual ~Scene();
         /**
          * @return Current state. @see State
@@ -73,6 +72,7 @@ namespace zt {
         virtual sf::RenderWindow& getWindow();
 
     protected:
+        SceneManager* sceneManager;
         /**
          * @brief Current state.
          * */

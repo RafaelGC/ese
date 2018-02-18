@@ -277,15 +277,11 @@ namespace zt {
         // para evitar que se tenga que hacer durante la copia.
         outputFile.reserve(inf.size);
         
-        for (unsigned long currByte = inf.position; currByte < inf.position + inf.size; currByte++) {
-            
-            // Se sitúa el cursor en el byte correspondiente para leer.
-            file.seekg(currByte, std::ios_base::beg);
-            uint8_t r;
+        // Se sitúa el cursor en el byte correspondiente para leer.
+        file.seekg(inf.position, std::ios_base::beg);
+        uint8_t r;
+        for (unsigned long i = 0; i < inf.size; i++) {
             file.read((char *)&r, 1);
-            
-            
-            
             outputFile.push_back(r);
         }
         

@@ -134,7 +134,7 @@ namespace cli {
         }
     };
 
-    class AddFileToPackage : public Command {
+    class AddFileToPackageCommand : public Command {
     public:
         void run(const zt::Arguments &args) {
             zt::ConsoleLog log;
@@ -162,7 +162,7 @@ namespace cli {
         }
     };
 
-    class AddDirectoryToPackage : public Command {
+    class AddDirectoryToPackageCommand : public Command {
     public:
         void run(const zt::Arguments &args) {
             zt::ConsoleLog log;
@@ -188,7 +188,7 @@ namespace cli {
         }
     };
 
-    class RemoveFileFromPackage : public Command {
+    class RemoveFileFromPackageCommand : public Command {
     public:
         void run(const zt::Arguments &args) {
             zt::ConsoleLog log;
@@ -213,7 +213,7 @@ namespace cli {
         }    
     };
 
-    class ExtractFileFromPackage : public Command {
+    class ExtractFileFromPackageCommand : public Command {
     public:
         void run(const zt::Arguments &args) {
             zt::ConsoleLog log;
@@ -250,7 +250,7 @@ namespace cli {
         }      
     };
 
-    class ListPackage : public Command {
+    class ListPackageCommand : public Command {
     public:
         void run(const zt::Arguments &args) {
             zt::ConsoleLog log;

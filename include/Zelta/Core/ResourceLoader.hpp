@@ -126,6 +126,7 @@ namespace zt {
                     std::vector<uint8_t> data = pkg.getFileData(std::get<2>(file));
                     resourceManagers[std::get<0>(file)]
                         ->loadFromMemory(std::get<1>(file), data.data(), data.size());
+                    
                 }
             }
         }

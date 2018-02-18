@@ -2,7 +2,8 @@
 
 namespace zt {
 
-    SceneManager::SceneManager() {
+    SceneManager::SceneManager(sf::RenderWindow& window) {
+        this->renderWindow = &window;
     }
 
     SceneManager::~SceneManager() {
@@ -12,20 +13,13 @@ namespace zt {
         this->renderWindow = &renderWindow;
     }
 
-    void SceneManager::addScene(zt::Scene &scene, bool dontAddIfExists) {
-        if (dontAddIfExists) {
-            /*Si el usuario establece este argumento como true, se comprobará si existe una escena
-             * ya añadida y, si existe, no se añadirá. Si se establece a false, no se comprobará y
-             * será más eficiente.
-             * Por defecto viene en false.
-             */
-            if (this->lookForScene(scene.getName())) {
-                return;
-            }
+    void SceneManager::addScene(zt::Scene &scene) {
+        
+        if (this->lookForScene(scene.getName())) {
+            return;
         }
 
-        scenes.push_back(&scene);
-        
+        scenes.push_back(&scene);        
     }
 
     void SceneManager::manage() {
@@ -127,6 +121,10 @@ namespace zt {
             }
         }
         return true;
+    }
+    
+    sf::RenderWindow& SceneManager::getRenderWindow() {
+        return *renderWindow;
     }
 
 }

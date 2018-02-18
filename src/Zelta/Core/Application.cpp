@@ -3,8 +3,8 @@
 namespace zt {
 
     Application::Application() {
-        sceneManager = &zt::SceneManager::instance();
-        sceneManager->setRenderWindow(getWindow());
+        //sceneManager = &zt::SceneManager::instance();
+        //sceneManager->setRenderWindow(getWindow());
     }
     
     Application::Application(int argc, char** argv) : Application() {
@@ -25,7 +25,7 @@ namespace zt {
     }
 
     void Application::run() {
-        zt::SceneManager::instance().manage();
+        //zt::SceneManager::instance().manage();
     }
     
     const Arguments& Application::getArguments() const {
