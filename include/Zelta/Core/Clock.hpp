@@ -9,44 +9,42 @@
 #define	CLOCK_HPP
 
 #include <Zelta/Core/Animatable.hpp>
+#include <SFML/System/Clock.hpp>
 
 namespace zt{
     /**
-     * @brief Esta clase es una alternativa a la clase Clock de SFML. Implementa
-     * la interfaz Animatable por lo que será necesario llamar a su método
-     * advanceTime(float dt) para que actualice su contador interno. Permite pausar
-     * y continuar.
+     * @brief Class that measures time. Unlike sf::Clock, this one can be paused.
      */
-    class Clock : public Animatable
-    {
+    class Clock : sf::Clock {
         private:
-            float elapsedTime;
             bool paused;
+            sf::Clock pausedClock;
+            sf::Time pausedTime;
         public:
             Clock();
             /**
-             * @return Devuelve los segundos transcurridos.
+             * @return Returns the elapsed time.
              */
-            float getElapsedTime() const;
+            sf::Time getElapsedTime() const;
+            
             /**
-             * @param deltaTime Actualiza el contador interno del reloj. Imprescindible
-             * llamar a este método desde el gameloop.
-             */
-            void advanceTime(float deltaTime);
-            /**
-             * @brief Pausa el reloj.
+             * @brief Pauses the clock.
              */
             void pause();
+            
             /**
-             * @brief Reinicia el contador interno de segundos transcurridos.
+             * @brief Restarts the clock.
+             * @return Returns the elapsed time.
              */
-            void reset();
+            sf::Time restart();
+            
             /**
-             * @brief Continua con el contador interno.
+             * @brief Resumes the clock.
              */
             void resume();
+            
             /**
-             * @return Devuelve true si el reloj está pausado.
+             * @return True if the clock is paused.
              */
             bool isPaused() const;
 
