@@ -5,21 +5,21 @@ ZeltaLib is a game development oriented library written in C++. It uses SFML to 
 
 ZeltaLib consists of these modules:
 
--**Core**: is the heart of the library. It deals with the scene and resource managment. It also has some rendering and logging tools.
+- **Core**: is the heart of the library. It deals with the scene and resource managment. It also has some rendering and logging tools.
 
--**Concurrency**: includes the TaskPool and Task classes to implement a [thread pool](https://en.wikipedia.org/wiki/Thread_pool).
+- **Concurrency**: includes the TaskPool and Task classes to implement a [thread pool](https://en.wikipedia.org/wiki/Thread_pool).
 
--**AI**: implements an A* search algorithm (Pathfinding class). It is flexible enough to support different neighborhood criterion that must be defined by the user by inheriting from IMesh.
+- **AI**: implements an A* search algorithm (Pathfinding class). It is flexible enough to support different neighborhood criterion that must be defined by the user by inheriting from IMesh.
 
--**TileEngine**: it's a set of classes to build tile based maps. The module comes with a very basic parser to load [Tiled TMX](http://www.mapeditor.org/) files.
+- **TileEngine**: it's a set of classes to build tile based maps. The module comes with a very basic parser to load [Tiled TMX](http://www.mapeditor.org/) files.
 
--**CLI**: a command line interface is bundled with ZeltaLib. It is in an early stage, at the moment it just helps to package assets.
+- **CLI**: a command line interface is bundled with ZeltaLib. It is in an early stage, at the moment it just helps to package assets.
 
 ZeltaLib includes two more modules that must be revised (they need a refactory):
 
--**Text**: a first attempt to add some internacionalization/localization support.
+- **Text**: a first attempt to add some internacionalization/localization support.
 
--**Mesh**: module for creating graphs.
+- **Mesh**: module for creating graphs.
 
 Documentation
 --------------

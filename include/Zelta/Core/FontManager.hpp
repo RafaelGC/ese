@@ -21,13 +21,13 @@ namespace zt {
     public:
         FontManager() : zt::ResourceManager<sf::Font>("font") {}
         virtual void loadFromFile(const std::string & name,const std::string & file) {
-            if (resources[name].loadFromFile(file) == false) {
+            if (resources[name].first.loadFromFile(file) == false) {
                 throw FileNotFoundException();
             }
         }
         
         virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) {
-            if (resources[name].loadFromMemory(data, size) == false) {
+            if (resources[name].first.loadFromMemory(data, size) == false) {
                 throw FileNotFoundException();
             }
         }

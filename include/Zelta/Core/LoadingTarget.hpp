@@ -21,12 +21,20 @@
  * load things into.
  */
 namespace zt {
+    class ResourceProvider;
+    
     class LoadingTarget {
     public:
         virtual ~LoadingTarget() {};
         virtual void loadFromFile(const std::string & name, const std::string & path) = 0;
         virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) = 0;
         virtual const std::string& getName() const = 0;
+        
+        virtual void pendant(const std::string& name, ResourceProvider& provider) = 0;
+        virtual void notPendant(const std::string& name) = 0;
+        
+        virtual bool exists(const std::string& name) const = 0;
+        virtual bool isLoaded(const std::string& name) const = 0;
     };
 }
 #endif /* LOADABLE_HPP */
