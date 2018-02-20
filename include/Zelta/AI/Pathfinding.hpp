@@ -18,6 +18,9 @@
 
 namespace zt {
 
+    /**
+     * @brief A* algorithm implementation.
+     */
     template <class NodeType>
     class DiscoveredNode {
         public:

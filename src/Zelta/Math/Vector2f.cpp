@@ -88,11 +88,11 @@ namespace zt {
         return Vector2f(x - other.x, y - other.y);
     }
 
-    Vector2f Vector2f::mult(float s) const {
+    Vector2f Vector2f::multiplied(float s) const {
         return Vector2f(x * s, y * s);
     }
 
-    Vector2f Vector2f::mult(float mx, float my) const {
+    Vector2f Vector2f::multiplied(float mx, float my) const {
         return Vector2f(x * mx, y * my);
     }
 

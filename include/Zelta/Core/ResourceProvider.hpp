@@ -184,7 +184,7 @@ namespace zt {
                 }
             }
             
-            if (!found) { throw FileNotFoundException(); }
+            if (!found) { throw ResourceNotFoundException(); }
             
             require(ts...);
         }
@@ -197,7 +197,7 @@ namespace zt {
                 }
             }
             
-            throw FileNotFoundException();
+            throw ResourceNotFoundException();
         }
     protected:
         void load(const std::string& type, const std::string& name, const std::string& path) {

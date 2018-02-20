@@ -18,6 +18,9 @@
 #include <string>
 
 namespace zt {
+    /**
+     * @brief Exception throwed when a file is not found.
+     */
     class FileNotFoundException : public std::exception {
     public:
         FileNotFoundException() {}

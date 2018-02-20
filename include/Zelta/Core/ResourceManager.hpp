@@ -42,13 +42,13 @@ namespace zt {
         
         /**
          * Get a resource by its name.
-         * If the resource is not present it throws a FileNotFoundException.
+         * If the resource is not present it throws a ResourceNotFoundException.
          * @param name Name of the resource.
          * @return Resource.
          */
         X& get(const std::string & name) {
             if (resources.find(name) == resources.end()) {
-                throw FileNotFoundException();
+                throw ResourceNotFoundException();
             }
             
             // If the user asks for a file that it's not loaded we
