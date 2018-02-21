@@ -18,9 +18,6 @@
 
 namespace zt {
 
-    /**
-     * @brief A* algorithm implementation.
-     */
     template <class NodeType>
     class DiscoveredNode {
         public:
@@ -72,6 +69,9 @@ namespace zt {
         virtual float estimate(const NodeType &node1, const NodeType& node2) const = 0;
     };
 
+    /**
+     * @brief A* algorithm implementation.
+     */
     template <class NodeType>
     class Pathfinding {
     public:

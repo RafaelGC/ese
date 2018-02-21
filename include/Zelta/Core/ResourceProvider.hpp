@@ -17,6 +17,7 @@
 #include <Zelta/Core/LoadingTarget.hpp>
 #include <Zelta/Core/Package.hpp>
 #include <Zelta/Core/FileNotFoundException.hpp>
+#include <Zelta/Core/ResourceNotFoundException.hpp>
 #include <fstream>
 #include <map>
 #include <iostream>
@@ -184,7 +185,7 @@ namespace zt {
                 }
             }
             
-            if (!found) { throw ResourceNotFoundException(); }
+            if (!found) { throw ResourceNotFoundException(t); }
             
             require(ts...);
         }
@@ -197,7 +198,7 @@ namespace zt {
                 }
             }
             
-            throw ResourceNotFoundException();
+            throw ResourceNotFoundException(name);
         }
     protected:
         void load(const std::string& type, const std::string& name, const std::string& path) {
@@ -210,8 +211,6 @@ namespace zt {
                 resourceManagers[type]
                     ->loadFromMemory(name, data.data(), data.size());
             }
-            
-            resourceManagers[type]->notPendant(name);
         }
         
         /**

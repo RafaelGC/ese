@@ -17,12 +17,14 @@ namespace zt {
             if (resources[name].resource.loadFromFile(file) == false) {
                 throw FileNotFoundException();
             }
+            resources[name].isPendant = false;
         }
         
         virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) {
             if (resources[name].resource.loadFromMemory(data, size) == false) {
                 throw FileNotFoundException();
             }
+            resources[name].isPendant = false;
         }
         
     };

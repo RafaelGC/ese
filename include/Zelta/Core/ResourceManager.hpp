@@ -48,7 +48,7 @@ namespace zt {
          */
         X& get(const std::string & name) {
             if (resources.find(name) == resources.end()) {
-                throw ResourceNotFoundException();
+                throw ResourceNotFoundException(name);
             }
             
             // If the user asks for a file that it's not loaded we

@@ -4,7 +4,7 @@ file = open("Makefile","w")
 modules = {
 	'Core': ['AnimatableContainer', 'Application', 'Argument', 'Arguments', 'Clock',
 						'ConsoleLog', 'FileLog', 'Log', 'Package', 'RenderLayer', 'RenderManager',
-						'ResourceLoader', 'Scene', 'SceneManager', 'ScreenDimensions'],
+						'Scene', 'SceneManager', 'ScreenDimensions'],
 						
 	'TileEngine': ['Tileset', 'TiledLoader/Layer', 'TiledLoader/Map', 'TiledLoader/Object',
 								 'TiledLoader/ObjectLayer', 'TiledLoader/Tile', 'TiledLoader/TiledLoader'],

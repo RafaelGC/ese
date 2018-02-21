@@ -16,6 +16,13 @@ namespace zt {
     class Scene;
     //Forward declaration.
 
+    /**
+     * @brief This class manages scenes. Scenes added to the scene manager must
+     * have a unique name. You'll activate them through the SceneManager.
+     * 
+     * The manage() method contains the main loop which will call the
+     * manageEvents(), logic() and render() methods of your scenes.
+     */
     class SceneManager {
     public:
         SceneManager(sf::RenderWindow& window);
