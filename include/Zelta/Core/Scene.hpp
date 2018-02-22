@@ -7,6 +7,7 @@
 
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/Animatable.hpp>
+#include <queue>
 
 namespace zt {
 
@@ -81,8 +82,8 @@ namespace zt {
          * @brief Pointer to the current window.
          * */
         sf::RenderWindow *window;
-        sf::Event events;
         std::string name;
+        std::queue<sf::Event> events;
 
         /**
          * @brief This method gets called when the scene is activated.
@@ -115,6 +116,7 @@ namespace zt {
          * @param state New state.
          * */
         virtual void setState(State state);
+        
 
         /**
          * @brief This method calls the manageEvents(), logic() and render() methods. You don't call
@@ -130,7 +132,7 @@ namespace zt {
         /**
          * @brief You should override this method and handle the events from here.
          * */
-        virtual void manageEvents(float deltaTime);
+        virtual void manageEvents(float deltaTime, std::queue<sf::Event>& events);
         
         /**
          * @brief You must implement this method. You should handle the logic here.
@@ -148,13 +150,16 @@ namespace zt {
          * @brief If you call this method inside the poll event loop it will stop
          * all scenes when the window X button is pressed.
          * */
-        virtual void checkIfWindowClosed();
+        virtual void checkIfWindowClosed(sf::Event event);
 
         /**
          * @brief Helper method to draw things easily. Instead of calling window->draw(something)
          * you just need to call draw(something).
          * */
         virtual void draw(const sf::Drawable &drawable) const;
+        
+    private:
+        virtual void setEvents(const std::queue<sf::Event>&);
     };
 
 }

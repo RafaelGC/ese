@@ -67,7 +67,7 @@ namespace zt {
         if (getState() == State::ACTIVE) {
             /*Sólo cuando la escena está activa llamamos a los métodos encargados
              de gestionar los eventos y la lógica del juego.*/
-            manageEvents(deltaTime);
+            manageEvents(deltaTime, this->events);
             logic(deltaTime);
         }
 
@@ -76,14 +76,14 @@ namespace zt {
 
     }
 
-    void Scene::manageEvents(float deltaTime) {
-        while (window->pollEvent(events)) {
-            checkIfWindowClosed();
+    void Scene::manageEvents(float deltaTime, std::queue<sf::Event>& events) {
+        while (!events.empty()) {
+            checkIfWindowClosed(events.front());
         }
     }
 
-    void Scene::checkIfWindowClosed() {
-        if (events.type == sf::Event::Closed) {
+    void Scene::checkIfWindowClosed(sf::Event event) {
+        if (event.type == sf::Event::Closed) {
             /*Si se ha presionado el botón de cerrar la ventana, llamamos a un método que desactiva
              * todas las escenas, es decir, probablemente se acabe con la aplicación.*/
             sceneManager->deactivateAllScenes();
@@ -92,6 +92,10 @@ namespace zt {
 
     void Scene::draw(const sf::Drawable &drawable) const{
         window->draw(drawable);
+    }
+    
+    void Scene::setEvents(const std::queue<sf::Event>& events) {
+        this->events = events;
     }
 
 }

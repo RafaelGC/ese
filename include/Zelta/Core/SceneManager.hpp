@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <queue>
 
 #include <SFML/System.hpp>
 
@@ -111,6 +112,13 @@ namespace zt {
          * from the SceneManager and use that number to move things accordingly with it.
          */
         sf::Clock deltaTime;
+        
+        /**
+         * @brief Stores the event queue from the window. We store it because we'll
+         * be giving a copy of the queue to each scene so that all of them can handle
+         * the events.
+         */
+        std::deque<sf::Event> events;
 
         /**
          * Returns a Scene by its name.

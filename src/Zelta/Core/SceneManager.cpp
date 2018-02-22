@@ -1,4 +1,5 @@
 #include <Zelta/Core/SceneManager.hpp>
+#include <queue>
 
 namespace zt {
 
@@ -24,14 +25,20 @@ namespace zt {
 
     void SceneManager::manage() {
         deltaTime.restart();
-
+        sf::Event ev;
+        
         while (!allScenesInactive()) {
+            
+            while (renderWindow->pollEvent(ev)) {
+                events.push_back(ev);
+            }
+            
             startRender();
 
             float dt = deltaTime.restart().asSeconds();
 
             for (auto it = scenes.begin(); it != scenes.end(); ++it) {
-                
+                (*it)->setEvents(std::queue<sf::Event>(events));
                 (*it)->advanceTime(dt);
 
             }
