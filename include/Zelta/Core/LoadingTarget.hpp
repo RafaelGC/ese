@@ -28,6 +28,7 @@ namespace zt {
         virtual ~LoadingTarget() {};
         virtual void loadFromFile(const std::string & name, const std::string & path) = 0;
         virtual void loadFromMemory(const std::string& name, const void* data, std::size_t size) = 0;
+        virtual void release(const std::string& name) = 0;
         virtual const std::string& getName() const = 0;
         
         virtual void pendant(const std::string& name, ResourceProvider& provider) = 0;

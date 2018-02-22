@@ -27,17 +27,17 @@ namespace zt {
         struct Resource {
             X resource;
             bool isPendant;
-            Resource() { isPendant = false; }
+            ResourceProvider* provider;
+            Resource() : provider(nullptr), isPendant(false) { }
         };
         std::map <std::string, Resource> resources;
         std::string name;
-        ResourceProvider* provider;
     public:
         /**
          * Constructs the ResourceManager.
          * @param name Unique name for this ResourceManager.
          */
-        ResourceManager(const std::string& name) : name(name), provider(nullptr) {
+        ResourceManager(const std::string& name) : name(name) {
         }
         
         /**
@@ -53,12 +53,13 @@ namespace zt {
             
             // If the user asks for a file that it's not loaded we
             // ask the provider for it.
-            if (provider && resources[name].isPendant) {
-                provider->request(this->name, name);
+            Resource& resource = resources[name];
+            if (resource.isPendant && resource.provider) {
+                resource.provider->request(this->name, name);
                 // Now, the file should be loaded.
             }
             
-            return resources[name].resource;
+            return resource.resource;
         }
         
         /**
@@ -72,6 +73,20 @@ namespace zt {
         }
         
         /**
+         * Releases a resource. If it does not exist a ResourceNotFoundException
+         * is thrown.
+         * @param name
+         */
+        void release(const std::string& name) {
+            if (resources.count(name) == 1) {
+                resources.erase(name);
+            }
+            else {
+                throw ResourceNotFoundException(name);
+            }
+        }
+        
+        /**
          * Returns the name of this resource manager.
          * @return 
          */
@@ -79,13 +94,9 @@ namespace zt {
             return name;
         }
         
-        void setProvider(ResourceProvider* provider) {
-            this->provider = provider;
-        }
-        
         void pendant(const std::string& name, ResourceProvider& provider) {
             resources[name].isPendant = true;
-            this->provider = &provider;
+            resources[name].provider = &provider;
         }
         
         void notPendant(const std::string& name) {

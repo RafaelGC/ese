@@ -157,8 +157,8 @@ namespace zt {
             }
         }
         
-        template<class T, class... TS>
-        void into(T& t, TS&... ts) {
+        template<class... TS>
+        void into(LoadingTarget& t, TS&... ts) {
             resourceManagers[t.getName()] = &t;
             into(ts...);
         }
