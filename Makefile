@@ -2,10 +2,10 @@ CCC = g++
 CXX = g++
 CFLAGS = -Iinclude -ISFML -std=c++11 -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 
-OBJECTS = build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/RenderManager.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o
+OBJECTS = build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o
 
 bin/libzeltalib.a: $(OBJECTS)
-	ar rvs $@ build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/RenderManager.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o
+	ar rvs $@ build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o
 
 build/Zelta/TileEngine/Tileset.o: src/Zelta/TileEngine/Tileset.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
@@ -56,9 +56,6 @@ build/Zelta/Core/Package.o: src/Zelta/Core/Package.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/Core/RenderLayer.o: src/Zelta/Core/RenderLayer.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Core/RenderManager.o: src/Zelta/Core/RenderManager.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/Core/Scene.o: src/Zelta/Core/Scene.cpp

@@ -3,18 +3,16 @@ file = open("Makefile","w")
 
 modules = {
 	'Core': ['AnimatableContainer', 'Application', 'Argument', 'Arguments', 'Clock',
-						'ConsoleLog', 'FileLog', 'Log', 'Package', 'RenderLayer', 'RenderManager',
+						'ConsoleLog', 'FileLog', 'Log', 'Package', 'RenderLayer',
 						'Scene', 'SceneManager', 'ScreenDimensions'],
-						
+
 	'TileEngine': ['Tileset', 'TiledLoader/Layer', 'TiledLoader/Map', 'TiledLoader/Object',
 								 'TiledLoader/ObjectLayer', 'TiledLoader/Tile', 'TiledLoader/TiledLoader'],
-								 
+
 	'Math': ['Vector2f', 'Vector3f'],
 	'External': ['pugixml'],
 	'Concurrency': ['Task', 'TaskPool', 'Worker']
-	
-	
-						
+
 }
 
 buildObjects = []

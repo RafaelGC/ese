@@ -2,13 +2,8 @@
 
 namespace zt {
 
-    RenderLayer::RenderLayer() {
-        visible = true;
-    }
-
-    RenderLayer::RenderLayer(int z, bool visible) {
-        this->z = z;
-        this->visible = true;
+    RenderLayer::RenderLayer(bool visible) {
+        this->visible = visible;
     }
 
     RenderLayer::~RenderLayer() {
@@ -52,24 +47,12 @@ namespace zt {
         return visible;
     }
 
-    int RenderLayer::getZ() const {
-        return z;
-    }
-
-    void RenderLayer::setZ(int z) {
-        this->z = z;
-    }
-    
     unsigned int RenderLayer::count() const {
         return drawableItems.size();
     }
     
     bool RenderLayer::isEmpty() const {
         return count()==0;
-    }
-
-    bool RenderLayer::operator<(zt::RenderLayer& other) const {
-        return getZ() < other.getZ();
     }
 
 }
