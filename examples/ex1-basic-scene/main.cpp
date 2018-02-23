@@ -49,8 +49,11 @@ int main() {
 	GameScene gameScene(sceneManager);
 
 	sceneManager.addScene(gameScene);
+	// switchTo() activates the scene especified
+	// and deactivates the others.
 	sceneManager.switchTo("GameScene");
-
+	
+	// The manage method contains the gameloop.
 	sceneManager.manage();
 	return 0;
 }

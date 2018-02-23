@@ -71,6 +71,8 @@ namespace zt {
         virtual void setWindow(sf::RenderWindow& window);
         
         virtual sf::RenderWindow& getWindow();
+        
+        virtual sf::Vector2u getScreenSize() const;
 
     protected:
         SceneManager* sceneManager;
@@ -157,6 +159,12 @@ namespace zt {
          * you just need to call draw(something).
          * */
         virtual void draw(const sf::Drawable &drawable) const;
+        
+        /**
+         * @brief Clears the screen.
+         * @param color
+         */
+        virtual void clear(const sf::Color& color = sf::Color::Black);
         
     private:
         virtual void setEvents(const std::queue<sf::Event>&);

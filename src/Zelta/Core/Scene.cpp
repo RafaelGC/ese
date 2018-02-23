@@ -21,6 +21,10 @@ namespace zt {
     sf::RenderWindow& Scene::getWindow() {
         return *this->window;
     }
+    
+    sf::Vector2u Scene::getScreenSize() const {
+        return this->window->getSize();
+    }
 
     Scene::State Scene::getState() const{
         return state;
@@ -79,6 +83,8 @@ namespace zt {
     void Scene::manageEvents(float deltaTime, std::queue<sf::Event>& events) {
         while (!events.empty()) {
             checkIfWindowClosed(events.front());
+            
+            events.pop();
         }
     }
 
@@ -90,8 +96,12 @@ namespace zt {
         }
     }
 
-    void Scene::draw(const sf::Drawable &drawable) const{
+    void Scene::draw(const sf::Drawable &drawable) const {
         window->draw(drawable);
+    }
+    
+    void Scene::clear(const sf::Color& color) {
+        window->clear(color);
     }
     
     void Scene::setEvents(const std::queue<sf::Event>& events) {
