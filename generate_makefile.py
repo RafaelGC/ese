@@ -33,12 +33,12 @@ for module in modules:
 file.write(
 """CCC = g++
 CXX = g++
-CFLAGS = -Iinclude -ISFML -std=c++11 -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
+CFLAGS = -Iinclude -ISFML -std=c++11
 
 OBJECTS = """ + ' '.join(buildObjects) + """
 
-bin/libzeltalib.a: $(OBJECTS)
-	ar rvs $@ """ + ' '.join(buildObjects) + """
+lib/libzeltalib.a: $(OBJECTS)
+	ar rcs $@ """ + ' '.join(buildObjects) + """
 
 """ + '\n\n'.join(rules)) 
  

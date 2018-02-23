@@ -1,10 +1,6 @@
-#ifndef APPLICATION_HPP
-#define APPLICATION_HPP
+#ifndef ZELTALIB_APPLICATION_HPP
+#define ZELTALIB_APPLICATION_HPP
 
-#include <SFML/Graphics.hpp>
-
-#include <Zelta/Core/SceneManager.hpp>
-#include <Zelta/Core/ResourceManager.hpp>
 #include <Zelta/Core/Arguments.hpp>
 
 namespace zt {
