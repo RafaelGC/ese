@@ -40,6 +40,12 @@ namespace zt {
          * @param scene Scene.
          * */
         void addScene(zt::Scene& scene);
+        
+        void moveForward(const std::string& sceneName);
+        void moveToFront(const std::string& sceneName);
+        
+        void moveBackward(const std::string& sceneName);
+        void moveToBack(const std::string& sceneName);
 
         /**
          * @brief This is the actual game loop. This function will return when
@@ -105,7 +111,7 @@ namespace zt {
          * */
         void stopRender();
 
-        std::list<zt::Scene*> scenes;
+        std::list<Scene*> scenes;
 
         /**
          * @brief This clock is used to calc the delta time. All scenes get this information

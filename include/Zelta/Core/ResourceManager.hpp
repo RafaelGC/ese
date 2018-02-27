@@ -24,12 +24,18 @@ namespace zt {
     template <class X>
     class ResourceManager : public LoadingTarget {
     protected:
+        /**
+         * \cond HIDDEN_SYMBOLS
+         * */
         struct Resource {
             X resource;
             bool isPendant;
             ResourceProvider* provider;
             Resource() : provider(nullptr), isPendant(false) { }
         };
+        /**
+         * \endcond
+         */
         std::map <std::string, Resource> resources;
         std::string name;
     public:
@@ -37,8 +43,7 @@ namespace zt {
          * Constructs the ResourceManager.
          * @param name Unique name for this ResourceManager.
          */
-        ResourceManager(const std::string& name) : name(name) {
-        }
+        ResourceManager(const std::string& name) : name(name) { }
         
         /**
          * Get a resource by its name.

@@ -22,6 +22,44 @@ namespace zt {
 
         scenes.push_back(&scene);        
     }
+    
+    void SceneManager::moveForward(const std::string& sceneName) {
+        for (auto it = scenes.begin(); it != scenes.end(); ++it) {
+            if ((*it)->getName() == sceneName && it != scenes.end()) {
+                auto it2(it);
+                std::swap((*it), *(++it2));
+                break;
+            }
+        }
+    }
+    
+    void SceneManager::moveToFront(const std::string& sceneName) {
+        for (auto it = scenes.begin(); it != scenes.end(); ++it) {
+            if ((*it)->getName() == sceneName) {
+                std::swap((*it), *(--scenes.end()));
+                break;
+            }
+        }
+    }
+
+    void SceneManager::moveBackward(const std::string& sceneName) {
+        for (auto it = scenes.begin(); it != scenes.end(); ++it) {
+            if ((*it)->getName() == sceneName && it != scenes.begin()) {
+                auto it2(it);
+                std::swap((*it), *(--it2));
+                break;
+            }
+        }
+    }
+    
+    void SceneManager::moveToBack(const std::string& sceneName) {
+        for (auto it = scenes.begin(); it != scenes.end(); ++it) {
+            if ((*it)->getName() == sceneName) {
+                std::swap((*it), *(scenes.begin()));
+                break;
+            }
+        }
+    }
 
     void SceneManager::manage() {
         deltaTime.restart();
@@ -88,11 +126,9 @@ namespace zt {
     }
     
     void SceneManager::removeScene(std::string name) {
-        deactivateScene(name);
-        
-        zt::Scene* scene = lookForScene(name);
-        for (auto it = scenes.begin(); it!=scenes.end(); ++it) {
-            if ((*it)==scene) {
+        for (auto it = scenes.begin(); it != scenes.end(); ++it) {
+            if ((*it)->getName() == name) {
+                deactivateScene(name);
                 scenes.erase(it);
                 break;
             }
@@ -115,15 +151,15 @@ namespace zt {
 
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
             if ((*it)->getName() == name) {
-                return *it;
+                return (*it);
             }
         }
         return nullptr;
     }
     
     bool SceneManager::allScenesInactive() const {
-        for (auto it = scenes.begin(); it!=scenes.end(); ++it){
-            if ((*it)->getState() != zt::Scene::State::INACTIVE){
+        for (auto it = scenes.cbegin(); it!=scenes.cend(); ++it) {
+            if ((*it)->getState() != Scene::State::INACTIVE) {
                 return false;
             }
         }

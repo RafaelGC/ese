@@ -94,9 +94,10 @@ class GameScene : public zt::Scene {
 	void render() {
 		// DRAW HERE //
 		
+		// clear() is a helper method which calls renderWindow.clear(...)
 		clear(sf::Color(80, 120, 220));
 		
-		// draw() is a helper method from zt::Scene.
+		// draw() is a helper method which calls renderWindow.draw(...)
 		for (sf::Sprite& apple : apples) {
 			draw(apple);
 		}
