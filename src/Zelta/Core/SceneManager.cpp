@@ -66,7 +66,7 @@ namespace zt {
         sf::Event ev;
         
         while (!allScenesInactive()) {
-            
+            events.clear();
             while (renderWindow->pollEvent(ev)) {
                 events.push_back(ev);
             }
