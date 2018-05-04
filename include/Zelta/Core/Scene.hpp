@@ -2,12 +2,14 @@
 #define ZELTALIB_SCENE_HPP
 
 #include <map>
+#include <queue>
 
 #include <SFML/Graphics.hpp>
 
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/Animatable.hpp>
-#include <queue>
+#include <Zelta/Core/NestableClock.hpp>
+
 
 namespace zt {
 
@@ -73,6 +75,14 @@ namespace zt {
         virtual sf::RenderWindow& getWindow();
         
         virtual sf::Vector2u getScreenSize() const;
+        
+        virtual zt::NestableClock& getMasterClock();
+        
+        virtual bool isActive() const;
+        virtual bool isInactive() const;
+        virtual bool isPaused() const;
+        
+        virtual SceneManager& getSceneManager();
 
     protected:
         SceneManager* sceneManager;
@@ -86,6 +96,8 @@ namespace zt {
         sf::RenderWindow *window;
         std::string name;
         std::queue<sf::Event> events;
+        
+        zt::NestableClock masterClock;
 
         /**
          * @brief This method gets called when the scene is activated.
@@ -107,10 +119,6 @@ namespace zt {
          * parent onPaused() method or it will not be activated.
          * */
         virtual void onPause();
-        
-        virtual bool isActive() const;
-        virtual bool isInactive() const;
-        virtual bool isPaused() const;
         
         /**
          * @brief Changes the state of the scene. It's not public because

@@ -7,7 +7,7 @@ namespace zt {
         this->sceneManager = &sceneManager;
         this->window = &sceneManager.getRenderWindow();
         
-        setState(State::INACTIVE);
+        this->state = State::INACTIVE;
         setWindow(sceneManager.getRenderWindow());
     }
 
@@ -25,6 +25,10 @@ namespace zt {
     sf::Vector2u Scene::getScreenSize() const {
         return this->window->getSize();
     }
+    
+    zt::NestableClock& Scene::getMasterClock() {
+        return this->masterClock;
+    }
 
     Scene::State Scene::getState() const{
         return state;
@@ -40,14 +44,17 @@ namespace zt {
 
     void Scene::onActivate() {
         setState(State::ACTIVE);
+        masterClock.resume();
     }
 
     void Scene::onDeactivate() {
         setState(State::INACTIVE);
+        masterClock.pause();
     }
 
     void Scene::onPause() {
         setState(State::PAUSED);
+        masterClock.pause();
     }
     
     bool Scene::isActive() const {
@@ -60,6 +67,10 @@ namespace zt {
     
     bool Scene::isPaused() const {
         return state == State::PAUSED;
+    }
+    
+    SceneManager& Scene::getSceneManager() {
+        return *this->sceneManager;
     }
 
     void Scene::advanceTime(float deltaTime) {

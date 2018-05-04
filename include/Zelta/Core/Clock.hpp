@@ -5,8 +5,8 @@
  * Created on February 1, 2015, 10:33 PM
  */
 
-#ifndef CLOCK_HPP
-#define	CLOCK_HPP
+#ifndef ZELTALIB_CLOCK_HPP
+#define	ZELTALIB_CLOCK_HPP
 
 #include <Zelta/Core/Animatable.hpp>
 #include <SFML/System/Clock.hpp>

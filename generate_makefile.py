@@ -2,16 +2,44 @@ file = open("Makefile","w")
 
 
 modules = {
-	'Core': ['AnimatableContainer', 'Application', 'Argument', 'Arguments', 'Clock',
-						'ConsoleLog', 'FileLog', 'Log', 'Package', 'RenderLayer',
-						'Scene', 'SceneManager', 'ScreenDimensions'],
+	'Core': [   'AnimatableContainer',
+	            'Application',
+	            'Argument',
+	            'Arguments',
+	            'Clock',
+	            'NestableClock',
+				'ConsoleLog',
+				'FileLog',
+				'Log',
+				'Package',
+				'RenderLayer',
+				'Scene',
+				'SceneManager',
+				'ScreenDimensions'
+			],
 
-	'TileEngine': ['Tileset', 'TiledLoader/Layer', 'TiledLoader/Map', 'TiledLoader/Object',
-								 'TiledLoader/ObjectLayer', 'TiledLoader/Tile', 'TiledLoader/TiledLoader'],
+	'TileEngine': [
+	            'Tileset',
+	            'TiledLoader/Layer',
+	            'TiledLoader/Map',
+	            'TiledLoader/Object',
+			    'TiledLoader/ObjectLayer',
+			    'TiledLoader/Tile',
+			    'TiledLoader/TiledLoader'
+			    ],
 
-	'Math': ['Vector2f', 'Vector3f'],
-	'External': ['pugixml'],
-	'Concurrency': ['Task', 'TaskPool', 'Worker']
+	'Math': [
+                'Vector2f',
+                'Vector3f'
+            ],
+	'Concurrency': [
+	            'Task',
+	            'TaskPool',
+	            'Worker'
+	            ],
+	'External': [
+	            'pugixml'
+	            ],
 
 }
 
