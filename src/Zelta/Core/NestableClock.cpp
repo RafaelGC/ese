@@ -8,18 +8,32 @@
 
 namespace zt {
 
-    void NestableClock::addClock(zt::Clock& clock) {
+    NestableClock::NestableClock() {
+        locked = false;
+    }
+    
+    void NestableClock::addClock(zt::NestableClock& clock) {
         this->clocks.push_back(&clock);
 
-        if (this->isPaused()) {
-            clock.pause();
+        // The added clock inherits its state
+        // from the parent (unless it's locked).
+        if (!clock.isLocked()) {
+            if (this->isPaused()) {
+                clock.pause();
+            }
+            else {
+                clock.resume();
+            }
         }
+        
     }
 
     void NestableClock::pause() {
         zt::Clock::pause();
 
         for (auto& clock : clocks) {
+            if (clock->isLocked()) continue;
+            
             clock->pause();
         }
     }
@@ -28,8 +42,18 @@ namespace zt {
         zt::Clock::resume();
 
         for (auto& clock : clocks) {
+            if (clock->isLocked()) continue;
+            
             clock->resume();
         }
+    }
+    
+    bool NestableClock::isLocked() const {
+        return this->locked;
+    }
+    NestableClock& NestableClock::lock() {
+        this->locked = true;
+        return *this;
     }
 
 }

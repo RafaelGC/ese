@@ -41,12 +41,6 @@ namespace zt {
          * */
         void addScene(zt::Scene& scene);
         
-        void moveForward(const std::string& sceneName);
-        void moveToFront(const std::string& sceneName);
-        
-        void moveBackward(const std::string& sceneName);
-        void moveToBack(const std::string& sceneName);
-
         /**
          * @brief This is the actual game loop. This function will return when
          * all scenes are inactive.
@@ -92,6 +86,18 @@ namespace zt {
         bool allScenesInactive() const;
 
         sf::RenderWindow& getRenderWindow();
+        
+        void moveForward(const std::string& sceneName);
+        void moveToFront(const std::string& sceneName);
+        
+        void moveBackward(const std::string& sceneName);
+        void moveToBack(const std::string& sceneName);
+        
+        void setScenesOrder() {}
+        template<typename... TS>
+        void setScenesOrder(TS... others, const std::string& name) {
+            moveToFront(name);
+        }
     protected:
         /**
          * @brief Pointer to the window.

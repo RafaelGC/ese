@@ -21,11 +21,18 @@ namespace zt {
 
     class NestableClock : public zt::Clock {
     public:
-        void addClock(zt::Clock& clock);
+        NestableClock();
+        void addClock(zt::NestableClock& clock);
         void pause();
         void resume();
+        
+        bool isLocked() const;
+        NestableClock& lock();
+        
+        
     private:
-        std::vector<zt::Clock*> clocks;
+        std::vector<zt::NestableClock*> clocks;
+        bool locked;
     };
 
 }
