@@ -21,7 +21,7 @@ ZeltaLib consists of these modules:
 I use Doxygen to document the library. It is not complete and it's not translated to English yet.
 
 
-##Building
+## Building
 ### Linux
 I've only built ZeltaLib in Debian. Keep in mind that it's written in C++11. It just depends on SFML and pugixml. pugixml is bundled with the library so you should not care about it but you will need SFML to be installed in your system before compiling.
 
