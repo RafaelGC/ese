@@ -136,8 +136,6 @@ namespace zt {
     }
 
     void SceneManager::deactivateAllScenes() {
-        /*Parar todas la escenas, lo que conlleva a que el bucle de gestión acabe y la aplicación se cierre.
-         */
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
             if ((*it)->getState() != Scene::State::INACTIVE) {
                 (*it)->onDeactivate();
@@ -146,9 +144,6 @@ namespace zt {
     }
 
     Scene* SceneManager::lookForScene(std::string name) {
-        /*La función busca si existe una escena con el nombre indicado, si existe devuelve el puntero,
-        si no existe devuelve NULL.*/
-
         for (auto it = scenes.begin(); it != scenes.end(); ++it) {
             if ((*it)->getName() == name) {
                 return (*it);

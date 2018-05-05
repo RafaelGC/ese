@@ -142,12 +142,6 @@ namespace zt {
         float getAngle() const;
         
         /**
-         * Calcula el vector que va desde this hasta other.
-         * Este método es azúcar sintáctico para: other.minus(*this).
-         * @param Vector destino.
-         * @return Vector que tiene origen en this y termina en other.
-         */
-        /**
          * Returns the vector from <<this>> to <<other>>.
          * Its the same that other.minus(*this).
          * @param other Other vector.

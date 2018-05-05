@@ -74,24 +74,35 @@ namespace zt {
     }
 
     void Scene::advanceTime(float deltaTime) {
+        // The gameloop (which is in the SceneManager) will call the
+        // advanceTime() method of all the scenes.
+        // From the advanceTime() method we'll call the manageEvents(), logic()
+        // and render() methods.
+        
+        // If the scene is INACTIVE we don't really want any of those methods
+        // to be called.
         if (getState() == State::INACTIVE) {
-            //Si la escena está inactiva, salimos directamente.
             return;
         }
 
         if (getState() == State::ACTIVE) {
-            /*Sólo cuando la escena está activa llamamos a los métodos encargados
-             de gestionar los eventos y la lógica del juego.*/
+            // Only when the scene is ACTIVE we will call manageEvents() and logic().
             manageEvents(deltaTime, this->events);
             logic(deltaTime);
         }
 
-        //Por último, incluso cuando estamos en pausa, renderizamos.
+        // Finally, we'll call render(). Note that this method will be called
+        // even when the scene is paused.
         render();
+        
+        // If you want to change the behaviour of the states, you can override
+        // this method.
 
     }
 
     void Scene::manageEvents(float deltaTime, std::queue<sf::Event>& events) {
+        // The default implementation of manageEvents() just iterates over
+        // the event queue and check if the user want to close the application.
         while (!events.empty()) {
             checkIfWindowClosed(events.front());
             
@@ -101,12 +112,10 @@ namespace zt {
 
     void Scene::checkIfWindowClosed(sf::Event event) {
         if (event.type == sf::Event::Closed) {
-            /*Si se ha presionado el botón de cerrar la ventana, llamamos a un método que desactiva
-             * todas las escenas, es decir, probablemente se acabe con la aplicación.*/
             sceneManager->deactivateAllScenes();
         }
     }
-
+    
     void Scene::draw(const sf::Drawable &drawable) const {
         window->draw(drawable);
     }

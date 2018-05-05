@@ -81,10 +81,10 @@ namespace zt {
         }
         
         /**
-         * @brief Permite añadir un tile en la posición dada.
-         * @param tilePosition Posición <b>medida en tiles</b> del tile que se añade.
-         * @return El métdoo devuelve un std::pair cuyo primer elemento es la posición
-         * en el vector del tile que acabamos de añadir y un puntero a dicho tile.
+         * @brief Add a tile in a given position.
+         * @param tilePosition Position (measured in tiles).
+         * @return Returns a pair. The first element is the position of the tile
+         * in the vector. The second element is a pointer to the new tile.
          * */
         std::pair<int, T*> addTile(const sf::Vector2u& tilePosition) {
             TileContainer<T> tmp;

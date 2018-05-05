@@ -35,49 +35,56 @@ namespace zt {
     void Package::open(const std::string& fileName) {
         packageName = fileName;
         
-        // Abrir fichero para lectura/escritura y en modo binario.
+        // Open the file en binary read/write mode.
         file.open(fileName, std::ios_base::in | std::ios_base::out | std::ios_base::binary | std::ios_base::app);
         if (!file.is_open()) throw FileNotFoundException(fileName);
         
-        // Durante la carga lo que se hace es crear un índice para tener
-        // a mano todos los ficheros cuando lo solicite el usuario.
-        // El índice relaciona el nombre del fichero que se quiere recuperar
-        // con su posición y tamaño.
+        // Instead of loading all files in memory when this method is called,
+        // it just builds an index to be able to load files faster when the user
+        // requests them.
+        // The index relates the filename with its position and size.
         
         
         unsigned long position = 12; // 4 (MAGIC) + 4 (VERSION) + 4 (COMPRESSION)
         file.seekg(position);
         
+        // For each file...
         while (!file.eof()) {
             
             unsigned long size;
 
-            // Se lee el tamaño del fichero. Nota: el tamaño del fichero no incluye
-            // el nombre del fichero.
+            // 1. Get the file size. Note: the size does NOT include the size of the
+            // filename.
             file.read((char *)&size, SIZE_BYTES);
             if (file.eof()) break;
             
             char name[NAME_BYTES];
 
-            // Lectura del nombre del fichero.
+            // 2. Read the name/path of the file.
             file.read(name, NAME_BYTES);
             if (file.eof()) break;
             
             
             // El cursor ahora mismo está en <<position>>, apuntando al inicio
             // del archivo empaquetado.
+            
+            // 3. Store the position and size of the file.
+            // Note that <<position>> is NOT really pointing to the file but
+            // to the file size. After the file size is the file name. That's
+            // why we must calculate position + SIZE_BYTES + NAME_BYTES to
+            // get the actual file position in our package.
             fileIndex[std::string(name)] = PackageFileInfo(position + NAME_BYTES + SIZE_BYTES, size);
             
-            // La próxima cabecera de fichero estará en position + size.
+            // We move the pointer to the next file header.
             position += size + SIZE_BYTES + NAME_BYTES;
             file.seekg(position);
             
         }
         
-        // Después de haber leido se puede haber activado alguna bandera de error.
-        // Si más adelante, por ejemplo, en el método addFile(), se intenta escribir
-        // en el fichero no se podrá por culpa de este error.
-        // Con .clear() se vuelve a la normalidad.
+        // After reading the file fome error flags can be activated.
+        // If we want to use <<file>> later (for example, with addFile()) those
+        // error flags will give problems.
+        // Calling file.clear() we avoid that.
         file.clear();
     }
     
@@ -86,51 +93,51 @@ namespace zt {
     }
     
     void Package::addFile(const std::string& input, const std::string& target) {
-        // Por ahora no se acepta la modificación de ficheros.
-        // Si se trata de añadir un archivo que ya existe, ignora.
+        // At the moment, Package just supports adding files to the package.
+        // It does not allow you to modify an existing file. So, if the user
+        // is trying to add an existing file, we return:
         if (fileIndex.count(target) > 0 || !file.is_open()) {
             return;
         }
         
         std::ifstream newFile;
         
-        // Se abre el fichero en modo lectura y binario. Además el cursor
-        // se sitúa al final del archivo.
+        // The file is open in binary read mode. The pointer is located at the
+        // end of the file.
         newFile.open(input, std::ios_base::in | std::ios_base::binary | std::ios_base::ate);
         if (!newFile.is_open()) throw FileNotFoundException(input);
         
-        // Como el cursor está al final, tellg() indica el tamaño del fichero.
+        // Since the pointer is at the end, tellg() tells us the size of the file.
         unsigned long size = newFile.tellg();
         
-        // Se mueve el cursor al inicio para comenzar la lectura.
+        // We move the pointer at the beginning.
         newFile.seekg(0);
         
-        // Nos situamos al final del fichero de salida para
-        // comenzar a escribir por el final.
+        // In the output file, we move the cursor at the end of the file.
+        // We will write the new file there.
         file.seekg(0, std::ios_base::end);
         
-        // Se escribe el tamaño del fichero (se usan 8 bytes -> 64 bits).
+        // Write the size of the file.
         file.write((const char *)&size, SIZE_BYTES);
         
-        // El nombre va a ser guardado en este array para ser escrito en el archivo:
+        // The filename is going to be stored temporarily in an array.
         char name[NAME_BYTES];
-        // Se limpia la memoria (puede haber basura).
+        // We clean the memory.
         std::memset(name, 0, NAME_BYTES);
-        // Y se copia el nombre.
+        // Then we copy the name.
         std::memcpy(name, target.c_str(), target.size());
-        // Por último, se escribe.
+        // And we write it on the file.
         file.write(name, NAME_BYTES);
-        // Nota: si pones file.write(target.c_str(), 512) y target tiene
-        // una longitud menor que 512, el resto se puede rellenar con basura.
+        // Note: writing just file.write(target.c_str(), NAME_BYTES) can give
+        // problems if target.size() < NAME_SIZE because the memory could be dirty.
         
-        // La posición de escritura actual apunta a la posición
-        // donde se comienza a escribir el fichero dentro del paquete. Es un buen
-        // momento para meter el fichero en el índice.
+        // The pointer is still pointing at the beginning of the file. It's the
+        // right moment to add the new file to the index:
         fileIndex[std::string(target)] = PackageFileInfo(file.tellp(), size);
         
         char byte;
         
-        // Se copia el contenido del fichero dentro del paquete.
+        // Finally, we copy the contents of the file in the package.
         while (!newFile.eof()) {
             newFile.read(&byte, 1);
             if (newFile.eof()) break;
@@ -142,7 +149,10 @@ namespace zt {
         file.clear();
     }
     
-    
+    /**
+     * @brief Add a whole directory to the package.
+     * @param directory
+     */
     void Package::addDirectory(const std::string& directory) {
 #if __linux__
         std::queue<std::string> pendantDirectories;
@@ -156,26 +166,28 @@ namespace zt {
             currentDirectory = pendantDirectories.front();
             pendantDirectories.pop();
             
-            // Listar las entradas del directorio actual.
+            // List all entries of the current directory.
             DIR* dirp = opendir(currentDirectory.c_str());
             dirent* dp;
             while ((dp = readdir(dirp)) != NULL) {
-                // Listamos cada entrada. Si es un archivo
-                // habrá que añadirlo al paquete, si es un directorio
-                // habrá que añadirlo a la lista de directorios pendientes
-                // para seguir expandiendo.
+                /*
+                 * We list every entry. If it's a file we'll have to add it to
+                 * the package, it it's a directory we'll add it to the list
+                 * of pendant directories.
+                 */
                 currentEntry = std::string(dp->d_name);
 
-                // El directorio actual y el padre no interesan.
+                // Current and parent directories are ignored.
                 if (currentEntry == "." || currentEntry == "..") continue;
 
-                // Comprobación de si la entrada es un fichero o un directorio.
                 struct stat statbuf;
+                
                 if (stat(std::string(currentDirectory + "/" + currentEntry).c_str(), &statbuf) != 0) {
-                    // Error con el archivo: ¿no existe? ¿permisos?
+                    // Error: not existing file? permissions?
                     continue;
                 }
-
+                
+                // Check if it's a file or a directory.
                 if (S_ISDIR(statbuf.st_mode)) {
                     pendantDirectories.push(currentDirectory + "/" + currentEntry);
                 }
@@ -188,7 +200,7 @@ namespace zt {
         }
         
         for (const std::string& file : files) {
-            // Ignoramos el ./ del inicio del fichero.
+            // We ignore the ./ at the beginning of the file.
             addFile(file, (file[0] == '.' && file[1] == '/') ? file.substr(2) : file);
         }
         
@@ -201,27 +213,29 @@ namespace zt {
         if (!file.is_open()) return;
         if (fileIndex.count(fileName) == 0) throw zt::FileNotFoundException();
         
-        // Eliminar un fichero del paquete es una tarea compleja.
-        // Es algo que generalmente implicará reducir el tamaño del paquete.
-        // C++ no tiene ninguna utilidad estándar para reducir el tamaño del
-        // fichero así que la aproximación que haré será la siguiente:
-        // 1. Crear un nuevo fichero temporal vacío.
-        // 2. Escribir en el fichero todo el contenido del paquete excluyendo
-        // el archivo que se quiere eliminar.
-        // 3. Eliminar el viejo paquete.
-        // 4. Renombrar el fichero temporal para que tenga el nombre del paquete.
+        /*
+         * Removing a file from a package is difficult since we'll have to
+         * reduce the size of the package.
+         * C++ standard library does not come with any tool to do that so this
+         * will be the strategy to remove a file:
+         * 1. Create a new empty temporary file.
+         * 2. Write in that file all the content of the package ignoring the
+         * file we want to remove.
+         * 3. Remove the old package.
+         * 4. Rename the temporary file.
+         */
         
         std::ofstream tmpFile;
         
         tmpFile.open(packageName + ".tmp", std::ios_base::trunc | std::ios_base::binary);
         if (!tmpFile.is_open()) throw zt::FileNotFoundException();
         
-        // .position apunta al inicio del fichero, pero también se quiere
-        // eliminar el NOMBRE y el TAMAÑO.
+        // .position points to the beginning of the file but we also want to
+        // get rid of the name and size:
         unsigned long ignoreFrom = fileIndex[fileName].position - NAME_BYTES - SIZE_BYTES;
         unsigned long ignoreTo = ignoreFrom + NAME_BYTES + SIZE_BYTES + fileIndex[fileName].size;
         
-        // Copia de la parte anterior al fichero que se quiere eliminar.
+        // We copy the bytes that are before the file we want to remove.
         file.seekg(0);
         char byte;
         for (unsigned long i = 0; i < ignoreFrom; i++) {
@@ -229,9 +243,9 @@ namespace zt {
             tmpFile.write(&byte, 1);
         }
         
-        // Copia de la parte posterior.
+        // We cope the bytes that are after the file we want to remove.
         file.seekg(ignoreTo);
-        while (!file.eof()) { // Se copia hasta alcanzar el final.
+        while (!file.eof()) { // Copy until end is reached.
             file.read(&byte, 1);
             if (file.eof()) break;
             tmpFile.write(&byte, 1);
@@ -241,15 +255,14 @@ namespace zt {
         
         file.clear();
         
-        // Una vez generado completamente el archivo temporal se elimina el viejo.
-        file.close(); // Antes de eliminarlo se cierra.
+        // Remove the old file.
+        file.close();
         std::remove(packageName.c_str());
         
-        // Se renombra el temporal, que pasará a ser el definitivo.
+        // Rename the temporal file.
         std::rename(std::string(packageName + ".tmp").c_str(), packageName.c_str());
         
-        // Y se reabre el fichero (se volverá a reconstruir el índice).
-        
+        // Reopen the file (we need to rebuild the index).
         open(packageName);
     }
     
@@ -266,6 +279,11 @@ namespace zt {
         return fileIndex[file].size;
     }
     
+    /**
+     * @brief Return the bytes of certain file.
+     * @param fileName
+     * @return Vector of bytes (uint8_t).
+     */
     std::vector<uint8_t> Package::getFileData(const std::string& fileName) {
         std::vector<uint8_t> outputFile;
         
@@ -273,13 +291,13 @@ namespace zt {
         
         const PackageFileInfo inf = fileIndex[fileName];
         
-        // Se reserva espacio suficiente desde el principio
-        // para evitar que se tenga que hacer durante la copia.
+        // We allocate enough space here:
         outputFile.reserve(inf.size);
         
-        // Se sitúa el cursor en el byte correspondiente para leer.
+        // Move the cursor to the file.
         file.seekg(inf.position, std::ios_base::beg);
         uint8_t r;
+        // And copy the contents.
         for (unsigned long i = 0; i < inf.size; i++) {
             file.read((char *)&r, 1);
             outputFile.push_back(r);

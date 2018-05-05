@@ -1,7 +1,7 @@
 # ZeltaLib
 
 
-ZeltaLib is a game development oriented library written in C++. It uses SFML to deal with multimedia stuff. ZeltaLib adds some utilities for game development: scene management, resource management, asset packaging, tilemapping, etc.
+ZeltaLib is a game development oriented library written in C++. It uses [SFML](https://www.sfml-dev.org/) to deal with multimedia stuff. ZeltaLib adds some utilities for game development: scene management, resource management, asset packaging, tilemapping, etc.
 
 ZeltaLib consists of these modules:
 
@@ -18,14 +18,13 @@ ZeltaLib consists of these modules:
 
 ## Documentation
 
-I use Doxygen to document the library. It is not complete and it's not translated to English yet.
-
+You can read the documentation in the `docs` folder. You can also read the [Getting started](https://github.com/rafaelgc/ZeltaLib/wiki/Getting-started) guide.
 
 ## Building
 ### Linux
 I've only built ZeltaLib in Debian. Keep in mind that it's written in C++11. It just depends on SFML and pugixml. pugixml is bundled with the library so you should not care about it but you will need SFML to be installed in your system before compiling.
 
-If you are in Linux just run `configure.sh`. The script just creates some folders, then run `make`. That will generate the file `zeltalib.a` in the `lib` directory. You can also run `make -f Makefile.CLI` to build the CLI (it will be generated in the `bin` directory). 
+If you are in Linux just run `configure.sh`. The script just creates some folders, then run `make`. That will generate the file `zeltalib.a` in the `lib` directory. You can also run `make -f Makefile.CLI` to build the CLI (it will be generated in the `bin` directory).
 
 Configuring ZeltaLib in your project is as easy as configuring SFML. Just add the `include` directory and add the `zeltalib.a` to the linker.
 

@@ -48,6 +48,117 @@ namespace zt {
         }
         
         ResourceProvider& load(const std::string& file) {
+            this->resourceFile = file;
+            
+            return *this;
+        }
+        
+        ResourceProvider& fromFileSystem() {
+            mFromFileSystem = true;
+            return *this;
+        }
+        
+        ResourceProvider& fromPackage(const std::string& path) {
+            pkg.open(path);
+            mFromFileSystem = false;
+            return *this;
+        }
+        
+        ResourceProvider& now() {
+            mOnDemand = false;
+            return *this;
+        }
+        
+        ResourceProvider& onDemand() {
+            mOnDemand = true;
+            return *this;
+        }
+        
+        void into() {
+            parse(this->resourceFile);
+            
+            for (auto& file : files) {
+                if (mOnDemand) {
+                    // The file is marked as pendant. When the file is requested,
+                    // its resource manager will ask the ResourceLoader to load it.
+                    resourceManagers[file.type]->pendant(file.name, *this);
+                }
+                else {
+                    load(file.type, file.name, file.path);
+                }
+            }
+        }
+        
+        /**
+         * Sets the ResourceManagers where the resources will be loaded.
+         * @param t
+         * @param ts
+         */
+        template<class... TS>
+        void into(LoadingTarget& t, TS&... ts) {
+            resourceManagers[t.getName()] = &t;
+            into(ts...);
+        }
+        
+        void require() {}
+        
+        /**
+         * @brief This method makes sure that the given resource names are
+         * loaded. If they are not, they will be.
+         * @param t Resource name.
+         * @param ts Other resource name.
+         */
+        template<class S, class... SS>
+        void require(S& t, SS& ...ts) {
+            bool found = false;
+            for (File& file : files) {
+                // Note that if two resources (in different
+                // managers) have the same name, both are loaded.
+                if (file.name == t) {
+                    found = true;
+                    if (!isLoaded(file.type, file.name)) {
+                        load(file.type, file.name, file.path);
+                    }
+                }
+            }
+            
+            if (!found) { throw ResourceNotFoundException(t); }
+            
+            require(ts...);
+        }
+        
+    protected:
+        void load(const std::string& type, const std::string& name, const std::string& path) {
+            if (mFromFileSystem) {
+                resourceManagers[type]
+                    ->loadFromFile(name, path);
+            }
+            else {
+                std::vector<uint8_t> data = pkg.getFileData(path);
+                resourceManagers[type]
+                    ->loadFromMemory(name, data.data(), data.size());
+            }
+        }
+        
+        /**
+         * @brief This method tells if one resource of certain type is loaded.
+         * @param type Type of the resource (the name of the container).
+         * @param name Name of the resource.
+         * @return True if it is loaded.
+         */
+        bool isLoaded(const std::string& type, const std::string& name) {
+            for (File& file : files) {
+                if (file.name == name && file.type == type) {
+                    if (this->resourceManagers[file.type]->isLoaded(name)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        
+        // Parses de resource file.
+        void parse(const std::string& file) {
             std::ifstream input(file);
             std::string name, type, path;
             int rangeFrom, rangeTo;
@@ -119,115 +230,6 @@ namespace zt {
                 
                 if (input.eof()) break;
             }
-            
-            return *this;
-        }
-        
-        ResourceProvider& fromFileSystem() {
-            mFromFileSystem = true;
-            return *this;
-        }
-        
-        ResourceProvider& fromPackage(const std::string& path) {
-            pkg.open(path);
-            mFromFileSystem = false;
-            return *this;
-        }
-        
-        ResourceProvider& now() {
-            mOnDemand = false;
-            return *this;
-        }
-        
-        ResourceProvider& onDemand() {
-            mOnDemand = true;
-            return *this;
-        }
-        
-        void into() {
-            for (auto& file : files) {
-                if (mOnDemand) {
-                    // The file is marked as pendant. When the file is requested,
-                    // its resource manager will ask the ResourceLoader to 
-                    resourceManagers[file.type]->pendant(file.name, *this);
-                }
-                else {
-                    load(file.type, file.name, file.path);
-                }
-            }
-        }
-        
-        template<class... TS>
-        void into(LoadingTarget& t, TS&... ts) {
-            resourceManagers[t.getName()] = &t;
-            into(ts...);
-        }
-        
-        void require() {}
-        
-        /**
-         * @brief This method makes sure that the given resource names are
-         * loaded. If they are not, they will be.
-         * @param t Resource name.
-         * @param ts Other resource name.
-         */
-        template<class S, class... SS>
-        void require(S& t, SS& ...ts) {
-            bool found = false;
-            for (File& file : files) {
-                // Note that if two resources (in different
-                // managers) have the same name, both are loaded.
-                if (file.name == t) {
-                    found = true;
-                    if (!isLoaded(file.type, file.name)) {
-                        load(file.type, file.name, file.path);
-                    }
-                }
-            }
-            
-            if (!found) { throw ResourceNotFoundException(t); }
-            
-            require(ts...);
-        }
-        
-        void request(const std::string& type, const std::string& name) {
-            for (File& file : files) {
-                if (file.name == name && file.type == type) {
-                    load(file.type, file.name, file.path);
-                    return;
-                }
-            }
-            
-            throw ResourceNotFoundException(name);
-        }
-    protected:
-        void load(const std::string& type, const std::string& name, const std::string& path) {
-            if (mFromFileSystem) {
-                resourceManagers[type]
-                    ->loadFromFile(name, path);
-            }
-            else {
-                std::vector<uint8_t> data = pkg.getFileData(path);
-                resourceManagers[type]
-                    ->loadFromMemory(name, data.data(), data.size());
-            }
-        }
-        
-        /**
-         * @brief This method tells if one resource of certain type is loaded.
-         * @param type Type of the resource (the name of the container).
-         * @param name Name of the resource.
-         * @return True if it is loaded.
-         */
-        bool isLoaded(const std::string& type, const std::string& name) {
-            for (File& file : files) {
-                if (file.name == name && file.type == type) {
-                    if (this->resourceManagers[file.type]->isLoaded(name)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
     private:
         enum State {
@@ -250,6 +252,8 @@ namespace zt {
             File(const std::string& type, const std::string& name, const std::string& path) :
             name(name), type(type), path(path) {}
         };
+        
+        std::string resourceFile;
         
         // Files that are about to be loaded.
         // (name, type, path)

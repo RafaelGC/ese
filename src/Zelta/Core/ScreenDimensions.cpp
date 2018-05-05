@@ -4,10 +4,10 @@ namespace zt {
     ScreenDimensions::ScreenDimensions(float devW, float devH, float targetW, float targetH) :
     devW(devW), devH(devH), targetW(targetW), targetH(targetH) {
         if (devAspectRatio() < targetAspectRatio()) {
-            //Bandas a izquierda/derecha.
+            // Black bars on the right/left sides.
             factorX = factorY = (targetH / devH);
         } else {
-            //Bandas superiores/inferiores.
+            // Black bars on the top/bottom sides.
             factorX = factorY = (targetW / devW);
         }
     }
