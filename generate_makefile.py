@@ -37,6 +37,9 @@ modules = {
 	            'TaskPool',
 	            'Worker'
 	            ],
+    'Internationalization': [
+                'Text'
+                ],
 	'External': [
 	            'pugixml'
 	            ],
