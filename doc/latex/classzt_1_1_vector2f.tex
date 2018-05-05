@@ -1,0 +1,352 @@
+\hypertarget{classzt_1_1_vector2f}{}\section{zt\+:\+:Vector2f Class Reference}
+\label{classzt_1_1_vector2f}\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+
+
+Utility class for 2-\/dimensional vectors.  
+
+
+
+
+{\ttfamily \#include $<$Vector2f.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_a94fc942a263a91f4f33d2821ee9c8acd}\label{classzt_1_1_vector2f_a94fc942a263a91f4f33d2821ee9c8acd}} 
+{\bfseries Vector2f} (float x, float y)
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_a50ad9da433750914c687db6ede87e0a7}\label{classzt_1_1_vector2f_a50ad9da433750914c687db6ede87e0a7}} 
+{\bfseries Vector2f} (const sf\+::\+Vector2f \&v)
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_a94ee9212d0ccaf6e88fd22f400925d24}\label{classzt_1_1_vector2f_a94ee9212d0ccaf6e88fd22f400925d24}} 
+float {\bfseries getX} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_a4c33e6e5f654d4e330ec802a3eefcd96}\label{classzt_1_1_vector2f_a4c33e6e5f654d4e330ec802a3eefcd96}} 
+float {\bfseries getY} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_abe058bbefd3d3490ed56e0b220724472}\label{classzt_1_1_vector2f_abe058bbefd3d3490ed56e0b220724472}} 
+float {\bfseries length} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_adf28079a299c65def555c97d3fb9c51d}\label{classzt_1_1_vector2f_adf28079a299c65def555c97d3fb9c51d}} 
+void {\bfseries setX} (float x)
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_a6e6f512e24654940ca3cc20c97a24871}\label{classzt_1_1_vector2f_a6e6f512e24654940ca3cc20c97a24871}} 
+void {\bfseries setY} (float y)
+\item 
+\mbox{\Hypertarget{classzt_1_1_vector2f_aa3318b77bb7ace0065c93f1d110b189f}\label{classzt_1_1_vector2f_aa3318b77bb7ace0065c93f1d110b189f}} 
+void {\bfseries set} (float x, float y)
+\item 
+void \hyperlink{classzt_1_1_vector2f_a2992fead31cd872fbb7d2bda8271cdad}{normalize} ()
+\begin{DoxyCompactList}\small\item\em Normalizes the vector. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \& \hyperlink{classzt_1_1_vector2f_ac87f5252d360bf9bad0934acbaa4cc07}{add} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other)
+\begin{DoxyCompactList}\small\item\em Adds the other vector to this one. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \& \hyperlink{classzt_1_1_vector2f_aada2302369ae96e18db8362768702bd0}{multiply} (float num)
+\begin{DoxyCompactList}\small\item\em Multiply the vector by a scalar. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \& \hyperlink{classzt_1_1_vector2f_a72873ae6ba73ade6dcabe23f482b4f82}{multiply} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Multiply the vector by two scalars. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \& \hyperlink{classzt_1_1_vector2f_a97aab9087dc306b6a8b9c61fa84e98de}{rotate} (float angle)
+\begin{DoxyCompactList}\small\item\em Rotates de vector. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a46f3e0b08f9ea3c9ec0f1c0670f82ebc}{normalized} () const
+\begin{DoxyCompactList}\small\item\em Returns the normalized vector. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector3f}{Vector3f} \hyperlink{classzt_1_1_vector2f_a51b847203bcda779189114905d1dc77d}{cross} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other) const
+\begin{DoxyCompactList}\small\item\em Returns the cross product. \end{DoxyCompactList}\item 
+float \hyperlink{classzt_1_1_vector2f_a8141042fa92a5138e5d435505882d122}{dot} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other) const
+\begin{DoxyCompactList}\small\item\em Returns the dot product. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a9455159e20935fee1c3fd46d5c138caa}{plus} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other) const
+\begin{DoxyCompactList}\small\item\em Adds this vector to other and returns the result. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a69478760accc84d5de3867c899499f3a}{minus} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other) const
+\begin{DoxyCompactList}\small\item\em Substracts other vector to thisand returns the result. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a158fe50fd17f2a0ee72a6add6a33ae93}{multiplied} (float s) const
+\begin{DoxyCompactList}\small\item\em Multiply the vector by a scalar. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_aadee7c951439eb7953256e5f5704e28a}{multiplied} (float x, float y) const
+\begin{DoxyCompactList}\small\item\em Multiply the vector by two scalars. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a1b301634478a665f0e0e7cacdc568cac}{rotated} (float angle) const
+\begin{DoxyCompactList}\small\item\em Returns a new rotated vector. \end{DoxyCompactList}\item 
+float \hyperlink{classzt_1_1_vector2f_a4449e55fef14e503d832831b97d2f949}{get\+Angle} () const
+\item 
+\hyperlink{classzt_1_1_vector2f}{Vector2f} \hyperlink{classzt_1_1_vector2f_a2aa1ef32f78d6399891f6318e9a0cd3c}{to} (const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&other) const
+\item 
+sf\+::\+Vector2f \hyperlink{classzt_1_1_vector2f_aebb473f59fd05176a89031cad7b5e13a}{to\+Sfml} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utility class for 2-\/dimensional vectors. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_vector2f_ac87f5252d360bf9bad0934acbaa4cc07}\label{classzt_1_1_vector2f_ac87f5252d360bf9bad0934acbaa4cc07}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!add@{add}}
+\index{add@{add}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f}\& zt\+::\+Vector2f\+::add (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Adds the other vector to this one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns this vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a51b847203bcda779189114905d1dc77d}\label{classzt_1_1_vector2f_a51b847203bcda779189114905d1dc77d}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!cross@{cross}}
+\index{cross@{cross}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{cross()}{cross()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector3f}{Vector3f} zt\+::\+Vector2f\+::cross (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Returns the cross product. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cross product (3d vector). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a8141042fa92a5138e5d435505882d122}\label{classzt_1_1_vector2f_a8141042fa92a5138e5d435505882d122}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!dot@{dot}}
+\index{dot@{dot}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily float zt\+::\+Vector2f\+::dot (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Returns the dot product. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dot product. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a4449e55fef14e503d832831b97d2f949}\label{classzt_1_1_vector2f_a4449e55fef14e503d832831b97d2f949}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!get\+Angle@{get\+Angle}}
+\index{get\+Angle@{get\+Angle}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{get\+Angle()}{getAngle()}}
+{\footnotesize\ttfamily float zt\+::\+Vector2f\+::get\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Returns the angle of the vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a69478760accc84d5de3867c899499f3a}\label{classzt_1_1_vector2f_a69478760accc84d5de3867c899499f3a}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!minus@{minus}}
+\index{minus@{minus}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{minus()}{minus()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::minus (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Substracts other vector to thisand returns the result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the substraction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a158fe50fd17f2a0ee72a6add6a33ae93}\label{classzt_1_1_vector2f_a158fe50fd17f2a0ee72a6add6a33ae93}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!multiplied@{multiplied}}
+\index{multiplied@{multiplied}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{multiplied()}{multiplied()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::multiplied (\begin{DoxyParamCaption}\item[{float}]{s }\end{DoxyParamCaption}) const}
+
+
+
+Multiply the vector by a scalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the new scaled vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_aadee7c951439eb7953256e5f5704e28a}\label{classzt_1_1_vector2f_aadee7c951439eb7953256e5f5704e28a}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!multiplied@{multiplied}}
+\index{multiplied@{multiplied}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{multiplied()}{multiplied()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::multiplied (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Multiply the vector by two scalars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the new scaled vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_aada2302369ae96e18db8362768702bd0}\label{classzt_1_1_vector2f_aada2302369ae96e18db8362768702bd0}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!multiply@{multiply}}
+\index{multiply@{multiply}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{multiply()}{multiply()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f}\& zt\+::\+Vector2f\+::multiply (\begin{DoxyParamCaption}\item[{float}]{num }\end{DoxyParamCaption})}
+
+
+
+Multiply the vector by a scalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns this vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a72873ae6ba73ade6dcabe23f482b4f82}\label{classzt_1_1_vector2f_a72873ae6ba73ade6dcabe23f482b4f82}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!multiply@{multiply}}
+\index{multiply@{multiply}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{multiply()}{multiply()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f}\& zt\+::\+Vector2f\+::multiply (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Multiply the vector by two scalars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns this vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a2992fead31cd872fbb7d2bda8271cdad}\label{classzt_1_1_vector2f_a2992fead31cd872fbb7d2bda8271cdad}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!normalize@{normalize}}
+\index{normalize@{normalize}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily void zt\+::\+Vector2f\+::normalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Normalizes the vector. 
+
+\begin{DoxySeeAlso}{See also}
+If you don\textquotesingle{}t want \hyperlink{classzt_1_1_vector2f_a2aa1ef32f78d6399891f6318e9a0cd3c}{to} modify this vector but get a new one use \hyperlink{classzt_1_1_vector2f_a46f3e0b08f9ea3c9ec0f1c0670f82ebc}{normalized()}. 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a46f3e0b08f9ea3c9ec0f1c0670f82ebc}\label{classzt_1_1_vector2f_a46f3e0b08f9ea3c9ec0f1c0670f82ebc}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!normalized@{normalized}}
+\index{normalized@{normalized}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{normalized()}{normalized()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::normalized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the normalized vector. 
+
+\begin{DoxyWarning}{Warning}
+This method does not modify the original vector. 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+Normalized vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a9455159e20935fee1c3fd46d5c138caa}\label{classzt_1_1_vector2f_a9455159e20935fee1c3fd46d5c138caa}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!plus@{plus}}
+\index{plus@{plus}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{plus()}{plus()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::plus (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Adds this vector to other and returns the result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the sum. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a97aab9087dc306b6a8b9c61fa84e98de}\label{classzt_1_1_vector2f_a97aab9087dc306b6a8b9c61fa84e98de}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!rotate@{rotate}}
+\index{rotate@{rotate}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f}\& zt\+::\+Vector2f\+::rotate (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+Rotates de vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns this vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a1b301634478a665f0e0e7cacdc568cac}\label{classzt_1_1_vector2f_a1b301634478a665f0e0e7cacdc568cac}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!rotated@{rotated}}
+\index{rotated@{rotated}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{rotated()}{rotated()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::rotated (\begin{DoxyParamCaption}\item[{float}]{angle }\end{DoxyParamCaption}) const}
+
+
+
+Returns a new rotated vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & Angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Rotated vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_a2aa1ef32f78d6399891f6318e9a0cd3c}\label{classzt_1_1_vector2f_a2aa1ef32f78d6399891f6318e9a0cd3c}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!to@{to}}
+\index{to@{to}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{to()}{to()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_vector2f}{Vector2f} zt\+::\+Vector2f\+::to (\begin{DoxyParamCaption}\item[{const \hyperlink{classzt_1_1_vector2f}{Vector2f} \&}]{other }\end{DoxyParamCaption}) const}
+
+Calcula el vector que va desde this hasta other. Este método es azúcar sintáctico para\+: other.\+minus($\ast$this). 
+\begin{DoxyParams}{Parameters}
+{\em Vector} & destino. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector que tiene origen en this y termina en other. Returns the vector from $<$$<$this$>$$>$ to $<$$<$other$>$$>$. Its the same that other.\+minus($\ast$this). 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Other vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_vector2f_aebb473f59fd05176a89031cad7b5e13a}\label{classzt_1_1_vector2f_aebb473f59fd05176a89031cad7b5e13a}} 
+\index{zt\+::\+Vector2f@{zt\+::\+Vector2f}!to\+Sfml@{to\+Sfml}}
+\index{to\+Sfml@{to\+Sfml}!zt\+::\+Vector2f@{zt\+::\+Vector2f}}
+\subsubsection{\texorpdfstring{to\+Sfml()}{toSfml()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f zt\+::\+Vector2f\+::to\+Sfml (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Converts this vector to a sf\+::\+Vector2f. \begin{DoxyReturn}{Returns}
+S\+F\+ML vector. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Math/Vector2f.\+hpp\end{DoxyCompactItemize}

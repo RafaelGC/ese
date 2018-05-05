@@ -1,0 +1,80 @@
+\hypertarget{classzt_1_1_arguments}{}\section{zt\+:\+:Arguments Class Reference}
+\label{classzt_1_1_arguments}\index{zt\+::\+Arguments@{zt\+::\+Arguments}}
+
+
+Represents a set of arguments (e.\+g.\+: the command line arguments).  
+
+
+
+
+{\ttfamily \#include $<$Arguments.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_arguments_a54f00e2e61fa29ba5c371bb858b572aa}\label{classzt_1_1_arguments_a54f00e2e61fa29ba5c371bb858b572aa}} 
+\hyperlink{classzt_1_1_arguments_a54f00e2e61fa29ba5c371bb858b572aa}{Arguments} ()
+\begin{DoxyCompactList}\small\item\em Crea un conjunto de parámetros vacío. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_arguments_a808eb391686c72c4196f4cf59610f427}{Arguments} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Conjunto de parámetros a partir de un puntero de punteros. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_arguments_a82a314122a0b4944d824fb73bd6242a0}\label{classzt_1_1_arguments_a82a314122a0b4944d824fb73bd6242a0}} 
+virtual void {\bfseries initialize} (int argc, char $\ast$$\ast$argv)
+\item 
+int \hyperlink{classzt_1_1_arguments_aee2e1c74257bd3a11d34edb1898341dc}{size} () const
+\item 
+const \hyperlink{classzt_1_1_argument}{Argument} \& \hyperlink{classzt_1_1_arguments_a0b71f588f3af4e114149773af8f31c2e}{get} (int i) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a set of arguments (e.\+g.\+: the command line arguments). 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_arguments_a808eb391686c72c4196f4cf59610f427}\label{classzt_1_1_arguments_a808eb391686c72c4196f4cf59610f427}} 
+\index{zt\+::\+Arguments@{zt\+::\+Arguments}!Arguments@{Arguments}}
+\index{Arguments@{Arguments}!zt\+::\+Arguments@{zt\+::\+Arguments}}
+\subsubsection{\texorpdfstring{Arguments()}{Arguments()}}
+{\footnotesize\ttfamily zt\+::\+Arguments\+::\+Arguments (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Conjunto de parámetros a partir de un puntero de punteros. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Número de parámetros. \\
+\hline
+{\em argv} & Puntero a cadenas de caracteres. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_arguments_a0b71f588f3af4e114149773af8f31c2e}\label{classzt_1_1_arguments_a0b71f588f3af4e114149773af8f31c2e}} 
+\index{zt\+::\+Arguments@{zt\+::\+Arguments}!get@{get}}
+\index{get@{get}!zt\+::\+Arguments@{zt\+::\+Arguments}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily const \hyperlink{classzt_1_1_argument}{Argument}\& zt\+::\+Arguments\+::get (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Índice del parámetro. El 0 debería ser el nombre del ejecutable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parámetro. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_arguments_aee2e1c74257bd3a11d34edb1898341dc}\label{classzt_1_1_arguments_aee2e1c74257bd3a11d34edb1898341dc}} 
+\index{zt\+::\+Arguments@{zt\+::\+Arguments}!size@{size}}
+\index{size@{size}!zt\+::\+Arguments@{zt\+::\+Arguments}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int zt\+::\+Arguments\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Número de parámetros. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Arguments.\+hpp\end{DoxyCompactItemize}

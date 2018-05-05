@@ -1,0 +1,38 @@
+var classzt_1_1_scene =
+[
+    [ "State", "classzt_1_1_scene.html#a5618d9448cd874af20a6be8ed60c87a5", [
+      [ "ACTIVE", "classzt_1_1_scene.html#a5618d9448cd874af20a6be8ed60c87a5a18ff74f43da410c5529f7d6fca84f115", null ],
+      [ "PAUSED", "classzt_1_1_scene.html#a5618d9448cd874af20a6be8ed60c87a5a99b2439e63f73ad515f7ab2447a80673", null ],
+      [ "INACTIVE", "classzt_1_1_scene.html#a5618d9448cd874af20a6be8ed60c87a5a6b273343c454f9c53dcfc9c4ccf171d2", null ]
+    ] ],
+    [ "Scene", "classzt_1_1_scene.html#af30ef0d6fa9fcdbada43d51f594b1f09", null ],
+    [ "~Scene", "classzt_1_1_scene.html#ac8098f81c2615077a135f1d3024aa026", null ],
+    [ "advanceTime", "classzt_1_1_scene.html#ac5440bbe62a44eda2d4b3d1dde5d3d6a", null ],
+    [ "checkIfWindowClosed", "classzt_1_1_scene.html#acfd0b618da5ada48d96b93c8859247af", null ],
+    [ "clear", "classzt_1_1_scene.html#ae8a778b82813dca9d6153fdcb38896a1", null ],
+    [ "draw", "classzt_1_1_scene.html#ac0fa65322c3b81f42b2386d14e55e14f", null ],
+    [ "getMasterClock", "classzt_1_1_scene.html#adb5f61d68371bdf121766e4bc6116ebe", null ],
+    [ "getName", "classzt_1_1_scene.html#a82fa58fe125a30505c46d94d381e289d", null ],
+    [ "getSceneManager", "classzt_1_1_scene.html#a7bfc8a6811275f47b858b9baa55ac106", null ],
+    [ "getScreenSize", "classzt_1_1_scene.html#a571cfe15ea9f8e0b3f1bab35c6d97c6b", null ],
+    [ "getState", "classzt_1_1_scene.html#a8ee519dcf39f795ebcaf6b3cb2dbb930", null ],
+    [ "getWindow", "classzt_1_1_scene.html#a53c482a19ae48fdce5fc3af5e8f3022b", null ],
+    [ "isActive", "classzt_1_1_scene.html#a784e245a00b9245faf57d6a6186e8d04", null ],
+    [ "isInactive", "classzt_1_1_scene.html#a9ae2b530af478e2444e06c1994531f87", null ],
+    [ "isPaused", "classzt_1_1_scene.html#af2de671d8fa2ef003c0cd55440482464", null ],
+    [ "logic", "classzt_1_1_scene.html#a1150eb60893f3077ecacf94b309414bf", null ],
+    [ "manageEvents", "classzt_1_1_scene.html#ac450fd3460c158c0a3f2661df0410477", null ],
+    [ "onActivate", "classzt_1_1_scene.html#a45f434d305b61e9819fb21efe35189dc", null ],
+    [ "onDeactivate", "classzt_1_1_scene.html#a58390d4649c7c0eda1a3fe2f65952a3f", null ],
+    [ "onPause", "classzt_1_1_scene.html#a38821456606a61abb6255fed9954336e", null ],
+    [ "render", "classzt_1_1_scene.html#aa554c0468228aa1aab7e553c52c7b0d4", null ],
+    [ "setState", "classzt_1_1_scene.html#a0a0d32e948aca8f581a771f54a4444e5", null ],
+    [ "setWindow", "classzt_1_1_scene.html#ac7b62a9ada72130fd1d131c080e9a339", null ],
+    [ "SceneManager", "classzt_1_1_scene.html#a284464b0561a6f2915f04b0245b987f0", null ],
+    [ "events", "classzt_1_1_scene.html#a1da96e1c8fa7b26da4504ade1bfd6c41", null ],
+    [ "masterClock", "classzt_1_1_scene.html#a4cc8f5e29b99c49a8edc0c8a2f535d3c", null ],
+    [ "name", "classzt_1_1_scene.html#a4c59d38b4006405c0f5a4caae401500e", null ],
+    [ "sceneManager", "classzt_1_1_scene.html#a2a64a5a0a5c38c79416f1887ad8ddf1d", null ],
+    [ "state", "classzt_1_1_scene.html#afa7ec29518dcf41daf6e1b33b3241ff8", null ],
+    [ "window", "classzt_1_1_scene.html#a03f12b88348262d18487f2381f5874b1", null ]
+];

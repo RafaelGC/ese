@@ -1,0 +1,43 @@
+\hypertarget{classzt_1_1_task}{}\section{zt\+:\+:Task Class Reference}
+\label{classzt_1_1_task}\index{zt\+::\+Task@{zt\+::\+Task}}
+
+
+A \hyperlink{classzt_1_1_task}{Task} is a unit of work.  
+
+
+
+
+{\ttfamily \#include $<$Task.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classzt_1_1_task_a6026a3bc7552bd86653f1168919ae7ab}{work} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classzt_1_1_task}{Task} is a unit of work. 
+
+If you need something to be executed in a different thread you can use \hyperlink{classzt_1_1_task}{Task} and \hyperlink{classzt_1_1_task_pool}{Task\+Pool} classes.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classzt_1_1_task_pool}{Task\+Pool} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_task_a6026a3bc7552bd86653f1168919ae7ab}\label{classzt_1_1_task_a6026a3bc7552bd86653f1168919ae7ab}} 
+\index{zt\+::\+Task@{zt\+::\+Task}!work@{work}}
+\index{work@{work}!zt\+::\+Task@{zt\+::\+Task}}
+\subsubsection{\texorpdfstring{work()}{work()}}
+{\footnotesize\ttfamily virtual bool zt\+::\+Task\+::work (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\begin{DoxyReturn}{Returns}
+True if the task is finished. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Concurrency/Task.\+hpp\end{DoxyCompactItemize}

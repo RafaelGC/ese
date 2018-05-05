@@ -1,0 +1,61 @@
+\hypertarget{classzt_1_1_log}{}\section{zt\+:\+:Log Class Reference}
+\label{classzt_1_1_log}\index{zt\+::\+Log@{zt\+::\+Log}}
+
+
+Base class for logging.  
+
+
+
+
+{\ttfamily \#include $<$Log.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Log\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_log}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_aec3ae67596b29202b7154380cbdb3ae9}\label{classzt_1_1_log_aec3ae67596b29202b7154380cbdb3ae9}} 
+enum {\bfseries Type} \{ {\bfseries E\+R\+R\+OR}, 
+{\bfseries W\+A\+R\+N\+I\+NG}, 
+{\bfseries I\+N\+FO}, 
+{\bfseries S\+U\+C\+C\+E\+SS}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_ad2cf7a53c6646b187dca65cbcf667d6c}\label{classzt_1_1_log_ad2cf7a53c6646b187dca65cbcf667d6c}} 
+virtual void {\bfseries log} (Log\+::\+Type type, const std\+::string \&message)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_a07977fb4dc29aea94383c5700f72492a}\label{classzt_1_1_log_a07977fb4dc29aea94383c5700f72492a}} 
+virtual void {\bfseries error} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_ac6e0e1586ccf2239136df6e1a98e2b8e}\label{classzt_1_1_log_ac6e0e1586ccf2239136df6e1a98e2b8e}} 
+virtual void {\bfseries info} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_a11094b09c3e1d6d60ca501f4889fe266}\label{classzt_1_1_log_a11094b09c3e1d6d60ca501f4889fe266}} 
+virtual void {\bfseries warning} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_a00f9214b32a771bc11a08d2fac88dea7}\label{classzt_1_1_log_a00f9214b32a771bc11a08d2fac88dea7}} 
+virtual void {\bfseries success} (const std\+::string \&message)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_log_a95116d9d99af0b6196d17819b34f42d9}\label{classzt_1_1_log_a95116d9d99af0b6196d17819b34f42d9}} 
+Type {\bfseries last\+Mode}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for logging. 
+
+You may find useful the Z\+E\+L\+T\+A\+\_\+\+L\+O\+G\+\_\+\+W\+A\+R\+N\+I\+NG(...), Z\+E\+L\+T\+A\+\_\+\+L\+O\+G\+\_\+\+I\+N\+FO(...), Z\+E\+L\+T\+A\+\_\+\+L\+O\+G\+\_\+\+E\+R\+R\+OR(...) and Z\+E\+L\+T\+A\+\_\+\+L\+O\+G\+\_\+\+S\+U\+C\+C\+E\+SS(...) directives that only logs when the Z\+E\+L\+T\+A\+L\+I\+B\+\_\+\+D\+E\+B\+UG directive si defined. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Log.\+hpp\end{DoxyCompactItemize}

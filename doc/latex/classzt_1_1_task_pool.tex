@@ -1,0 +1,78 @@
+\hypertarget{classzt_1_1_task_pool}{}\section{zt\+:\+:Task\+Pool Class Reference}
+\label{classzt_1_1_task_pool}\index{zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}}
+
+
+A \hyperlink{classzt_1_1_task_pool}{Task\+Pool} keeps a set of workers (threads represented by the \hyperlink{classzt_1_1_worker}{Worker} class). You can enqueue tasks in the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} and they will be executed when a worker is free.  
+
+
+
+
+{\ttfamily \#include $<$Task\+Pool.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classzt_1_1_task_pool_a20b14ff66aaf67a035dd7394e7266ee0}{Task\+Pool} (unsigned int threads=2)
+\item 
+void \hyperlink{classzt_1_1_task_pool_a966bbcbfbc550c1324772d90c1c70f1b}{add\+Task} (\hyperlink{classzt_1_1_task}{Task} \&task)
+\item 
+void \hyperlink{classzt_1_1_task_pool_a39276f6d847af21e7c6eff52a4712fea}{join} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_task_pool_ad9e5feffedd371d5ef1f0bfce8cef5c4}\label{classzt_1_1_task_pool_ad9e5feffedd371d5ef1f0bfce8cef5c4}} 
+void {\bfseries stop} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classzt_1_1_task_pool_a1b03b3bf318d4873e9109cd6c9ba43b4}{work} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classzt_1_1_task_pool}{Task\+Pool} keeps a set of workers (threads represented by the \hyperlink{classzt_1_1_worker}{Worker} class). You can enqueue tasks in the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} and they will be executed when a worker is free. 
+
+To create a task just inherit from \hyperlink{classzt_1_1_task}{Task} and implement in the \hyperlink{classzt_1_1_task_pool_a1b03b3bf318d4873e9109cd6c9ba43b4}{work()} method the code you want to execute in a different thread. The \hyperlink{classzt_1_1_task_pool_a1b03b3bf318d4873e9109cd6c9ba43b4}{work()} method must return true if it has finished the task so that the worker gets released. Then, instance the \hyperlink{classzt_1_1_task}{Task} and add it to a \hyperlink{classzt_1_1_task_pool}{Task\+Pool} with \hyperlink{classzt_1_1_task_pool_a966bbcbfbc550c1324772d90c1c70f1b}{add\+Task()}. The task will be executed as soon as a \hyperlink{classzt_1_1_worker}{Worker} is free. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_task_pool_a20b14ff66aaf67a035dd7394e7266ee0}\label{classzt_1_1_task_pool_a20b14ff66aaf67a035dd7394e7266ee0}} 
+\index{zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}!Task\+Pool@{Task\+Pool}}
+\index{Task\+Pool@{Task\+Pool}!zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}}
+\subsubsection{\texorpdfstring{Task\+Pool()}{TaskPool()}}
+{\footnotesize\ttfamily zt\+::\+Task\+Pool\+::\+Task\+Pool (\begin{DoxyParamCaption}\item[{unsigned int}]{threads = {\ttfamily 2} }\end{DoxyParamCaption})}
+
+Creates a \hyperlink{classzt_1_1_task_pool}{Task\+Pool} with a certain amount of threads. 
+\begin{DoxyParams}{Parameters}
+{\em threads} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_task_pool_a966bbcbfbc550c1324772d90c1c70f1b}\label{classzt_1_1_task_pool_a966bbcbfbc550c1324772d90c1c70f1b}} 
+\index{zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}!add\+Task@{add\+Task}}
+\index{add\+Task@{add\+Task}!zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}}
+\subsubsection{\texorpdfstring{add\+Task()}{addTask()}}
+{\footnotesize\ttfamily void zt\+::\+Task\+Pool\+::add\+Task (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_task}{Task} \&}]{task }\end{DoxyParamCaption})}
+
+Adds a new task to the queue. 
+\begin{DoxyParams}{Parameters}
+{\em task} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_task_pool_a39276f6d847af21e7c6eff52a4712fea}\label{classzt_1_1_task_pool_a39276f6d847af21e7c6eff52a4712fea}} 
+\index{zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}!join@{join}}
+\index{join@{join}!zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}}
+\subsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void zt\+::\+Task\+Pool\+::join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Waits until the manager thread and the \hyperlink{classzt_1_1_worker}{Worker} threads are done. \mbox{\Hypertarget{classzt_1_1_task_pool_a1b03b3bf318d4873e9109cd6c9ba43b4}\label{classzt_1_1_task_pool_a1b03b3bf318d4873e9109cd6c9ba43b4}} 
+\index{zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}!work@{work}}
+\index{work@{work}!zt\+::\+Task\+Pool@{zt\+::\+Task\+Pool}}
+\subsubsection{\texorpdfstring{work()}{work()}}
+{\footnotesize\ttfamily void zt\+::\+Task\+Pool\+::work (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Manages the queue. This method is executed in a different thread and keeps running until you call stop(). Workers notificates this thread when they are free so that it can send them new tasks. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Concurrency/Task\+Pool.\+hpp\end{DoxyCompactItemize}

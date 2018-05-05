@@ -1,0 +1,103 @@
+\hypertarget{classzt_1_1_render_layer}{}\section{zt\+:\+:Render\+Layer Class Reference}
+\label{classzt_1_1_render_layer}\index{zt\+::\+Render\+Layer@{zt\+::\+Render\+Layer}}
+
+
+Container for drawable objects. This class allows you to group sf\+::\+Drawable elements such as sf\+::\+Sprite. The container keeps pointers to the objects, so your drawable objects should be kept alive while using the render layer.  
+
+
+
+
+{\ttfamily \#include $<$Render\+Layer.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Render\+Layer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_render_layer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_ab612013a9d82ccbe66a7d86b2eb474f2}\label{classzt_1_1_render_layer_ab612013a9d82ccbe66a7d86b2eb474f2}} 
+\hyperlink{classzt_1_1_render_layer_ab612013a9d82ccbe66a7d86b2eb474f2}{Render\+Layer} (bool \hyperlink{classzt_1_1_render_layer_a5a6dc2d742807bad7533992512d060b4}{visible}=true)
+\begin{DoxyCompactList}\small\item\em Constructs an empty layer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_aa1ffedae44104604d9b1ffac7349d181}\label{classzt_1_1_render_layer_aa1ffedae44104604d9b1ffac7349d181}} 
+virtual void \hyperlink{classzt_1_1_render_layer_aa1ffedae44104604d9b1ffac7349d181}{draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draws all contained objects if the layer is visible. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a3495a2e7991826fb6459381cd483c96b}\label{classzt_1_1_render_layer_a3495a2e7991826fb6459381cd483c96b}} 
+void \hyperlink{classzt_1_1_render_layer_a3495a2e7991826fb6459381cd483c96b}{add\+Drawable} (sf\+::\+Drawable \&item)
+\begin{DoxyCompactList}\small\item\em Adds a drawable. \end{DoxyCompactList}\item 
+bool \hyperlink{classzt_1_1_render_layer_a7273e706c4f0a727cc363a02b762ebe3}{remove\+Drawable} (sf\+::\+Drawable \&item)
+\begin{DoxyCompactList}\small\item\em Removes a drawable if it exists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a93bcd3f29fc6af62bd92ecf670c6368a}\label{classzt_1_1_render_layer_a93bcd3f29fc6af62bd92ecf670c6368a}} 
+void \hyperlink{classzt_1_1_render_layer_a93bcd3f29fc6af62bd92ecf670c6368a}{set\+Visible} (bool \hyperlink{classzt_1_1_render_layer_a5a6dc2d742807bad7533992512d060b4}{visible})
+\begin{DoxyCompactList}\small\item\em Sets the visibility. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a8c7c33d51d373350a5973a55584b394d}\label{classzt_1_1_render_layer_a8c7c33d51d373350a5973a55584b394d}} 
+bool {\bfseries is\+Visible} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a4a875d392ad3e03acb653f295005909f}\label{classzt_1_1_render_layer_a4a875d392ad3e03acb653f295005909f}} 
+int {\bfseries getZ} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a112e8fea237b99ab0075a48cc2963b96}\label{classzt_1_1_render_layer_a112e8fea237b99ab0075a48cc2963b96}} 
+void {\bfseries setZ} (int z)
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a77dc63ee7dc9f16a1d0c2a35beea98f9}\label{classzt_1_1_render_layer_a77dc63ee7dc9f16a1d0c2a35beea98f9}} 
+unsigned int {\bfseries count} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_ad0bbedf8a92173823d16bb7aebedccc6}\label{classzt_1_1_render_layer_ad0bbedf8a92173823d16bb7aebedccc6}} 
+bool {\bfseries is\+Empty} () const
+\item 
+bool \hyperlink{classzt_1_1_render_layer_a7eb4504147aee10b610602c8363311ca}{operator$<$} (\hyperlink{classzt_1_1_render_layer}{zt\+::\+Render\+Layer} \&other) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_a5a6dc2d742807bad7533992512d060b4}\label{classzt_1_1_render_layer_a5a6dc2d742807bad7533992512d060b4}} 
+bool \hyperlink{classzt_1_1_render_layer_a5a6dc2d742807bad7533992512d060b4}{visible}
+\begin{DoxyCompactList}\small\item\em If it\textquotesingle{}s false the contained objects won\textquotesingle{}t be drawn. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_render_layer_ac19c3e70a9a3329d46b8a16e91aa17e9}\label{classzt_1_1_render_layer_ac19c3e70a9a3329d46b8a16e91aa17e9}} 
+std\+::vector$<$ sf\+::\+Drawable $\ast$ $>$ \hyperlink{classzt_1_1_render_layer_ac19c3e70a9a3329d46b8a16e91aa17e9}{drawable\+Items}
+\begin{DoxyCompactList}\small\item\em Vector que contiene un puntero a los dibujables de esta capa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container for drawable objects. This class allows you to group sf\+::\+Drawable elements such as sf\+::\+Sprite. The container keeps pointers to the objects, so your drawable objects should be kept alive while using the render layer. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_render_layer_a7eb4504147aee10b610602c8363311ca}\label{classzt_1_1_render_layer_a7eb4504147aee10b610602c8363311ca}} 
+\index{zt\+::\+Render\+Layer@{zt\+::\+Render\+Layer}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!zt\+::\+Render\+Layer@{zt\+::\+Render\+Layer}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool zt\+::\+Render\+Layer\+::operator$<$ (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_render_layer}{zt\+::\+Render\+Layer} \&}]{other }\end{DoxyParamCaption}) const}
+
+Compares the depth of the layer. 
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_render_layer_a7273e706c4f0a727cc363a02b762ebe3}\label{classzt_1_1_render_layer_a7273e706c4f0a727cc363a02b762ebe3}} 
+\index{zt\+::\+Render\+Layer@{zt\+::\+Render\+Layer}!remove\+Drawable@{remove\+Drawable}}
+\index{remove\+Drawable@{remove\+Drawable}!zt\+::\+Render\+Layer@{zt\+::\+Render\+Layer}}
+\subsubsection{\texorpdfstring{remove\+Drawable()}{removeDrawable()}}
+{\footnotesize\ttfamily bool zt\+::\+Render\+Layer\+::remove\+Drawable (\begin{DoxyParamCaption}\item[{sf\+::\+Drawable \&}]{item }\end{DoxyParamCaption})}
+
+
+
+Removes a drawable if it exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Drawable you cant to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if it was removed. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Render\+Layer.\+hpp\end{DoxyCompactItemize}
