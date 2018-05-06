@@ -2,10 +2,19 @@ CCC = g++
 CXX = g++
 CFLAGS = -Iinclude -ISFML -std=c++11
 
-OBJECTS = build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Internationalization/Text.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/NestableClock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o build/Zelta/External/pugixml.o
+OBJECTS = build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Internationalization/Text.o build/Zelta/Internationalization/AutoLang.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/NestableClock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o
 
 lib/libzeltalib.a: $(OBJECTS)
-	ar rcs $@ build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Internationalization/Text.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/NestableClock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o build/Zelta/External/pugixml.o
+	ar rcs $@ build/Zelta/Concurrency/Task.o build/Zelta/Concurrency/TaskPool.o build/Zelta/Concurrency/Worker.o build/Zelta/TileEngine/Tileset.o build/Zelta/TileEngine/TiledLoader/Layer.o build/Zelta/TileEngine/TiledLoader/Map.o build/Zelta/TileEngine/TiledLoader/Object.o build/Zelta/TileEngine/TiledLoader/ObjectLayer.o build/Zelta/TileEngine/TiledLoader/Tile.o build/Zelta/TileEngine/TiledLoader/TiledLoader.o build/Zelta/Internationalization/Text.o build/Zelta/Internationalization/AutoLang.o build/Zelta/Math/Vector2f.o build/Zelta/Math/Vector3f.o build/Zelta/Core/AnimatableContainer.o build/Zelta/Core/Application.o build/Zelta/Core/Argument.o build/Zelta/Core/Arguments.o build/Zelta/Core/Clock.o build/Zelta/Core/NestableClock.o build/Zelta/Core/ConsoleLog.o build/Zelta/Core/FileLog.o build/Zelta/Core/Log.o build/Zelta/Core/Package.o build/Zelta/Core/RenderLayer.o build/Zelta/Core/Scene.o build/Zelta/Core/SceneManager.o build/Zelta/Core/ScreenDimensions.o build/Zelta/External/pugixml.o
+
+build/Zelta/Concurrency/Task.o: src/Zelta/Concurrency/Task.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
+
+build/Zelta/Concurrency/TaskPool.o: src/Zelta/Concurrency/TaskPool.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
+
+build/Zelta/Concurrency/Worker.o: src/Zelta/Concurrency/Worker.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/TileEngine/Tileset.o: src/Zelta/TileEngine/Tileset.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
@@ -29,6 +38,15 @@ build/Zelta/TileEngine/TiledLoader/TiledLoader.o: src/Zelta/TileEngine/TiledLoad
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/Internationalization/Text.o: src/Zelta/Internationalization/Text.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
+
+build/Zelta/Internationalization/AutoLang.o: src/Zelta/Internationalization/AutoLang.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
+
+build/Zelta/Math/Vector2f.o: src/Zelta/Math/Vector2f.cpp
+	$(CCC) $(CFLAGS) -c $< -o $@
+
+build/Zelta/Math/Vector3f.o: src/Zelta/Math/Vector3f.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/Core/AnimatableContainer.o: src/Zelta/Core/AnimatableContainer.cpp
@@ -71,21 +89,6 @@ build/Zelta/Core/SceneManager.o: src/Zelta/Core/SceneManager.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/Core/ScreenDimensions.o: src/Zelta/Core/ScreenDimensions.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Math/Vector2f.o: src/Zelta/Math/Vector2f.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Math/Vector3f.o: src/Zelta/Math/Vector3f.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Concurrency/Task.o: src/Zelta/Concurrency/Task.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Concurrency/TaskPool.o: src/Zelta/Concurrency/TaskPool.cpp
-	$(CCC) $(CFLAGS) -c $< -o $@
-
-build/Zelta/Concurrency/Worker.o: src/Zelta/Concurrency/Worker.cpp
 	$(CCC) $(CFLAGS) -c $< -o $@
 
 build/Zelta/External/pugixml.o: src/Zelta/External/pugixml.cpp

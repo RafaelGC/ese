@@ -50,14 +50,21 @@ namespace zt {
          * is not defined.
          * @return The translated string in the current language.
          * */
-        std::wstring get(const std::wstring& stringName, const std::wstring& defaultValue);
+        const std::wstring& get(const std::wstring& stringName, const std::wstring& defaultValue);
 
         /**
          * @brief Returns a string by its name.
          * @param name Name of the string we want to be returned.
          * @return The translated string in the current language.
          * */
-        std::wstring get(const std::wstring& stringName);
+        const std::wstring& get(const std::wstring& stringName);
+        
+        /**
+         * @brief Returns a string by its name.
+         * @param stringName Name of the string to be returned.
+         * @return The translated string in the current language.
+         */
+        const std::wstring& operator[](const std::wstring& stringName);
 
         /**
          * @return Returns the current language.

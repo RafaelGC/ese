@@ -1,0 +1,9 @@
+<string name="greeting">
+    <trans lang="en">Hello</trans>
+    <trans lang="es">Hola</trans>
+</string>
+
+<string name="bye">
+    <trans lang="en">Bye!</trans>
+    <trans lang="es">¡Adiós!</trans>
+</string>

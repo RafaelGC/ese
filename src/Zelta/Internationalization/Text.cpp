@@ -68,7 +68,7 @@ namespace zt {
      * is not defined.
      * @return The translated string in the current language.
      * */
-    std::wstring Text::get(const std::wstring& stringName, const std::wstring& defaultValue) {
+    const std::wstring& Text::get(const std::wstring& stringName, const std::wstring& defaultValue) {
         if (texts.count(stringName) && texts[stringName].count(currentLanguage)) {
             return texts[stringName][currentLanguage];
         }
@@ -82,8 +82,15 @@ namespace zt {
      * @param name Name of the string we want to be returned.
      * @return The translated string in the current language.
      * */
-    std::wstring Text::get(const std::wstring& stringName) {
+    const std::wstring& Text::get(const std::wstring& stringName) {
         return texts[stringName][currentLanguage];
+    }
+    
+    /**
+     * @brief 
+     */
+    const std::wstring& Text::operator[](const std::wstring& stringName) {
+        return get(stringName);
     }
 
     /**

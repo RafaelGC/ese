@@ -38,7 +38,8 @@ modules = {
 	            'Worker'
 	            ],
     'Internationalization': [
-                'Text'
+                'Text',
+                'AutoLang'
                 ],
 	'External': [
 	            'pugixml'
