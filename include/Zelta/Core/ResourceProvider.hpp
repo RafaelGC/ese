@@ -127,6 +127,24 @@ namespace zt {
             require(ts...);
         }
         
+        /**
+         * @brief Given the resource manager name and the name of the
+         * resource, the resource is loaded. If the resource
+         * does not exists a zt::ResourceNotFoundException() is returned.
+         * @param file
+         * @return 
+         */
+        void request(const std::string& type, const std::string& name) {
+            for (File& file : files) {
+                if (file.name == name && file.type == type) {
+                    load(file.type, file.name, file.path);
+                    return;
+                }
+            }
+            
+            throw ResourceNotFoundException(name);
+        }
+        
     protected:
         void load(const std::string& type, const std::string& name, const std::string& path) {
             if (mFromFileSystem) {
