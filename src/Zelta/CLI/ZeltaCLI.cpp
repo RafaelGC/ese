@@ -283,6 +283,7 @@ namespace cli {
     };
 }
 }
+
 int main(int argc, char** argv) {
     
     zt::Arguments args(argc, argv);
@@ -290,11 +291,11 @@ int main(int argc, char** argv) {
     std::map<std::string, zt::cli::Command*> commands;
     
     commands["package:create"] = new zt::cli::CreatePackageCommand;
-    commands["package:add"] = new zt::cli::AddFileToPackage;
-    commands["package:add-directory"] = new zt::cli::AddDirectoryToPackage;
-    commands["package:remove"] = new zt::cli::RemoveFileFromPackage;
-    commands["package:extract"] = new zt::cli::ExtractFileFromPackage;
-    commands["package:list"] = new zt::cli::ListPackage;
+    commands["package:add"] = new zt::cli::AddFileToPackageCommand;
+    commands["package:add-directory"] = new zt::cli::AddDirectoryToPackageCommand;
+    commands["package:remove"] = new zt::cli::RemoveFileFromPackageCommand;
+    commands["package:extract"] = new zt::cli::ExtractFileFromPackageCommand;
+    commands["package:list"] = new zt::cli::ListPackageCommand;
     commands["project:create"] = new zt::cli::CreateProjectCommand;
     commands["help"] = new zt::cli::HelpCommand(commands);
     
