@@ -9,6 +9,5 @@ var searchData=
   ['getlayerbyname',['getLayerByName',['../classzt_1_1_tilemap_renderer.html#ad6e938ecae5da3fc70c2e4e36254bf73',1,'zt::TilemapRenderer']]],
   ['getname',['getName',['../classzt_1_1_resource_manager.html#a53eff2997bb98a45bce592be5a8cfd89',1,'zt::ResourceManager']]],
   ['getnames',['getNames',['../classzt_1_1_package.html#a9454a5a20192952e1d4d2c0ef9e434f4',1,'zt::Package']]],
-  ['getstate',['getState',['../classzt_1_1_scene.html#a8ee519dcf39f795ebcaf6b3cb2dbb930',1,'zt::Scene']]],
-  ['gettexturefortile',['getTextureForTile',['../classzt_1_1_tileset.html#aedae616d1a77443e22f6e1613946ec1b',1,'zt::Tileset']]]
+  ['getstate',['getState',['../classzt_1_1_scene.html#a8ee519dcf39f795ebcaf6b3cb2dbb930',1,'zt::Scene']]]
 ];

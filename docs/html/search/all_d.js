@@ -8,6 +8,7 @@ var searchData=
   ['render',['render',['../classzt_1_1_scene.html#aa554c0468228aa1aab7e553c52c7b0d4',1,'zt::Scene']]],
   ['renderlayer',['RenderLayer',['../classzt_1_1_render_layer.html',1,'zt::RenderLayer'],['../classzt_1_1_render_layer.html#ab612013a9d82ccbe66a7d86b2eb474f2',1,'zt::RenderLayer::RenderLayer()']]],
   ['renderwindow',['renderWindow',['../classzt_1_1_scene_manager.html#a1a0c6b40321c66709ae36f3ccd9f84f6',1,'zt::SceneManager']]],
+  ['request',['request',['../classzt_1_1_resource_provider.html#aa52dfc3f3022366aa279b78ca36b673e',1,'zt::ResourceProvider']]],
   ['require',['require',['../classzt_1_1_resource_provider.html#af7a24c529d5255270e032198c985e603',1,'zt::ResourceProvider']]],
   ['resourcemanager',['ResourceManager',['../classzt_1_1_resource_manager.html',1,'zt::ResourceManager&lt; X &gt;'],['../classzt_1_1_resource_manager.html#aa0973ae6bf2db29a560064101f7e3aa2',1,'zt::ResourceManager::ResourceManager()']]],
   ['resourcemanager_3c_20sf_3a_3afont_20_3e',['ResourceManager&lt; sf::Font &gt;',['../classzt_1_1_resource_manager.html',1,'zt']]],

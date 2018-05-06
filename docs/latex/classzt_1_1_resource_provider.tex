@@ -30,17 +30,15 @@ This class allows you to load resources from the filesystem or a package.
 \mbox{\Hypertarget{classzt_1_1_resource_provider_aedd409bf8d7bc826d04f8b7750cbd75d}\label{classzt_1_1_resource_provider_aedd409bf8d7bc826d04f8b7750cbd75d}} 
 void {\bfseries into} ()
 \item 
-\mbox{\Hypertarget{classzt_1_1_resource_provider_aa23d6aefb7e5f147b37cf08e3c617b5b}\label{classzt_1_1_resource_provider_aa23d6aefb7e5f147b37cf08e3c617b5b}} 
-{\footnotesize template$<$class... TS$>$ }\\void {\bfseries into} (\hyperlink{classzt_1_1_loading_target}{Loading\+Target} \&t, TS \&... ts)
+{\footnotesize template$<$class... TS$>$ }\\void \hyperlink{classzt_1_1_resource_provider_aa23d6aefb7e5f147b37cf08e3c617b5b}{into} (\hyperlink{classzt_1_1_loading_target}{Loading\+Target} \&t, TS \&... ts)
 \item 
 \mbox{\Hypertarget{classzt_1_1_resource_provider_ac54b02898020c6de5d55698d02383b85}\label{classzt_1_1_resource_provider_ac54b02898020c6de5d55698d02383b85}} 
 void {\bfseries require} ()
 \item 
 {\footnotesize template$<$class S , class... SS$>$ }\\void \hyperlink{classzt_1_1_resource_provider_af7a24c529d5255270e032198c985e603}{require} (S \&t, SS \&...ts)
 \begin{DoxyCompactList}\small\item\em This method makes sure that the given resource names are loaded. If they are not, they will be. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classzt_1_1_resource_provider_aa52dfc3f3022366aa279b78ca36b673e}\label{classzt_1_1_resource_provider_aa52dfc3f3022366aa279b78ca36b673e}} 
-void {\bfseries request} (const std\+::string \&type, const std\+::string \&name)
-\end{DoxyCompactItemize}
+void \hyperlink{classzt_1_1_resource_provider_aa52dfc3f3022366aa279b78ca36b673e}{request} (const std\+::string \&type, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Given the resource manager name and the name of the resource, the resource is loaded. If the resource does not exists a \hyperlink{classzt_1_1_resource_not_found_exception}{zt\+::\+Resource\+Not\+Found\+Exception()} is returned. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,7 +46,10 @@ void {\bfseries request} (const std\+::string \&type, const std\+::string \&name
 void {\bfseries load} (const std\+::string \&type, const std\+::string \&name, const std\+::string \&path)
 \item 
 bool \hyperlink{classzt_1_1_resource_provider_a40819044cb7a63200d99f73a66887be1}{is\+Loaded} (const std\+::string \&type, const std\+::string \&name)
-\begin{DoxyCompactList}\small\item\em This method tells if one resource of certain type is loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This method tells if one resource of certain type is loaded. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_resource_provider_a65788988e5b6059d1eebaff68dacc1c8}\label{classzt_1_1_resource_provider_a65788988e5b6059d1eebaff68dacc1c8}} 
+void {\bfseries parse} (const std\+::string \&file)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -62,6 +63,20 @@ If you are using the on-\/demand loading you must be sure that the \hyperlink{cl
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_resource_provider_aa23d6aefb7e5f147b37cf08e3c617b5b}\label{classzt_1_1_resource_provider_aa23d6aefb7e5f147b37cf08e3c617b5b}} 
+\index{zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}!into@{into}}
+\index{into@{into}!zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}}
+\subsubsection{\texorpdfstring{into()}{into()}}
+{\footnotesize\ttfamily template$<$class... TS$>$ \\
+void zt\+::\+Resource\+Provider\+::into (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_loading_target}{Loading\+Target} \&}]{t,  }\item[{TS \&...}]{ts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the Resource\+Managers where the resources will be loaded. 
+\begin{DoxyParams}{Parameters}
+{\em t} & \\
+\hline
+{\em ts} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classzt_1_1_resource_provider_a40819044cb7a63200d99f73a66887be1}\label{classzt_1_1_resource_provider_a40819044cb7a63200d99f73a66887be1}} 
 \index{zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}!is\+Loaded@{is\+Loaded}}
 \index{is\+Loaded@{is\+Loaded}!zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}}
@@ -81,6 +96,24 @@ This method tells if one resource of certain type is loaded.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if it is loaded. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_resource_provider_aa52dfc3f3022366aa279b78ca36b673e}\label{classzt_1_1_resource_provider_aa52dfc3f3022366aa279b78ca36b673e}} 
+\index{zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}!request@{request}}
+\index{request@{request}!zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}}
+\subsubsection{\texorpdfstring{request()}{request()}}
+{\footnotesize\ttfamily void zt\+::\+Resource\+Provider\+::request (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Given the resource manager name and the name of the resource, the resource is loaded. If the resource does not exists a \hyperlink{classzt_1_1_resource_not_found_exception}{zt\+::\+Resource\+Not\+Found\+Exception()} is returned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
 \end{DoxyReturn}
 \mbox{\Hypertarget{classzt_1_1_resource_provider_af7a24c529d5255270e032198c985e603}\label{classzt_1_1_resource_provider_af7a24c529d5255270e032198c985e603}} 
 \index{zt\+::\+Resource\+Provider@{zt\+::\+Resource\+Provider}!require@{require}}

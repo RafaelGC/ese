@@ -114,9 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aedd409bf8d7bc826d04f8b7750cbd75d"><td class="memItemLeft" align="right" valign="top"><a id="aedd409bf8d7bc826d04f8b7750cbd75d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>into</b> ()</td></tr>
 <tr class="separator:aedd409bf8d7bc826d04f8b7750cbd75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa23d6aefb7e5f147b37cf08e3c617b5b"><td class="memTemplParams" colspan="2"><a id="aa23d6aefb7e5f147b37cf08e3c617b5b"></a>
-template&lt;class... TS&gt; </td></tr>
-<tr class="memitem:aa23d6aefb7e5f147b37cf08e3c617b5b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>into</b> (<a class="el" href="classzt_1_1_loading_target.html">LoadingTarget</a> &amp;t, TS &amp;... ts)</td></tr>
+<tr class="memitem:aa23d6aefb7e5f147b37cf08e3c617b5b"><td class="memTemplParams" colspan="2">template&lt;class... TS&gt; </td></tr>
+<tr class="memitem:aa23d6aefb7e5f147b37cf08e3c617b5b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classzt_1_1_resource_provider.html#aa23d6aefb7e5f147b37cf08e3c617b5b">into</a> (<a class="el" href="classzt_1_1_loading_target.html">LoadingTarget</a> &amp;t, TS &amp;... ts)</td></tr>
 <tr class="separator:aa23d6aefb7e5f147b37cf08e3c617b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac54b02898020c6de5d55698d02383b85"><td class="memItemLeft" align="right" valign="top"><a id="ac54b02898020c6de5d55698d02383b85"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>require</b> ()</td></tr>
@@ -125,8 +124,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>require</b> ()</td></
 <tr class="memitem:af7a24c529d5255270e032198c985e603"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classzt_1_1_resource_provider.html#af7a24c529d5255270e032198c985e603">require</a> (S &amp;t, SS &amp;...ts)</td></tr>
 <tr class="memdesc:af7a24c529d5255270e032198c985e603"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method makes sure that the given resource names are loaded. If they are not, they will be.  <a href="#af7a24c529d5255270e032198c985e603">More...</a><br /></td></tr>
 <tr class="separator:af7a24c529d5255270e032198c985e603"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa52dfc3f3022366aa279b78ca36b673e"><td class="memItemLeft" align="right" valign="top"><a id="aa52dfc3f3022366aa279b78ca36b673e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>request</b> (const std::string &amp;type, const std::string &amp;name)</td></tr>
+<tr class="memitem:aa52dfc3f3022366aa279b78ca36b673e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzt_1_1_resource_provider.html#aa52dfc3f3022366aa279b78ca36b673e">request</a> (const std::string &amp;type, const std::string &amp;name)</td></tr>
+<tr class="memdesc:aa52dfc3f3022366aa279b78ca36b673e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the resource manager name and the name of the resource, the resource is loaded. If the resource does not exists a <a class="el" href="classzt_1_1_resource_not_found_exception.html" title="Exception throwed when a resource is not found. ">zt::ResourceNotFoundException()</a> is returned.  <a href="#aa52dfc3f3022366aa279b78ca36b673e">More...</a><br /></td></tr>
 <tr class="separator:aa52dfc3f3022366aa279b78ca36b673e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -137,12 +136,60 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::
 <tr class="memitem:a40819044cb7a63200d99f73a66887be1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzt_1_1_resource_provider.html#a40819044cb7a63200d99f73a66887be1">isLoaded</a> (const std::string &amp;type, const std::string &amp;name)</td></tr>
 <tr class="memdesc:a40819044cb7a63200d99f73a66887be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method tells if one resource of certain type is loaded.  <a href="#a40819044cb7a63200d99f73a66887be1">More...</a><br /></td></tr>
 <tr class="separator:a40819044cb7a63200d99f73a66887be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65788988e5b6059d1eebaff68dacc1c8"><td class="memItemLeft" align="right" valign="top"><a id="a65788988e5b6059d1eebaff68dacc1c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (const std::string &amp;file)</td></tr>
+<tr class="separator:a65788988e5b6059d1eebaff68dacc1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class allows you to load resources from the filesystem or a package. </p>
 <p>The set of resources that will be loaded is determined by a resource file that you set through the load(file) method. (Note: that file must not be in a package.) Then you can specify with fromFilesystem() or fromPackage() where you want to load the resources from. Then you can call the onDemand() method, that way the resources will be loaded only when they are requested. Finally, is important to call the into() method to set to which resource managers you will be loading into.</p>
 <dl class="section warning"><dt>Warning</dt><dd>If you are using the on-demand loading you must be sure that the <a class="el" href="classzt_1_1_resource_provider.html" title="This class allows you to load resources from the filesystem or a package. ">ResourceProvider</a> is not destroyed because it will be used by the <a class="el" href="classzt_1_1_resource_manager.html" title="Base class for resource managers. A resource manager acts as a container for a specific resource type...">ResourceManager</a> to load the requested file. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa23d6aefb7e5f147b37cf08e3c617b5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23d6aefb7e5f147b37cf08e3c617b5b">&#9670;&nbsp;</a></span>into()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class... TS&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zt::ResourceProvider::into </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzt_1_1_loading_target.html">LoadingTarget</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TS &amp;...&#160;</td>
+          <td class="paramname"><em>ts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the ResourceManagers where the resources will be loaded. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td></td></tr>
+    <tr><td class="paramname">ts</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a40819044cb7a63200d99f73a66887be1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40819044cb7a63200d99f73a66887be1">&#9670;&nbsp;</a></span>isLoaded()</h2>
 
@@ -186,6 +233,51 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if it is loaded. </dd></dl>
+
+</div>
+</div>
+<a id="aa52dfc3f3022366aa279b78ca36b673e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa52dfc3f3022366aa279b78ca36b673e">&#9670;&nbsp;</a></span>request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zt::ResourceProvider::request </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given the resource manager name and the name of the resource, the resource is loaded. If the resource does not exists a <a class="el" href="classzt_1_1_resource_not_found_exception.html" title="Exception throwed when a resource is not found. ">zt::ResourceNotFoundException()</a> is returned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -245,7 +337,7 @@ template&lt;class S , class... SS&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>zt</b></li><li class="navelem"><a class="el" href="classzt_1_1_resource_provider.html">ResourceProvider</a></li>
-    <li class="footer">Generated on Sat May 5 2018 15:08:34 for ZeltaLib by
+    <li class="footer">Generated on Sun May 6 2018 17:17:31 for ZeltaLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
