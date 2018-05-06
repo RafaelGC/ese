@@ -1,0 +1,272 @@
+\hypertarget{classzt_1_1_scene}{}\section{zt\+:\+:Scene Class Reference}
+\label{classzt_1_1_scene}\index{zt\+::\+Scene@{zt\+::\+Scene}}
+
+
+Represents a game scene. It could be the main menu, the credits scene, etc. This class is made to be inherited from it. Scenes must have a unique name.  
+
+
+
+
+{\ttfamily \#include $<$Scene.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}\label{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}} 
+enum \hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} \{ {\bfseries A\+C\+T\+I\+VE}, 
+{\bfseries P\+A\+U\+S\+ED}, 
+{\bfseries I\+N\+A\+C\+T\+I\+VE}
+ \}\begin{DoxyCompactList}\small\item\em States of a scene. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classzt_1_1_scene_af30ef0d6fa9fcdbada43d51f594b1f09}{Scene} (std\+::string name, \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} \&scene\+Manager)
+\begin{DoxyCompactList}\small\item\em Constructs an {\bfseries inactive} scene. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} \hyperlink{classzt_1_1_scene_a8ee519dcf39f795ebcaf6b3cb2dbb930}{get\+State} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a82fa58fe125a30505c46d94d381e289d}\label{classzt_1_1_scene_a82fa58fe125a30505c46d94d381e289d}} 
+std\+::string {\bfseries get\+Name} () const
+\item 
+virtual void \hyperlink{classzt_1_1_scene_ac7b62a9ada72130fd1d131c080e9a339}{set\+Window} (sf\+::\+Render\+Window \&\hyperlink{classzt_1_1_scene_a03f12b88348262d18487f2381f5874b1}{window})
+\begin{DoxyCompactList}\small\item\em Allows you to change the window where you\textquotesingle{}ll be drawing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a53c482a19ae48fdce5fc3af5e8f3022b}\label{classzt_1_1_scene_a53c482a19ae48fdce5fc3af5e8f3022b}} 
+virtual sf\+::\+Render\+Window \& {\bfseries get\+Window} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a571cfe15ea9f8e0b3f1bab35c6d97c6b}\label{classzt_1_1_scene_a571cfe15ea9f8e0b3f1bab35c6d97c6b}} 
+virtual sf\+::\+Vector2u {\bfseries get\+Screen\+Size} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_adb5f61d68371bdf121766e4bc6116ebe}\label{classzt_1_1_scene_adb5f61d68371bdf121766e4bc6116ebe}} 
+virtual \hyperlink{classzt_1_1_nestable_clock}{zt\+::\+Nestable\+Clock} \& {\bfseries get\+Master\+Clock} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a784e245a00b9245faf57d6a6186e8d04}\label{classzt_1_1_scene_a784e245a00b9245faf57d6a6186e8d04}} 
+virtual bool {\bfseries is\+Active} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a9ae2b530af478e2444e06c1994531f87}\label{classzt_1_1_scene_a9ae2b530af478e2444e06c1994531f87}} 
+virtual bool {\bfseries is\+Inactive} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_af2de671d8fa2ef003c0cd55440482464}\label{classzt_1_1_scene_af2de671d8fa2ef003c0cd55440482464}} 
+virtual bool {\bfseries is\+Paused} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a7bfc8a6811275f47b858b9baa55ac106}\label{classzt_1_1_scene_a7bfc8a6811275f47b858b9baa55ac106}} 
+virtual \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} \& {\bfseries get\+Scene\+Manager} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classzt_1_1_scene_a45f434d305b61e9819fb21efe35189dc}{on\+Activate} ()
+\begin{DoxyCompactList}\small\item\em This method gets called when the scene is activated. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classzt_1_1_scene_a58390d4649c7c0eda1a3fe2f65952a3f}{on\+Deactivate} ()
+\begin{DoxyCompactList}\small\item\em This method gets called when the scene is deactivated. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classzt_1_1_scene_a38821456606a61abb6255fed9954336e}{on\+Pause} ()
+\begin{DoxyCompactList}\small\item\em This method gets called when the scene is paused. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classzt_1_1_scene_a0a0d32e948aca8f581a771f54a4444e5}{set\+State} (\hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} \hyperlink{classzt_1_1_scene_afa7ec29518dcf41daf6e1b33b3241ff8}{state})
+\begin{DoxyCompactList}\small\item\em Changes the state of the scene. It\textquotesingle{}s not public because you should change the state of the scene through the scene manager. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classzt_1_1_scene_ac5440bbe62a44eda2d4b3d1dde5d3d6a}{advance\+Time} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em This method calls the \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()}, \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} and \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render()} methods. You don\textquotesingle{}t call this method, it\textquotesingle{}s called by the scene manager. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}\label{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}} 
+virtual void \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events} (float delta\+Time, std\+::queue$<$ sf\+::\+Event $>$ \&events)
+\begin{DoxyCompactList}\small\item\em You should override this method and handle the events from here. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}\label{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}} 
+virtual void \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic} (float delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em You must implement this method. You should handle the logic here. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}\label{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}} 
+virtual void \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render} ()=0
+\begin{DoxyCompactList}\small\item\em The drawing stuff goes here. Note that you don\textquotesingle{}t need to call window-\/$>$\hyperlink{classzt_1_1_scene_ae8a778b82813dca9d6153fdcb38896a1}{clear()} nor window-\/$>$display(). The scene manager cares about that. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_acfd0b618da5ada48d96b93c8859247af}\label{classzt_1_1_scene_acfd0b618da5ada48d96b93c8859247af}} 
+virtual void \hyperlink{classzt_1_1_scene_acfd0b618da5ada48d96b93c8859247af}{check\+If\+Window\+Closed} (sf\+::\+Event event)
+\begin{DoxyCompactList}\small\item\em If you call this method inside the poll event loop it will stop all scenes when the window X button is pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_ac0fa65322c3b81f42b2386d14e55e14f}\label{classzt_1_1_scene_ac0fa65322c3b81f42b2386d14e55e14f}} 
+virtual void \hyperlink{classzt_1_1_scene_ac0fa65322c3b81f42b2386d14e55e14f}{draw} (const sf\+::\+Drawable \&drawable) const
+\begin{DoxyCompactList}\small\item\em Helper method to draw things easily. Instead of calling window-\/$>$draw(something) you just need to call draw(something). \end{DoxyCompactList}\item 
+virtual void \hyperlink{classzt_1_1_scene_ae8a778b82813dca9d6153fdcb38896a1}{clear} (const sf\+::\+Color \&color=sf\+::\+Color\+::\+Black)
+\begin{DoxyCompactList}\small\item\em Clears the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a2a64a5a0a5c38c79416f1887ad8ddf1d}\label{classzt_1_1_scene_a2a64a5a0a5c38c79416f1887ad8ddf1d}} 
+\hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} $\ast$ {\bfseries scene\+Manager}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_afa7ec29518dcf41daf6e1b33b3241ff8}\label{classzt_1_1_scene_afa7ec29518dcf41daf6e1b33b3241ff8}} 
+\hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} \hyperlink{classzt_1_1_scene_afa7ec29518dcf41daf6e1b33b3241ff8}{state}
+\begin{DoxyCompactList}\small\item\em Current state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a03f12b88348262d18487f2381f5874b1}\label{classzt_1_1_scene_a03f12b88348262d18487f2381f5874b1}} 
+sf\+::\+Render\+Window $\ast$ \hyperlink{classzt_1_1_scene_a03f12b88348262d18487f2381f5874b1}{window}
+\begin{DoxyCompactList}\small\item\em Pointer to the current window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a4c59d38b4006405c0f5a4caae401500e}\label{classzt_1_1_scene_a4c59d38b4006405c0f5a4caae401500e}} 
+std\+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a1da96e1c8fa7b26da4504ade1bfd6c41}\label{classzt_1_1_scene_a1da96e1c8fa7b26da4504ade1bfd6c41}} 
+std\+::queue$<$ sf\+::\+Event $>$ {\bfseries events}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a4cc8f5e29b99c49a8edc0c8a2f535d3c}\label{classzt_1_1_scene_a4cc8f5e29b99c49a8edc0c8a2f535d3c}} 
+\hyperlink{classzt_1_1_nestable_clock}{zt\+::\+Nestable\+Clock} {\bfseries master\+Clock}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_a284464b0561a6f2915f04b0245b987f0}\label{classzt_1_1_scene_a284464b0561a6f2915f04b0245b987f0}} 
+class {\bfseries Scene\+Manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a game scene. It could be the main menu, the credits scene, etc. This class is made to be inherited from it. Scenes must have a unique name. 
+
+There are three methods you\textquotesingle{}ll want/have to override\+: -\/manage\+Events()\+: this is the place to manage the events. The current behaviour of this method is to finish the game when you click the X button. -\/logic()\+: you can place the logic here. -\/draw()\+: rendering stuff goes here.
+
+The \hyperlink{classzt_1_1_scene}{Scene} class does not really care about where you put your logic or your event handling. That means that you can put your logic in the \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()} method and handle the events in the \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} one. Of course, you shouldn\textquotesingle{}t.
+
+Both \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()} and \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} receive the delta\+Time as argument to move things accordingly with the frame rate, \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render()} doesn\textquotesingle{}t because you should not update anything there.
+
+Sometimes the order in which these methods are called is important. By default, they are called like this\+: \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()} then \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} then \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render()}. You can change this behaviour by overriding the \hyperlink{classzt_1_1_scene_ac5440bbe62a44eda2d4b3d1dde5d3d6a}{advance\+Time()} method.
+
+Keep in mind that the \hyperlink{classzt_1_1_scene_ac5440bbe62a44eda2d4b3d1dde5d3d6a}{advance\+Time()} method is called from the game loop, but this method {\bfseries is not} the game loop. The game loop is in the scene manager. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_scene_af30ef0d6fa9fcdbada43d51f594b1f09}\label{classzt_1_1_scene_af30ef0d6fa9fcdbada43d51f594b1f09}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily zt\+::\+Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} \&}]{scene\+Manager }\end{DoxyParamCaption})}
+
+
+
+Constructs an {\bfseries inactive} scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Unique name for the scene. \\
+\hline
+{\em window} & Reference to the window where you\textquotesingle{}ll draw your stuff. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_scene_ac5440bbe62a44eda2d4b3d1dde5d3d6a}\label{classzt_1_1_scene_ac5440bbe62a44eda2d4b3d1dde5d3d6a}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!advance\+Time@{advance\+Time}}
+\index{advance\+Time@{advance\+Time}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{advance\+Time()}{advanceTime()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::advance\+Time (\begin{DoxyParamCaption}\item[{float}]{delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method calls the \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()}, \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} and \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render()} methods. You don\textquotesingle{}t call this method, it\textquotesingle{}s called by the scene manager. 
+
+By default, \hyperlink{classzt_1_1_scene_ac450fd3460c158c0a3f2661df0410477}{manage\+Events()} and \hyperlink{classzt_1_1_scene_a1150eb60893f3077ecacf94b309414bf}{logic()} are only called when the scene is active. The \hyperlink{classzt_1_1_scene_aa554c0468228aa1aab7e553c52c7b0d4}{render()} method is also called when the scene is paused. You may want to override this behaviour. 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classzt_1_1_animatable}{zt\+::\+Animatable}.
+
+\mbox{\Hypertarget{classzt_1_1_scene_ae8a778b82813dca9d6153fdcb38896a1}\label{classzt_1_1_scene_ae8a778b82813dca9d6153fdcb38896a1}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!clear@{clear}}
+\index{clear@{clear}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::clear (\begin{DoxyParamCaption}\item[{const sf\+::\+Color \&}]{color = {\ttfamily sf\+:\+:Color\+:\+:Black} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Clears the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_a8ee519dcf39f795ebcaf6b3cb2dbb930}\label{classzt_1_1_scene_a8ee519dcf39f795ebcaf6b3cb2dbb930}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!get\+State@{get\+State}}
+\index{get\+State@{get\+State}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{get\+State()}{getState()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} zt\+::\+Scene\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Current state. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classzt_1_1_scene_a45f434d305b61e9819fb21efe35189dc}\label{classzt_1_1_scene_a45f434d305b61e9819fb21efe35189dc}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!on\+Activate@{on\+Activate}}
+\index{on\+Activate@{on\+Activate}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{on\+Activate()}{onActivate()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::on\+Activate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method gets called when the scene is activated. 
+
+\begin{DoxyNote}{Note}
+If you override this method do not forget to call the parent \hyperlink{classzt_1_1_scene_a45f434d305b61e9819fb21efe35189dc}{on\+Activate()} method or it will not be activated. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classzt_1_1_scene_a58390d4649c7c0eda1a3fe2f65952a3f}\label{classzt_1_1_scene_a58390d4649c7c0eda1a3fe2f65952a3f}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!on\+Deactivate@{on\+Deactivate}}
+\index{on\+Deactivate@{on\+Deactivate}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{on\+Deactivate()}{onDeactivate()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::on\+Deactivate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method gets called when the scene is deactivated. 
+
+\begin{DoxyNote}{Note}
+If you override this method do not forget to call the parent on\+Deactivated() method or it will not be activated. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classzt_1_1_scene_a38821456606a61abb6255fed9954336e}\label{classzt_1_1_scene_a38821456606a61abb6255fed9954336e}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!on\+Pause@{on\+Pause}}
+\index{on\+Pause@{on\+Pause}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{on\+Pause()}{onPause()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::on\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+This method gets called when the scene is paused. 
+
+\begin{DoxyNote}{Note}
+If you override this method do not forget to call the parent on\+Paused() method or it will not be activated. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classzt_1_1_scene_a0a0d32e948aca8f581a771f54a4444e5}\label{classzt_1_1_scene_a0a0d32e948aca8f581a771f54a4444e5}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!set\+State@{set\+State}}
+\index{set\+State@{set\+State}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{set\+State()}{setState()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::set\+State (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_scene_a5618d9448cd874af20a6be8ed60c87a5}{State}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Changes the state of the scene. It\textquotesingle{}s not public because you should change the state of the scene through the scene manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & New state. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_ac7b62a9ada72130fd1d131c080e9a339}\label{classzt_1_1_scene_ac7b62a9ada72130fd1d131c080e9a339}} 
+\index{zt\+::\+Scene@{zt\+::\+Scene}!set\+Window@{set\+Window}}
+\index{set\+Window@{set\+Window}!zt\+::\+Scene@{zt\+::\+Scene}}
+\subsubsection{\texorpdfstring{set\+Window()}{setWindow()}}
+{\footnotesize\ttfamily virtual void zt\+::\+Scene\+::set\+Window (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Allows you to change the window where you\textquotesingle{}ll be drawing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Window. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Scene.\+hpp\end{DoxyCompactItemize}

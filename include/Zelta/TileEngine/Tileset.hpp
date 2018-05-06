@@ -22,15 +22,10 @@ namespace zt {
         Tileset();
         virtual ~Tileset();
 
-        /**
-        * Devuelve el subrectángulo para un cierto tile. Los tiles se comienzan a contar
-        * en 1.
-        * @param i Identificador del tile.
-        * @return Devuelve el subrectángulo de la textura que corresponde al tile pasado por parámetro.
-        */
         const sf::Texture& getTextureForTile(unsigned int i) const;
         
         void create(sf::Texture& texture, const sf::Vector2u& size);
+        void create(sf::Texture& texture, const sf::Vector2u& tiles, sf::Vector2f padding, sf::Vector2f margin);
         
     private:
         std::vector<sf::Texture> textures;

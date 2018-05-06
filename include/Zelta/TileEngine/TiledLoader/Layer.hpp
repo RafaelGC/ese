@@ -20,7 +20,7 @@
 #include <Zelta/TileEngine/TiledLoader/Tile.hpp>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         
         class Layer {
         public:

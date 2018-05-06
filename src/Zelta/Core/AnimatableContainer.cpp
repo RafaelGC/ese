@@ -6,12 +6,12 @@ namespace zt{
         paused = false;
     }
 
-    void AnimatableContainer::add(Animatable* animatable){
-        animatables.push_back(animatable);
+    void AnimatableContainer::add(Animatable& animatable){
+        animatables.push_back(&animatable);
     }
-    void AnimatableContainer::remove(Animatable *animatable){
+    void AnimatableContainer::remove(Animatable& animatable){
         for (auto it = animatables.begin(); it!=animatables.end(); it++){
-            if ((*it)==animatable){
+            if ((*it)==&animatable){
                 animatables.erase(it);
                 break;
             }

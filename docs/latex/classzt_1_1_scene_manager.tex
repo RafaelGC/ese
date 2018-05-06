@@ -1,0 +1,213 @@
+\hypertarget{classzt_1_1_scene_manager}{}\section{zt\+:\+:Scene\+Manager Class Reference}
+\label{classzt_1_1_scene_manager}\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+
+
+This class manages scenes. Scenes added to the scene manager must have a unique name. You\textquotesingle{}ll activate them through the \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager}.  
+
+
+
+
+{\ttfamily \#include $<$Scene\+Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_af087c4fb01189e095d9221efb54619dc}\label{classzt_1_1_scene_manager_af087c4fb01189e095d9221efb54619dc}} 
+{\bfseries Scene\+Manager} (sf\+::\+Render\+Window \&window)
+\item 
+void \hyperlink{classzt_1_1_scene_manager_ad6bee2cb8d320e788a2eda8fcdebdbc9}{set\+Render\+Window} (sf\+::\+Render\+Window \&\hyperlink{classzt_1_1_scene_manager_a1a0c6b40321c66709ae36f3ccd9f84f6}{render\+Window})
+\begin{DoxyCompactList}\small\item\em Sets the window. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_scene_manager_a063202765a5b757eae0d28bb9badc53b}{add\+Scene} (\hyperlink{classzt_1_1_scene}{zt\+::\+Scene} \&scene)
+\begin{DoxyCompactList}\small\item\em Adds a \hyperlink{classzt_1_1_scene}{Scene}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a9385d452cd66294db0c03b6366519d4a}\label{classzt_1_1_scene_manager_a9385d452cd66294db0c03b6366519d4a}} 
+void \hyperlink{classzt_1_1_scene_manager_a9385d452cd66294db0c03b6366519d4a}{manage} ()
+\begin{DoxyCompactList}\small\item\em This is the actual game loop. This function will return when all scenes are inactive. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_scene_manager_acee2eb38afb510f701dc3dd3c5fe3482}{activate\+Scene} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Activates a \hyperlink{classzt_1_1_scene}{Scene}. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_scene_manager_a90a6e2b62f58123056dd3d475cb64165}{switch\+To} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Activate a scene and deactivate the others. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_scene_manager_a6adb888b88566305c08f1b57b33dbb83}{deactivate\+Scene} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Deactivate a scene. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a6afb9d6bd8ff0b537d55128fbd9be96a}\label{classzt_1_1_scene_manager_a6afb9d6bd8ff0b537d55128fbd9be96a}} 
+void \hyperlink{classzt_1_1_scene_manager_a6afb9d6bd8ff0b537d55128fbd9be96a}{deactivate\+All\+Scenes} ()
+\begin{DoxyCompactList}\small\item\em Deactivates all scenes, thus, the game loop will finish. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_scene_manager_ac8864d3586a8fa7ce01a7c5c007dd5e7}{pause\+Scene} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Pauses the scene. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a5e7367b8f8bc358a974220e9ae58ab0a}\label{classzt_1_1_scene_manager_a5e7367b8f8bc358a974220e9ae58ab0a}} 
+void \hyperlink{classzt_1_1_scene_manager_a5e7367b8f8bc358a974220e9ae58ab0a}{remove\+Scene} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Removes a scene. \end{DoxyCompactList}\item 
+bool \hyperlink{classzt_1_1_scene_manager_a9b84c499ed47c2f58ef6e7ea8edba296}{all\+Scenes\+Inactive} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a3a0edba9daf3e9fe063b621dc39310c9}\label{classzt_1_1_scene_manager_a3a0edba9daf3e9fe063b621dc39310c9}} 
+sf\+::\+Render\+Window \& {\bfseries get\+Render\+Window} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a44481a7e109706c111c38c985d9caedb}\label{classzt_1_1_scene_manager_a44481a7e109706c111c38c985d9caedb}} 
+void {\bfseries move\+Forward} (const std\+::string \&scene\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_aeed45624540e6b59e5ae0f78468b4f29}\label{classzt_1_1_scene_manager_aeed45624540e6b59e5ae0f78468b4f29}} 
+void {\bfseries move\+To\+Front} (const std\+::string \&scene\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a8caa94629a100ae3db366b10f76f7c54}\label{classzt_1_1_scene_manager_a8caa94629a100ae3db366b10f76f7c54}} 
+void {\bfseries move\+Backward} (const std\+::string \&scene\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_acb09572788f74b46f0c445c5b47b9489}\label{classzt_1_1_scene_manager_acb09572788f74b46f0c445c5b47b9489}} 
+void {\bfseries move\+To\+Back} (const std\+::string \&scene\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a4aa593d96a651a6512da4d1c4a53b345}\label{classzt_1_1_scene_manager_a4aa593d96a651a6512da4d1c4a53b345}} 
+void {\bfseries set\+Scenes\+Order} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a16dcc1decc831c9eeef7910c4ed87e02}\label{classzt_1_1_scene_manager_a16dcc1decc831c9eeef7910c4ed87e02}} 
+{\footnotesize template$<$typename... TS$>$ }\\void {\bfseries set\+Scenes\+Order} (T\+S... others, const std\+::string \&name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a4390bf866b30292dbf27eae3f56bfa31}\label{classzt_1_1_scene_manager_a4390bf866b30292dbf27eae3f56bfa31}} 
+void \hyperlink{classzt_1_1_scene_manager_a4390bf866b30292dbf27eae3f56bfa31}{start\+Render} ()
+\begin{DoxyCompactList}\small\item\em This method is called just before the all render() methods from scenes are called. It clears the screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a66015a7d3051185c09a03ad184101b89}\label{classzt_1_1_scene_manager_a66015a7d3051185c09a03ad184101b89}} 
+void \hyperlink{classzt_1_1_scene_manager_a66015a7d3051185c09a03ad184101b89}{stop\+Render} ()
+\begin{DoxyCompactList}\small\item\em This method is called just after all render() methods from scenes are called. It displays the drawed stuff. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_scene}{Scene} $\ast$ \hyperlink{classzt_1_1_scene_manager_a8587fc624ef29ac0d71ff72a8a653066}{look\+For\+Scene} (std\+::string name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a1a0c6b40321c66709ae36f3ccd9f84f6}\label{classzt_1_1_scene_manager_a1a0c6b40321c66709ae36f3ccd9f84f6}} 
+sf\+::\+Render\+Window $\ast$ \hyperlink{classzt_1_1_scene_manager_a1a0c6b40321c66709ae36f3ccd9f84f6}{render\+Window}
+\begin{DoxyCompactList}\small\item\em Pointer to the window. The \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} frees you from having to call window-\/$>$clear() and window-\/$>$display() from your scenes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_ae79370ebeb570c32b61f2d99f443762f}\label{classzt_1_1_scene_manager_ae79370ebeb570c32b61f2d99f443762f}} 
+std\+::list$<$ \hyperlink{classzt_1_1_scene}{Scene} $\ast$ $>$ {\bfseries scenes}
+\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a4b874be56a77810968973b7c6c5e850a}\label{classzt_1_1_scene_manager_a4b874be56a77810968973b7c6c5e850a}} 
+sf\+::\+Clock \hyperlink{classzt_1_1_scene_manager_a4b874be56a77810968973b7c6c5e850a}{delta\+Time}
+\begin{DoxyCompactList}\small\item\em This clock is used to calc the delta time. All scenes get this information from the \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager} and use that number to move things accordingly with it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_scene_manager_ab98ec372db998caa20e060a6e49fed72}\label{classzt_1_1_scene_manager_ab98ec372db998caa20e060a6e49fed72}} 
+std\+::deque$<$ sf\+::\+Event $>$ \hyperlink{classzt_1_1_scene_manager_ab98ec372db998caa20e060a6e49fed72}{events}
+\begin{DoxyCompactList}\small\item\em Stores the event queue from the window. We store it because we\textquotesingle{}ll be giving a copy of the queue to each scene so that all of them can handle the events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class manages scenes. Scenes added to the scene manager must have a unique name. You\textquotesingle{}ll activate them through the \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager}. 
+
+The \hyperlink{classzt_1_1_scene_manager_a9385d452cd66294db0c03b6366519d4a}{manage()} method contains the main loop which will call the manage\+Events(), logic() and render() methods of your scenes. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_acee2eb38afb510f701dc3dd3c5fe3482}\label{classzt_1_1_scene_manager_acee2eb38afb510f701dc3dd3c5fe3482}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!activate\+Scene@{activate\+Scene}}
+\index{activate\+Scene@{activate\+Scene}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{activate\+Scene()}{activateScene()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::activate\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Activates a \hyperlink{classzt_1_1_scene}{Scene}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the scene. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a063202765a5b757eae0d28bb9badc53b}\label{classzt_1_1_scene_manager_a063202765a5b757eae0d28bb9badc53b}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!add\+Scene@{add\+Scene}}
+\index{add\+Scene@{add\+Scene}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{add\+Scene()}{addScene()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::add\+Scene (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_scene}{zt\+::\+Scene} \&}]{scene }\end{DoxyParamCaption})}
+
+
+
+Adds a \hyperlink{classzt_1_1_scene}{Scene}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & \hyperlink{classzt_1_1_scene}{Scene}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a9b84c499ed47c2f58ef6e7ea8edba296}\label{classzt_1_1_scene_manager_a9b84c499ed47c2f58ef6e7ea8edba296}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!all\+Scenes\+Inactive@{all\+Scenes\+Inactive}}
+\index{all\+Scenes\+Inactive@{all\+Scenes\+Inactive}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{all\+Scenes\+Inactive()}{allScenesInactive()}}
+{\footnotesize\ttfamily bool zt\+::\+Scene\+Manager\+::all\+Scenes\+Inactive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Returns true if all scenes are inactive. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a6adb888b88566305c08f1b57b33dbb83}\label{classzt_1_1_scene_manager_a6adb888b88566305c08f1b57b33dbb83}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!deactivate\+Scene@{deactivate\+Scene}}
+\index{deactivate\+Scene@{deactivate\+Scene}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{deactivate\+Scene()}{deactivateScene()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::deactivate\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Deactivate a scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the scene. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a8587fc624ef29ac0d71ff72a8a653066}\label{classzt_1_1_scene_manager_a8587fc624ef29ac0d71ff72a8a653066}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!look\+For\+Scene@{look\+For\+Scene}}
+\index{look\+For\+Scene@{look\+For\+Scene}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{look\+For\+Scene()}{lookForScene()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_scene}{Scene}$\ast$ zt\+::\+Scene\+Manager\+::look\+For\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Returns a \hyperlink{classzt_1_1_scene}{Scene} by its name. 
+\begin{DoxyParams}{Parameters}
+{\em nombre} & \hyperlink{classzt_1_1_scene}{Scene} name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the scene or nullptr if it does not exist. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_ac8864d3586a8fa7ce01a7c5c007dd5e7}\label{classzt_1_1_scene_manager_ac8864d3586a8fa7ce01a7c5c007dd5e7}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!pause\+Scene@{pause\+Scene}}
+\index{pause\+Scene@{pause\+Scene}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{pause\+Scene()}{pauseScene()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::pause\+Scene (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Pauses the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the scene. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_ad6bee2cb8d320e788a2eda8fcdebdbc9}\label{classzt_1_1_scene_manager_ad6bee2cb8d320e788a2eda8fcdebdbc9}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!set\+Render\+Window@{set\+Render\+Window}}
+\index{set\+Render\+Window@{set\+Render\+Window}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{set\+Render\+Window()}{setRenderWindow()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::set\+Render\+Window (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{render\+Window }\end{DoxyParamCaption})}
+
+
+
+Sets the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em render\+Window} & Window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_scene_manager_a90a6e2b62f58123056dd3d475cb64165}\label{classzt_1_1_scene_manager_a90a6e2b62f58123056dd3d475cb64165}} 
+\index{zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}!switch\+To@{switch\+To}}
+\index{switch\+To@{switch\+To}!zt\+::\+Scene\+Manager@{zt\+::\+Scene\+Manager}}
+\subsubsection{\texorpdfstring{switch\+To()}{switchTo()}}
+{\footnotesize\ttfamily void zt\+::\+Scene\+Manager\+::switch\+To (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Activate a scene and deactivate the others. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the scene that will be activated. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Scene\+Manager.\+hpp\end{DoxyCompactItemize}

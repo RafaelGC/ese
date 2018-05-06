@@ -19,7 +19,7 @@
 #include <SFML/System/Vector2.hpp>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         class TiledLoader {
         public:
             TiledLoader();

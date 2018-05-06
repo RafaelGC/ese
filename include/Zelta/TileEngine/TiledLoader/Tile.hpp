@@ -15,7 +15,7 @@
 #define ZELTALIB_TILED_TILE_HPP
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         class Tile {
         public:
             Tile();

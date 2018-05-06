@@ -1,0 +1,92 @@
+\hypertarget{namespacezt}{}\section{zt Namespace Reference}
+\label{namespacezt}\index{zt@{zt}}
+
+
+Base class for resource containers. It represents something you can load things into.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classzt_1_1_animatable}{Animatable}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classzt_1_1_animatable}{Animatable} is a interface used to represent something that changes over time (that\textquotesingle{}s the reason its advance\+Time() method takes the delta time as parameter). \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_animatable_container}{Animatable\+Container}
+\begin{DoxyCompactList}\small\item\em Container of \hyperlink{classzt_1_1_animatable}{Animatable} objects. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_application}{Application}
+\begin{DoxyCompactList}\small\item\em This class is the main class of your program. Generally, this will be the first class to be instantiated and the last one to be destroyed. It does nothing special. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_argument}{Argument}
+\begin{DoxyCompactList}\small\item\em Represents an argument. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_arguments}{Arguments}
+\begin{DoxyCompactList}\small\item\em Represents a set of arguments (e.\+g.\+: the command line arguments). \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_clock}{Clock}
+\begin{DoxyCompactList}\small\item\em Class that measures time. Unlike sf\+::\+Clock, this one can be paused. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_console_log}{Console\+Log}
+\begin{DoxyCompactList}\small\item\em Class for logging to the console. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_discovered_node}{Discovered\+Node}
+\item 
+class \hyperlink{classzt_1_1_file_log}{File\+Log}
+\begin{DoxyCompactList}\small\item\em Class for logging to a file. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_file_not_found_exception}{File\+Not\+Found\+Exception}
+\begin{DoxyCompactList}\small\item\em Exception throwed when a file is not found. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_font_manager}{Font\+Manager}
+\begin{DoxyCompactList}\small\item\em Resource manager for sf\+::\+Font. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_i_mesh}{I\+Mesh}
+\item 
+class \hyperlink{classzt_1_1_i_node}{I\+Node}
+\item 
+class \hyperlink{classzt_1_1_loading_target}{Loading\+Target}
+\item 
+class \hyperlink{classzt_1_1_log}{Log}
+\begin{DoxyCompactList}\small\item\em Base class for logging. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_nestable_clock}{Nestable\+Clock}
+\item 
+class \hyperlink{classzt_1_1_package}{Package}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classzt_1_1_package}{Package} class allows you to store all your assets (images, sounds, fonts) in the same file. The class also lets you load those files from the package easily. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_package_file_info}{Package\+File\+Info}
+\item 
+class \hyperlink{classzt_1_1_pathfinding}{Pathfinding}
+\begin{DoxyCompactList}\small\item\em A$\ast$ algorithm implementation. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_render_layer}{Render\+Layer}
+\begin{DoxyCompactList}\small\item\em Container for drawable objects. This class allows you to group sf\+::\+Drawable elements such as sf\+::\+Sprite. The container keeps pointers to the objects, so your drawable objects should be kept alive while using the render layer. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_resource_manager}{Resource\+Manager}
+\begin{DoxyCompactList}\small\item\em Base class for resource managers. A resource manager acts as a container for a specific resource type (e.\+g.\+: a sf\+::\+Texture, sf\+::\+Sound\+Buffer). \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_resource_not_found_exception}{Resource\+Not\+Found\+Exception}
+\begin{DoxyCompactList}\small\item\em Exception throwed when a resource is not found. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_resource_provider}{Resource\+Provider}
+\begin{DoxyCompactList}\small\item\em This class allows you to load resources from the filesystem or a package. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_scene}{Scene}
+\begin{DoxyCompactList}\small\item\em Represents a game scene. It could be the main menu, the credits scene, etc. This class is made to be inherited from it. Scenes must have a unique name. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager}
+\begin{DoxyCompactList}\small\item\em This class manages scenes. Scenes added to the scene manager must have a unique name. You\textquotesingle{}ll activate them through the \hyperlink{classzt_1_1_scene_manager}{Scene\+Manager}. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_screen_dimensions}{Screen\+Dimensions}
+\begin{DoxyCompactList}\small\item\em This class performs some calculations to keep aspect ratio. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_singleton}{Singleton}
+\begin{DoxyCompactList}\small\item\em Base class for other singleton classes. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_sound_buffer_manager}{Sound\+Buffer\+Manager}
+\begin{DoxyCompactList}\small\item\em Resource manager for sf\+::\+Sound\+Buffer. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_task}{Task}
+\begin{DoxyCompactList}\small\item\em A \hyperlink{classzt_1_1_task}{Task} is a unit of work. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_task_pool}{Task\+Pool}
+\begin{DoxyCompactList}\small\item\em A \hyperlink{classzt_1_1_task_pool}{Task\+Pool} keeps a set of workers (threads represented by the \hyperlink{classzt_1_1_worker}{Worker} class). You can enqueue tasks in the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} and they will be executed when a worker is free. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_text}{Text}
+\item 
+class \hyperlink{classzt_1_1_texture_manager}{Texture\+Manager}
+\begin{DoxyCompactList}\small\item\em Resource manager for sf\+::\+Texture. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_tile_container}{Tile\+Container}
+\item 
+class \hyperlink{classzt_1_1_tilemap_layer}{Tilemap\+Layer}
+\item 
+class \hyperlink{classzt_1_1_tilemap_renderer}{Tilemap\+Renderer}
+\item 
+class \hyperlink{classzt_1_1_tileset}{Tileset}
+\item 
+class \hyperlink{classzt_1_1_vector2f}{Vector2f}
+\begin{DoxyCompactList}\small\item\em Utility class for 2-\/dimensional vectors. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_vector3f}{Vector3f}
+\begin{DoxyCompactList}\small\item\em Utility class for 3-\/dimensional vectors. \end{DoxyCompactList}\item 
+class \hyperlink{classzt_1_1_worker}{Worker}
+\begin{DoxyCompactList}\small\item\em Represents a thread. A \hyperlink{classzt_1_1_worker}{Worker} can have one task assigned at a time. It communicates with the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} through a condition\+\_\+variable to send notifications when the task is done. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for resource containers. It represents something you can load things into. 

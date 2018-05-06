@@ -15,12 +15,12 @@
 
 #include <Zelta/External/pugixml.hpp>
 #include <Zelta/TileEngine/TiledLoader/Map.hpp>
-#include <Zelta/TileEngine/TiledLoader/FileNotFoundException.hpp>
+#include <Zelta/Core/FileNotFoundException.hpp>
 
 #include <iostream>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         TiledLoader::TiledLoader() {
         }
 

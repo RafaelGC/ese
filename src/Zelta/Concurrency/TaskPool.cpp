@@ -15,8 +15,8 @@
 
 namespace zt {
 
-    TaskPool::TaskPool() : uniqueLock(mtx) {
-        maxThreads = 2;
+    TaskPool::TaskPool(unsigned int threads) : uniqueLock(mtx) {
+        maxThreads = threads;
         stopped = false;
 
         threadManager = std::thread(&TaskPool::work, this);
@@ -40,15 +40,15 @@ namespace zt {
 
     void TaskPool::work() {
         while (!stopped) {
-            // Si hay tareas pendientes se asignan a los trabajadores
-            // hasta que estén todos ocupados.
+            // While there are pendant tasks we assign them to the workers
+            // until all are busy.
             while (pendantTasks.size() > 0) {
                 Task* t = pendantTasks.front();
                 bool success = false;
-                // Se busca algún hilo trabajador que pueda realizar la tarea.
+                // We look for a worker to do the task.
                 for (auto it = workers.begin(); it != workers.end(); ++it) {
-                    // Si setTask devuelve true significa que el trabajador
-                    // realizará la tarea.
+                    // We call setTask() to assign the task to the worker.
+                    // If it returns true means that the worker accepted the task.
                     if ((*it)->setTask(*t)) {
                         pendantTasks.pop();
                         success = true;
@@ -58,12 +58,10 @@ namespace zt {
 
                 }
 
-                // Si no quedan trabajadores libres se sale del bucle.
+                // If there is no success assigning a task, the pool will
+                // wail until one of them is free.
                 if (!success) { break; }
 
-                // Si ningún trabajador puede realizar la tarea simplemente
-                // se mantendrá en la cola esperando que algún trabajador
-                // termine.
 
             }
 

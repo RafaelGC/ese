@@ -1,0 +1,100 @@
+\hypertarget{classzt_1_1_file_log}{}\section{zt\+:\+:File\+Log Class Reference}
+\label{classzt_1_1_file_log}\index{zt\+::\+File\+Log@{zt\+::\+File\+Log}}
+
+
+Class for logging to a file.  
+
+
+
+
+{\ttfamily \#include $<$File\+Log.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:File\+Log\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_file_log}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_file_log_a9cfc1f53da3e577208c3559c7bf2bc2c}\label{classzt_1_1_file_log_a9cfc1f53da3e577208c3559c7bf2bc2c}} 
+enum {\bfseries Mode} \{ {\bfseries K\+E\+E\+P\+\_\+\+P\+R\+E\+V\+I\+O\+U\+S\+\_\+\+L\+OG}, 
+{\bfseries R\+E\+M\+O\+V\+E\+\_\+\+P\+R\+E\+V\+I\+O\+U\+S\+\_\+\+L\+OG}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classzt_1_1_file_log_a9641437081c1f57fb9f439e077dd97f7}{File\+Log} ()
+\item 
+\hyperlink{classzt_1_1_file_log_ac54d6900bdf714cfb297e066651905a3}{File\+Log} (const std\+::string \&filename, Mode mode=Mode\+::\+K\+E\+E\+P\+\_\+\+P\+R\+E\+V\+I\+O\+U\+S\+\_\+\+L\+OG)
+\item 
+bool \hyperlink{classzt_1_1_file_log_a4ef54c06277e13646f014d77a62fa2d6}{open} (const std\+::string \&filename, Mode mode=Mode\+::\+K\+E\+E\+P\+\_\+\+P\+R\+E\+V\+I\+O\+U\+S\+\_\+\+L\+OG)
+\begin{DoxyCompactList}\small\item\em Open the log file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_file_log_a363d3a84506f56ac0dae23765ec32a04}\label{classzt_1_1_file_log_a363d3a84506f56ac0dae23765ec32a04}} 
+void \hyperlink{classzt_1_1_file_log_a363d3a84506f56ac0dae23765ec32a04}{close} ()
+\begin{DoxyCompactList}\small\item\em Closes the log file. You won\textquotesingle{}t be able to write after closing it. If you don\textquotesingle{}t call it explicitly it will be called in the destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_file_log_a7b17c16a57f5b610416a685f7e9b2bfb}\label{classzt_1_1_file_log_a7b17c16a57f5b610416a685f7e9b2bfb}} 
+void {\bfseries log} (Log\+::\+Type type, const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classzt_1_1_file_log_a02ae73fbaf82e487d17ca6a6a1462c46}\label{classzt_1_1_file_log_a02ae73fbaf82e487d17ca6a6a1462c46}} 
+\hyperlink{classzt_1_1_file_log}{File\+Log} \& {\bfseries operator$<$$<$} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classzt_1_1_file_log_af578e4259455ae5e304b0dba1f2bb097}\label{classzt_1_1_file_log_af578e4259455ae5e304b0dba1f2bb097}} 
+\hyperlink{classzt_1_1_file_log}{File\+Log} \& {\bfseries operator$<$$<$} (const Log\+::\+Type \&type)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class for logging to a file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_file_log_a9641437081c1f57fb9f439e077dd97f7}\label{classzt_1_1_file_log_a9641437081c1f57fb9f439e077dd97f7}} 
+\index{zt\+::\+File\+Log@{zt\+::\+File\+Log}!File\+Log@{File\+Log}}
+\index{File\+Log@{File\+Log}!zt\+::\+File\+Log@{zt\+::\+File\+Log}}
+\subsubsection{\texorpdfstring{File\+Log()}{FileLog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily zt\+::\+File\+Log\+::\+File\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructs a \hyperlink{classzt_1_1_file_log}{File\+Log}. You should open the file before logging using the \hyperlink{classzt_1_1_file_log_a4ef54c06277e13646f014d77a62fa2d6}{open()} method or using the second constructor instead. \mbox{\Hypertarget{classzt_1_1_file_log_ac54d6900bdf714cfb297e066651905a3}\label{classzt_1_1_file_log_ac54d6900bdf714cfb297e066651905a3}} 
+\index{zt\+::\+File\+Log@{zt\+::\+File\+Log}!File\+Log@{File\+Log}}
+\index{File\+Log@{File\+Log}!zt\+::\+File\+Log@{zt\+::\+File\+Log}}
+\subsubsection{\texorpdfstring{File\+Log()}{FileLog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily zt\+::\+File\+Log\+::\+File\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{Mode}]{mode = {\ttfamily Mode\+:\+:KEEP\+\_\+PREVIOUS\+\_\+LOG} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Output file. \\
+\hline
+{\em mode} & If the file already exists you can either keep it or override it. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_file_log_a4ef54c06277e13646f014d77a62fa2d6}\label{classzt_1_1_file_log_a4ef54c06277e13646f014d77a62fa2d6}} 
+\index{zt\+::\+File\+Log@{zt\+::\+File\+Log}!open@{open}}
+\index{open@{open}!zt\+::\+File\+Log@{zt\+::\+File\+Log}}
+\subsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool zt\+::\+File\+Log\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{Mode}]{mode = {\ttfamily Mode\+:\+:KEEP\+\_\+PREVIOUS\+\_\+LOG} }\end{DoxyParamCaption})}
+
+
+
+Open the log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Filename.} & \\
+\hline
+{\em M\+O\+DE} & If the file already exists you can keep it or you can override it. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE si el archivo está abierto y se puede escribir, si no, F\+A\+L\+SE. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/File\+Log.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,94 @@
+\hypertarget{classzt_1_1_animatable_container}{}\section{zt\+:\+:Animatable\+Container Class Reference}
+\label{classzt_1_1_animatable_container}\index{zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}}
+
+
+Container of \hyperlink{classzt_1_1_animatable}{Animatable} objects.  
+
+
+
+
+{\ttfamily \#include $<$Animatable\+Container.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Animatable\+Container\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_animatable_container}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classzt_1_1_animatable_container_a4288e8efa0335f0f34b678a9f5b92219}{add} (\hyperlink{classzt_1_1_animatable}{Animatable} \&animatable)
+\begin{DoxyCompactList}\small\item\em Adds an \hyperlink{classzt_1_1_animatable}{Animatable} to the container. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_animatable_container_ac6086455938dd4285bd6f7beca7d2eeb}{remove} (\hyperlink{classzt_1_1_animatable}{Animatable} \&animatable)
+\begin{DoxyCompactList}\small\item\em Removes an \hyperlink{classzt_1_1_animatable}{Animatable} from the container. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_animatable_container_a51c0d2047544bb0bc49162a5c8a303ce}\label{classzt_1_1_animatable_container_a51c0d2047544bb0bc49162a5c8a303ce}} 
+void {\bfseries advance\+Time} (float delta\+Time)
+\item 
+bool \hyperlink{classzt_1_1_animatable_container_ad9101ffe27f3615e72bc66b04061b737}{is\+Paused} () const
+\item 
+void \hyperlink{classzt_1_1_animatable_container_a7c05633b4d68f39617f8ccc9bd752beb}{pause} ()
+\begin{DoxyCompactList}\small\item\em Pauses all child animatable objects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_animatable_container_a82fbd2812fbcfeaae56397730ae6468b}\label{classzt_1_1_animatable_container_a82fbd2812fbcfeaae56397730ae6468b}} 
+void \hyperlink{classzt_1_1_animatable_container_a82fbd2812fbcfeaae56397730ae6468b}{resume} ()
+\begin{DoxyCompactList}\small\item\em Resumes all child animatable objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container of \hyperlink{classzt_1_1_animatable}{Animatable} objects. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_animatable_container_a4288e8efa0335f0f34b678a9f5b92219}\label{classzt_1_1_animatable_container_a4288e8efa0335f0f34b678a9f5b92219}} 
+\index{zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}!add@{add}}
+\index{add@{add}!zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void zt\+::\+Animatable\+Container\+::add (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_animatable}{Animatable} \&}]{animatable }\end{DoxyParamCaption})}
+
+
+
+Adds an \hyperlink{classzt_1_1_animatable}{Animatable} to the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animatable} & \hyperlink{classzt_1_1_animatable}{Animatable}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_animatable_container_ad9101ffe27f3615e72bc66b04061b737}\label{classzt_1_1_animatable_container_ad9101ffe27f3615e72bc66b04061b737}} 
+\index{zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}!is\+Paused@{is\+Paused}}
+\index{is\+Paused@{is\+Paused}!zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}}
+\subsubsection{\texorpdfstring{is\+Paused()}{isPaused()}}
+{\footnotesize\ttfamily bool zt\+::\+Animatable\+Container\+::is\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Devuelve true si está pausado. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_animatable_container_a7c05633b4d68f39617f8ccc9bd752beb}\label{classzt_1_1_animatable_container_a7c05633b4d68f39617f8ccc9bd752beb}} 
+\index{zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}!pause@{pause}}
+\index{pause@{pause}!zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}}
+\subsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void zt\+::\+Animatable\+Container\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pauses all child animatable objects. 
+
+When the container is paused, advance\+Time() of child objects are not called. \mbox{\Hypertarget{classzt_1_1_animatable_container_ac6086455938dd4285bd6f7beca7d2eeb}\label{classzt_1_1_animatable_container_ac6086455938dd4285bd6f7beca7d2eeb}} 
+\index{zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}!remove@{remove}}
+\index{remove@{remove}!zt\+::\+Animatable\+Container@{zt\+::\+Animatable\+Container}}
+\subsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void zt\+::\+Animatable\+Container\+::remove (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_animatable}{Animatable} \&}]{animatable }\end{DoxyParamCaption})}
+
+
+
+Removes an \hyperlink{classzt_1_1_animatable}{Animatable} from the container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animatable} & \hyperlink{classzt_1_1_animatable}{Animatable}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Animatable\+Container.\+hpp\end{DoxyCompactItemize}

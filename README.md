@@ -1,21 +1,34 @@
-ZeltaLib es una **librería** orientada al **desarrollo de videojuegos** en C++. Se apoya sobre la librería [SFML](http://www.sfml-dev.org/) para trabajar con elementos multimedia. A esto, ZeltaLib añade ciertas utilidades para el desarrollo de juegos, como la gestión de escenas, gestión de recursos, etc.
+# ZeltaLib
 
-ZeltaLib está compuesto de varios módulos:
 
--**Core**: es el núcleo de la librería, tiene clases para crear y gestionar escenas (Scene y SceneManager), para gestionar recursos (ResourceManager), entre otras cosas.
+ZeltaLib is a game development oriented library written in C++. It uses [SFML](https://www.sfml-dev.org/) to deal with multimedia stuff. ZeltaLib adds some utilities for game development: scene management, resource management, asset packaging, tilemapping, etc.
 
--**Concurrency**: incluye las clases TaskPool y Task para implementar un [thread pool](https://en.wikipedia.org/wiki/Thread_pool).
+ZeltaLib consists of these modules:
 
--**AI**: implementa el algoritmo de búsqueda A* en la clase Pathfinding. Es lo suficientemente flexible como para soportar diversos criterios de vecindad que deberán ser definidos por el usuario heredando de IMesh.
+- **Core**: is the heart of the library. It deals with the scene and resource managment. It also has some rendering and logging tools.
 
--**TileEngine**: herramienta para crear escenarios basados en casillas. El módulo incluye un parser que permite cargar archivos [TMX de Tiled](http://www.mapeditor.org/), no obstante, el soporte de estos archivos es muy básico.
+- **Concurrency**: includes the TaskPool and Task classes to implement a [thread pool](https://en.wikipedia.org/wiki/Thread_pool).
 
-ZeltaLib incluye otros módulos que deben ser revisados:
+- **AI**: implements an A* search algorithm (Pathfinding class). It is flexible enough to support different neighborhood criterion that must be defined by the user by inheriting from IMesh.
 
--**EntitySystem**: para el desarrollo orientado a entidades y componentes.
+- **TileEngine**: it's a set of classes to build tile based maps. The module comes with a very basic parser to load [Tiled TMX](http://www.mapeditor.org/) files.
 
--**Text**: intento de soporte de internacionalización.
+- **Internationalization**: this module will help you to translate your application.
+- **CLI**: a command line interface is bundled with ZeltaLib. It is in an early stage, at the moment it just helps to package assets.
 
--**Mesh**: para crear grafos y encontrar el camino más corto entre sus nodos. Este módulo fue desarrollado antes que AI y el algoritmo de búsqueda es el de Dijkstra.
+## Documentation
 
--**Physics**: contiene algunas utilidades para detectar colisiones.
+You can read the documentation in the `docs` folder. You can also read the [Getting started](https://github.com/rafaelgc/ZeltaLib/wiki/Getting-started) guide.
+
+## Building
+### Linux
+I've only built ZeltaLib in Debian. Keep in mind that it's written in C++11. It just depends on SFML and pugixml. pugixml is bundled with the library so you should not care about it but you will need SFML to be installed in your system before compiling.
+
+If you are in Linux just run `configure.sh`. The script just creates some folders, then run `make`. That will generate the file `zeltalib.a` in the `lib` directory. You can also run `make -f Makefile.CLI` to build the CLI (it will be generated in the `bin` directory).
+
+Configuring ZeltaLib in your project is as easy as configuring SFML. Just add the `include` directory and add the `zeltalib.a` to the linker.
+
+## License
+
+
+ZeltaLib is licensed under the terms of MIT License. Read the LICENSE file.

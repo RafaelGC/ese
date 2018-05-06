@@ -15,37 +15,43 @@
 namespace zt{
 
     /**
-     * @brief Esta clase permite reunir una serie de Animatable para llamar a todos
-     * sus métodos advanceTime a la vez.
+     * @brief Container of Animatable objects.
      */
-    class AnimatableContainer : public Animatable{
+    class AnimatableContainer : public Animatable {
         private:
             std::vector<Animatable*>animatables;
             bool paused;
         public:
             AnimatableContainer();
             /**
-             * @brief Añade un Animatable a la lista.
-             * @param animatable Animatable que se desea añadir.
+             * @brief Adds an Animatable to the container.
+             * @param animatable Animatable.
              */
-            void add(Animatable* animatable);
+            void add(Animatable& animatable);
             /**
-             * @brief Elimina un Animatable de la lista.
-             * @param animatable Animatable que se desea eliminar.
+             * @brief Removes an Animatable from the container.
+             * @param animatable Animatable.
              */
-            void remove(Animatable *animatable);
+            void remove(Animatable &animatable);
+            
             void advanceTime(float deltaTime);
             
             /**
              * @return Devuelve true si está pausado.
              */
             bool isPaused() const;
+            
             /**
-             * @brief Permite evitar que se llame a cualquier advanceTime().
+             * @brief Pauses all child animatable objects.
+             * 
+             * When the container is paused, advanceTime() of child objects are
+             * not called.
+             * 
              */
             void pause();
+            
             /**
-             * @brief Continua con la ejecución de advanceTime().
+             * @brief Resumes all child animatable objects.
              */
             void resume();
     };

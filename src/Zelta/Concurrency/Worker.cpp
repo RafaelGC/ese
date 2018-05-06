@@ -48,9 +48,8 @@ namespace zt {
             if (!isFree()) {
                 if (this->task->work()) {
                     task = nullptr;
-                    // Cuando la tarea ha terminado de ejecutarse (ha devuelto true)
-                    // se notifica al pool para que sepa que puede mener aquí una
-                    // nueva tarea.
+                    // When the task is done (it returns true) we notify
+                    // the pool so that it knows there is a free worker.
                     if (poolCv) {
                         poolCv->notify_all();
 

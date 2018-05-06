@@ -1,0 +1,74 @@
+\hypertarget{classzt_1_1_clock}{}\section{zt\+:\+:Clock Class Reference}
+\label{classzt_1_1_clock}\index{zt\+::\+Clock@{zt\+::\+Clock}}
+
+
+Class that measures time. Unlike sf\+::\+Clock, this one can be paused.  
+
+
+
+
+{\ttfamily \#include $<$Clock.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Clock\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classzt_1_1_clock}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Time \hyperlink{classzt_1_1_clock_a7cd9408d376156ed1ef710ebdeed2615}{get\+Elapsed\+Time} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_clock_a58515712a76981f8cbbb4de15ea01198}\label{classzt_1_1_clock_a58515712a76981f8cbbb4de15ea01198}} 
+void \hyperlink{classzt_1_1_clock_a58515712a76981f8cbbb4de15ea01198}{pause} ()
+\begin{DoxyCompactList}\small\item\em Pauses the clock. \end{DoxyCompactList}\item 
+sf\+::\+Time \hyperlink{classzt_1_1_clock_a25742e0b8d93ed9d9a03f1ebc01edd76}{restart} ()
+\begin{DoxyCompactList}\small\item\em Restarts the clock. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_clock_a5bc290d15ca92741d073e1b96014ad45}\label{classzt_1_1_clock_a5bc290d15ca92741d073e1b96014ad45}} 
+void \hyperlink{classzt_1_1_clock_a5bc290d15ca92741d073e1b96014ad45}{resume} ()
+\begin{DoxyCompactList}\small\item\em Resumes the clock. \end{DoxyCompactList}\item 
+bool \hyperlink{classzt_1_1_clock_ad9ec39488832c24128d8b6af3b20fc80}{is\+Paused} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that measures time. Unlike sf\+::\+Clock, this one can be paused. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_clock_a7cd9408d376156ed1ef710ebdeed2615}\label{classzt_1_1_clock_a7cd9408d376156ed1ef710ebdeed2615}} 
+\index{zt\+::\+Clock@{zt\+::\+Clock}!get\+Elapsed\+Time@{get\+Elapsed\+Time}}
+\index{get\+Elapsed\+Time@{get\+Elapsed\+Time}!zt\+::\+Clock@{zt\+::\+Clock}}
+\subsubsection{\texorpdfstring{get\+Elapsed\+Time()}{getElapsedTime()}}
+{\footnotesize\ttfamily sf\+::\+Time zt\+::\+Clock\+::get\+Elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Returns the elapsed time. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_clock_ad9ec39488832c24128d8b6af3b20fc80}\label{classzt_1_1_clock_ad9ec39488832c24128d8b6af3b20fc80}} 
+\index{zt\+::\+Clock@{zt\+::\+Clock}!is\+Paused@{is\+Paused}}
+\index{is\+Paused@{is\+Paused}!zt\+::\+Clock@{zt\+::\+Clock}}
+\subsubsection{\texorpdfstring{is\+Paused()}{isPaused()}}
+{\footnotesize\ttfamily bool zt\+::\+Clock\+::is\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+True if the clock is paused. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_clock_a25742e0b8d93ed9d9a03f1ebc01edd76}\label{classzt_1_1_clock_a25742e0b8d93ed9d9a03f1ebc01edd76}} 
+\index{zt\+::\+Clock@{zt\+::\+Clock}!restart@{restart}}
+\index{restart@{restart}!zt\+::\+Clock@{zt\+::\+Clock}}
+\subsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily sf\+::\+Time zt\+::\+Clock\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restarts the clock. 
+
+\begin{DoxyReturn}{Returns}
+Returns the elapsed time. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Clock.\+hpp\end{DoxyCompactItemize}

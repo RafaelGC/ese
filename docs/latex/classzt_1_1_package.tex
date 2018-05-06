@@ -1,0 +1,194 @@
+\hypertarget{classzt_1_1_package}{}\section{zt\+:\+:Package Class Reference}
+\label{classzt_1_1_package}\index{zt\+::\+Package@{zt\+::\+Package}}
+
+
+The \hyperlink{classzt_1_1_package}{Package} class allows you to store all your assets (images, sounds, fonts) in the same file. The class also lets you load those files from the package easily.  
+
+
+
+
+{\ttfamily \#include $<$Package.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classzt_1_1_package_a985b5fd2f225911709782ec42ea8dc48}{create} (const std\+::string \&file, unsigned int compression=C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N\+\_\+\+N\+O\+NE)
+\begin{DoxyCompactList}\small\item\em Creates a new empty package. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_package_a30d7195cbd7b4856dda6207fd8ec785b}{open} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Opens an existing package. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_package_a5410213f58e0f08e648d6424474e0a5d}{add\+File} (const std\+::string \&input, const std\+::string \&target)
+\begin{DoxyCompactList}\small\item\em Adds a file to the package. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_package_a6f528593a7a56b9d2c7ec6df0a6b2bb2}{add\+Directory} (const std\+::string \&directory)
+\begin{DoxyCompactList}\small\item\em Adds the content of a directory to the package. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_package_af62e37955ffe46a4c37cd76c99405763}{remove\+File} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Removes a file from the package. This is an expensive task which involves reading the whole package and writing it again without the removed file. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classzt_1_1_package_a9454a5a20192952e1d4d2c0ef9e434f4}{get\+Names} () const
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classzt_1_1_package_ab30b4acb16a680075b9d61de978181f4}{get\+File\+Data} (const std\+::string \&file)
+\item 
+unsigned long \hyperlink{classzt_1_1_package_a5c8234b81f3076072f5284a257bf0b51}{get\+File\+Size} (const std\+::string \&file)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_affccb63e5c40c8ab8cd8a4bab5db6914}\label{classzt_1_1_package_affccb63e5c40c8ab8cd8a4bab5db6914}} 
+static const unsigned int {\bfseries C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N\+\_\+\+N\+O\+NE} = 0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_a6937a1bdbb54efd3dd0184590f72a038}\label{classzt_1_1_package_a6937a1bdbb54efd3dd0184590f72a038}} 
+std\+::fstream {\bfseries file}
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_a178f1e16598632e9a28a36c244afadc8}\label{classzt_1_1_package_a178f1e16598632e9a28a36c244afadc8}} 
+std\+::string {\bfseries package\+Name}
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_aed3f124a5138a835ab59d001fd24b8bf}\label{classzt_1_1_package_aed3f124a5138a835ab59d001fd24b8bf}} 
+std\+::map$<$ std\+::string, \hyperlink{classzt_1_1_package_file_info}{Package\+File\+Info} $>$ {\bfseries file\+Index}
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_a06cb77eccd578fe53a04d9b8b9b0c002}\label{classzt_1_1_package_a06cb77eccd578fe53a04d9b8b9b0c002}} 
+const unsigned int {\bfseries N\+A\+M\+E\+\_\+\+B\+Y\+T\+ES} = 512
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_ace3614899778aca2fb25bd0cf1bacb8f}\label{classzt_1_1_package_ace3614899778aca2fb25bd0cf1bacb8f}} 
+const unsigned int {\bfseries S\+I\+Z\+E\+\_\+\+B\+Y\+T\+ES} = 8
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_a02b53b1351ab587787171e9d4a80a424}\label{classzt_1_1_package_a02b53b1351ab587787171e9d4a80a424}} 
+const unsigned int {\bfseries V\+E\+R\+S\+I\+ON} = 1
+\item 
+\mbox{\Hypertarget{classzt_1_1_package_a0a744c3d635b242b2312465822b59dbc}\label{classzt_1_1_package_a0a744c3d635b242b2312465822b59dbc}} 
+const char $\ast$ {\bfseries M\+A\+G\+I\+C\+\_\+\+N\+U\+M\+B\+ER} = \char`\"{}Z\+P\+KG\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classzt_1_1_package}{Package} class allows you to store all your assets (images, sounds, fonts) in the same file. The class also lets you load those files from the package easily. 
+
+The package use a custom format called Z\+P\+KG (Zelta\+Lib \hyperlink{classzt_1_1_package}{Package}). A Z\+P\+KG file has a 12 bytes header. -\/\+The first four bytes are the magic number (Z\+P\+KG codified in A\+S\+C\+II). -\/\+The next four bytes represent the version of the format (1, at the moment). -\/\+The last four bytes represent the compression used. At the moment this library does not compress the data (a zero is written).
+
+After the header, we can have zero or more files stored in the package. Each file is composed of a header and the actual data. The header takes 8 bytes to represent the file size and 512 more bytes to represent the file name and path. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_package_a6f528593a7a56b9d2c7ec6df0a6b2bb2}\label{classzt_1_1_package_a6f528593a7a56b9d2c7ec6df0a6b2bb2}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!add\+Directory@{add\+Directory}}
+\index{add\+Directory@{add\+Directory}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{add\+Directory()}{addDirectory()}}
+{\footnotesize\ttfamily void zt\+::\+Package\+::add\+Directory (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{directory }\end{DoxyParamCaption})}
+
+
+
+Adds the content of a directory to the package. 
+
+\begin{DoxyWarning}{Warning}
+It\textquotesingle{}s just implemented in Linux. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_package_a5410213f58e0f08e648d6424474e0a5d}\label{classzt_1_1_package_a5410213f58e0f08e648d6424474e0a5d}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!add\+File@{add\+File}}
+\index{add\+File@{add\+File}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{add\+File()}{addFile()}}
+{\footnotesize\ttfamily void zt\+::\+Package\+::add\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{input,  }\item[{const std\+::string \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Adds a file to the package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input file. \\
+\hline
+{\em target} & Path and name of the file inside the package. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_package_a985b5fd2f225911709782ec42ea8dc48}\label{classzt_1_1_package_a985b5fd2f225911709782ec42ea8dc48}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!create@{create}}
+\index{create@{create}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void zt\+::\+Package\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{unsigned int}]{compression = {\ttfamily COMPRESSION\+\_\+NONE} }\end{DoxyParamCaption})}
+
+
+
+Creates a new empty package. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Name} & of the package. You may consider using the .zpkg extension. \\
+\hline
+{\em compression} & The compression is not supported at the moment. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_package_ab30b4acb16a680075b9d61de978181f4}\label{classzt_1_1_package_ab30b4acb16a680075b9d61de978181f4}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!get\+File\+Data@{get\+File\+Data}}
+\index{get\+File\+Data@{get\+File\+Data}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{get\+File\+Data()}{getFileData()}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ zt\+::\+Package\+::get\+File\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+Returns the bytes (uint8\+\_\+t) of a file. 
+\begin{DoxyParams}{Parameters}
+{\em file} & File name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of bytes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_package_a5c8234b81f3076072f5284a257bf0b51}\label{classzt_1_1_package_a5c8234b81f3076072f5284a257bf0b51}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!get\+File\+Size@{get\+File\+Size}}
+\index{get\+File\+Size@{get\+File\+Size}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{get\+File\+Size()}{getFileSize()}}
+{\footnotesize\ttfamily unsigned long zt\+::\+Package\+::get\+File\+Size (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+Returns the size of a file in bytes. 
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_package_a9454a5a20192952e1d4d2c0ef9e434f4}\label{classzt_1_1_package_a9454a5a20192952e1d4d2c0ef9e434f4}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!get\+Names@{get\+Names}}
+\index{get\+Names@{get\+Names}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{get\+Names()}{getNames()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ zt\+::\+Package\+::get\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns all file names in the package. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_package_a30d7195cbd7b4856dda6207fd8ec785b}\label{classzt_1_1_package_a30d7195cbd7b4856dda6207fd8ec785b}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!open@{open}}
+\index{open@{open}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily void zt\+::\+Package\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Opens an existing package. 
+
+When you open a package the whole file is read to build an index. Note that, despite having been read, it has not been loaded on memory. The index will help the class to find the files you request faster. 
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_package_af62e37955ffe46a4c37cd76c99405763}\label{classzt_1_1_package_af62e37955ffe46a4c37cd76c99405763}} 
+\index{zt\+::\+Package@{zt\+::\+Package}!remove\+File@{remove\+File}}
+\index{remove\+File@{remove\+File}!zt\+::\+Package@{zt\+::\+Package}}
+\subsubsection{\texorpdfstring{remove\+File()}{removeFile()}}
+{\footnotesize\ttfamily void zt\+::\+Package\+::remove\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Removes a file from the package. This is an expensive task which involves reading the whole package and writing it again without the removed file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the file in the package. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Package.\+hpp\end{DoxyCompactItemize}

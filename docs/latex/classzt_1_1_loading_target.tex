@@ -1,0 +1,52 @@
+\hypertarget{classzt_1_1_loading_target}{}\section{zt\+:\+:Loading\+Target Class Reference}
+\label{classzt_1_1_loading_target}\index{zt\+::\+Loading\+Target@{zt\+::\+Loading\+Target}}
+
+
+Base class for resource containers. It represents something you can load things into.  
+
+
+
+
+{\ttfamily \#include $<$Loading\+Target.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Loading\+Target\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.673307cm]{classzt_1_1_loading_target}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_ab83041e95e2f3584af0e2ce726528246}\label{classzt_1_1_loading_target_ab83041e95e2f3584af0e2ce726528246}} 
+virtual void {\bfseries load\+From\+File} (const std\+::string \&name, const std\+::string \&path)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_a9f5edbd26bb353be24d7cf0c862f62b3}\label{classzt_1_1_loading_target_a9f5edbd26bb353be24d7cf0c862f62b3}} 
+virtual void {\bfseries load\+From\+Memory} (const std\+::string \&name, const void $\ast$data, std\+::size\+\_\+t size)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_afa0e97a98e68d1b55689498e15513d9e}\label{classzt_1_1_loading_target_afa0e97a98e68d1b55689498e15513d9e}} 
+virtual void {\bfseries release} (const std\+::string \&name)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_a1e325d02640f2f80d1a11fb06d9cc154}\label{classzt_1_1_loading_target_a1e325d02640f2f80d1a11fb06d9cc154}} 
+virtual const std\+::string \& {\bfseries get\+Name} () const =0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_a90f011dd3aac3369ada59a3776e8e598}\label{classzt_1_1_loading_target_a90f011dd3aac3369ada59a3776e8e598}} 
+virtual void {\bfseries pendant} (const std\+::string \&name, \hyperlink{classzt_1_1_resource_provider}{Resource\+Provider} \&provider)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_aef330cfe486b1927b7b4c155b36043f2}\label{classzt_1_1_loading_target_aef330cfe486b1927b7b4c155b36043f2}} 
+virtual void {\bfseries not\+Pendant} (const std\+::string \&name)=0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_afb1845a9d49b2d5f0e01d1688405a479}\label{classzt_1_1_loading_target_afb1845a9d49b2d5f0e01d1688405a479}} 
+virtual bool {\bfseries exists} (const std\+::string \&name) const =0
+\item 
+\mbox{\Hypertarget{classzt_1_1_loading_target_a42246fda572f1c00c52e3fed55209d0b}\label{classzt_1_1_loading_target_a42246fda572f1c00c52e3fed55209d0b}} 
+virtual bool {\bfseries is\+Loaded} (const std\+::string \&name) const =0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for resource containers. It represents something you can load things into. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Loading\+Target.\+hpp\end{DoxyCompactItemize}

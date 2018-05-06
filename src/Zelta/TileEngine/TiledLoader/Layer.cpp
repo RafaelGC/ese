@@ -9,7 +9,7 @@
 #include <vector>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         
         Layer::Layer() {
             this->width = this->height = 0;

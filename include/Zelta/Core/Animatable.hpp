@@ -10,6 +10,10 @@
 
 namespace zt {
 
+    /**
+     * @brief Animatable is a interface used to represent something that changes over
+     * time (that's the reason its advanceTime() method takes the delta time as parameter).
+     */
     class Animatable {
     public:
         virtual void advanceTime(float deltaTime) = 0;

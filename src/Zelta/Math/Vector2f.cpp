@@ -88,11 +88,11 @@ namespace zt {
         return Vector2f(x - other.x, y - other.y);
     }
 
-    Vector2f Vector2f::mult(float s) const {
+    Vector2f Vector2f::multiplied(float s) const {
         return Vector2f(x * s, y * s);
     }
 
-    Vector2f Vector2f::mult(float mx, float my) const {
+    Vector2f Vector2f::multiplied(float mx, float my) const {
         return Vector2f(x * mx, y * my);
     }
 
@@ -111,6 +111,14 @@ namespace zt {
         return Vector2f(cos(angle) * x - sin(angle) * y, sin(angle) * x + cos(angle) * y);
     }
 
+    float Vector2f::getAngle() const {
+        return std::atan2(-x, y) * (180 / M_PI);
+    }
+    
+    Vector2f Vector2f::to(const Vector2f& other) const {
+        return other.minus(*this);
+    }
+    
     sf::Vector2f Vector2f::toSfml() const {
         return sf::Vector2f(x, y);
     }

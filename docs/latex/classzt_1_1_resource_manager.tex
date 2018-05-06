@@ -1,0 +1,147 @@
+\hypertarget{classzt_1_1_resource_manager}{}\section{zt\+:\+:Resource\+Manager$<$ X $>$ Class Template Reference}
+\label{classzt_1_1_resource_manager}\index{zt\+::\+Resource\+Manager$<$ X $>$@{zt\+::\+Resource\+Manager$<$ X $>$}}
+
+
+Base class for resource managers. A resource manager acts as a container for a specific resource type (e.\+g.\+: a sf\+::\+Texture, sf\+::\+Sound\+Buffer).  
+
+
+
+
+{\ttfamily \#include $<$Resource\+Manager.\+hpp$>$}
+
+Inheritance diagram for zt\+:\+:Resource\+Manager$<$ X $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_resource_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classzt_1_1_resource_manager_aa0973ae6bf2db29a560064101f7e3aa2}{Resource\+Manager} (const std\+::string \&name)
+\item 
+X \& \hyperlink{classzt_1_1_resource_manager_a5db7d69f549152f521d3e6dc8dceab9d}{get} (const std\+::string \&name)
+\item 
+X \& \hyperlink{classzt_1_1_resource_manager_a4eeebff68670999944d5a663bbf2c9ed}{operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&name)
+\item 
+void \hyperlink{classzt_1_1_resource_manager_ad89a189ae9a569688fba24a053e2cd21}{release} (const std\+::string \&name)
+\item 
+const std\+::string \& \hyperlink{classzt_1_1_resource_manager_a53eff2997bb98a45bce592be5a8cfd89}{get\+Name} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_ad9b2235e6ca7136905fc0e9831ca8d19}\label{classzt_1_1_resource_manager_ad9b2235e6ca7136905fc0e9831ca8d19}} 
+void {\bfseries pendant} (const std\+::string \&name, \hyperlink{classzt_1_1_resource_provider}{Resource\+Provider} \&provider)
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a52ede9719df15de6396783071b73fed4}\label{classzt_1_1_resource_manager_a52ede9719df15de6396783071b73fed4}} 
+void {\bfseries not\+Pendant} (const std\+::string \&name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_af37584a0c96930f860ea0fc0bfdd11a4}\label{classzt_1_1_resource_manager_af37584a0c96930f860ea0fc0bfdd11a4}} 
+bool {\bfseries exists} (const std\+::string \&resource\+Name) const
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a2c4a7986157152012fc7792f9faedf69}\label{classzt_1_1_resource_manager_a2c4a7986157152012fc7792f9faedf69}} 
+bool {\bfseries is\+Loaded} (const std\+::string \&resource\+Name) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a78d09009c29b7358e6edf927a82221cf}\label{classzt_1_1_resource_manager_a78d09009c29b7358e6edf927a82221cf}} 
+std\+::map$<$ std\+::string, Resource $>$ {\bfseries resources}
+\item 
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a2bcd33206c69c33054fef8446b78801f}\label{classzt_1_1_resource_manager_a2bcd33206c69c33054fef8446b78801f}} 
+std\+::string {\bfseries name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class X$>$\newline
+class zt\+::\+Resource\+Manager$<$ X $>$}
+
+Base class for resource managers. A resource manager acts as a container for a specific resource type (e.\+g.\+: a sf\+::\+Texture, sf\+::\+Sound\+Buffer). 
+
+\hyperlink{classzt_1_1_resource_manager}{Resource\+Manager} inherits from \hyperlink{classzt_1_1_loading_target}{Loading\+Target}. That means that \hyperlink{classzt_1_1_resource_manager}{Resource\+Manager} is something you can load resources into. All resources in the resource manager are identified by a name that should be unique. You\textquotesingle{}ll request those resources by using that name.
+
+Resources managers also have a unique name which will help the Resource\+Loader to determine to which resource manager load certain resource. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_resource_manager_aa0973ae6bf2db29a560064101f7e3aa2}\label{classzt_1_1_resource_manager_aa0973ae6bf2db29a560064101f7e3aa2}} 
+\index{zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}!Resource\+Manager@{Resource\+Manager}}
+\index{Resource\+Manager@{Resource\+Manager}!zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{Resource\+Manager()}{ResourceManager()}}
+{\footnotesize\ttfamily template$<$class X$>$ \\
+\hyperlink{classzt_1_1_resource_manager}{zt\+::\+Resource\+Manager}$<$ X $>$\+::\hyperlink{classzt_1_1_resource_manager}{Resource\+Manager} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructs the \hyperlink{classzt_1_1_resource_manager}{Resource\+Manager}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & Unique name for this \hyperlink{classzt_1_1_resource_manager}{Resource\+Manager}. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a5db7d69f549152f521d3e6dc8dceab9d}\label{classzt_1_1_resource_manager_a5db7d69f549152f521d3e6dc8dceab9d}} 
+\index{zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}!get@{get}}
+\index{get@{get}!zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$class X$>$ \\
+X\& \hyperlink{classzt_1_1_resource_manager}{zt\+::\+Resource\+Manager}$<$ X $>$\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get a resource by its name. If the resource is not present it throws a \hyperlink{classzt_1_1_resource_not_found_exception}{Resource\+Not\+Found\+Exception}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resource. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a53eff2997bb98a45bce592be5a8cfd89}\label{classzt_1_1_resource_manager_a53eff2997bb98a45bce592be5a8cfd89}} 
+\index{zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily template$<$class X$>$ \\
+const std\+::string\& \hyperlink{classzt_1_1_resource_manager}{zt\+::\+Resource\+Manager}$<$ X $>$\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Returns the name of this resource manager. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classzt_1_1_loading_target}{zt\+::\+Loading\+Target}.
+
+\mbox{\Hypertarget{classzt_1_1_resource_manager_a4eeebff68670999944d5a663bbf2c9ed}\label{classzt_1_1_resource_manager_a4eeebff68670999944d5a663bbf2c9ed}} 
+\index{zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$class X$>$ \\
+X\& \hyperlink{classzt_1_1_resource_manager}{zt\+::\+Resource\+Manager}$<$ X $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Equivalent to \hyperlink{classzt_1_1_resource_manager_a5db7d69f549152f521d3e6dc8dceab9d}{get()}. \begin{DoxySeeAlso}{See also}
+\hyperlink{classzt_1_1_resource_manager_a5db7d69f549152f521d3e6dc8dceab9d}{get()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the resource. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resource. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_resource_manager_ad89a189ae9a569688fba24a053e2cd21}\label{classzt_1_1_resource_manager_ad89a189ae9a569688fba24a053e2cd21}} 
+\index{zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}!release@{release}}
+\index{release@{release}!zt\+::\+Resource\+Manager@{zt\+::\+Resource\+Manager}}
+\subsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily template$<$class X$>$ \\
+void \hyperlink{classzt_1_1_resource_manager}{zt\+::\+Resource\+Manager}$<$ X $>$\+::release (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Releases a resource. If it does not exist a \hyperlink{classzt_1_1_resource_not_found_exception}{Resource\+Not\+Found\+Exception} is thrown. 
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classzt_1_1_loading_target}{zt\+::\+Loading\+Target}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Core/Resource\+Manager.\+hpp\end{DoxyCompactItemize}

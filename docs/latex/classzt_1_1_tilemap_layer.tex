@@ -1,0 +1,76 @@
+\hypertarget{classzt_1_1_tilemap_layer}{}\section{zt\+:\+:Tilemap\+Layer$<$ T $>$ Class Template Reference}
+\label{classzt_1_1_tilemap_layer}\index{zt\+::\+Tilemap\+Layer$<$ T $>$@{zt\+::\+Tilemap\+Layer$<$ T $>$}}
+Inheritance diagram for zt\+:\+:Tilemap\+Layer$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classzt_1_1_tilemap_layer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_afe899acb9ffba9fba70e0913595f124c}\label{classzt_1_1_tilemap_layer_afe899acb9ffba9fba70e0913595f124c}} 
+void {\bfseries set\+Size} (const sf\+::\+Vector2u \&size)
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a8990bba160dd50c39a6abcf803bb58e0}\label{classzt_1_1_tilemap_layer_a8990bba160dd50c39a6abcf803bb58e0}} 
+const sf\+::\+Vector2u \& {\bfseries get\+Size} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a51c80b285c7128b1ff48f5efe34b302f}\label{classzt_1_1_tilemap_layer_a51c80b285c7128b1ff48f5efe34b302f}} 
+void {\bfseries set\+Tile\+Size} (const sf\+::\+Vector2u \&tile\+Size)
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a0711254a5302e3cce7d19f269a48bff7}\label{classzt_1_1_tilemap_layer_a0711254a5302e3cce7d19f269a48bff7}} 
+const sf\+::\+Vector2u \& {\bfseries get\+Tile\+Size} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a18d1e2f04247e83bac25d5ec03870b8b}\label{classzt_1_1_tilemap_layer_a18d1e2f04247e83bac25d5ec03870b8b}} 
+void {\bfseries update\+View} (const sf\+::\+View \&view)
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a187ec1100dcd2f02eac6f2ba32d1bf4e}\label{classzt_1_1_tilemap_layer_a187ec1100dcd2f02eac6f2ba32d1bf4e}} 
+void {\bfseries draw} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a042b846c7958ac5fe1f82250c6cc1d3f}\label{classzt_1_1_tilemap_layer_a042b846c7958ac5fe1f82250c6cc1d3f}} 
+std\+::pair$<$ int, T $\ast$ $>$ {\bfseries add\+Tile} (const T \&tile, const sf\+::\+Vector2u \&tile\+Position)
+\item 
+std\+::pair$<$ int, T $\ast$ $>$ \hyperlink{classzt_1_1_tilemap_layer_a6fe52aa49bd4965ac7df8a6db0187f5a}{add\+Tile} (const sf\+::\+Vector2u \&tile\+Position)
+\begin{DoxyCompactList}\small\item\em Add a tile in a given position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_aaa84d473ece41766d7eab924821b3ed8}\label{classzt_1_1_tilemap_layer_aaa84d473ece41766d7eab924821b3ed8}} 
+unsigned int {\bfseries count\+Tiles} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_af8beb5aa8873b00235677aa86d01271e}\label{classzt_1_1_tilemap_layer_af8beb5aa8873b00235677aa86d01271e}} 
+void {\bfseries set\+Name} (const std\+::wstring \&name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a1d892a157ae743bbcd65632dbc10b973}\label{classzt_1_1_tilemap_layer_a1d892a157ae743bbcd65632dbc10b973}} 
+const std\+::wstring \& {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a90f1e2ffac9764bf50813a252d4ef859}\label{classzt_1_1_tilemap_layer_a90f1e2ffac9764bf50813a252d4ef859}} 
+bool {\bfseries is\+Empty} (int x, int y)
+\item 
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a7d780310f2514eceb3bfdec5c50913fc}\label{classzt_1_1_tilemap_layer_a7d780310f2514eceb3bfdec5c50913fc}} 
+T \& {\bfseries get\+Tile} (int x, int y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_tilemap_layer_a6fe52aa49bd4965ac7df8a6db0187f5a}\label{classzt_1_1_tilemap_layer_a6fe52aa49bd4965ac7df8a6db0187f5a}} 
+\index{zt\+::\+Tilemap\+Layer@{zt\+::\+Tilemap\+Layer}!add\+Tile@{add\+Tile}}
+\index{add\+Tile@{add\+Tile}!zt\+::\+Tilemap\+Layer@{zt\+::\+Tilemap\+Layer}}
+\subsubsection{\texorpdfstring{add\+Tile()}{addTile()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+std\+::pair$<$int, T$\ast$$>$ \hyperlink{classzt_1_1_tilemap_layer}{zt\+::\+Tilemap\+Layer}$<$ T $>$\+::add\+Tile (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2u \&}]{tile\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a tile in a given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile\+Position} & Position (measured in tiles). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pair. The first element is the position of the tile in the vector. The second element is a pointer to the new tile. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Tile\+Engine/Tilemap\+Layer.\+hpp\end{DoxyCompactItemize}

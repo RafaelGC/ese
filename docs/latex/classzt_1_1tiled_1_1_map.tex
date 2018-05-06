@@ -1,0 +1,74 @@
+\hypertarget{classzt_1_1tiled_1_1_map}{}\section{zt\+:\+:tiled\+:\+:Map Class Reference}
+\label{classzt_1_1tiled_1_1_map}\index{zt\+::tiled\+::\+Map@{zt\+::tiled\+::\+Map}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a9f333709d2b355070a8ba573af0133a5}\label{classzt_1_1tiled_1_1_map_a9f333709d2b355070a8ba573af0133a5}} 
+enum {\bfseries Orientation} \{ {\bfseries Orthogonal}, 
+{\bfseries Isometric}, 
+{\bfseries Staggered}, 
+{\bfseries Hexagonal}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_aea345c396798c0325610d6d3719bd4ca}\label{classzt_1_1tiled_1_1_map_aea345c396798c0325610d6d3719bd4ca}} 
+{\bfseries Map} (int width, int height, int tile\+Width, int tile\+Height, Orientation orientation)
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_ab159d99e9fa5c9665e641ecddc69849d}\label{classzt_1_1tiled_1_1_map_ab159d99e9fa5c9665e641ecddc69849d}} 
+int {\bfseries get\+Width} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a97c432d47f009bd961c39ff24a0aec32}\label{classzt_1_1tiled_1_1_map_a97c432d47f009bd961c39ff24a0aec32}} 
+int {\bfseries get\+Height} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a318c7fab2dd0054662b5743a99a5b183}\label{classzt_1_1tiled_1_1_map_a318c7fab2dd0054662b5743a99a5b183}} 
+int {\bfseries get\+Tile\+Width} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a8317f25e7c01eeba26929bab350a6f61}\label{classzt_1_1tiled_1_1_map_a8317f25e7c01eeba26929bab350a6f61}} 
+int {\bfseries get\+Tile\+Height} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_abeae78f4a66d89e7c458d9b842de01b7}\label{classzt_1_1tiled_1_1_map_abeae78f4a66d89e7c458d9b842de01b7}} 
+Orientation {\bfseries get\+Orientation} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_ab0cd802b94079f5322ad8584fe22ae91}\label{classzt_1_1tiled_1_1_map_ab0cd802b94079f5322ad8584fe22ae91}} 
+void {\bfseries add\+Layer} (const \hyperlink{classzt_1_1tiled_1_1_layer}{Layer} \&layer)
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_ab5735ce37acd2c58f7aa855e97123258}\label{classzt_1_1tiled_1_1_map_ab5735ce37acd2c58f7aa855e97123258}} 
+std\+::vector$<$ \hyperlink{classzt_1_1tiled_1_1_layer}{Layer} $>$ \& {\bfseries get\+Layers} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a4061885e6af9816c053da0415bb6be48}\label{classzt_1_1tiled_1_1_map_a4061885e6af9816c053da0415bb6be48}} 
+void {\bfseries add\+Object\+Layer} (const \hyperlink{classzt_1_1tiled_1_1_object_layer}{Object\+Layer} \&object\+Layer)
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_abe765796c91b94dfa089ef7547015582}\label{classzt_1_1tiled_1_1_map_abe765796c91b94dfa089ef7547015582}} 
+std\+::vector$<$ \hyperlink{classzt_1_1tiled_1_1_object_layer}{Object\+Layer} $>$ \& {\bfseries get\+Object\+Layers} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a7b065317a42d6a98ae275182729a59d5}\label{classzt_1_1tiled_1_1_map_a7b065317a42d6a98ae275182729a59d5}} 
+int {\bfseries width}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a9c29ddcafc21491f8520e1b0f99e9c39}\label{classzt_1_1tiled_1_1_map_a9c29ddcafc21491f8520e1b0f99e9c39}} 
+int {\bfseries height}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a693997ec67f196932c2b5423164cd39e}\label{classzt_1_1tiled_1_1_map_a693997ec67f196932c2b5423164cd39e}} 
+int {\bfseries tile\+Width}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a8777e8e66e02ecef64559d1d7e319ec5}\label{classzt_1_1tiled_1_1_map_a8777e8e66e02ecef64559d1d7e319ec5}} 
+int {\bfseries tile\+Height}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a35cbc297da3e7c99935ef3d05a12d1eb}\label{classzt_1_1tiled_1_1_map_a35cbc297da3e7c99935ef3d05a12d1eb}} 
+Orientation {\bfseries orientation}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_a655966027df4fb07327780d944f47373}\label{classzt_1_1tiled_1_1_map_a655966027df4fb07327780d944f47373}} 
+std\+::vector$<$ \hyperlink{classzt_1_1tiled_1_1_layer}{Layer} $>$ {\bfseries layers}
+\item 
+\mbox{\Hypertarget{classzt_1_1tiled_1_1_map_aa511c68193fd8a6cb627ce65378f6e5e}\label{classzt_1_1tiled_1_1_map_aa511c68193fd8a6cb627ce65378f6e5e}} 
+std\+::vector$<$ \hyperlink{classzt_1_1tiled_1_1_object_layer}{Object\+Layer} $>$ {\bfseries object\+Layers}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Tile\+Engine/\+Tiled\+Loader/Map.\+hpp\end{DoxyCompactItemize}

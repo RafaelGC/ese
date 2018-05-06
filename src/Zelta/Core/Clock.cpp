@@ -1,27 +1,35 @@
 #include <Zelta/Core/Clock.hpp>
 
-namespace zt{
+namespace zt {
     Clock::Clock(){
-        elapsedTime = 0;
         paused = false;
     }
-    float Clock::getElapsedTime() const{
-        return elapsedTime;
+    
+    sf::Time Clock::getElapsedTime() const{
+        return sf::Clock::getElapsedTime() - pausedTime - (paused ? pausedClock.getElapsedTime() : sf::Time());
     }
-    void Clock::advanceTime(float deltaTime){
-        if (!paused){
-            elapsedTime+=deltaTime;
-        }
-    }
+    
     void Clock::pause(){
         paused = true;
+        
+        pausedClock.restart();
     }
-    void Clock::reset(){
-        elapsedTime = 0;
-    }
+    
     void Clock::resume(){
         paused = false;
+        
+        pausedTime += pausedClock.restart();
     }
+    
+    sf::Time Clock::restart(){
+        sf::Time t = getElapsedTime();
+        sf::Clock::restart();
+        pausedClock.restart();
+        pausedTime = sf::Time::Zero;
+        
+        return t;
+    }
+    
     bool Clock::isPaused() const{
         return paused;
     }

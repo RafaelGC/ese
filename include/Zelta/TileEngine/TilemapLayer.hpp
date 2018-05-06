@@ -16,7 +16,6 @@
 
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-#include <Zelta/TileEngine/Tileset.hpp>
 
 namespace zt {
     
@@ -25,7 +24,7 @@ namespace zt {
     public:
         T tile;
         bool empty;
-        
+       
         TileContainer() {
             empty = true;
         }
@@ -34,14 +33,24 @@ namespace zt {
     template <class T>
     class TilemapLayer : public sf::Drawable {
     public:
-        TilemapLayer() { tileset = nullptr; }
+        TilemapLayer() { }
         
-        TilemapLayer(const Tileset& tileset) : tileset(&tileset) {
-        }
         
         void setSize(const sf::Vector2u& size) {
             this->size = size;
             tiles.resize(size.x * size.y);
+        }
+        
+        const sf::Vector2u& getSize() const {
+            return size;
+        }
+        
+        void setTileSize(const sf::Vector2u& tileSize) {
+            this->tileSize = tileSize;
+        }
+        
+        const sf::Vector2u& getTileSize() const {
+            return tileSize;
         }
         
         void updateView(const sf::View& view) {
@@ -61,18 +70,25 @@ namespace zt {
             }
         }
         
-        /**
-         * @brief Permite añadir un tile de cierto tipo y en cierta posición.
-         * @param type Tipo de tile.
-         * @param tilePosition Posición <b>medida en tiles</b> del tile que se añade.
-         * @return El métdoo devuelve un std::pair cuyo primer elemento es la posición
-         * en el vector del tile que acabamos de añadir y un puntero a dicho tile.
-         * */
-        std::pair<int, T*> addTile(int type, const sf::Vector2u& tilePosition) {
+        std::pair<int, T*> addTile(const T& tile, const sf::Vector2u& tilePosition) {
             TileContainer<T> tmp;
-            const sf::Texture& tex = tileset->getTextureForTile(type);
-            tmp.tile.setTexture(tileset->getTextureForTile(type));
-            tmp.tile.setPosition((int)(tilePosition.x * tex.getSize().x), (int)(tilePosition.y * tex.getSize().y));
+            tmp.tile = tile;
+            tmp.tile.setPosition((int)(tilePosition.x * tileSize.x), (int)(tilePosition.y * tileSize.y));
+            tmp.empty = false;
+            
+            tiles[tilePosition.x + tilePosition.y * size.x] = tmp;
+            return std::make_pair(tiles.size() - 1, &tiles[tilePosition.x + tilePosition.y * size.x].tile);
+        }
+        
+        /**
+         * @brief Add a tile in a given position.
+         * @param tilePosition Position (measured in tiles).
+         * @return Returns a pair. The first element is the position of the tile
+         * in the vector. The second element is a pointer to the new tile.
+         * */
+        std::pair<int, T*> addTile(const sf::Vector2u& tilePosition) {
+            TileContainer<T> tmp;
+            tmp.tile.setPosition((int)(tilePosition.x * tileSize.x), (int)(tilePosition.y * tileSize.y));
             tmp.empty = false;
             
             tiles[tilePosition.x + tilePosition.y * size.x] = tmp;
@@ -96,15 +112,14 @@ namespace zt {
         }
         
         T& getTile(int x, int y) {
-            return tiles[x + y * size.y].tile;
+            return tiles[x + y * size.x].tile;
         }
         
     private:
         std::vector<TileContainer<T>> tiles;
         sf::View view;
-        const Tileset* tileset;
         std::wstring name;
-        sf::Vector2u size;
+        sf::Vector2u size, tileSize;
     };
 }
 

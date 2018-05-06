@@ -7,7 +7,7 @@
 #include <Zelta/TileEngine/TiledLoader/Object.hpp>
 
 namespace zt {
-    namespace Tiled {
+    namespace tiled {
         
         Object::Object(int id, const std::wstring& name, const std::wstring& type, int x, int y, int gid) :
             Object(id, name, type, x, y) {

@@ -1,0 +1,64 @@
+\hypertarget{classzt_1_1_worker}{}\section{zt\+:\+:Worker Class Reference}
+\label{classzt_1_1_worker}\index{zt\+::\+Worker@{zt\+::\+Worker}}
+
+
+Represents a thread. A \hyperlink{classzt_1_1_worker}{Worker} can have one task assigned at a time. It communicates with the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} through a condition\+\_\+variable to send notifications when the task is done.  
+
+
+
+
+{\ttfamily \#include $<$Worker.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_worker_a484c82fb91c80738f88505a2481a0ce6}\label{classzt_1_1_worker_a484c82fb91c80738f88505a2481a0ce6}} 
+{\bfseries Worker} (std\+::condition\+\_\+variable \&pool\+Cv)
+\item 
+bool \hyperlink{classzt_1_1_worker_a4e5938583876d5e05e3f4418ef135634}{set\+Task} (\hyperlink{classzt_1_1_task}{Task} \&task)
+\item 
+bool \hyperlink{classzt_1_1_worker_a5f1ff7cb0e56f997c164a7e170ac3600}{is\+Free} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_worker_a261f37b96112a235b2966dfc891df6c1}\label{classzt_1_1_worker_a261f37b96112a235b2966dfc891df6c1}} 
+void {\bfseries work} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_worker_a0bd417f2666e50c98ed00981165006c3}\label{classzt_1_1_worker_a0bd417f2666e50c98ed00981165006c3}} 
+void {\bfseries join} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_worker_a003ddc5f1a4de3f2e51cbf01d4a6af34}\label{classzt_1_1_worker_a003ddc5f1a4de3f2e51cbf01d4a6af34}} 
+void {\bfseries stop} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a thread. A \hyperlink{classzt_1_1_worker}{Worker} can have one task assigned at a time. It communicates with the \hyperlink{classzt_1_1_task_pool}{Task\+Pool} through a condition\+\_\+variable to send notifications when the task is done. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_worker_a5f1ff7cb0e56f997c164a7e170ac3600}\label{classzt_1_1_worker_a5f1ff7cb0e56f997c164a7e170ac3600}} 
+\index{zt\+::\+Worker@{zt\+::\+Worker}!is\+Free@{is\+Free}}
+\index{is\+Free@{is\+Free}!zt\+::\+Worker@{zt\+::\+Worker}}
+\subsubsection{\texorpdfstring{is\+Free()}{isFree()}}
+{\footnotesize\ttfamily bool zt\+::\+Worker\+::is\+Free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+False if the worker has an assigned task. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_worker_a4e5938583876d5e05e3f4418ef135634}\label{classzt_1_1_worker_a4e5938583876d5e05e3f4418ef135634}} 
+\index{zt\+::\+Worker@{zt\+::\+Worker}!set\+Task@{set\+Task}}
+\index{set\+Task@{set\+Task}!zt\+::\+Worker@{zt\+::\+Worker}}
+\subsubsection{\texorpdfstring{set\+Task()}{setTask()}}
+{\footnotesize\ttfamily bool zt\+::\+Worker\+::set\+Task (\begin{DoxyParamCaption}\item[{\hyperlink{classzt_1_1_task}{Task} \&}]{task }\end{DoxyParamCaption})}
+
+Tries to set the task of the \hyperlink{classzt_1_1_worker}{Worker}. If it already has a \hyperlink{classzt_1_1_task}{Task} the request will be ignored and it will return false. 
+\begin{DoxyParams}{Parameters}
+{\em task} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Concurrency/Worker.\+hpp\end{DoxyCompactItemize}

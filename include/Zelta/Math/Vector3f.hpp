@@ -15,6 +15,9 @@
 #define ZELTALIB_VECTOR3F_HPP
 
 namespace zt {
+    /**
+     * @brief Utility class for 3-dimensional vectors.
+     */
     class Vector3f {
         public:
         Vector3f();
