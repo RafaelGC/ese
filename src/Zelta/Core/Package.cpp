@@ -307,4 +307,27 @@ namespace zt {
         
     }
     
+    std::string Package::getFileDataAsString(const std::string& fileName) {
+        // Check if file exists.
+        if (fileIndex.count(fileName) == 0) throw FileNotFoundException(fileName);
+        
+        // Read its info from the index.
+        const PackageFileInfo inf = fileIndex[fileName];
+        
+        // Move the cursor.
+        file.seekg(inf.position, std::ios_base::beg);
+        
+        // Build the string.
+        std::string result;
+        result.reserve(inf.size);
+        
+        char r;
+        for (unsigned long i = 0; i < inf.size; i++) {
+            file.read(&r, 1);
+            result.push_back(r);
+        }
+        
+        return result;
+    }
+    
 }

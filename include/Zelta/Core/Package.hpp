@@ -108,6 +108,8 @@ namespace zt {
          */
         std::vector<uint8_t> getFileData(const std::string& file);
         
+        std::string getFileDataAsString(const std::string& file);
+        
         /**
          * Returns the size of a file in bytes.
          * @param file

@@ -22,6 +22,7 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 namespace zt {
     /**
@@ -45,6 +46,8 @@ namespace zt {
         
         ResourceProvider() {
             mFromFileSystem = true;
+            mOnDemand = false;
+            readResourcesFileFromPackage = true;
         }
         
         ResourceProvider& load(const std::string& file) {
@@ -58,9 +61,10 @@ namespace zt {
             return *this;
         }
         
-        ResourceProvider& fromPackage(const std::string& path) {
+        ResourceProvider& fromPackage(const std::string& path, bool readResourcesFileFromPackage = true) {
             pkg.open(path);
             mFromFileSystem = false;
+            this->readResourcesFileFromPackage = readResourcesFileFromPackage;
             return *this;
         }
         
@@ -177,14 +181,27 @@ namespace zt {
         
         // Parses de resource file.
         void parse(const std::string& file) {
-            std::ifstream input(file);
+            
+            std::istream* input;
+            
+            // If we're loading files from the package we will also
+            // read the resources file from there unless the user
+            // specifies anything else.
+            if (!mFromFileSystem && readResourcesFileFromPackage) {
+                std::string textFile = pkg.getFileDataAsString(file);
+                input = new std::istringstream(textFile);
+            }
+            else {
+                input = new std::ifstream(file);
+            }
+            
             std::string name, type, path;
             int rangeFrom, rangeTo;
             State state = FIRST_TOKEN;
-            while (!input.eof()) {
+            while (!input->eof()) {
                 std::string line;
                 
-                input >> line;
+                (*input) >> line;
                 
                 if (state == FIRST_TOKEN) {
                     if (line == "load") {
@@ -246,8 +263,13 @@ namespace zt {
                     }
                 }
                 
-                if (input.eof()) break;
+                if (input->eof()) break;
             }
+            
+            if (mFromFileSystem) {
+                ((std::ifstream*)input)->close(); // :(
+            }
+            delete input;
         }
     private:
         enum State {
@@ -279,6 +301,10 @@ namespace zt {
         
         // This package will be used if the user loads fromPackage().
         Package pkg;
+        // If the user loads from a package he can decide if the
+        // resource file is also in the package or outside. By default,
+        // we'll assume it's inside.
+        bool readResourcesFileFromPackage;
         
         
         bool mFromFileSystem, mOnDemand;
