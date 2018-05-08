@@ -1,6 +1,22 @@
+# Ignore all
+*
+
+# Unignore files with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+#######
+
+# Ignore some folders.
 bin
 build
 lib
+
+# Ignore object files.
 *.o
+
+#Ignore Netbeans Project files.
 nbproject
 
