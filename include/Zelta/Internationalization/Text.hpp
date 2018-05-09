@@ -1,86 +1,27 @@
-#ifndef TEXT_HPP
-#define TEXT_HPP
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-#include <cstring>
-#include <map>
+/* 
+ * File:   Text.hpp
+ * Author: rafa
+ *
+ * Created on May 9, 2018, 10:19 PM
+ */
 
-#include <Zelta/External/pugixml.hpp>
+#ifndef ZELTALIB_TEXT_HPP
+#define ZELTALIB_TEXT_HPP
+
+#include <SFML/Graphics/Text.hpp>
 
 namespace zt {
-
-    class Text {
+    class Text : public sf::Text {
     public:
-        Text();
-
-        /**
-         * @brief Loads the strings in certain language.
-         * @param file XML filename.
-         * @param language Language tha will be loaded from the XML.
-         */
-        Text(const std::string& file, const std::wstring& language);
-
-        /**
-         * @brief Loads the string in all languages.
-         */
-        Text(const std::string& file);
-
-        /**
-         * @brief Sets the default language in which the strings will
-         * be returned.
-         * @param file XML filename.
-         */
-        Text& in(const std::wstring& language);
-
-        /**
-         * @brief Loads the strings in certain language.
-         * @param file XML filename.
-         * @param language Language tha will be loaded from the XML.
-         */
-        void load(const std::string& file, std::wstring language);
-
-        /**
-         * @brief Loads the string in all languages.
-         */
-        void load(const std::string& file);
-
-        /**
-         * @brief Returns a string by its name.
-         * @param name Name of the string we want to be returned.
-         * @param defaultValue String that will be returned if the string
-         * is not defined.
-         * @return The translated string in the current language.
-         * */
-        const std::wstring& get(const std::wstring& stringName, const std::wstring& defaultValue);
-
-        /**
-         * @brief Returns a string by its name.
-         * @param name Name of the string we want to be returned.
-         * @return The translated string in the current language.
-         * */
-        const std::wstring& get(const std::wstring& stringName);
-        
-        /**
-         * @brief Returns a string by its name.
-         * @param stringName Name of the string to be returned.
-         * @return The translated string in the current language.
-         */
-        const std::wstring& operator[](const std::wstring& stringName);
-
-        /**
-         * @return Returns the current language.
-         * */
-        std::wstring getCurrentLanguage();
-
-    protected:
-        // map[stringname => map[lang => text]]
-        std::map<std::wstring, std::map<std::wstring, std::wstring>>texts;
-
-        std::wstring currentLanguage;
-        bool currentLanguageSet;
-        
-        void fLoad(const std::string& file, const std::wstring& language, bool onlyLanguage);
+        virtual void translated();
     };
-
 }
 
-#endif
+#endif /* TEXT_HPP */
+

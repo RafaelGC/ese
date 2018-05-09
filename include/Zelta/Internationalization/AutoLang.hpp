@@ -14,8 +14,9 @@
 #ifndef ZELTALIB_AUTOLANG_HPP
 #define ZELTALIB_AUTOLANG_HPP
 
-#include <Zelta/Internationalization/Text.hpp>
+#include <Zelta/Internationalization/TextContainer.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <Zelta/Internationalization/Text.hpp>
 
 #include <vector>
 
@@ -29,19 +30,19 @@ namespace zt {
     class AutoLang {
     public:
         AutoLang();
-        AutoLang(zt::Text& textSource);
-        void setTextSource(zt::Text& textSource);
-        void bind(sf::Text& text, const std::wstring& stringName);
+        AutoLang(zt::TextContainer& textSource);
+        void setTextSource(zt::TextContainer& textSource);
+        void bind(zt::Text& text, const std::wstring& stringName);
         void setLanguage(const std::wstring& lang);
     protected:
         void updateAll();
-        void updateText(sf::Text* text, const std::wstring& stringName);
+        void updateText(zt::Text* text, const std::wstring& stringName);
         bool canUpdate() const;
         void pushLangState();
         void popLangState();
     private:
-        std::vector<std::pair<sf::Text*, std::wstring>> bindedTexts;
-        zt::Text* textSource;
+        std::vector<std::pair<zt::Text*, std::wstring>> bindedTexts;
+        zt::TextContainer* textSource;
         std::wstring language, oLanguage;
         bool langSet;
     };

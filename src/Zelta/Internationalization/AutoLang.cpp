@@ -14,17 +14,17 @@ namespace zt {
         langSet = false;
     }
 
-    AutoLang::AutoLang(zt::Text& textSource) {
+    AutoLang::AutoLang(zt::TextContainer& textSource) {
         setTextSource(textSource);
     }
 
-    void AutoLang::setTextSource(zt::Text& textSource) {
+    void AutoLang::setTextSource(zt::TextContainer& textSource) {
         this->textSource = &textSource;
 
         updateAll();
     }
 
-    void AutoLang::bind(sf::Text& text, const std::wstring& stringName) {
+    void AutoLang::bind(zt::Text& text, const std::wstring& stringName) {
         bindedTexts.push_back(std::make_pair(&text, stringName));
 
         pushLangState();
@@ -51,10 +51,11 @@ namespace zt {
         popLangState();
     }
 
-    void AutoLang::updateText(sf::Text* text, const std::wstring& stringName) {
+    void AutoLang::updateText(zt::Text* text, const std::wstring& stringName) {
         if (!canUpdate()) return;
 
         text->setString(this->textSource->get(stringName));
+        text->translated();
     }
 
     bool AutoLang::canUpdate() const {
