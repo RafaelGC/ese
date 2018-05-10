@@ -1,0 +1,52 @@
+\hypertarget{classzt_1_1_auto_lang}{}\section{zt\+:\+:Auto\+Lang Class Reference}
+\label{classzt_1_1_auto_lang}\index{zt\+::\+Auto\+Lang@{zt\+::\+Auto\+Lang}}
+
+
+\hyperlink{classzt_1_1_auto_lang}{Auto\+Lang} is a tool which allows you to bind a sf\+::\+Text to a \hyperlink{classzt_1_1_text}{zt\+::\+Text} string. You can set a language for the \hyperlink{classzt_1_1_auto_lang}{Auto\+Lang} instance so that all binded strings will be translated automatically.  
+
+
+
+
+{\ttfamily \#include $<$Auto\+Lang.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_ac7181e6ade4311ef58f12d30087249df}\label{classzt_1_1_auto_lang_ac7181e6ade4311ef58f12d30087249df}} 
+{\bfseries Auto\+Lang} (\hyperlink{classzt_1_1_text_container}{zt\+::\+Text\+Container} \&text\+Source)
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_af7db0f1b9b8d89da29dc421c1e1c8ba7}\label{classzt_1_1_auto_lang_af7db0f1b9b8d89da29dc421c1e1c8ba7}} 
+void {\bfseries set\+Text\+Source} (\hyperlink{classzt_1_1_text_container}{zt\+::\+Text\+Container} \&text\+Source)
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a55170fd376502297c2dbac5467b13924}\label{classzt_1_1_auto_lang_a55170fd376502297c2dbac5467b13924}} 
+void {\bfseries bind} (\hyperlink{classzt_1_1_text}{zt\+::\+Text} \&text, const std\+::wstring \&string\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a866025aba2815ad38d0c07df2f9b01e7}\label{classzt_1_1_auto_lang_a866025aba2815ad38d0c07df2f9b01e7}} 
+void {\bfseries set\+Language} (const std\+::wstring \&lang)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a06bfb5279221ab3e007a521b9a3f0fb5}\label{classzt_1_1_auto_lang_a06bfb5279221ab3e007a521b9a3f0fb5}} 
+void {\bfseries update\+All} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a194ab30c376540c1acab8d6e7a472646}\label{classzt_1_1_auto_lang_a194ab30c376540c1acab8d6e7a472646}} 
+void {\bfseries update\+Text} (\hyperlink{classzt_1_1_text}{zt\+::\+Text} $\ast$text, const std\+::wstring \&string\+Name)
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a1027c1a6e6f6068893c182a27a35b21f}\label{classzt_1_1_auto_lang_a1027c1a6e6f6068893c182a27a35b21f}} 
+bool {\bfseries can\+Update} () const
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_a3041f0b41d3b97e6930b7caaad2fae58}\label{classzt_1_1_auto_lang_a3041f0b41d3b97e6930b7caaad2fae58}} 
+void {\bfseries push\+Lang\+State} ()
+\item 
+\mbox{\Hypertarget{classzt_1_1_auto_lang_aa3f06d508e00550f42aea5ab8720c54f}\label{classzt_1_1_auto_lang_aa3f06d508e00550f42aea5ab8720c54f}} 
+void {\bfseries pop\+Lang\+State} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classzt_1_1_auto_lang}{Auto\+Lang} is a tool which allows you to bind a sf\+::\+Text to a \hyperlink{classzt_1_1_text}{zt\+::\+Text} string. You can set a language for the \hyperlink{classzt_1_1_auto_lang}{Auto\+Lang} instance so that all binded strings will be translated automatically. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Internationalization/Auto\+Lang.\+hpp\end{DoxyCompactItemize}

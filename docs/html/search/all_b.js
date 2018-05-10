@@ -7,5 +7,5 @@ var searchData=
   ['onpause',['onPause',['../classzt_1_1_scene.html#a38821456606a61abb6255fed9954336e',1,'zt::Scene']]],
   ['open',['open',['../classzt_1_1_file_log.html#a4ef54c06277e13646f014d77a62fa2d6',1,'zt::FileLog::open()'],['../classzt_1_1_package.html#a30d7195cbd7b4856dda6207fd8ec785b',1,'zt::Package::open()']]],
   ['operator_3c',['operator&lt;',['../classzt_1_1_render_layer.html#a7eb4504147aee10b610602c8363311ca',1,'zt::RenderLayer']]],
-  ['operator_5b_5d',['operator[]',['../classzt_1_1_resource_manager.html#a4eeebff68670999944d5a663bbf2c9ed',1,'zt::ResourceManager']]]
+  ['operator_5b_5d',['operator[]',['../classzt_1_1_resource_manager.html#a4eeebff68670999944d5a663bbf2c9ed',1,'zt::ResourceManager::operator[]()'],['../classzt_1_1_text_container.html#ada6e7f11402ab289e02bec50633cd45d',1,'zt::TextContainer::operator[]()']]]
 ];

@@ -6,6 +6,7 @@ var classzt_1_1_package =
     [ "addFile", "classzt_1_1_package.html#a5410213f58e0f08e648d6424474e0a5d", null ],
     [ "create", "classzt_1_1_package.html#a985b5fd2f225911709782ec42ea8dc48", null ],
     [ "getFileData", "classzt_1_1_package.html#ab30b4acb16a680075b9d61de978181f4", null ],
+    [ "getFileDataAsString", "classzt_1_1_package.html#a33d762728678ba4b1769cf99440e54bc", null ],
     [ "getFileSize", "classzt_1_1_package.html#a5c8234b81f3076072f5284a257bf0b51", null ],
     [ "getNames", "classzt_1_1_package.html#a9454a5a20192952e1d4d2c0ef9e434f4", null ],
     [ "open", "classzt_1_1_package.html#a30d7195cbd7b4856dda6207fd8ec785b", null ],

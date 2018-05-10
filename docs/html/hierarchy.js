@@ -7,6 +7,7 @@ var hierarchy =
     [ "zt::Application", "classzt_1_1_application.html", null ],
     [ "zt::Argument", "classzt_1_1_argument.html", null ],
     [ "zt::Arguments", "classzt_1_1_arguments.html", null ],
+    [ "zt::AutoLang", "classzt_1_1_auto_lang.html", null ],
     [ "Clock", null, [
       [ "zt::Clock", "classzt_1_1_clock.html", [
         [ "zt::NestableClock", "classzt_1_1_nestable_clock.html", null ]
@@ -53,7 +54,10 @@ var hierarchy =
     [ "zt::Singleton< T >", "classzt_1_1_singleton.html", null ],
     [ "zt::Task", "classzt_1_1_task.html", null ],
     [ "zt::TaskPool", "classzt_1_1_task_pool.html", null ],
-    [ "zt::Text", "classzt_1_1_text.html", null ],
+    [ "Text", null, [
+      [ "zt::Text", "classzt_1_1_text.html", null ]
+    ] ],
+    [ "zt::TextContainer", "classzt_1_1_text_container.html", null ],
     [ "zt::tiled::Tile", "classzt_1_1tiled_1_1_tile.html", null ],
     [ "zt::TileContainer< T >", "classzt_1_1_tile_container.html", null ],
     [ "zt::tiled::TiledLoader", "classzt_1_1tiled_1_1_tiled_loader.html", null ],

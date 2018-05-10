@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['get',['get',['../classzt_1_1_arguments.html#a0b71f588f3af4e114149773af8f31c2e',1,'zt::Arguments::get()'],['../classzt_1_1_resource_manager.html#a5db7d69f549152f521d3e6dc8dceab9d',1,'zt::ResourceManager::get()'],['../classzt_1_1_text.html#a1bdb417d6193ab286e65cbcff36ec84f',1,'zt::Text::get(const std::wstring &amp;stringName, const std::wstring &amp;defaultValue)'],['../classzt_1_1_text.html#aa02ab4ea1b6e1c1eaf85d351ad2a7856',1,'zt::Text::get(const std::wstring &amp;stringName)']]],
+  ['get',['get',['../classzt_1_1_arguments.html#a0b71f588f3af4e114149773af8f31c2e',1,'zt::Arguments::get()'],['../classzt_1_1_resource_manager.html#a5db7d69f549152f521d3e6dc8dceab9d',1,'zt::ResourceManager::get()'],['../classzt_1_1_text_container.html#a851271c69f57caf2ea62fcc63ee96c78',1,'zt::TextContainer::get(const std::wstring &amp;stringName, const std::wstring &amp;defaultValue)'],['../classzt_1_1_text_container.html#a1d8c6bec235308f322cd61cf87a1824d',1,'zt::TextContainer::get(const std::wstring &amp;stringName)']]],
   ['getangle',['getAngle',['../classzt_1_1_vector2f.html#a4449e55fef14e503d832831b97d2f949',1,'zt::Vector2f']]],
-  ['getcurrentlanguage',['getCurrentLanguage',['../classzt_1_1_text.html#ab2f3d33611e50977d0002d22d03b823a',1,'zt::Text']]],
+  ['getcurrentlanguage',['getCurrentLanguage',['../classzt_1_1_text_container.html#a5db66642b418d233e16a6df1f09d7f7c',1,'zt::TextContainer']]],
   ['getelapsedtime',['getElapsedTime',['../classzt_1_1_clock.html#a7cd9408d376156ed1ef710ebdeed2615',1,'zt::Clock']]],
   ['getfiledata',['getFileData',['../classzt_1_1_package.html#ab30b4acb16a680075b9d61de978181f4',1,'zt::Package']]],
   ['getfilesize',['getFileSize',['../classzt_1_1_package.html#a5c8234b81f3076072f5284a257bf0b51',1,'zt::Package']]],

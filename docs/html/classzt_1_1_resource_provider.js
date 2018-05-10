@@ -2,7 +2,7 @@ var classzt_1_1_resource_provider =
 [
     [ "ResourceProvider", "classzt_1_1_resource_provider.html#aa7e1d3326dabee84228849ae53578cae", null ],
     [ "fromFileSystem", "classzt_1_1_resource_provider.html#a4cd1f6c58eef9685bd6ffc761f82168c", null ],
-    [ "fromPackage", "classzt_1_1_resource_provider.html#aebac197b2ed0b1d95ae366a0732da9ce", null ],
+    [ "fromPackage", "classzt_1_1_resource_provider.html#a3f850a07d637c8fc746d5d5d6cd40a5a", null ],
     [ "into", "classzt_1_1_resource_provider.html#aedd409bf8d7bc826d04f8b7750cbd75d", null ],
     [ "into", "classzt_1_1_resource_provider.html#aa23d6aefb7e5f147b37cf08e3c617b5b", null ],
     [ "isLoaded", "classzt_1_1_resource_provider.html#a40819044cb7a63200d99f73a66887be1", null ],

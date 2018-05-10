@@ -1,0 +1,168 @@
+\hypertarget{classzt_1_1_text_container}{}\section{zt\+:\+:Text\+Container Class Reference}
+\label{classzt_1_1_text_container}\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classzt_1_1_text_container_a0c5dfc54f704d1f89f68c12408b9e40d}{Text\+Container} (const std\+::string \&file, const std\+::wstring \&language)
+\begin{DoxyCompactList}\small\item\em Loads the strings in certain language. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_af10b41c950585f3ab4db7d4d252d6f2f}\label{classzt_1_1_text_container_af10b41c950585f3ab4db7d4d252d6f2f}} 
+\hyperlink{classzt_1_1_text_container_af10b41c950585f3ab4db7d4d252d6f2f}{Text\+Container} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Loads the string in all languages. \end{DoxyCompactList}\item 
+\hyperlink{classzt_1_1_text_container}{Text\+Container} \& \hyperlink{classzt_1_1_text_container_afbf2984d70eb9e421aa65b453c1d5404}{in} (const std\+::wstring \&language)
+\begin{DoxyCompactList}\small\item\em Sets the default language in which the strings will be returned. \end{DoxyCompactList}\item 
+void \hyperlink{classzt_1_1_text_container_a5d210555a6b099e8ddc63c03179ac41a}{load} (const std\+::string \&file, std\+::wstring language)
+\begin{DoxyCompactList}\small\item\em Loads the strings in certain language. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_abb1a77f13098b6593e5edf2d63ed5f3f}\label{classzt_1_1_text_container_abb1a77f13098b6593e5edf2d63ed5f3f}} 
+void \hyperlink{classzt_1_1_text_container_abb1a77f13098b6593e5edf2d63ed5f3f}{load} (const std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Loads the string in all languages. \end{DoxyCompactList}\item 
+const std\+::wstring \& \hyperlink{classzt_1_1_text_container_a851271c69f57caf2ea62fcc63ee96c78}{get} (const std\+::wstring \&string\+Name, const std\+::wstring \&default\+Value)
+\begin{DoxyCompactList}\small\item\em Returns a string by its name. \end{DoxyCompactList}\item 
+const std\+::wstring \& \hyperlink{classzt_1_1_text_container_a1d8c6bec235308f322cd61cf87a1824d}{get} (const std\+::wstring \&string\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a string by its name. \end{DoxyCompactList}\item 
+const std\+::wstring \& \hyperlink{classzt_1_1_text_container_ada6e7f11402ab289e02bec50633cd45d}{operator\mbox{[}$\,$\mbox{]}} (const std\+::wstring \&string\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a string by its name. \end{DoxyCompactList}\item 
+std\+::wstring \hyperlink{classzt_1_1_text_container_a5db66642b418d233e16a6df1f09d7f7c}{get\+Current\+Language} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_ac1c3f13640fd27e8e65793f676aebaaa}\label{classzt_1_1_text_container_ac1c3f13640fd27e8e65793f676aebaaa}} 
+void {\bfseries f\+Load} (const std\+::string \&file, const std\+::wstring \&language, bool only\+Language)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_a006f0e6cf74b30c2dde1a913a41428ff}\label{classzt_1_1_text_container_a006f0e6cf74b30c2dde1a913a41428ff}} 
+std\+::map$<$ std\+::wstring, std\+::map$<$ std\+::wstring, std\+::wstring $>$ $>$ {\bfseries texts}
+\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_a5e25e128fcf3a8c3695c7943e0c88b7e}\label{classzt_1_1_text_container_a5e25e128fcf3a8c3695c7943e0c88b7e}} 
+std\+::wstring {\bfseries current\+Language}
+\item 
+\mbox{\Hypertarget{classzt_1_1_text_container_aea1fd7acc9ff5f5421f8d76b86054ffe}\label{classzt_1_1_text_container_aea1fd7acc9ff5f5421f8d76b86054ffe}} 
+bool {\bfseries current\+Language\+Set}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classzt_1_1_text_container_a0c5dfc54f704d1f89f68c12408b9e40d}\label{classzt_1_1_text_container_a0c5dfc54f704d1f89f68c12408b9e40d}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!Text\+Container@{Text\+Container}}
+\index{Text\+Container@{Text\+Container}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{Text\+Container()}{TextContainer()}}
+{\footnotesize\ttfamily zt\+::\+Text\+Container\+::\+Text\+Container (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{const std\+::wstring \&}]{language }\end{DoxyParamCaption})}
+
+
+
+Loads the strings in certain language. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & X\+ML filename. \\
+\hline
+{\em language} & Language tha will be loaded from the X\+ML. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classzt_1_1_text_container_a851271c69f57caf2ea62fcc63ee96c78}\label{classzt_1_1_text_container_a851271c69f57caf2ea62fcc63ee96c78}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!get@{get}}
+\index{get@{get}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const std\+::wstring\& zt\+::\+Text\+Container\+::get (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{string\+Name,  }\item[{const std\+::wstring \&}]{default\+Value }\end{DoxyParamCaption})}
+
+
+
+Returns a string by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the string we want to be returned. \\
+\hline
+{\em default\+Value} & String that will be returned if the string is not defined. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The translated string in the current language. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_text_container_a1d8c6bec235308f322cd61cf87a1824d}\label{classzt_1_1_text_container_a1d8c6bec235308f322cd61cf87a1824d}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!get@{get}}
+\index{get@{get}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const std\+::wstring\& zt\+::\+Text\+Container\+::get (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{string\+Name }\end{DoxyParamCaption})}
+
+
+
+Returns a string by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the string we want to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The translated string in the current language. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_text_container_a5db66642b418d233e16a6df1f09d7f7c}\label{classzt_1_1_text_container_a5db66642b418d233e16a6df1f09d7f7c}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!get\+Current\+Language@{get\+Current\+Language}}
+\index{get\+Current\+Language@{get\+Current\+Language}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{get\+Current\+Language()}{getCurrentLanguage()}}
+{\footnotesize\ttfamily std\+::wstring zt\+::\+Text\+Container\+::get\+Current\+Language (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Returns the current language. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classzt_1_1_text_container_afbf2984d70eb9e421aa65b453c1d5404}\label{classzt_1_1_text_container_afbf2984d70eb9e421aa65b453c1d5404}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!in@{in}}
+\index{in@{in}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{in()}{in()}}
+{\footnotesize\ttfamily \hyperlink{classzt_1_1_text_container}{Text\+Container}\& zt\+::\+Text\+Container\+::in (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{language }\end{DoxyParamCaption})}
+
+
+
+Sets the default language in which the strings will be returned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & X\+ML filename. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_text_container_a5d210555a6b099e8ddc63c03179ac41a}\label{classzt_1_1_text_container_a5d210555a6b099e8ddc63c03179ac41a}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!load@{load}}
+\index{load@{load}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void zt\+::\+Text\+Container\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file,  }\item[{std\+::wstring}]{language }\end{DoxyParamCaption})}
+
+
+
+Loads the strings in certain language. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & X\+ML filename. \\
+\hline
+{\em language} & Language tha will be loaded from the X\+ML. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classzt_1_1_text_container_ada6e7f11402ab289e02bec50633cd45d}\label{classzt_1_1_text_container_ada6e7f11402ab289e02bec50633cd45d}} 
+\index{zt\+::\+Text\+Container@{zt\+::\+Text\+Container}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!zt\+::\+Text\+Container@{zt\+::\+Text\+Container}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily const std\+::wstring\& zt\+::\+Text\+Container\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{string\+Name }\end{DoxyParamCaption})}
+
+
+
+Returns a string by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\+Name} & Name of the string to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The translated string in the current language. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zelta/\+Internationalization/Text\+Container.\+hpp\end{DoxyCompactItemize}
