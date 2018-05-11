@@ -15,24 +15,29 @@
 #define ZELTALIB_PATHFINDING_HPP
 
 #include <vector>
+#include <set>
 
 namespace zt {
 
+    /**
+     * @brief Represents a node in the A* algorithm. This class is intended for
+     * internal use.
+     */
     template <class NodeType>
     class DiscoveredNode {
-        public:
+    public:
         float g;
         float h;
         NodeType node, previousNode;
         bool initial;
 
         DiscoveredNode(const NodeType& node, float g = 0, float h = 0) :
-            node(node), g(g), h(h) {
+        node(node), g(g), h(h) {
             initial = true;
         }
 
         DiscoveredNode(const NodeType& node, const NodeType& previousNode, float g = 0, float h = 0) :
-            node(node), previousNode(previousNode) {
+        node(node), previousNode(previousNode) {
             this->g = g;
             this->h = h;
             initial = false;
@@ -45,6 +50,8 @@ namespace zt {
             h = other.h;
             initial = other.initial;
         }
+        
+        DiscoveredNode() {}
 
         float f() const {
             return g + h;
@@ -52,6 +59,10 @@ namespace zt {
 
         inline bool operator==(const DiscoveredNode& other) const {
             return other.node == this->node;
+        }
+
+        bool operator<(const DiscoveredNode& other) const {
+            return node < other.node;
         }
 
     };
@@ -80,7 +91,7 @@ namespace zt {
         virtual ~Pathfinding();
     private:
         const IMesh<NodeType>& mesh;
-        std::vector<DiscoveredNode<NodeType>> closedList;
+        std::set<DiscoveredNode<NodeType>> closedList;
         std::vector<DiscoveredNode<NodeType>> openList;
 
         DiscoveredNode<NodeType> popOpenList();

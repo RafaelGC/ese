@@ -24,14 +24,14 @@ namespace zt {
 
         bool success = false;
 
-        int c1 = 0;
-
+        DiscoveredNode<NodeType> lastNode; // Use to build the path.
+        
         while (!openList.empty()) {
-            c1++;
 
             DiscoveredNode<NodeType> cf = popOpenList();
 
-            closedList.push_back(cf);
+            closedList.insert(cf);
+            lastNode = cf;
 
             if (cf == destination) {
                 success = true;
@@ -56,7 +56,7 @@ namespace zt {
         std::vector<NodeType> path;
         if (success) {
 
-            DiscoveredNode<NodeType>& f = closedList.back();
+            DiscoveredNode<NodeType>& f = lastNode;
 
             NodeType nt = f.previousNode;
 
@@ -65,11 +65,11 @@ namespace zt {
             bool initial = f.initial;
 
             while (!initial) {
-                for (int i = 0; i < closedList.size(); i++) {
-                    if (closedList[i].node == nt) {
-                        initial = closedList[i].initial;
-                        nt = closedList[i].previousNode;
-                        path.insert(path.begin(), closedList[i].node);
+                for (auto it = closedList.begin(); it != closedList.end(); ++it) {
+                    if ((*it).node == nt) {
+                        initial = (*it).initial;
+                        nt = (*it).previousNode;
+                        path.insert(path.begin(), (*it).node);
                         break;
                     }
                 }
@@ -85,7 +85,8 @@ namespace zt {
 
     template <class NodeType>
     DiscoveredNode<NodeType> Pathfinding<NodeType>::popOpenList() {
-        //openList no debe estar vacia.
+        // We assume that the open list is not empty.
+        
         int index = -1;
         float minF = 0;
         for (int i = 0; i < openList.size(); i++) {
@@ -126,13 +127,7 @@ namespace zt {
 
     template <class NodeType>
     bool Pathfinding<NodeType>::isClosed(const NodeType& node) {
-
-        for (const DiscoveredNode<NodeType>& f : closedList) {
-            if (f.node == node) {
-                return true;
-            }
-        }
-        return false;
+        return closedList.count(DiscoveredNode<NodeType>(node));
     }
 
 }
