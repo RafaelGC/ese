@@ -7,7 +7,7 @@
 
 namespace zt {
     template <class NodeType>
-    Pathfinding<NodeType>::Pathfinding(const IMesh<NodeType>& mesh) : mesh(mesh){
+    Pathfinding<NodeType>::Pathfinding(const IGraph<NodeType>& graph) : graph(graph){
     }
 
     template <class NodeType>
@@ -19,7 +19,7 @@ namespace zt {
         openList.clear();
         closedList.clear();
 
-        DiscoveredNode<NodeType> origin(originNode, 0, mesh.estimate(originNode, destination));
+        DiscoveredNode<NodeType> origin(originNode, 0, graph.estimate(originNode, destination));
         openList.insert(origin);
 
         bool success = false;
@@ -39,14 +39,14 @@ namespace zt {
                 break;
             }
 
-            std::vector<NodeType> adjs = mesh.getAdjacents(cf.node);
+            std::vector<NodeType> adjs = graph.getAdjacents(cf.node);
 
             for (NodeType adj : adjs) {
                 bool closed = isClosed(adj);
 
                 if (!closed) {
-                    float g = cf.g + mesh.cost(cf.node, adj);
-                    float h = mesh.estimate(adj, destination);
+                    float g = cf.g + graph.cost(cf.node, adj);
+                    float h = graph.estimate(adj, destination);
 
                     this->addOrUpdateOpenList(adj, cf.node, g, h);
                 }

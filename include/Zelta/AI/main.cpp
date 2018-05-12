@@ -28,9 +28,9 @@ public:
     
 };
 
-class Graph : public zt::IGraph<Node> {
+class Mesh : public zt::IMesh<Node> {
 public:
-    Graph(std::vector<std::vector<Node>>& map) : map(map){
+    Mesh(std::vector<std::vector<Node>>& map) : map(map){
         h = map.size();
         w = map[0].size();
     }
@@ -152,19 +152,19 @@ int main() {
         }
     }
     
-    Graph graph(nodeMap);
+    Mesh mesh(nodeMap);
     
     // Let's create a zt::Pathfinding class that implements
     // the search algorithm.
     
-    zt::Pathfinding<Node> pathfinding(graph);
+    zt::Pathfinding<Node> pathfinding(mesh);
     
     // When a path is not found a exception is thrown.
     try {
         
         // The path is returned as a vector of Nodes.
         // We run the .getPath algorithm passing the origin and destination nodes.
-        std::vector<Node> path = pathfinding.getPath(graph.at(0,0), graph.at(7, 7));
+        std::vector<Node> path = pathfinding.getPath(mesh.at(0,0), mesh.at(7, 7));
         std::cout << "Path: " << path.size() << " steps" << std::endl;
         
         
