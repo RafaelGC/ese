@@ -92,7 +92,7 @@ namespace zt {
     private:
         const IMesh<NodeType>& mesh;
         std::set<DiscoveredNode<NodeType>> closedList;
-        std::vector<DiscoveredNode<NodeType>> openList;
+        std::set<DiscoveredNode<NodeType>> openList;
 
         DiscoveredNode<NodeType> popOpenList();
         void addOrUpdateOpenList(const NodeType& node, const NodeType& previous, float g, float h);

@@ -20,11 +20,12 @@ namespace zt {
         closedList.clear();
 
         DiscoveredNode<NodeType> origin(originNode, 0, mesh.estimate(originNode, destination));
-        openList.push_back(origin);
+        openList.insert(origin);
 
         bool success = false;
 
         DiscoveredNode<NodeType> lastNode; // Use to build the path.
+        
         
         while (!openList.empty()) {
 
@@ -87,40 +88,44 @@ namespace zt {
     DiscoveredNode<NodeType> Pathfinding<NodeType>::popOpenList() {
         // We assume that the open list is not empty.
         
-        int index = -1;
-        float minF = 0;
-        for (int i = 0; i < openList.size(); i++) {
-            if (index == -1 || openList[i].f() < minF) {
-                minF = openList[i].f();
-                index = i;
+        auto best = (openList.begin());
+        float minF = (*best).f();
+        
+        for (auto it = openList.begin(); it != openList.end(); ++it) {
+            if ((*it).f() < minF) {
+                best = it;
+                minF = (*it).f();
             }
         }
-
-        DiscoveredNode<NodeType> res = openList[index];
-        openList.erase(openList.begin() + index);
-
+        
+        DiscoveredNode<NodeType> res = *best;
+        openList.erase(best);
+        
         return res;
+
     }
 
     template <class NodeType>
     void Pathfinding<NodeType>::addOrUpdateOpenList(const NodeType& node, const NodeType& previous, float g, float h) {
-        bool already = false;
-        for (DiscoveredNode<NodeType>& fr : openList) {
-            if (fr.node == node) {
-                already = true;
-                if (g < fr.g) {
-                    fr.previousNode = previous;
-                    fr.g = g;
-                }
-
-                break;
+        
+        auto it = openList.find(DiscoveredNode<NodeType>(node));
+        
+        // Not found, add the node to the list
+        if (it == openList.end()) {
+            openList.insert(DiscoveredNode<NodeType>(node, previous, g, h));
+        }
+        else {
+            // Found. Update if better.
+            // Since we cannot update a set we remove and add.
+            if (g < (*it).g) {
+                DiscoveredNode<NodeType> updated = (*it);
+                updated.previousNode = previous;
+                updated.g = g;
+                
+                openList.erase(it);
+                openList.insert(updated);
             }
         }
-
-        if (!already) {
-            openList.push_back(DiscoveredNode<NodeType>(node, previous, g, h));
-        }
-
 
 
     }
