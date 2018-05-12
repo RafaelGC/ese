@@ -1,6 +1,7 @@
 #ifndef ZELTALIB_APPLICATION_HPP
 #define ZELTALIB_APPLICATION_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Arguments.hpp>
 
 namespace zt {
@@ -10,7 +11,7 @@ namespace zt {
      * Generally, this will be the first class to be instantiated and the last
      * one to be destroyed. It does nothing special.
      */
-    class Application {
+    class EXPORT Application {
     protected:
         Arguments arguments;
         

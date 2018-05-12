@@ -1,5 +1,5 @@
-#ifndef SCENEMANAGER_HPP
-#define SCENEMANAGER_HPP
+#ifndef ZELTALIB_SCENEMANAGER_HPP
+#define ZELTALIB_SCENEMANAGER_HPP
 
 #include <string>
 #include <vector>
@@ -8,6 +8,7 @@
 
 #include <SFML/System.hpp>
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Singleton.hpp>
 #include <Zelta/Core/Scene.hpp>
 
@@ -24,7 +25,7 @@ namespace zt {
      * The manage() method contains the main loop which will call the
      * manageEvents(), logic() and render() methods of your scenes.
      */
-    class SceneManager {
+    class EXPORT SceneManager {
     public:
         SceneManager(sf::RenderWindow& window);
         virtual ~SceneManager();

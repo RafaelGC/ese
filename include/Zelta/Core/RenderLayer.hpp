@@ -3,8 +3,9 @@
 
 #include <vector>
 
-#include <SFML/Graphics/Drawable.hpp> // Base class: sf::Drawable
+#include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <Zelta/Export.hpp>
 
 namespace zt {
 
@@ -14,7 +15,7 @@ namespace zt {
      * The container keeps pointers to the objects, so your drawable objects
      * should be kept alive while using the render layer.
      * */
-    class RenderLayer : public sf::Drawable {
+    class EXPORT RenderLayer : public sf::Drawable {
     protected:
         /**
          * @brief If it's false the contained objects won't be drawn.

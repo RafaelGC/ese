@@ -14,11 +14,13 @@
 #ifndef ZELTALIB_VECTOR3F_HPP
 #define ZELTALIB_VECTOR3F_HPP
 
+#include <Zelta/Export.hpp>
+
 namespace zt {
     /**
      * @brief Utility class for 3-dimensional vectors.
      */
-    class Vector3f {
+    class EXPORT Vector3f {
         public:
         Vector3f();
         Vector3f(float x, float y, float z);

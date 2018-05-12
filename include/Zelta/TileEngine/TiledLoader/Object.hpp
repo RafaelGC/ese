@@ -14,12 +14,14 @@
 #ifndef ZELTALIB_TILED_OBJECT_HPP
 #define ZELTALIB_TILED_OBJECT_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <string>
 
 namespace zt {
     namespace tiled {
         
-        class Object {
+        class EXPORT Object {
         public:
             Object(int id, const std::wstring& name, const std::wstring& type, int x, int y, int gid);
             Object(int id, const std::wstring& name, const std::wstring& type, int x, int y);

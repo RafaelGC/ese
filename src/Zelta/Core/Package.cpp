@@ -19,6 +19,8 @@
 
 namespace zt {
     
+	const char* Package::MAGIC_NUMBER = "ZPKG";
+
     Package::Package() {}
     
     void Package::create(const std::string& fileName, unsigned int compression) {
@@ -58,7 +60,7 @@ namespace zt {
             file.read((char *)&size, SIZE_BYTES);
             if (file.eof()) break;
             
-            char name[NAME_BYTES];
+            char name[Package::NAME_BYTES];
 
             // 2. Read the name/path of the file.
             file.read(name, NAME_BYTES);

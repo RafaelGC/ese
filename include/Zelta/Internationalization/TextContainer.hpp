@@ -4,11 +4,12 @@
 #include <cstring>
 #include <map>
 
+#include <Zelta/Export.hpp>
 #include <Zelta/External/pugixml.hpp>
 
 namespace zt {
 
-    class TextContainer {
+    class EXPORT TextContainer {
     public:
         TextContainer();
 

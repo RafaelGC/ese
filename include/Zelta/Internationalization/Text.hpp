@@ -14,10 +14,12 @@
 #ifndef ZELTALIB_TEXT_HPP
 #define ZELTALIB_TEXT_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <SFML/Graphics/Text.hpp>
 
 namespace zt {
-    class Text : public sf::Text {
+    class EXPORT Text : public sf::Text {
     public:
         virtual void translated();
     };

@@ -14,10 +14,12 @@
 #ifndef ZELTALIB_WORKER_HPP
 #define ZELTALIB_WORKER_HPP
 
+#include <Zelta/Export.hpp>
+#include <Zelta/Concurrency/Task.hpp>
+
 #include <mutex>
 #include <condition_variable>
 #include <thread>
-#include <Zelta/Concurrency/Task.hpp>
 
 namespace zt {
     /**
@@ -27,8 +29,8 @@ namespace zt {
      */
     class Worker {
     public:
-        Worker(std::condition_variable& poolCv);
-        virtual ~Worker();
+        EXPORT Worker(std::condition_variable& poolCv);
+        EXPORT virtual ~Worker();
 
         /**
          * Tries to set the task of the Worker. If it already has a Task the
@@ -36,15 +38,15 @@ namespace zt {
          * @param task
          * @return 
          */
-        bool setTask(Task& task);
+        EXPORT bool setTask(Task& task);
         
         /**
          * @return False if the worker has an assigned task.
          */
-        bool isFree() const;
-        void work();
-        void join();
-        void stop();
+        EXPORT bool isFree() const;
+        EXPORT void work();
+        EXPORT void join();
+        EXPORT void stop();
 
     private:
         std::thread thread;
