@@ -47,6 +47,7 @@ class GameScene : public zt::Scene {
         
         hello.setFont(fontManager["sans"]);
         bye.setFont(fontManager["sans"]);
+        bye.setPosition(0, 50);
         
 	    // Load the texts file.
 	    // We can specify, through the second parameter,
@@ -70,7 +71,6 @@ class GameScene : public zt::Scene {
 	    autoLang.bind(hello, L"greeting");
 	    autoLang.bind(bye, L"bye");
     	
-    	bye.setPosition(0, 50);
 	}
 	void manageEvents(float deltaTime, std::queue<sf::Event>& events) {
 
