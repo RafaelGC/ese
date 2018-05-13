@@ -9,7 +9,7 @@ ZeltaLib consists of these modules:
 
 - **Concurrency**: includes the TaskPool and Task classes to implement a [thread pool](https://en.wikipedia.org/wiki/Thread_pool).
 
-- **AI**: implements an A* search algorithm (Pathfinding class). It is flexible enough to support different neighborhood criterion that must be defined by the user by inheriting from IMesh.
+- **AI**: implements an A* search algorithm (Pathfinding class). It is flexible enough to support different neighborhood criterion.
 
 - **TileEngine**: it's a set of classes to build tile based maps. The module comes with a very basic parser to load [Tiled TMX](http://www.mapeditor.org/) files.
 
