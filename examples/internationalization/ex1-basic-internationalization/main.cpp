@@ -16,7 +16,8 @@ class GameScene : public zt::Scene {
         bye.setFont(fontManager["sans"]);
         
 	    // Load the texts file.
-	    texts.load("text.lxml");
+	    
+	    texts.loadFromFile("text.lxml");
 	    
 	    // Set the English version.
     	texts.in(L"en");
