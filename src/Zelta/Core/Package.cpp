@@ -19,7 +19,11 @@
 
 namespace zt {
     
+    const unsigned int Package::VERSION = 1;
 	const char* Package::MAGIC_NUMBER = "ZPKG";
+	const unsigned int Package::NAME_BYTES = 512;
+	const unsigned int Package::SIZE_BYTES = 8;
+	
 
     Package::Package() {}
     

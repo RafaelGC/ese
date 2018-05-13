@@ -125,15 +125,15 @@ namespace zt {
         std::map<std::string, PackageFileInfo> fileIndex;
         
         // Bytes used to store the name of a file.
-        static const unsigned int NAME_BYTES = 512;
+        static const unsigned int NAME_BYTES;
         
         // Bytes used to store the file size.
         // Note that in the code I use unsigned long to represent this size.
         // That means that if you want to increase SIZE_BYTES you should consider
         // use a different datatype.
-        static const unsigned int SIZE_BYTES = 8;
+        static const unsigned int SIZE_BYTES;
         
-        static const unsigned int VERSION = 1;
+        static const unsigned int VERSION;
         
 		static const char* MAGIC_NUMBER;
         

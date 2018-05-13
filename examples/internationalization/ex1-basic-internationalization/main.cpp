@@ -1,7 +1,7 @@
 #include <Zelta/Core/Scene.hpp>
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/FontManager.hpp>
-#include <Zelta/Internationalization/Text.hpp>
+#include <Zelta/Internationalization/TextContainer.hpp>
 #include <SFML/Graphics.hpp>
 
 class GameScene : public zt::Scene {
@@ -69,7 +69,7 @@ class GameScene : public zt::Scene {
 	
 	sf::Text hello, bye;
 	
-	zt::Text texts; // Contains the texts.
+	zt::TextContainer texts; // Contains the texts.
 };
 
 int main() {
