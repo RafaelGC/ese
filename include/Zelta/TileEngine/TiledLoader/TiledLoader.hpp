@@ -14,13 +14,14 @@
 #ifndef ZELTALIB_TILEDLOADER_HPP
 #define ZELTALIB_TILEDLOADER_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/TileEngine/TiledLoader/Map.hpp>
 #include <Zelta/TileEngine/TiledLoader/Layer.hpp>
 #include <SFML/System/Vector2.hpp>
 
 namespace zt {
     namespace tiled {
-        class TiledLoader {
+        class EXPORT TiledLoader {
         public:
             TiledLoader();
             virtual ~TiledLoader();

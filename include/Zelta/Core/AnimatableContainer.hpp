@@ -8,6 +8,7 @@
 #ifndef ANIMATABLECONTAINER_HPP
 #define	ANIMATABLECONTAINER_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Animatable.hpp>
 
 #include <vector>
@@ -17,7 +18,7 @@ namespace zt{
     /**
      * @brief Container of Animatable objects.
      */
-    class AnimatableContainer : public Animatable {
+    class EXPORT AnimatableContainer : public Animatable {
         private:
             std::vector<Animatable*>animatables;
             bool paused;

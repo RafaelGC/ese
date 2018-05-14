@@ -6,6 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/SceneManager.hpp>
 #include <Zelta/Core/Animatable.hpp>
 #include <Zelta/Core/NestableClock.hpp>
@@ -41,7 +42,7 @@ namespace zt {
      * Keep in mind that the advanceTime() method is called from the game loop, but
      * this method <b>is not</b> the game loop. The game loop is in the scene manager.
      */
-    class Scene : public Animatable{
+    class EXPORT Scene : public Animatable {
         friend class SceneManager;
 
     public:

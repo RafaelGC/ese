@@ -14,10 +14,12 @@
 #ifndef TILESET_HPP
 #define TILESET_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <SFML/Graphics/RenderTexture.hpp>
 
 namespace zt {
-    class Tileset {
+    class EXPORT Tileset {
     public:
         Tileset();
         virtual ~Tileset();

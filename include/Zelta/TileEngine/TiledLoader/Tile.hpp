@@ -14,9 +14,11 @@
 #ifndef ZELTALIB_TILED_TILE_HPP
 #define ZELTALIB_TILED_TILE_HPP
 
+#include <Zelta/Export.hpp>
+
 namespace zt {
     namespace tiled {
-        class Tile {
+        class EXPORT Tile {
         public:
             Tile();
             Tile(int gid);

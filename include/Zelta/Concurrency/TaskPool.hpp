@@ -14,6 +14,7 @@
 #ifndef ZELTALIB_TASKPOOL_HPP
 #define ZELTALIB_TASKPOOL_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Concurrency/Task.hpp>
 #include <Zelta/Concurrency/Worker.hpp>
 
@@ -43,27 +44,27 @@ namespace zt {
          * Creates a TaskPool with a certain amount of threads.
          * @param threads 
          */
-        TaskPool(unsigned int threads = 2);
-        virtual ~TaskPool();
+        EXPORT TaskPool(unsigned int threads = 2);
+        EXPORT virtual ~TaskPool();
 
         /**
          * Adds a new task to the queue.
          * @param task
          */
-        void addTask(Task& task);
+        EXPORT void addTask(Task& task);
 
         /**
          * Waits until the manager thread and the Worker threads are done.
          */
-        void join();
-        void stop();
+        EXPORT void join();
+        EXPORT void stop();
     protected:
         /**
          * Manages the queue. This method is executed in a different thread and
          * keeps running until you call stop(). Workers notificates this thread
          * when they are free so that it can send them new tasks.
          */
-        void work();
+        EXPORT void work();
     private:
         std::queue<Task*> pendantTasks;
 

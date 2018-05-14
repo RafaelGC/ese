@@ -14,13 +14,15 @@
 #ifndef ZELTALIB_TILED_MAP_HPP
 #define ZELTALIB_TILED_MAP_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <Zelta/TileEngine/TiledLoader/Layer.hpp>
 #include <Zelta/TileEngine/TiledLoader/ObjectLayer.hpp>
 
 namespace zt {
     namespace tiled {
         
-        class Map {
+        class EXPORT Map {
         public:
             enum Orientation { Orthogonal, Isometric, Staggered, Hexagonal };
             

@@ -14,6 +14,8 @@
 #ifndef ZELTALIB_TILED_LAYER_HPP
 #define ZELTALIB_TILED_LAYER_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <string>
 #include <vector>
 
@@ -22,7 +24,7 @@
 namespace zt {
     namespace tiled {
         
-        class Layer {
+        class EXPORT Layer {
         public:
             Layer();
             Layer(const std::wstring& name, int width, int height);

@@ -5,8 +5,8 @@
  * Created on 22 de enero de 2016, 6:50
  */
 
-#ifndef SINGLETON_HPP
-#define	SINGLETON_HPP
+#ifndef ZELTALIB_SINGLETON_HPP
+#define	ZELTALIB_SINGLETON_HPP
 
 namespace zt {
 

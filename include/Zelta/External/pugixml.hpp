@@ -50,7 +50,7 @@
 
 // If no API is defined, assume default
 #ifndef PUGIXML_API
-#define PUGIXML_API
+#define PUGIXML_API 
 #endif
 
 // If no API for classes is defined, assume default

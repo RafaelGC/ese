@@ -14,6 +14,8 @@
 #ifndef ZELTALIB_TASK_HPP
 #define ZELTALIB_TASK_HPP
 
+#include <Zelta/Export.hpp>
+
 namespace zt {
 
     /**
@@ -24,7 +26,7 @@ namespace zt {
      * 
      * @see TaskPool
      */
-    class Task {
+    class EXPORT Task {
     public:
         Task();
         virtual ~Task();

@@ -14,6 +14,8 @@
 #ifndef ZELTALIB_PACKAGE_HPP
 #define ZELTALIB_PACKAGE_HPP
 
+#include <Zelta/Export.hpp>
+
 #include <fstream>
 #include <map>
 #include <stdint.h>
@@ -48,7 +50,7 @@ namespace zt {
      * 8 bytes to represent the file size and 512 more bytes to represent the
      * file name and path.
      */
-    class Package {
+    class EXPORT Package {
     public:
         
         static const unsigned int COMPRESSION_NONE = 0;
@@ -123,17 +125,17 @@ namespace zt {
         std::map<std::string, PackageFileInfo> fileIndex;
         
         // Bytes used to store the name of a file.
-        const unsigned int NAME_BYTES = 512;
+        static const unsigned int NAME_BYTES;
         
         // Bytes used to store the file size.
         // Note that in the code I use unsigned long to represent this size.
         // That means that if you want to increase SIZE_BYTES you should consider
         // use a different datatype.
-        const unsigned int SIZE_BYTES = 8;
+        static const unsigned int SIZE_BYTES;
         
-        const unsigned int VERSION = 1;
+        static const unsigned int VERSION;
         
-        const char* MAGIC_NUMBER = "ZPKG";
+		static const char* MAGIC_NUMBER;
         
     };
 }

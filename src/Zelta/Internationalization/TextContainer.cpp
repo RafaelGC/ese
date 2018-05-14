@@ -1,4 +1,5 @@
 #include <Zelta/Internationalization/TextContainer.hpp>
+#include <Zelta/Core/FileNotFoundException.hpp>
 #include <iostream>
 
 namespace zt {
@@ -13,7 +14,7 @@ namespace zt {
 
     TextContainer::TextContainer(const std::string& file) {
         currentLanguageSet = false;
-        load(file);
+        loadFromFile(file);
     }
 
     TextContainer& TextContainer::in(const std::wstring& language) {
@@ -23,25 +24,62 @@ namespace zt {
         return *this;
     }
 
-    void TextContainer::load(const std::string& file, std::wstring language) {
-        fLoad(file, language, true);
+    void TextContainer::loadFromFile(const std::string& file, std::wstring language) {
+        fileLoad(file, language, true);
     }
     
     /**
      * @brief Loads the string in all languages.
      */
-    void TextContainer::load(const std::string& file) {
-        fLoad(file, L"", false);
+    void TextContainer::loadFromFile(const std::string& file) {
+        fileLoad(file, L"", false);
     }
     
-    void TextContainer::fLoad(const std::string& file, const std::wstring& language, bool onlyLanguage) {
-        pugi::xml_document doc;
-        in(language);
-
-        if (!doc.load_file(file.c_str())) {
-            return;
+    void TextContainer::loadFromString(const std::wstring& string, std::wstring language) {
+        const void* buff = string.c_str();
+        
+        memoryLoad(buff, string.size() * sizeof(wchar_t), language, true);
+    }
+    
+    void TextContainer::loadFromString(const std::wstring& string) {
+        const void* buff = string.c_str();
+        
+        memoryLoad(buff, string.size() * sizeof(wchar_t), L"", false);
+    }
+    
+    void TextContainer::loadFromMemory(const void* buff, std::size_t size, std::wstring language) {
+        memoryLoad(buff, size, language, true);
+    }
+    
+    void TextContainer::loadFromMemory(const void* buff, std::size_t size) {
+        memoryLoad(buff, size, L"", false);
+    }
+    
+    void TextContainer::memoryLoad(const void* buff, std::size_t size, const std::wstring& language, bool onlyLanguage) {
+        if (onlyLanguage) {
+            in(language);
+        }
+        
+        
+        doc.load_buffer(buff, size);
+        
+        parse(language, onlyLanguage);
+    }
+    
+    void TextContainer::fileLoad(const std::string& file, const std::wstring& language, bool onlyLanguage) {
+        if (onlyLanguage) {
+            in(language);
         }
 
+        if (!doc.load_file(file.c_str())) {
+            throw FileNotFoundException(file);
+        }
+
+        parse(language, onlyLanguage);
+        
+    }
+    
+    void TextContainer::parse(const std::wstring& language, bool onlyLanguage) {
         for (pugi::xml_node stringNode = doc.first_child(); stringNode; stringNode = stringNode.next_sibling()) {
             
             if (wcscmp(stringNode.name(), L"string") == 0) {

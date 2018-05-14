@@ -14,6 +14,7 @@
 #ifndef ZELTALIB_CONSOLELOG_HPP
 #define ZELTALIB_CONSOLELOG_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Log.hpp>
 
 namespace zt {
@@ -21,7 +22,7 @@ namespace zt {
     /**
      * @brief Class for logging to the console.
      */
-    class ConsoleLog : public Log {
+    class EXPORT ConsoleLog : public Log {
     public:
         void log(Log::Type type, const std::string& message);
         ConsoleLog& operator <<(const std::string& message);

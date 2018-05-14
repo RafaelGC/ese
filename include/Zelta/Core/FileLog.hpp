@@ -3,13 +3,14 @@
 
 #include <fstream>
 #include <Zelta/Core/Log.hpp>
+#include <Zelta/Export.hpp>
 
 namespace zt {
 
     /**
      * @brief Class for logging to a file.
      */
-    class FileLog : public Log {
+    class EXPORT FileLog : public Log {
     public:
 
         enum class Mode {

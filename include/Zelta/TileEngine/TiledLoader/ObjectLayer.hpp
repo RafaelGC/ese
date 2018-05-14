@@ -14,13 +14,15 @@
 #ifndef ZELTALIB_TILED_OBJECTLAYER_HPP
 #define ZELTALIB_TILED_OBJECTLAYER_HPP
 
-#include <vector>
+#include <Zelta/Export.hpp>
 #include <Zelta/TileEngine/TiledLoader/Object.hpp>
+
+#include <vector>
 
 namespace zt {
     namespace tiled {
         
-        class ObjectLayer {
+        class EXPORT ObjectLayer {
         public:
             ObjectLayer(const std::wstring& name);
             

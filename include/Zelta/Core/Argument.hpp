@@ -14,6 +14,7 @@
 #ifndef ZELTALIB_ARGUMENT_HPP
 #define ZELTALIB_ARGUMENT_HPP
 
+#include <Zelta/Export.hpp>
 #include <string>
 
 namespace zt {
@@ -21,7 +22,7 @@ namespace zt {
     /**
      * @brief Represents an argument.
      */
-    class Argument {
+    class EXPORT Argument {
     public:
         Argument(const std::string& argument);
         const std::string& toString() const;

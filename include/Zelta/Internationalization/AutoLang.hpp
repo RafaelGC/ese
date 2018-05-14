@@ -14,9 +14,10 @@
 #ifndef ZELTALIB_AUTOLANG_HPP
 #define ZELTALIB_AUTOLANG_HPP
 
+#include <Zelta/Export.hpp>
+#include <Zelta/Internationalization/Text.hpp>
 #include <Zelta/Internationalization/TextContainer.hpp>
 #include <SFML/Graphics/Font.hpp>
-#include <Zelta/Internationalization/Text.hpp>
 
 #include <vector>
 
@@ -27,7 +28,7 @@ namespace zt {
      * zt::Text string. You can set a language for the AutoLang instance so that
      * all binded strings will be translated automatically.
      */
-    class AutoLang {
+    class EXPORT AutoLang {
     public:
         AutoLang();
         AutoLang(zt::TextContainer& textSource);

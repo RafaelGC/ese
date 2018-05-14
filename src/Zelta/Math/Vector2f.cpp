@@ -97,7 +97,7 @@ namespace zt {
     }
 
     Vector2f& Vector2f::rotate(float angle) {
-        angle /= (180 / M_PI);
+        angle /= (180.f / (float) M_PI);
         float cx = x;
         x = cos(angle) * x - sin(angle) * y;
         y = sin(angle) * cx + cos(angle) * y;
@@ -106,13 +106,13 @@ namespace zt {
     }
 
     Vector2f Vector2f::rotated(float angle) const {
-        angle /= (180 / M_PI);
+        angle /= (180.f / (float) M_PI);
 
         return Vector2f(cos(angle) * x - sin(angle) * y, sin(angle) * x + cos(angle) * y);
     }
 
     float Vector2f::getAngle() const {
-        return std::atan2(-x, y) * (180 / M_PI);
+        return std::atan2(-x, y) * (180.f / (float) M_PI);
     }
     
     Vector2f Vector2f::to(const Vector2f& other) const {

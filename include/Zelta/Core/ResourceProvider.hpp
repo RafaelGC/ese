@@ -14,6 +14,7 @@
 #ifndef ZELTALIB_RESOURCEPROVIDER_HPP
 #define ZELTALIB_RESOURCEPROVIDER_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/LoadingTarget.hpp>
 #include <Zelta/Core/Package.hpp>
 #include <Zelta/Core/FileNotFoundException.hpp>
@@ -41,7 +42,7 @@ namespace zt {
      * the ResourceProvider is not destroyed because it will be used by the
      * ResourceManager to load the requested file.
      */
-    class ResourceProvider {
+    class EXPORT ResourceProvider {
     public:
         
         ResourceProvider() {

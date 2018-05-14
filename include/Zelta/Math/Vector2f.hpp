@@ -14,7 +14,9 @@
 #ifndef ZELTALIB_VECTOR2F_HPP
 #define ZELTALIB_VECTOR2F_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Math/Vector3f.hpp>
+
 #include <SFML/System/Vector2.hpp>
 
 #ifndef M_PI
@@ -25,7 +27,7 @@ namespace zt {
     /**
      * @brief Utility class for 2-dimensional vectors.
      */
-    class Vector2f {
+    class EXPORT Vector2f {
         public:
         Vector2f();
         Vector2f(float x, float y);

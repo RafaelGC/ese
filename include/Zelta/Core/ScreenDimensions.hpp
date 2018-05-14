@@ -7,6 +7,9 @@
 
 #ifndef ZELTALIB_SCREENDIMENSIONS_HPP
 #define	ZELTALIB_SCREENDIMENSIONS_HPP
+
+#include <Zelta/Export.hpp>
+
 namespace zt {
 
     /**
@@ -18,7 +21,7 @@ namespace zt {
      * the class provides you with some useful methods to know where you can
      * draw keeping in ming that you want to respect the aspect ratio.
      */
-    class ScreenDimensions {
+    class EXPORT ScreenDimensions {
     private:
         float devW, devH, targetW, targetH;
         float factorX, factorY;

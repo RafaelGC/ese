@@ -8,6 +8,7 @@
 #ifndef ZELTALIB_CLOCK_HPP
 #define	ZELTALIB_CLOCK_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Animatable.hpp>
 #include <SFML/System/Clock.hpp>
 
@@ -15,7 +16,7 @@ namespace zt{
     /**
      * @brief Class that measures time. Unlike sf::Clock, this one can be paused.
      */
-    class Clock : sf::Clock {
+    class EXPORT Clock : sf::Clock {
         private:
             bool paused;
             sf::Clock pausedClock;

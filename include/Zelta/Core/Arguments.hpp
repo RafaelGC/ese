@@ -14,6 +14,7 @@
 #ifndef ZELTALIB_ARGUMENTS_HPP
 #define ZELTALIB_ARGUMENTS_HPP
 
+#include <Zelta/Export.hpp>
 #include <Zelta/Core/Argument.hpp>
 
 #include <vector>
@@ -22,7 +23,7 @@ namespace zt {
     /**
      * @brief Represents a set of arguments (e.g.: the command line arguments).
      */
-    class Arguments {
+    class EXPORT Arguments {
     public:
         /**
          * @brief Crea un conjunto de parámetros vacío.
