@@ -75,6 +75,10 @@ namespace zt {
          */
         void open(const std::string& file);
         
+        void open(const std::string& file, std::map<std::string, PackageFileInfo> index);
+        
+        void close();
+        
         /**
          * @brief Adds a file to the package.
          * @param input Input file.
@@ -119,6 +123,8 @@ namespace zt {
          */
         unsigned long getFileSize(const std::string& file);
         
+        std::map<std::string, PackageFileInfo> getIndex();
+        
     protected:
         std::fstream file;
         std::string packageName;
@@ -135,7 +141,7 @@ namespace zt {
         
         static const unsigned int VERSION;
         
-		static const char* MAGIC_NUMBER;
+	static const char* MAGIC_NUMBER;
         
     };
 }

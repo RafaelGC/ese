@@ -20,9 +20,9 @@
 namespace zt {
     
     const unsigned int Package::VERSION = 1;
-	const char* Package::MAGIC_NUMBER = "ZPKG";
-	const unsigned int Package::NAME_BYTES = 512;
-	const unsigned int Package::SIZE_BYTES = 8;
+    const char* Package::MAGIC_NUMBER = "ZPKG";
+    const unsigned int Package::NAME_BYTES = 512;
+    const unsigned int Package::SIZE_BYTES = 8;
 	
 
     Package::Package() {}
@@ -94,8 +94,26 @@ namespace zt {
         file.clear();
     }
     
-    Package::~Package() {
+    void Package::open(const std::string& fileName, std::map<std::string,PackageFileInfo> index) {
+        packageName = fileName;
+        
+        // Open the file en binary read/write mode.
+        file.open(fileName, std::ios_base::in | std::ios_base::out | std::ios_base::binary | std::ios_base::app);
+        if (!file.is_open()) throw FileNotFoundException(fileName);
+        
+        fileIndex = index;
+    }
+    
+    std::map<std::string, PackageFileInfo> Package::getIndex() {
+        return fileIndex;
+    }
+    
+    void Package::close() {
         if (file.is_open()) file.close();
+    }
+    
+    Package::~Package() {
+        close();
     }
     
     void Package::addFile(const std::string& input, const std::string& target) {

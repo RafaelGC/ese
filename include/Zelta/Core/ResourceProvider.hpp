@@ -63,7 +63,15 @@ namespace zt {
         }
         
         ResourceProvider& fromPackage(const std::string& path, bool readResourcesFileFromPackage = true) {
+            // We open the package, when we do that, the index is created.
+            packagePath = path;
+            Package pkg;
             pkg.open(path);
+            packageIndex = pkg.getIndex();
+            // We're not interesting in keeping the package open, specially if
+            // it's a big file. So we just open it,  build the index and close it.
+            pkg.close();
+            
             mFromFileSystem = false;
             this->readResourcesFileFromPackage = readResourcesFileFromPackage;
             return *this;
@@ -157,6 +165,8 @@ namespace zt {
                     ->loadFromFile(name, path);
             }
             else {
+                Package pkg;
+                pkg.open(packagePath, packageIndex);
                 std::vector<uint8_t> data = pkg.getFileData(path);
                 resourceManagers[type]
                     ->loadFromMemory(name, data.data(), data.size());
@@ -189,6 +199,8 @@ namespace zt {
             // read the resources file from there unless the user
             // specifies anything else.
             if (!mFromFileSystem && readResourcesFileFromPackage) {
+                Package pkg;
+                pkg.open(packagePath, packageIndex);
                 std::string textFile = pkg.getFileDataAsString(file);
                 input = new std::istringstream(textFile);
             }
@@ -300,12 +312,14 @@ namespace zt {
         // (name, type, path)
         std::vector<File> files;
         
-        // This package will be used if the user loads fromPackage().
-        Package pkg;
+        // If we're loading from a package, this attribute will contain it's
+        // path.
+        std::string packagePath;
         // If the user loads from a package he can decide if the
         // resource file is also in the package or outside. By default,
         // we'll assume it's inside.
         bool readResourcesFileFromPackage;
+        std::map<std::string, PackageFileInfo> packageIndex;
         
         
         bool mFromFileSystem, mOnDemand;
