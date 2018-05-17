@@ -16,6 +16,7 @@
 
 #include <Zelta/AI/GridGraphNode.hpp>
 #include <vector>
+#include <math.h>
 
 namespace zt {
 
@@ -30,7 +31,6 @@ namespace zt {
         
         GridGraph(std::vector<std::vector<int>>& map) {
             neighborhood = Connections::EIGHT;
-            std::cout << map.size() << std::endl;
             setMap(map);
             
         }
@@ -64,7 +64,6 @@ namespace zt {
                 }
             }
             
-            std::cout << this->map.size() << std::endl;
         }
         
         void setNeighborhood(Connections neighborhood) {
