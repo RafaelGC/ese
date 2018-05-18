@@ -30,7 +30,8 @@ namespace zt {
             if (x < other.x) return true;
 
             if (x > other.x) return false;
-
+            
+            // x == other.x
             if (y == other.y) return false;
 
             return y < other.y;

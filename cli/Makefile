@@ -1,9 +1,7 @@
 CCC = g++
-CXX = g++
-CFLAGS = -I../include -std=c++11 -L../lib/ -lzeltalib
-OBJECTS =   ZeltaCLI.cpp
 
-zelta: $(OBJECTS)
-	$(CCC)  $(CFLAGS) $(OBJECTS) -o zelta
-
-
+zelta-cli : main.o
+	$(CCC) $< -o $@ -std=c++11 -L../lib -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lzeltalib
+	
+main.o : main.cpp
+	$(CCC) -c -ISFML -I../include $< -std=c++11
