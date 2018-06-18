@@ -14,6 +14,10 @@
 #include <sys/stat.h>
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include <iostream>
 #include <queue>
 
@@ -227,7 +231,51 @@ namespace zt {
             // We ignore the ./ at the beginning of the file.
             addFile(file, (file[0] == '.' && file[1] == '/') ? file.substr(2) : file);
         }
-        
+#elif _WIN32
+				HANDLE hFind = INVALID_HANDLE_VALUE;
+				WIN32_FIND_DATA ffd;
+
+				std::queue<std::wstring> pendantDirectories;
+				std::wstring currentDirectory;
+				std::vector<std::wstring> files;
+
+				pendantDirectories.push(std::to_wstring(directory));
+
+				while (!pendantDirectories.empty()) {
+					currentDirectory = pendantDirectories.front();
+					pendantDirectories.pop();
+
+					std::wcout << "List: " << currentDirectory << std::endl;
+
+					// List entries of the current directory.
+					std::wstring dir = currentDirectory + L"\\*";
+					hFind = FindFirstFile(dir.data(), &ffd);
+					if (INVALID_HANDLE_VALUE == hFind) { // Error.
+					} 
+					else {
+
+						do {
+							// Folder found.
+							if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+								if (std::wstring(ffd.cFileName) != L"." && std::wstring(ffd.cFileName) != L"..") {
+									std::wcout << "Found dir: " << ffd.cFileName << std::endl;
+									pendantDirectories.push(currentDirectory + L"\\" + ffd.cFileName);
+								}
+							}
+							else
+							{
+								std::wcout << "Found file: " << ffd.cFileName << std::endl;
+								files.push_back(currentDirectory + L"\\" + ffd.cFileName);
+							}
+						}
+						while (FindNextFile(hFind, &ffd) != 0);
+
+					}
+				}
+	
+				for (std::wstring& w : files) {
+					std::wcout << w << std::endl;
+				}
 #else
         throw std::exception("addDirectory() not implemented");
 #endif
